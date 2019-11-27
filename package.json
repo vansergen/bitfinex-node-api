@@ -1,0 +1,22 @@
+{
+  "name": "bitfinex-node-api",
+  "version": "1.0.0",
+  "description": "Bitfinex Node.js client",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansergen/bitfinex-node-api.git"
+  },
+  "keywords": [
+    "Bitfinex",
+    "API",
+    "crypto",
+    "exchange"
+  ],
+  "author": "Sergey Bakulin",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/vansergen/bitfinex-node-api/issues"
+  },
+  "homepage": "https://github.com/vansergen/bitfinex-node-api#readme"
+}
