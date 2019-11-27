@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/vansergen/bitfinex-node-api/issues"
   },
-  "homepage": "https://github.com/vansergen/bitfinex-node-api#readme"
+  "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
+  "dependencies": {
+    "rpc-request": "^3.1.2"
+  }
 }
