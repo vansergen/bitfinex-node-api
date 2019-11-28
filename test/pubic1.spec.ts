@@ -8,7 +8,8 @@ import {
   Stats,
   FundingBook,
   OrderBook,
-  Trade
+  Trade,
+  Lend
 } from "../index";
 
 const client = new PublicClient1();
@@ -170,6 +171,30 @@ suite("PublicClient v1", () => {
       symbol,
       timestamp,
       limit_trades
+    });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getLends()", async () => {
+    const currency = "usd";
+    const timestamp = 1444264306;
+    const limit_lends = 1;
+    const response: Lend[] = [
+      {
+        rate: "9.8998",
+        amount_lent: "22528933.77950878",
+        amount_used: "0.0",
+        timestamp: 1444264307
+      }
+    ];
+    nock(apiUri)
+      .get("/v1/lends/" + currency)
+      .query({ timestamp, limit_lends })
+      .reply(200, response);
+    const data = await client.getLends({
+      currency,
+      timestamp,
+      limit_lends
     });
     assert.deepStrictEqual(data, response);
   });
