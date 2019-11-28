@@ -19,6 +19,11 @@ export type GetOrderBook = Symb & {
   group?: 0 | 1;
 };
 
+export type GetTrades = Symb & {
+  timestamp?: number;
+  limit_trades?: number;
+};
+
 export type Ticker = {
   mid: string;
   bid: string;
@@ -54,6 +59,15 @@ export type OrderBookItem = {
 export type OrderBook = {
   bids: OrderBookItem[];
   asks: OrderBookItem[];
+};
+
+export type Trade = {
+  timestamp: number;
+  tid: number;
+  price: string;
+  amount: string;
+  exchange: "bitfinex";
+  type: "sell" | "buy" | "";
 };
 
 export type PublicClient1Params = {
@@ -107,5 +121,12 @@ export class PublicClient1 extends RPC {
     OrderBook
   > {
     return this.get({ uri: "/v1/book/" + symbol, qs });
+  }
+
+  /**
+   * Get a list of the most recent trades for the given symbol.
+   */
+  getTrades({ symbol = this.symbol, ...qs }: GetTrades = {}): Promise<Trade[]> {
+    return this.get({ uri: "/v1/trades/" + symbol, qs });
   }
 }
