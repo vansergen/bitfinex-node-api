@@ -84,3 +84,12 @@ const symbols = await client.getSymbols();
 ```typescript
 const symbolDetails = await client.getSymbolDetails();
 ```
+
+### AuthenticatedClient1
+
+```typescript
+const key = "BitfinexAPIKey";
+const secret = "BitfinexAPISecret";
+import { AuthenticatedClient1 } from "bitfinex-node-api";
+const client = new AuthenticatedClient1({ key, secret });
+```
