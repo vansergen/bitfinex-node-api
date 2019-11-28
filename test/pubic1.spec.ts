@@ -6,7 +6,8 @@ import {
   DefaultTimeout,
   Ticker,
   Stats,
-  FundingBook
+  FundingBook,
+  OrderBook
 } from "../index";
 
 const client = new PublicClient1();
@@ -108,6 +109,40 @@ suite("PublicClient v1", () => {
       currency,
       limit_bids,
       limit_asks
+    });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getOrderBook()", async () => {
+    const symbol = "btcusd";
+    const limit_bids = 1;
+    const limit_asks = 1;
+    const group = 1;
+    const response: OrderBook = {
+      bids: [
+        {
+          price: "574.61",
+          amount: "0.1439327",
+          timestamp: "1472506127.0"
+        }
+      ],
+      asks: [
+        {
+          price: "574.62",
+          amount: "19.1334",
+          timestamp: "1472506126.0"
+        }
+      ]
+    };
+    nock(apiUri)
+      .get("/v1/book/" + symbol)
+      .query({ limit_bids, limit_asks, group })
+      .reply(200, response);
+    const data = await client.getOrderBook({
+      symbol,
+      limit_bids,
+      limit_asks,
+      group
     });
     assert.deepStrictEqual(data, response);
   });
