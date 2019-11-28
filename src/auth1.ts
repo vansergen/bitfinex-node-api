@@ -7,6 +7,13 @@ export type DepositParams = {
   renew?: 0 | 1;
 };
 
+export type TransferParams = {
+  amount: string;
+  currency: string;
+  walletfrom: "trading" | "deposit" | "exchange";
+  walletto: "trading" | "deposit" | "exchange";
+};
+
 export type AccountInfo = [
   {
     leo_fee_disc_c2c: string;
@@ -87,6 +94,10 @@ export type WalletBalance = {
   available: string;
 };
 
+export type TransferResponse = [
+  { status: "error" | "success"; message: string }
+];
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -155,6 +166,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getWalletBalances(): Promise<WalletBalance[]> {
     return this.post({ uri: "/v1/balances" });
+  }
+
+  /**
+   * Move available balances between your wallets.
+   */
+  transfer(body: TransferParams): Promise<TransferResponse> {
+    return this.post({ body, uri: "/v1/transfer" });
   }
 
   get nonce(): string {
