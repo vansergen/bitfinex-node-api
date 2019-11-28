@@ -23,3 +23,10 @@ const client = new PublicClient1();
 const symbol = "btcusd";
 const ticker = await client.getTicker({ symbol });
 ```
+
+- [`getStats`](https://docs.bitfinex.com/v1/reference#rest-public-stats)
+
+```typescript
+const symbol = "btcusd";
+const stats = await client.getStats({ symbol });
+```
