@@ -10,7 +10,8 @@ import {
   Summary,
   DepositAddress,
   KeyPermissions,
-  MarginInformation
+  MarginInformation,
+  WalletBalance
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -197,6 +198,20 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getMarginInformation();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getWalletBalances()", async () => {
+    const response: WalletBalance[] = [
+      { type: "exchange", currency: "zil", amount: "0.0", available: "0.0" },
+      { type: "trading", currency: "bab", amount: "0.0", available: "0.0" },
+      { type: "deposit", currency: "zec", amount: "0.0", available: "0.0" }
+    ];
+    const uri = "/v1/balances";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.getWalletBalances();
     assert.deepStrictEqual(data, response);
   });
 });
