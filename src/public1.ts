@@ -17,6 +17,8 @@ export type Ticker = {
   timestamp: string;
 };
 
+export type Stats = { period: number; volume: string }[];
+
 export type PublicClient1Params = {
   symbol?: string;
   timeout?: number;
@@ -42,5 +44,12 @@ export class PublicClient1 extends RPC {
    */
   getTicker({ symbol = this.symbol }: Symb = {}): Promise<Ticker> {
     return this.get({ uri: "/v1/pubticker/" + symbol });
+  }
+
+  /**
+   * Various statistics about the requested pair.
+   */
+  getStats({ symbol = this.symbol }: Symb = {}): Promise<Stats> {
+    return this.get({ uri: "/v1/stats/" + symbol });
   }
 }
