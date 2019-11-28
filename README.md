@@ -120,3 +120,9 @@ const wallet_name = "trading";
 const renew = 1;
 const result = await client.getDepositAddress({ method, wallet_name, renew });
 ```
+
+- [`getKeyPermissions`](https://docs.bitfinex.com/v1/reference#auth-key-permissions)
+
+```typescript
+const permissions = await client.getKeyPermissions();
+```
