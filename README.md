@@ -126,3 +126,9 @@ const result = await client.getDepositAddress({ method, wallet_name, renew });
 ```typescript
 const permissions = await client.getKeyPermissions();
 ```
+
+- [`getMarginInformation`](https://docs.bitfinex.com/v1/reference#rest-auth-margin-information)
+
+```typescript
+const marginInformation = await client.getMarginInformation();
+```
