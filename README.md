@@ -30,3 +30,12 @@ const ticker = await client.getTicker({ symbol });
 const symbol = "btcusd";
 const stats = await client.getStats({ symbol });
 ```
+
+- [`getFundingBook`](https://docs.bitfinex.com/v1/reference#rest-public-fundingbook)
+
+```typescript
+const currency = "usd";
+const limit_bids = 10;
+const limit_asks = 5;
+const book = await client.getFundingBook({ currency, limit_bids, limit_asks });
+```
