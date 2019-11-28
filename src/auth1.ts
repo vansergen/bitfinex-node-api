@@ -12,6 +12,8 @@ export type AccountInfo = [
   }
 ];
 
+export type AccountFees = { withdraw: { [currency: string]: string } };
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -38,6 +40,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getAccountInfo(): Promise<AccountInfo> {
     return this.post({ uri: "/v1/account_infos" });
+  }
+
+  /**
+   * Return the fees applied to your withdrawals.
+   */
+  getAccountFees(): Promise<AccountFees> {
+    return this.post({ uri: "/v1/account_fees" });
   }
 
   get nonce(): string {
