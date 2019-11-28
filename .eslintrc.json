@@ -34,6 +34,7 @@
     "quotes": "error",
     "prefer-destructuring": "error",
     "semi": "error",
+    "@typescript-eslint/camelcase": "off",
     "no-console": ["error"]
   }
 }
