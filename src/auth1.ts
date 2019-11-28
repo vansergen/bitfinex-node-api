@@ -1,6 +1,12 @@
 import { PublicClient1, PublicClient1Params } from "./public1";
 import { Signer } from "./signer";
 
+export type DepositParams = {
+  method: string;
+  wallet_name: "trading" | "exchange" | "deposit";
+  renew?: 0 | 1;
+};
+
 export type AccountInfo = [
   {
     leo_fee_disc_c2c: string;
@@ -35,6 +41,13 @@ export type Summary = {
   taker_fee: number;
   deriv_maker_rebate: number;
   deriv_taker_fee: number;
+};
+
+export type DepositAddress = {
+  result: string;
+  method: string;
+  currency: string;
+  address: string;
 };
 
 export type AuthenticatedClient1Options = PublicClient1Params & {
@@ -77,6 +90,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getSummary(): Promise<Summary> {
     return this.post({ uri: "/v1/summary" });
+  }
+
+  /**
+   * Returns your deposit address to make a new deposit.
+   */
+  getDepositAddress(body: DepositParams): Promise<DepositAddress> {
+    return this.post({ body, uri: "/v1/deposit/new" });
   }
 
   get nonce(): string {
