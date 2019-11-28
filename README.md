@@ -99,3 +99,9 @@ const client = new AuthenticatedClient1({ key, secret });
 ```typescript
 const info = await client.getAccountInfo();
 ```
+
+- [`getAccountFees`](https://docs.bitfinex.com/v1/reference#rest-auth-fees)
+
+```typescript
+const fees = await client.getAccountFees();
+```
