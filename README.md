@@ -111,3 +111,12 @@ const fees = await client.getAccountFees();
 ```typescript
 const summary = await client.getSummary();
 ```
+
+- [`getDepositAddress`](https://docs.bitfinex.com/v1/reference#rest-auth-deposit)
+
+```typescript
+const method = "zcash";
+const wallet_name = "trading";
+const renew = 1;
+const result = await client.getDepositAddress({ method, wallet_name, renew });
+```
