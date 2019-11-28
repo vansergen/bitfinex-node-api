@@ -63,3 +63,12 @@ const timestamp = 1444266681;
 const limit_trades = 10;
 const trades = await client.getTrades({ symbol, timestamp, limit_trades });
 ```
+
+- [`getLends`](https://docs.bitfinex.com/v1/reference#rest-public-lends)
+
+```typescript
+const currency = "usd";
+const timestamp = 1444266681;
+const limit_lends = 10;
+const lends = await client.getLends({ currency, timestamp, limit_lends });
+```
