@@ -39,3 +39,18 @@ const limit_bids = 10;
 const limit_asks = 5;
 const book = await client.getFundingBook({ currency, limit_bids, limit_asks });
 ```
+
+- [`getOrderBook`](https://docs.bitfinex.com/v1/reference#rest-public-orderbook)
+
+```typescript
+const symbol = "btcusd";
+const limit_bids = 20;
+const limit_asks = 10;
+const group = 1;
+const book = await client.getOrderBook({
+  symbol,
+  limit_bids,
+  limit_asks,
+  group
+});
+```
