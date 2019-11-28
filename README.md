@@ -1,4 +1,4 @@
-# bitfinex-node-api
+# bitfinex-node-api [![Build Status](https://travis-ci.com/vansergen/bitfinex-node-api.svg?branch=master)](https://travis-ci.com/vansergen/bitfinex-node-api) [![GitHub version](https://badge.fury.io/gh/vansergen%2Fbitfinex-node-api.svg)](https://github.com/vansergen/bitfinex-node-api) ![node](https://img.shields.io/node/v/bitfinex-node-api) ![NPM](https://img.shields.io/npm/l/bitfinex-node-api) ![npm](https://img.shields.io/npm/dt/bitfinex-node-api) ![GitHub top language](https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api)
 
 Bitfinex Node.js library
 
