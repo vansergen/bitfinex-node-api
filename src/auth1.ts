@@ -14,6 +14,29 @@ export type AccountInfo = [
 
 export type AccountFees = { withdraw: { [currency: string]: string } };
 
+export type Summary = {
+  time: string;
+  status: { resid_hint: null };
+  is_locked: boolean;
+  trade_vol_30d: [
+    {
+      curr: string;
+      vol: number;
+      vol_maker: number;
+      vol_BFX: number;
+      vol_BFX_maker: number;
+    }
+  ];
+  fees_funding_30d: {};
+  fees_funding_total_30d: number;
+  fees_trading_30d: {};
+  fees_trading_total_30d: number;
+  maker_fee: number;
+  taker_fee: number;
+  deriv_maker_rebate: number;
+  deriv_taker_fee: number;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -47,6 +70,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getAccountFees(): Promise<AccountFees> {
     return this.post({ uri: "/v1/account_fees" });
+  }
+
+  /**
+   * Returns a 30-day summary of your trading volume and return on margin funding.
+   */
+  getSummary(): Promise<Summary> {
+    return this.post({ uri: "/v1/summary" });
   }
 
   get nonce(): string {
