@@ -93,3 +93,9 @@ const secret = "BitfinexAPISecret";
 import { AuthenticatedClient1 } from "bitfinex-node-api";
 const client = new AuthenticatedClient1({ key, secret });
 ```
+
+- [`getAccountInfo`](https://docs.bitfinex.com/v1/reference#rest-auth-account-info)
+
+```typescript
+const info = await client.getAccountInfo();
+```
