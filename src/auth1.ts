@@ -50,6 +50,18 @@ export type DepositAddress = {
   address: string;
 };
 
+export type KeyPermission = { read: boolean; write: boolean };
+
+export type KeyPermissions = {
+  account: KeyPermission;
+  history: KeyPermission;
+  orders: KeyPermission;
+  positions: KeyPermission;
+  funding: KeyPermission;
+  wallets: KeyPermission;
+  withdraw: KeyPermission;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -97,6 +109,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getDepositAddress(body: DepositParams): Promise<DepositAddress> {
     return this.post({ body, uri: "/v1/deposit/new" });
+  }
+
+  /**
+   * Returns the permissions of the key being used to generate this request.
+   */
+  getKeyPermissions(): Promise<KeyPermissions> {
+    const uri = "/v1/key_info";
+    return this.post({ body: { request: uri }, uri });
   }
 
   get nonce(): string {
