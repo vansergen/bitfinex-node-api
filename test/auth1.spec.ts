@@ -11,7 +11,8 @@ import {
   DepositAddress,
   KeyPermissions,
   MarginInformation,
-  WalletBalance
+  WalletBalance,
+  TransferResponse
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -212,6 +213,29 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getWalletBalances();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".transfer()", async () => {
+    const response: TransferResponse = [
+      {
+        status: "success",
+        message: "1.00954735 Bitcoin Cash transfered from Margin to Exchange"
+      }
+    ];
+    const uri = "/v1/transfer";
+    const amount = "1.00954735";
+    const currency = "BAB";
+    const walletfrom: "trading" = "trading";
+    const walletto: "exchange" = "exchange";
+    const params = { amount, currency, walletfrom, walletto };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, params);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.transfer(params);
     assert.deepStrictEqual(data, response);
   });
 });
