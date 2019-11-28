@@ -8,7 +8,8 @@ import {
   AccountInfo,
   AccountFees,
   Summary,
-  DepositAddress
+  DepositAddress,
+  KeyPermissions
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -142,6 +143,24 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getDepositAddress(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getKeyPermissions()", async () => {
+    const response: KeyPermissions = {
+      account: { read: true, write: false },
+      history: { read: true, write: false },
+      orders: { read: true, write: true },
+      positions: { read: true, write: true },
+      funding: { read: true, write: true },
+      wallets: { read: true, write: true },
+      withdraw: { read: false, write: true }
+    };
+    const uri = "/v1/key_info";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.getKeyPermissions();
     assert.deepStrictEqual(data, response);
   });
 });
