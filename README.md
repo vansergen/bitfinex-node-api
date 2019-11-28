@@ -54,3 +54,12 @@ const book = await client.getOrderBook({
   group
 });
 ```
+
+- [`getTrades`](https://docs.bitfinex.com/v1/reference#rest-public-trades)
+
+```typescript
+const symbol = "btcusd";
+const timestamp = 1444266681;
+const limit_trades = 10;
+const trades = await client.getTrades({ symbol, timestamp, limit_trades });
+```
