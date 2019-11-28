@@ -80,6 +80,13 @@ export type MarginInformation = {
   message: string;
 };
 
+export type WalletBalance = {
+  type: "trading" | "deposit" | "exchange";
+  currency: string;
+  amount: string;
+  available: string;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -141,6 +148,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getMarginInformation(): Promise<MarginInformation> {
     return this.post({ uri: "/v1/margin_infos" });
+  }
+
+  /**
+   * Returns your balances.
+   */
+  getWalletBalances(): Promise<WalletBalance[]> {
+    return this.post({ uri: "/v1/balances" });
   }
 
   get nonce(): string {
