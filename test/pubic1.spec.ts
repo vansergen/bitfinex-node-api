@@ -1,6 +1,12 @@
 import * as assert from "assert";
 import * as nock from "nock";
-import { PublicClient1, DefaultSymbol, DefaultTimeout, Ticker } from "../index";
+import {
+  PublicClient1,
+  DefaultSymbol,
+  DefaultTimeout,
+  Ticker,
+  Stats
+} from "../index";
 
 const client = new PublicClient1();
 const apiUri = "https://api.bitfinex.com";
@@ -43,6 +49,29 @@ suite("PublicClient v1", () => {
       .get("/v1/pubticker/" + symbol)
       .reply(200, response);
     const data = await client.getTicker({ symbol });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getStats()", async () => {
+    const symbol = "ethbtc";
+    const response: Stats = [
+      {
+        period: 1,
+        volume: "7967.96766158"
+      },
+      {
+        period: 7,
+        volume: "55938.67260266"
+      },
+      {
+        period: 30,
+        volume: "275148.09653645"
+      }
+    ];
+    nock(apiUri)
+      .get("/v1/stats/" + symbol)
+      .reply(200, response);
+    const data = await client.getStats({ symbol });
     assert.deepStrictEqual(data, response);
   });
 });
