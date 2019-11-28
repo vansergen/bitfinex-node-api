@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Bitfinex Node.js client",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "engines": {
+    "node": ">=8.16.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vansergen/bitfinex-node-api.git"
@@ -63,5 +67,8 @@
   "funding": {
     "type": "Coinbase Commerce",
     "url": "https://commerce.coinbase.com/checkout/221a3057-e35f-4559-97e4-af020145df62"
+  },
+  "directories": {
+    "test": "test"
   }
 }
