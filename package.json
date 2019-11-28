@@ -1,0 +1,74 @@
+{
+  "name": "bitfinex-node-api",
+  "version": "1.0.0",
+  "description": "Bitfinex Node.js client",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "engines": {
+    "node": ">=8.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansergen/bitfinex-node-api.git"
+  },
+  "keywords": [
+    "Bitfinex",
+    "API",
+    "crypto",
+    "exchange"
+  ],
+  "author": "Sergey Bakulin",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/vansergen/bitfinex-node-api/issues"
+  },
+  "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run prettier && npm run lint && npm run build && npm run prettier-write && npm run lint-fix",
+    "postpublish": "rm -fr build",
+    "test": "mocha -r ts-node/register --full-trace --ui tdd --bail --extension ts",
+    "prettier": "prettier -c **/*.{js,md,ts,json}",
+    "prettier-write": "npm run prettier -- --write",
+    "lint": "eslint --ext .ts,.js ./",
+    "lint-fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "rpc-request": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "eslint": "^6.7.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "mocha": "^6.2.2",
+    "nock": "^11.7.0",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.3",
+    "typescript": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "funding": {
+    "type": "Coinbase Commerce",
+    "url": "https://commerce.coinbase.com/checkout/221a3057-e35f-4559-97e4-af020145df62"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
