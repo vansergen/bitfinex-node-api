@@ -27,7 +27,17 @@ suite("AuthenticatedClient v1", () => {
     assert.deepStrictEqual(client.secret, secret);
   });
 
-  test("getAccountInfo", async () => {
+  test(".post()", async () => {
+    const response: any = {};
+    const uri = "/some-uri";
+    nock(apiUri)
+      .post(uri, ({ request, nonce }) => request === uri && nonce)
+      .reply(200, response);
+    const data = await client.post({ uri });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getAccountInfo()", async () => {
     const response: AccountInfo = [
       {
         leo_fee_disc_c2c: "0.0",
@@ -56,7 +66,7 @@ suite("AuthenticatedClient v1", () => {
     ];
     const uri = "/v1/account_infos";
     nock(apiUri)
-      .post(uri, body => body.request === uri)
+      .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getAccountInfo();
     assert.deepStrictEqual(data, response);
