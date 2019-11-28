@@ -7,7 +7,8 @@ import {
   DefaultCurrency,
   AccountInfo,
   AccountFees,
-  Summary
+  Summary,
+  DepositAddress
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -119,6 +120,28 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getSummary();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getDepositAddress()", async () => {
+    const response: DepositAddress = {
+      result: "success",
+      method: "zcash",
+      currency: "ZEC",
+      address: "t1ZQ8G1k4TyPUnb8gyJyNGogApsHVK7mysp"
+    };
+    const uri = "/v1/deposit/new";
+    const method = "zcash";
+    const wallet_name: "trading" = "trading";
+    const renew: 1 = 1;
+    const params = { wallet_name, renew, method };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, params);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getDepositAddress(params);
     assert.deepStrictEqual(data, response);
   });
 });
