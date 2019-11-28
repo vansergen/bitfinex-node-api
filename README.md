@@ -132,3 +132,9 @@ const permissions = await client.getKeyPermissions();
 ```typescript
 const marginInformation = await client.getMarginInformation();
 ```
+
+- [`getWalletBalances`](https://docs.bitfinex.com/v1/reference#rest-auth-wallet-balances)
+
+```typescript
+const balances = await client.getWalletBalances();
+```
