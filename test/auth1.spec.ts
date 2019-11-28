@@ -6,7 +6,8 @@ import {
   DefaultSymbol,
   DefaultCurrency,
   AccountInfo,
-  AccountFees
+  AccountFees,
+  Summary
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -87,6 +88,37 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getAccountFees();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getSummary()", async () => {
+    const response: Summary = {
+      time: "2019-11-28T09:04:05.375000Z",
+      status: { resid_hint: null },
+      is_locked: false,
+      trade_vol_30d: [
+        {
+          curr: "Total (USD)",
+          vol: 0,
+          vol_maker: 0,
+          vol_BFX: 0,
+          vol_BFX_maker: 0
+        }
+      ],
+      fees_funding_30d: {},
+      fees_funding_total_30d: 0,
+      fees_trading_30d: {},
+      fees_trading_total_30d: 0,
+      maker_fee: 0.001,
+      taker_fee: 0.002,
+      deriv_maker_rebate: -0.0002,
+      deriv_taker_fee: 0.00075
+    };
+    const uri = "/v1/summary";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.getSummary();
     assert.deepStrictEqual(data, response);
   });
 });
