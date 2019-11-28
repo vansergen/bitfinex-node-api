@@ -13,6 +13,12 @@ export type GetFundingBook = Currency & {
   limit_asks?: number;
 };
 
+export type GetOrderBook = Symb & {
+  limit_bids?: number;
+  limit_asks?: number;
+  group?: 0 | 1;
+};
+
 export type Ticker = {
   mid: string;
   bid: string;
@@ -37,6 +43,17 @@ export type FundingBookItem = {
 export type FundingBook = {
   bids: FundingBookItem[];
   asks: FundingBookItem[];
+};
+
+export type OrderBookItem = {
+  price: string;
+  amount: string;
+  timestamp: string;
+};
+
+export type OrderBook = {
+  bids: OrderBookItem[];
+  asks: OrderBookItem[];
 };
 
 export type PublicClient1Params = {
@@ -81,5 +98,14 @@ export class PublicClient1 extends RPC {
     ...qs
   }: GetFundingBook = {}): Promise<FundingBook> {
     return this.get({ uri: "/v1/lendbook/" + currency, qs });
+  }
+
+  /**
+   * Get the full order book.
+   */
+  getOrderBook({ symbol = this.symbol, ...qs }: GetOrderBook = {}): Promise<
+    OrderBook
+  > {
+    return this.get({ uri: "/v1/book/" + symbol, qs });
   }
 }
