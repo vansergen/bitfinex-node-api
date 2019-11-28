@@ -9,7 +9,8 @@ import {
   FundingBook,
   OrderBook,
   Trade,
-  Lend
+  Lend,
+  SymbolDetail
 } from "../index";
 
 const client = new PublicClient1();
@@ -205,6 +206,46 @@ suite("PublicClient v1", () => {
       .get("/v1/symbols")
       .reply(200, response);
     const data = await client.getSymbols();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getSymbolDetails()", async () => {
+    const response: SymbolDetail[] = [
+      {
+        pair: "btcusd",
+        price_precision: 5,
+        initial_margin: "30.0",
+        minimum_margin: "15.0",
+        maximum_order_size: "2000.0",
+        minimum_order_size: "0.01",
+        expiration: "NA",
+        margin: true
+      },
+      {
+        pair: "ltcusd",
+        price_precision: 5,
+        initial_margin: "30.0",
+        minimum_margin: "15.0",
+        maximum_order_size: "5000.0",
+        minimum_order_size: "0.1",
+        expiration: "NA",
+        margin: true
+      },
+      {
+        pair: "ltcbtc",
+        price_precision: 5,
+        initial_margin: "30.0",
+        minimum_margin: "15.0",
+        maximum_order_size: "5000.0",
+        minimum_order_size: "0.1",
+        expiration: "NA",
+        margin: true
+      }
+    ];
+    nock(apiUri)
+      .get("/v1/symbols_details")
+      .reply(200, response);
+    const data = await client.getSymbolDetails();
     assert.deepStrictEqual(data, response);
   });
 });
