@@ -153,3 +153,18 @@ const result = await client.transfer({
   walletto
 });
 ```
+
+- [`withdraw`](https://docs.bitfinex.com/v1/reference#rest-auth-withdrawal)
+
+```typescript
+const amount = "1.0";
+const address = "1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur";
+const walletselected = "exchange";
+const withdraw_type = "bitcoin";
+const result = await client.withdraw({
+  amount,
+  withdraw_type,
+  address,
+  walletselected
+});
+```
