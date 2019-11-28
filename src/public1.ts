@@ -82,6 +82,17 @@ export type Lend = {
   timestamp: number;
 };
 
+export type SymbolDetail = {
+  pair: string;
+  price_precision: number;
+  initial_margin: string;
+  minimum_margin: string;
+  maximum_order_size: string;
+  minimum_order_size: string;
+  expiration: string;
+  margin: boolean;
+};
+
 export type PublicClient1Params = {
   symbol?: string;
   timeout?: number;
@@ -156,5 +167,12 @@ export class PublicClient1 extends RPC {
    */
   getSymbols(): Promise<string[]> {
     return this.get({ uri: "/v1/symbols" });
+  }
+
+  /**
+   * Get a list of valid symbol IDs and the pair details.
+   */
+  getSymbolDetails(): Promise<SymbolDetail[]> {
+    return this.get({ uri: "/v1/symbols_details" });
   }
 }
