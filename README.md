@@ -78,3 +78,9 @@ const lends = await client.getLends({ currency, timestamp, limit_lends });
 ```typescript
 const symbols = await client.getSymbols();
 ```
+
+- [`getSymbolDetails`](https://docs.bitfinex.com/v1/reference#rest-public-symbol-details)
+
+```typescript
+const symbolDetails = await client.getSymbolDetails();
+```
