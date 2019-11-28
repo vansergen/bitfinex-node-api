@@ -24,6 +24,11 @@ export type GetTrades = Symb & {
   limit_trades?: number;
 };
 
+export type GetLends = Currency & {
+  timestamp?: number;
+  limit_lends?: number;
+};
+
 export type Ticker = {
   mid: string;
   bid: string;
@@ -68,6 +73,13 @@ export type Trade = {
   amount: string;
   exchange: "bitfinex";
   type: "sell" | "buy" | "";
+};
+
+export type Lend = {
+  rate: string;
+  amount_lent: string;
+  amount_used: string;
+  timestamp: number;
 };
 
 export type PublicClient1Params = {
@@ -128,5 +140,14 @@ export class PublicClient1 extends RPC {
    */
   getTrades({ symbol = this.symbol, ...qs }: GetTrades = {}): Promise<Trade[]> {
     return this.get({ uri: "/v1/trades/" + symbol, qs });
+  }
+
+  /**
+   * Get a list of the most recent funding data for the given currency: total amount provided and Flash Return Rate (in % by 365 days) over time.
+   */
+  getLends({ currency = this.currency, ...qs }: GetLends = {}): Promise<
+    Lend[]
+  > {
+    return this.get({ uri: "/v1/lends/" + currency, qs });
   }
 }
