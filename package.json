@@ -19,6 +19,16 @@
     "url": "https://github.com/vansergen/bitfinex-node-api/issues"
   },
   "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run prettier && npm run lint && npm run build && npm run prettier-write && npm run lint-fix",
+    "postpublish": "rm -fr build",
+    "test": "mocha -r ts-node/register --full-trace --ui tdd --bail --extension ts",
+    "prettier": "prettier -c **/*.{js,md,ts,json}",
+    "prettier-write": "npm run prettier -- --write",
+    "lint": "eslint --ext .ts,.js ./",
+    "lint-fix": "npm run lint -- --fix"
+  },
   "dependencies": {
     "rpc-request": "^3.1.2"
   },
@@ -49,5 +59,9 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "funding": {
+    "type": "Coinbase Commerce",
+    "url": "https://commerce.coinbase.com/checkout/221a3057-e35f-4559-97e4-af020145df62"
   }
 }
