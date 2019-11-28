@@ -198,4 +198,13 @@ suite("PublicClient v1", () => {
     });
     assert.deepStrictEqual(data, response);
   });
+
+  test(".getSymbols()", async () => {
+    const response = ["btcusd", "ltcusd", "ltcbtc"];
+    nock(apiUri)
+      .get("/v1/symbols")
+      .reply(200, response);
+    const data = await client.getSymbols();
+    assert.deepStrictEqual(data, response);
+  });
 });
