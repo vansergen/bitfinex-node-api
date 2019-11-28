@@ -7,7 +7,8 @@ import {
   Ticker,
   Stats,
   FundingBook,
-  OrderBook
+  OrderBook,
+  Trade
 } from "../index";
 
 const client = new PublicClient1();
@@ -143,6 +144,32 @@ suite("PublicClient v1", () => {
       limit_bids,
       limit_asks,
       group
+    });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getTrades()", async () => {
+    const symbol = "btcusd";
+    const timestamp = 1444266680;
+    const limit_trades = 1;
+    const response: Trade[] = [
+      {
+        timestamp: 1444266681,
+        tid: 11988919,
+        price: "244.8",
+        amount: "0.03297384",
+        exchange: "bitfinex",
+        type: "sell"
+      }
+    ];
+    nock(apiUri)
+      .get("/v1/trades/" + symbol)
+      .query({ limit_trades, timestamp })
+      .reply(200, response);
+    const data = await client.getTrades({
+      symbol,
+      timestamp,
+      limit_trades
     });
     assert.deepStrictEqual(data, response);
   });
