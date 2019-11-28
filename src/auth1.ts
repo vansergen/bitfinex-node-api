@@ -62,6 +62,24 @@ export type KeyPermissions = {
   withdraw: KeyPermission;
 };
 
+export type MarginInformation = {
+  margin_balance: string;
+  tradable_balance: string;
+  unrealized_pl: string;
+  unrealized_swap: string;
+  net_value: string;
+  required_margin: string;
+  leverage: string;
+  margin_requirement: string;
+  margin_limits: {
+    on_pair: string;
+    initial_margin: string;
+    margin_requirement: string;
+    tradable_balance: string;
+  }[];
+  message: string;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -115,8 +133,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
    * Returns the permissions of the key being used to generate this request.
    */
   getKeyPermissions(): Promise<KeyPermissions> {
-    const uri = "/v1/key_info";
-    return this.post({ body: { request: uri }, uri });
+    return this.post({ uri: "/v1/key_info" });
+  }
+
+  /**
+   * Returns the trading wallet information for margin trading.
+   */
+  getMarginInformation(): Promise<MarginInformation> {
+    return this.post({ uri: "/v1/margin_infos" });
   }
 
   get nonce(): string {
