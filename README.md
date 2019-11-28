@@ -138,3 +138,18 @@ const marginInformation = await client.getMarginInformation();
 ```typescript
 const balances = await client.getWalletBalances();
 ```
+
+- [`transfer`](https://docs.bitfinex.com/v1/reference#rest-auth-transfer-between-wallets)
+
+```typescript
+const amount = "1.00954735";
+const currency = "BAB";
+const walletfrom = "trading";
+const walletto = "exchange";
+const result = await client.transfer({
+  amount,
+  currency,
+  walletfrom,
+  walletto
+});
+```
