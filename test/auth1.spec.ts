@@ -5,7 +5,8 @@ import {
   DefaultTimeout,
   DefaultSymbol,
   DefaultCurrency,
-  AccountInfo
+  AccountInfo,
+  AccountFees
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -69,6 +70,23 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getAccountInfo();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getAccountFees()", async () => {
+    const response: AccountFees = {
+      withdraw: {
+        BTC: "0.0004",
+        LTC: "0.001",
+        ETH: "0.00135",
+        ETC: "0.01"
+      }
+    };
+    const uri = "/v1/account_fees";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.getAccountFees();
     assert.deepStrictEqual(data, response);
   });
 });
