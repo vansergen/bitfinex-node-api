@@ -105,3 +105,9 @@ const info = await client.getAccountInfo();
 ```typescript
 const fees = await client.getAccountFees();
 ```
+
+- [`getSummary`](https://docs.bitfinex.com/v1/reference#rest-auth-summary)
+
+```typescript
+const summary = await client.getSummary();
+```
