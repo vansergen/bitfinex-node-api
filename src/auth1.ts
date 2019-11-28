@@ -1,4 +1,9 @@
-import { PublicClient1, PublicClient1Params } from "./public1";
+import {
+  PublicClient1,
+  PublicClient1Params,
+  DefaultCurrency,
+  Currency
+} from "./public1";
 import { Signer } from "./signer";
 
 export type DepositParams = {
@@ -7,11 +12,34 @@ export type DepositParams = {
   renew?: 0 | 1;
 };
 
-export type TransferParams = {
+export type TransferParams = Currency & {
   amount: string;
-  currency: string;
   walletfrom: "trading" | "deposit" | "exchange";
   walletto: "trading" | "deposit" | "exchange";
+};
+
+export type WithdrawParams = {
+  withdraw_type: string;
+  walletselected: "trading" | "exchange" | "deposit";
+  amount: string;
+  address?: string;
+  currency?: string;
+  payment_id?: string;
+  account_name?: string;
+  account_number?: string;
+  swift?: string;
+  bank_name?: string;
+  bank_address?: string;
+  bank_city?: string;
+  bank_country?: string;
+  detail_payment?: string;
+  expressWire?: 0 | 1;
+  intermediary_bank_name?: string;
+  intermediary_bank_address?: string;
+  intermediary_bank_city?: string;
+  intermediary_bank_country?: string;
+  intermediary_bank_account?: string;
+  intermediary_bank_swift?: string;
 };
 
 export type AccountInfo = [
@@ -98,6 +126,21 @@ export type TransferResponse = [
   { status: "error" | "success"; message: string }
 ];
 
+export type WithdrawResponse = [
+  {
+    status: "error" | "success";
+    message: string;
+    withdrawal_id: number;
+    wallettype?: "trading" | "deposit" | "exchange";
+    method?: string;
+    address?: string;
+    invoice?: null | number;
+    payment_id?: null | number;
+    amount?: string;
+    fees?: string;
+  }
+];
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -171,8 +214,18 @@ export class AuthenticatedClient1 extends PublicClient1 {
   /**
    * Move available balances between your wallets.
    */
-  transfer(body: TransferParams): Promise<TransferResponse> {
-    return this.post({ body, uri: "/v1/transfer" });
+  transfer({
+    currency = DefaultCurrency,
+    ...body
+  }: TransferParams): Promise<TransferResponse> {
+    return this.post({ body: { currency, ...body }, uri: "/v1/transfer" });
+  }
+
+  /**
+   * Request a withdrawal from one of your wallet.
+   */
+  withdraw(body: WithdrawParams): Promise<WithdrawResponse> {
+    return this.post({ body, uri: "/v1/withdraw" });
   }
 
   get nonce(): string {

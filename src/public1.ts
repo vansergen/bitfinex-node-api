@@ -1,8 +1,8 @@
 import { RPC } from "rpc-request";
 
 export const DefaultTimeout = 30000;
-export const DefaultSymbol = "btcusd";
-export const DefaultCurrency = "usd";
+export const DefaultSymbol = "BTCUSD";
+export const DefaultCurrency = "USD";
 
 export type Symb = { symbol?: string };
 
