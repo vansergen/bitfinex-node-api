@@ -150,4 +150,11 @@ export class PublicClient1 extends RPC {
   > {
     return this.get({ uri: "/v1/lends/" + currency, qs });
   }
+
+  /**
+   * Get the list of symbol names.
+   */
+  getSymbols(): Promise<string[]> {
+    return this.get({ uri: "/v1/symbols" });
+  }
 }
