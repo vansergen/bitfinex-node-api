@@ -6,6 +6,13 @@ export const DefaultCurrency = "usd";
 
 export type Symb = { symbol?: string };
 
+export type Currency = { currency?: string };
+
+export type GetFundingBook = Currency & {
+  limit_bids?: number;
+  limit_asks?: number;
+};
+
 export type Ticker = {
   mid: string;
   bid: string;
@@ -18,6 +25,19 @@ export type Ticker = {
 };
 
 export type Stats = { period: number; volume: string }[];
+
+export type FundingBookItem = {
+  rate: string;
+  amount: string;
+  period: number;
+  timestamp: string;
+  frr: "No" | "Yes";
+};
+
+export type FundingBook = {
+  bids: FundingBookItem[];
+  asks: FundingBookItem[];
+};
 
 export type PublicClient1Params = {
   symbol?: string;
@@ -51,5 +71,15 @@ export class PublicClient1 extends RPC {
    */
   getStats({ symbol = this.symbol }: Symb = {}): Promise<Stats> {
     return this.get({ uri: "/v1/stats/" + symbol });
+  }
+
+  /**
+   * Get the full margin funding book
+   */
+  getFundingBook({
+    currency = this.currency,
+    ...qs
+  }: GetFundingBook = {}): Promise<FundingBook> {
+    return this.get({ uri: "/v1/lendbook/" + currency, qs });
   }
 }
