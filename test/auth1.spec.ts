@@ -9,7 +9,8 @@ import {
   AccountFees,
   Summary,
   DepositAddress,
-  KeyPermissions
+  KeyPermissions,
+  MarginInformation
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -161,6 +162,41 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.getKeyPermissions();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getMarginInformation()", async () => {
+    const response: MarginInformation = {
+      margin_balance: "241.90964507",
+      tradable_balance: "603.774112675",
+      unrealized_pl: "0.0",
+      unrealized_swap: "0.0",
+      net_value: "241.90964507",
+      required_margin: "0.0",
+      leverage: "2.5",
+      margin_requirement: "0.0",
+      margin_limits: [
+        {
+          on_pair: "BTCUSD",
+          initial_margin: "30.0",
+          margin_requirement: "15.0",
+          tradable_balance: "732.192590045666666667"
+        },
+        {
+          on_pair: "LTCUSD",
+          initial_margin: "30.0",
+          margin_requirement: "15.0",
+          tradable_balance: "732.192590045666666667"
+        }
+      ],
+      message:
+        "Margin requirement, leverage and tradable balance are now per pair. Values displayed in the root of the JSON message are incorrect (deprecated). You will find the correct ones under margin_limits, for each pair. Please update your code as soon as possible."
+    };
+    const uri = "/v1/margin_infos";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.getMarginInformation();
     assert.deepStrictEqual(data, response);
   });
 });
