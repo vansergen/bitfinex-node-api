@@ -72,3 +72,9 @@ const timestamp = 1444266681;
 const limit_lends = 10;
 const lends = await client.getLends({ currency, timestamp, limit_lends });
 ```
+
+- [`getSymbols`](https://docs.bitfinex.com/v1/reference#rest-public-symbols)
+
+```typescript
+const symbols = await client.getSymbols();
+```
