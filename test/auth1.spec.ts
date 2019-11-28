@@ -12,7 +12,8 @@ import {
   KeyPermissions,
   MarginInformation,
   WalletBalance,
-  TransferResponse
+  TransferResponse,
+  WithdrawResponse
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -236,6 +237,38 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.transfer(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".withdraw()", async () => {
+    const response: WithdrawResponse = [
+      {
+        wallettype: "exchange",
+        method: "bitcoin",
+        address: "1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur",
+        invoice: null,
+        payment_id: null,
+        amount: "1.0",
+        status: "error",
+        message:
+          "Cannot withdraw 1.0004 BTC from your exchange wallet. The available balance is only 0.0 BTC. If you have limit orders, open positions, unused or active margin funding, this will decrease your available balance. To increase it, you can cancel limit orders or reduce/close your positions.",
+        withdrawal_id: 0,
+        fees: "0.0004"
+      }
+    ];
+    const uri = "/v1/withdraw";
+    const amount = "1.0";
+    const address = "1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur";
+    const walletselected: "exchange" = "exchange";
+    const withdraw_type = "bitcoin";
+    const params = { amount, address, walletselected, withdraw_type };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, params);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.withdraw(params);
     assert.deepStrictEqual(data, response);
   });
 });
