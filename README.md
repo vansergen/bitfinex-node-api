@@ -219,3 +219,12 @@ const result = await client.newOrders({ orders });
 const order_id = 446915287;
 const order = await client.cancelOrder({ order_id });
 ```
+
+- [`cancelOrders`](https://docs.bitfinex.com/v1/reference#rest-auth-cancel-multiple-orders)
+
+```typescript
+const order_id1 = 446915287;
+const order_id2 = 446915287;
+const order_ids = [order_id1, order_id2];
+const { result } = await client.cancelOrders({ order_ids });
+```
