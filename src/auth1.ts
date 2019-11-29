@@ -60,7 +60,7 @@ export type OrderParams = Symb & {
   price: string;
   side: "buy" | "sell";
   type: OrderType;
-  exchange: "bitfinex";
+  exchange?: "bitfinex";
   is_hidden?: boolean;
   is_postonly?: boolean;
   use_all_available?: 0 | 1;
@@ -306,6 +306,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
       }
     }
     return this.post({ body: { orders }, uri: "/v1/order/new/multi" });
+  }
+
+  /**
+   * Cancel an order.
+   */
+  cancelOrder(body: { order_id: number }): Promise<OrderResponse> {
+    return this.post({ body, uri: "/v1/order/cancel" });
   }
 
   get nonce(): string {
