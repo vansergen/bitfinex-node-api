@@ -322,6 +322,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return this.post({ body, uri: "/v1/order/cancel/multi" });
   }
 
+  /**
+   * Cancel all active orders at once.
+   */
+  cancelAllOrders(): Promise<{ result: string }> {
+    return this.post({ uri: "/v1/order/cancel/all" });
+  }
+
   get nonce(): string {
     return Date.now().toString();
   }
