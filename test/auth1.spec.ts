@@ -14,7 +14,9 @@ import {
   WalletBalance,
   TransferResponse,
   WithdrawResponse,
-  OrderResponse
+  OrderResponse,
+  OrderParams,
+  NewOrdersResponse
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -314,6 +316,88 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.newOrder(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".newOrders()", async () => {
+    const response: NewOrdersResponse = {
+      order_ids: [
+        {
+          id: 654,
+          cid: 456,
+          cid_date: "2019-11-29",
+          gid: null,
+          symbol: "etcusd",
+          exchange: "bitfinex",
+          price: "3.0",
+          avg_execution_price: "0.0",
+          side: "buy",
+          type: "limit",
+          timestamp: "1575030779.494391951",
+          is_live: true,
+          is_cancelled: false,
+          is_hidden: false,
+          oco_order: null,
+          was_forced: false,
+          original_amount: "1.0",
+          remaining_amount: "1.0",
+          executed_amount: "0.0",
+          src: "api",
+          meta: { $F7: 1 }
+        },
+        {
+          id: 321,
+          cid: 123,
+          cid_date: "2019-11-29",
+          gid: null,
+          symbol: "etcusd",
+          exchange: "bitfinex",
+          price: "5.0",
+          avg_execution_price: "0.0",
+          side: "buy",
+          type: "limit",
+          timestamp: "1575030779.513995919",
+          is_live: true,
+          is_cancelled: false,
+          is_hidden: false,
+          oco_order: null,
+          was_forced: false,
+          original_amount: "2.0",
+          remaining_amount: "2.0",
+          executed_amount: "0.0",
+          src: "api",
+          meta: { $F7: 1 }
+        }
+      ],
+      status: "success"
+    };
+    const uri = "/v1/order/new/multi";
+    const order1: OrderParams = {
+      amount: "1",
+      price: "3",
+      type: "limit",
+      exchange: "bitfinex",
+      symbol: "ETCUSD",
+      side: "buy",
+      is_postonly: true
+    };
+    const order2: OrderParams = {
+      amount: "2",
+      price: "5",
+      type: "limit",
+      exchange: "bitfinex",
+      symbol: "ETCUSD",
+      side: "buy",
+      is_postonly: true
+    };
+    const orders = [order1, order2];
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { orders });
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.newOrders({ orders });
     assert.deepStrictEqual(data, response);
   });
 });
