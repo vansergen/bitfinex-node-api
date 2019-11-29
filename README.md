@@ -168,3 +168,24 @@ const result = await client.withdraw({
   walletselected
 });
 ```
+
+- [`newOrder`](https://docs.bitfinex.com/v1/reference#rest-auth-orders)
+
+```typescript
+const amount = "1";
+const price = "3";
+const type = "limit";
+const exchange = "bitfinex";
+const symbol = "ETCUSD";
+const side = "buy";
+const is_postonly = true;
+const order = await client.newOrder({
+  amount,
+  price,
+  type,
+  exchange,
+  symbol,
+  side,
+  is_postonly
+});
+```
