@@ -13,7 +13,8 @@ import {
   MarginInformation,
   WalletBalance,
   TransferResponse,
-  WithdrawResponse
+  WithdrawResponse,
+  OrderResponse
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -269,6 +270,50 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.withdraw(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".newOrder()", async () => {
+    const response: OrderResponse = {
+      id: 1,
+      cid: 4,
+      cid_date: "2019-11-29",
+      gid: null,
+      symbol: "etcusd",
+      exchange: "bitfinex",
+      price: "3.0",
+      avg_execution_price: "0.0",
+      side: "buy",
+      type: "limit",
+      timestamp: "1575025695.649883424",
+      is_live: true,
+      is_cancelled: false,
+      is_hidden: false,
+      oco_order: null,
+      was_forced: false,
+      original_amount: "1.0",
+      remaining_amount: "1.0",
+      executed_amount: "0.0",
+      src: "api",
+      meta: { $F7: 1 },
+      order_id: 4
+    };
+    const uri = "/v1/order/new";
+    const amount = "1";
+    const price = "3";
+    const type: "limit" = "limit";
+    const exchange: "bitfinex" = "bitfinex";
+    const symbol = "ETCUSD";
+    const side: "buy" = "buy";
+    const is_postonly = true;
+    const params = { amount, price, type, exchange, symbol, side, is_postonly };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, params);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.newOrder(params);
     assert.deepStrictEqual(data, response);
   });
 });
