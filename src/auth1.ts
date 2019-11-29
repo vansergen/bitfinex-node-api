@@ -2,7 +2,8 @@ import {
   PublicClient1,
   PublicClient1Params,
   DefaultCurrency,
-  Currency
+  Currency,
+  Symb
 } from "./public1";
 import { Signer } from "./signer";
 
@@ -40,6 +41,33 @@ export type WithdrawParams = {
   intermediary_bank_country?: string;
   intermediary_bank_account?: string;
   intermediary_bank_swift?: string;
+};
+
+export type OrderType =
+  | "market"
+  | "limit"
+  | "stop"
+  | "trailing-stop"
+  | "fill-or-kill"
+  | "exchange market"
+  | "exchange limit"
+  | "exchange stop"
+  | "exchange trailing-stop"
+  | "exchange fill-or-kill";
+
+export type OrderParams = Symb & {
+  amount: string;
+  price: string;
+  side: "buy" | "sell";
+  type: OrderType;
+  exchange: "bitfinex";
+  is_hidden?: boolean;
+  is_postonly?: boolean;
+  use_all_available?: 0 | 1;
+  ocoorder?: boolean;
+  buy_price_oco?: string;
+  sell_price_oco?: string;
+  lev?: number;
 };
 
 export type AccountInfo = [
@@ -141,6 +169,31 @@ export type WithdrawResponse = [
   }
 ];
 
+export type OrderResponse = {
+  id: number;
+  cid: number;
+  cid_date: string;
+  gid: null | number;
+  symbol: string;
+  exchange: "bitfinex";
+  price: string;
+  avg_execution_price: string;
+  side: "buy" | "sell";
+  type: OrderType;
+  timestamp: string;
+  oco_order?: boolean | null;
+  is_live: boolean;
+  is_cancelled: boolean;
+  is_hidden: boolean;
+  was_forced: boolean;
+  original_amount: string;
+  remaining_amount: string;
+  executed_amount: string;
+  order_id: number;
+  src?: string;
+  meta?: object;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -226,6 +279,16 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   withdraw(body: WithdrawParams): Promise<WithdrawResponse> {
     return this.post({ body, uri: "/v1/withdraw" });
+  }
+
+  /**
+   * Submit a new Order, can be used to create margin, exchange, and derivative orders.
+   */
+  newOrder({
+    symbol = this.symbol,
+    ...body
+  }: OrderParams): Promise<OrderResponse> {
+    return this.post({ body: { symbol, ...body }, uri: "/v1/order/new" });
   }
 
   get nonce(): string {
