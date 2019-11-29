@@ -454,4 +454,16 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.cancelOrders({ order_ids });
     assert.deepStrictEqual(data, response);
   });
+
+  test(".cancelAllOrders()", async () => {
+    const response = {
+      result: "All (1) submitted for cancellation; waiting for confirmation."
+    };
+    const uri = "/v1/order/cancel/all";
+    nock(apiUri)
+      .post(uri, ({ request }) => request === uri)
+      .reply(200, response);
+    const data = await client.cancelAllOrders();
+    assert.deepStrictEqual(data, response);
+  });
 });
