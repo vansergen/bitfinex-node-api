@@ -400,4 +400,40 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.newOrders({ orders });
     assert.deepStrictEqual(data, response);
   });
+
+  test(".cancelOrder()", async () => {
+    const response: OrderResponse = {
+      id: 234,
+      cid: 5432,
+      cid_date: "2019-11-29",
+      gid: null,
+      symbol: "etcusd",
+      exchange: "bitfinex",
+      price: "3.0",
+      avg_execution_price: "0.0",
+      side: "buy",
+      type: "limit",
+      timestamp: "1575031707.0",
+      is_live: true,
+      is_cancelled: false,
+      is_hidden: false,
+      oco_order: null,
+      was_forced: false,
+      original_amount: "1.0",
+      remaining_amount: "1.0",
+      executed_amount: "0.0",
+      src: "api",
+      meta: { $F7: 1 }
+    };
+    const uri = "/v1/order/cancel";
+    const order_id = 234;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { order_id });
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.cancelOrder({ order_id });
+    assert.deepStrictEqual(data, response);
+  });
 });
