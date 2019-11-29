@@ -190,7 +190,7 @@ const order = await client.newOrder({
 });
 ```
 
-- [`newOrders`](https://docs.bitfinex.com/v1/reference#rest-auth-orders)
+- [`newOrders`](https://docs.bitfinex.com/v1/reference#rest-auth-multiple-new-orders)
 
 ```typescript
 const order1 = {
@@ -206,10 +206,16 @@ const order2 = {
   amount: "2",
   price: "2",
   type: "limit",
-  exchange: "bitfinex",
   symbol: "ETCUSD",
   side: "buy"
 };
 const orders = [order1, order2];
 const result = await client.newOrders({ orders });
+```
+
+- [`cancelOrder`](https://docs.bitfinex.com/v1/reference#rest-auth-cancel-order)
+
+```typescript
+const order_id = 446915287;
+const order = await client.cancelOrder({ order_id });
 ```
