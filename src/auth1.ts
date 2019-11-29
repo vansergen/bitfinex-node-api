@@ -189,9 +189,14 @@ export type OrderResponse = {
   original_amount: string;
   remaining_amount: string;
   executed_amount: string;
-  order_id: number;
+  order_id?: number;
   src?: string;
   meta?: object;
+};
+
+export type NewOrdersResponse = {
+  order_ids: OrderResponse[];
+  status: string;
 };
 
 export type AuthenticatedClient1Options = PublicClient1Params & {
@@ -289,6 +294,18 @@ export class AuthenticatedClient1 extends PublicClient1 {
     ...body
   }: OrderParams): Promise<OrderResponse> {
     return this.post({ body: { symbol, ...body }, uri: "/v1/order/new" });
+  }
+
+  /**
+   * Submit several new orders at once, can be used to create margin, exchange, and derivative orders.
+   */
+  newOrders({ orders }: { orders: OrderParams[] }): Promise<NewOrdersResponse> {
+    for (const order of orders) {
+      if (!order.symbol) {
+        order.symbol = this.symbol;
+      }
+    }
+    return this.post({ body: { orders }, uri: "/v1/order/new/multi" });
   }
 
   get nonce(): string {
