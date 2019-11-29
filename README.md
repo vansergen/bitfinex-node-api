@@ -189,3 +189,27 @@ const order = await client.newOrder({
   is_postonly
 });
 ```
+
+- [`newOrders`](https://docs.bitfinex.com/v1/reference#rest-auth-orders)
+
+```typescript
+const order1 = {
+  amount: "1",
+  price: "3",
+  type: "limit",
+  exchange: "bitfinex",
+  symbol: "ETCUSD",
+  side: "buy",
+  is_postonly: true
+};
+const order2 = {
+  amount: "2",
+  price: "2",
+  type: "limit",
+  exchange: "bitfinex",
+  symbol: "ETCUSD",
+  side: "buy"
+};
+const orders = [order1, order2];
+const result = await client.newOrders({ orders });
+```
