@@ -88,9 +88,9 @@ const symbolDetails = await client.getSymbolDetails();
 ### AuthenticatedClient1
 
 ```typescript
+import { AuthenticatedClient1 } from "bitfinex-node-api";
 const key = "BitfinexAPIKey";
 const secret = "BitfinexAPISecret";
-import { AuthenticatedClient1 } from "bitfinex-node-api";
 const client = new AuthenticatedClient1({ key, secret });
 ```
 
@@ -268,4 +268,11 @@ const order = await client.getOrder({ order_id });
 
 ```typescript
 const orders = await client.getOrders();
+```
+
+- [`getOrderHistory`](https://docs.bitfinex.com/v1/reference#rest-auth-orders-history)
+
+```typescript
+const limit = 50;
+const orders = await client.getOrderHistory({ limit });
 ```
