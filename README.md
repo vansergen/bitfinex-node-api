@@ -263,3 +263,9 @@ const order = await client.replaceOrder({
 const order_id = 448411153;
 const order = await client.getOrder({ order_id });
 ```
+
+- [`getOrders`](https://docs.bitfinex.com/v1/reference#rest-auth-active-orders)
+
+```typescript
+const orders = await client.getOrders();
+```
