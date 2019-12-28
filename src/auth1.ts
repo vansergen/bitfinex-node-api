@@ -70,6 +70,20 @@ export type OrderParams = Symb & {
   lev?: number;
 };
 
+export type ReplaceOrderParams = Symb & {
+  order_id: number;
+  amount: string;
+  price?: string;
+  exchange: "bitfinex";
+  side: "buy" | "sell";
+  type: OrderType;
+  is_hidden?: boolean;
+  is_postonly?: boolean;
+  use_remaining?: boolean;
+  lev?: number;
+  aff_code?: string;
+};
+
 export type AccountInfo = [
   {
     leo_fee_disc_c2c: string;
@@ -325,6 +339,17 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   cancelAllOrders(): Promise<{ result: string }> {
     return this.post({ uri: "/v1/order/cancel/all" });
+  }
+
+  /**
+   * Replace an order with a new one. Can be used to replace an order with a new margin, exchange, or derivative order.
+   */
+  replaceOrder({
+    symbol = this.symbol,
+    ...body
+  }: ReplaceOrderParams): Promise<OrderResponse> {
+    const uri = "/v1/order/cancel/replace";
+    return this.post({ body: { symbol, ...body }, uri });
   }
 
   set nonce(nonce: () => string) {
