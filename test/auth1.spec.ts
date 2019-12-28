@@ -16,7 +16,8 @@ import {
   WithdrawResponse,
   OrderResponse,
   OrderParams,
-  NewOrdersResponse
+  NewOrdersResponse,
+  Position
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -636,6 +637,30 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getOrderHistory({ limit });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getPositions()", async () => {
+    const response: Position[] = [
+      {
+        id: 943715,
+        symbol: "btcusd",
+        status: "ACTIVE",
+        base: "246.94",
+        amount: "1.0",
+        timestamp: "1444141857.0",
+        swap: "0.0",
+        pl: "-2.22042"
+      }
+    ];
+    const uri = "/v1/positions";
+    nock(apiUri)
+      .post(uri, ({ request, nonce }) => {
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getPositions();
     assert.deepStrictEqual(data, response);
   });
 });
