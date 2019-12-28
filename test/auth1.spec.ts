@@ -146,6 +146,7 @@ suite("AuthenticatedClient v1", () => {
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
         assert.deepStrictEqual(rest, params);
+        assert.ok(nonce);
         return request === uri;
       })
       .reply(200, response);
@@ -236,6 +237,7 @@ suite("AuthenticatedClient v1", () => {
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
         assert.deepStrictEqual(rest, params);
+        assert.ok(nonce);
         return request === uri;
       })
       .reply(200, response);
@@ -268,6 +270,7 @@ suite("AuthenticatedClient v1", () => {
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
         assert.deepStrictEqual(rest, params);
+        assert.ok(nonce);
         return request === uri;
       })
       .reply(200, response);
@@ -312,6 +315,7 @@ suite("AuthenticatedClient v1", () => {
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
         assert.deepStrictEqual(rest, params);
+        assert.ok(nonce);
         return request === uri;
       })
       .reply(200, response);
@@ -464,6 +468,61 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request }) => request === uri)
       .reply(200, response);
     const data = await client.cancelAllOrders();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".replaceOrder()", async () => {
+    const response: OrderResponse = {
+      id: 1,
+      cid: 47212318175544,
+      cid_date: "2019-12-28",
+      gid: null,
+      symbol: "etcusd",
+      exchange: "bitfinex",
+      price: "101.0",
+      avg_execution_price: "0.0",
+      side: "sell",
+      type: "limit",
+      timestamp: "1577538417.01",
+      is_live: true,
+      is_cancelled: false,
+      is_hidden: false,
+      oco_order: null,
+      was_forced: false,
+      original_amount: "3.0",
+      remaining_amount: "3.0",
+      executed_amount: "0.0",
+      src: "api",
+      meta: { $F7: 1 },
+      order_id: 1
+    };
+    const uri = "/v1/order/cancel/replace";
+    const amount = "3";
+    const price = "101";
+    const type: "limit" = "limit";
+    const exchange: "bitfinex" = "bitfinex";
+    const side: "sell" = "sell";
+    const is_postonly = true;
+    const symbol = "ETCUSD";
+    const order_id = 1;
+    const params = {
+      order_id,
+      amount,
+      price,
+      type,
+      exchange,
+      symbol,
+      side,
+      is_postonly
+    };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, params);
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.replaceOrder(params);
     assert.deepStrictEqual(data, response);
   });
 });
