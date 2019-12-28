@@ -234,3 +234,25 @@ const { result } = await client.cancelOrders({ order_ids });
 ```typescript
 const { result } = await client.cancelAllOrders();
 ```
+
+- [`replaceOrder`](https://docs.bitfinex.com/v1/reference#rest-auth-replace-order)
+
+```typescript
+const amount = "3";
+const price = "101";
+const type = "limit";
+const exchange = "bitfinex";
+const side = "sell";
+const is_postonly = true;
+const symbol = "ETCUSD";
+const order_id = 1;
+const order = await client.replaceOrder({
+  amount,
+  price,
+  type,
+  exchange,
+  symbol,
+  side,
+  is_postonly
+});
+```
