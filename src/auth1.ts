@@ -1,10 +1,4 @@
-import {
-  PublicClient1,
-  PublicClient1Params,
-  DefaultCurrency,
-  Currency,
-  Symb
-} from "./public1";
+import { PublicClient1, PublicClient1Params, Currency, Symb } from "./public1";
 import { Signer } from "./signer";
 
 export type DepositParams = {
@@ -298,7 +292,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
    * Move available balances between your wallets.
    */
   transfer({
-    currency = DefaultCurrency,
+    currency = this.currency,
     ...body
   }: TransferParams): Promise<TransferResponse> {
     return this.post({ body: { currency, ...body }, uri: "/v1/transfer" });
