@@ -187,7 +187,7 @@ export type OrderResponse = {
   id: number;
   cid: number;
   cid_date: string;
-  gid: null | number;
+  gid: null | number | string;
   symbol: string;
   exchange: "bitfinex";
   price: string;
@@ -195,10 +195,10 @@ export type OrderResponse = {
   side: "buy" | "sell";
   type: OrderType;
   timestamp: string;
-  oco_order?: boolean | null;
+  oco_order?: boolean | null | 0 | 1;
   is_live: boolean;
   is_cancelled: boolean;
-  is_hidden: boolean;
+  is_hidden: boolean | 0 | 1;
   was_forced: boolean;
   original_amount: string;
   remaining_amount: string;
@@ -364,6 +364,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getOrders(): Promise<OrderResponse[]> {
     return this.post({ uri: "/v1/orders" });
+  }
+
+  /**
+   * Get your latest inactive orders.
+   */
+  getOrderHistory(body?: { limit?: number }): Promise<OrderResponse[]> {
+    return this.post({ body, uri: "/v1/orders/hist" });
   }
 
   set nonce(nonce: () => string) {
