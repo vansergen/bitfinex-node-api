@@ -19,15 +19,9 @@ export type GetOrderBook = Symb & {
   group?: 0 | 1;
 };
 
-export type GetTrades = Symb & {
-  timestamp?: number;
-  limit_trades?: number;
-};
+export type GetTrades = Symb & { timestamp?: number; limit_trades?: number };
 
-export type GetLends = Currency & {
-  timestamp?: number;
-  limit_lends?: number;
-};
+export type GetLends = Currency & { timestamp?: number; limit_lends?: number };
 
 export type Ticker = {
   mid: string;
@@ -50,10 +44,7 @@ export type FundingBookItem = {
   frr: "No" | "Yes";
 };
 
-export type FundingBook = {
-  bids: FundingBookItem[];
-  asks: FundingBookItem[];
-};
+export type FundingBook = { bids: FundingBookItem[]; asks: FundingBookItem[] };
 
 export type OrderBookItem = {
   price: string;
@@ -61,10 +52,7 @@ export type OrderBookItem = {
   timestamp: string;
 };
 
-export type OrderBook = {
-  bids: OrderBookItem[];
-  asks: OrderBookItem[];
-};
+export type OrderBook = { bids: OrderBookItem[]; asks: OrderBookItem[] };
 
 export type Trade = {
   timestamp: number;

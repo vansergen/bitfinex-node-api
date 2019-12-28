@@ -352,6 +352,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return this.post({ body: { symbol, ...body }, uri });
   }
 
+  /**
+   * Get the status of an order.
+   */
+  getOrder(body: { order_id: number }): Promise<OrderResponse> {
+    return this.post({ body, uri: "/v1/order/status" });
+  }
+
   set nonce(nonce: () => string) {
     this._nonce = nonce;
   }
