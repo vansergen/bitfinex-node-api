@@ -282,3 +282,11 @@ const orders = await client.getOrderHistory({ limit });
 ```typescript
 const positions = await client.getPositions();
 ```
+
+- [`claimPosition`](https://docs.bitfinex.com/v1/reference#rest-auth-claim-position)
+
+```typescript
+const position_id = 943715;
+const amount = "1.0";
+const position = await client.claimPosition({ position_id, amount });
+```
