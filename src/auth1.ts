@@ -210,6 +210,17 @@ export type OrderResponse = {
 
 export type NewOrdersResponse = { order_ids: OrderResponse[]; status: string };
 
+export type Position = {
+  id: number;
+  symbol: string;
+  status: string;
+  base: string;
+  amount: string;
+  timestamp: string;
+  swap: string;
+  pl: string;
+};
+
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
   secret: string;
@@ -371,6 +382,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getOrderHistory(body?: { limit?: number }): Promise<OrderResponse[]> {
     return this.post({ body, uri: "/v1/orders/hist" });
+  }
+
+  /**
+   * Get your active positions.
+   */
+  getPositions(): Promise<Position[]> {
+    return this.post({ uri: "/v1/positions" });
   }
 
   set nonce(nonce: () => string) {
