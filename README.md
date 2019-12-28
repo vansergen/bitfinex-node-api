@@ -256,3 +256,10 @@ const order = await client.replaceOrder({
   is_postonly
 });
 ```
+
+- [`getOrder`](https://docs.bitfinex.com/v1/reference#rest-auth-order-status)
+
+```typescript
+const order_id = 448411153;
+const order = await client.getOrder({ order_id });
+```
