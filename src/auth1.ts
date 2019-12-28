@@ -43,6 +43,8 @@ export type WithdrawParams = {
   intermediary_bank_swift?: string;
 };
 
+export type ClaimParams = { position_id: number; amount?: string };
+
 export type OrderType =
   | "market"
   | "limit"
@@ -389,6 +391,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   getPositions(): Promise<Position[]> {
     return this.post({ uri: "/v1/positions" });
+  }
+
+  /**
+   * Claim your position.
+   */
+  claimPosition(body: ClaimParams): Promise<Position> {
+    return this.post({ body, uri: "/v1/position/claim" });
   }
 
   set nonce(nonce: () => string) {
