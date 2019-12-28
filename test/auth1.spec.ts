@@ -663,4 +663,29 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.getPositions();
     assert.deepStrictEqual(data, response);
   });
+
+  test(".claimPosition()", async () => {
+    const response: Position = {
+      id: 943715,
+      symbol: "btcusd",
+      status: "ACTIVE",
+      base: "246.94",
+      amount: "1.0",
+      timestamp: "1444141857.0",
+      swap: "0.0",
+      pl: "-2.2304"
+    };
+    const uri = "/v1/position/claim";
+    const position_id = 943715;
+    const amount = "0.5";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { position_id, amount });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.claimPosition({ position_id, amount });
+    assert.deepStrictEqual(data, response);
+  });
 });
