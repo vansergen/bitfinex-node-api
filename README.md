@@ -276,3 +276,9 @@ const orders = await client.getOrders();
 const limit = 50;
 const orders = await client.getOrderHistory({ limit });
 ```
+
+- [`getPositions`](https://docs.bitfinex.com/v1/reference#rest-auth-active-positions)
+
+```typescript
+const positions = await client.getPositions();
+```
