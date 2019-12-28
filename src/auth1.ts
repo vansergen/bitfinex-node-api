@@ -194,10 +194,7 @@ export type OrderResponse = {
   meta?: object;
 };
 
-export type NewOrdersResponse = {
-  order_ids: OrderResponse[];
-  status: string;
-};
+export type NewOrdersResponse = { order_ids: OrderResponse[]; status: string };
 
 export type AuthenticatedClient1Options = PublicClient1Params & {
   key: string;
@@ -207,6 +204,7 @@ export type AuthenticatedClient1Options = PublicClient1Params & {
 export class AuthenticatedClient1 extends PublicClient1 {
   readonly key: string;
   readonly secret: string;
+  private _nonce?: () => string;
 
   constructor({ key, secret, ...rest }: AuthenticatedClient1Options) {
     super(rest);
@@ -215,7 +213,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
   }
 
   post({ body = {}, uri }: { body?: object; uri: string }): Promise<any> {
-    body = { ...body, nonce: this.nonce, request: uri };
+    body = { ...body, nonce: this.nonce(), request: uri };
     const headers = Signer({ key: this.key, secret: this.secret, body });
     return super.post({ body, headers, uri });
   }
@@ -329,7 +327,11 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return this.post({ uri: "/v1/order/cancel/all" });
   }
 
-  get nonce(): string {
-    return Date.now().toString();
+  set nonce(nonce: () => string) {
+    this._nonce = nonce;
+  }
+
+  get nonce(): () => string {
+    return this._nonce ? this._nonce : (): string => Date.now().toString();
   }
 }
