@@ -9,7 +9,7 @@ suite("Signer", () => {
       request: "/v1/deposit/new",
       method: "bitcoin",
       wallet_name: "trading",
-      nonce: "1574959951447"
+      nonce: "1574959951447",
     };
     const payload =
       "eyJyZXF1ZXN0IjoiL3YxL2RlcG9zaXQvbmV3IiwibWV0aG9kIjoiYml0Y29pbiIsIndhbGxldF9uYW1lIjoidHJhZGluZyIsIm5vbmNlIjoiMTU3NDk1OTk1MTQ0NyJ9";
@@ -19,7 +19,7 @@ suite("Signer", () => {
     const expectedHeaders: SignedHeaders = {
       "X-BFX-APIKEY": key,
       "X-BFX-PAYLOAD": payload,
-      "X-BFX-SIGNATURE": signature
+      "X-BFX-SIGNATURE": signature,
     };
     assert.deepStrictEqual(headers, expectedHeaders);
   });

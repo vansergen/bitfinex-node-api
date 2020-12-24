@@ -51,7 +51,7 @@ const book = await client.getOrderBook({
   symbol,
   limit_bids,
   limit_asks,
-  group
+  group,
 });
 ```
 
@@ -150,7 +150,7 @@ const result = await client.transfer({
   amount,
   currency,
   walletfrom,
-  walletto
+  walletto,
 });
 ```
 
@@ -165,7 +165,7 @@ const result = await client.withdraw({
   amount,
   withdraw_type,
   address,
-  walletselected
+  walletselected,
 });
 ```
 
@@ -186,7 +186,7 @@ const order = await client.newOrder({
   exchange,
   symbol,
   side,
-  is_postonly
+  is_postonly,
 });
 ```
 
@@ -200,14 +200,14 @@ const order1 = {
   exchange: "bitfinex",
   symbol: "ETCUSD",
   side: "buy",
-  is_postonly: true
+  is_postonly: true,
 };
 const order2 = {
   amount: "2",
   price: "2",
   type: "limit",
   symbol: "ETCUSD",
-  side: "buy"
+  side: "buy",
 };
 const orders = [order1, order2];
 const result = await client.newOrders({ orders });
@@ -253,7 +253,7 @@ const order = await client.replaceOrder({
   exchange,
   symbol,
   side,
-  is_postonly
+  is_postonly,
 });
 ```
 

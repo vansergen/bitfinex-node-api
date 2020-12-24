@@ -17,7 +17,7 @@ import {
   OrderResponse,
   OrderParams,
   NewOrdersResponse,
-  Position
+  Position,
 } from "../index";
 
 const key = "BitfinexAPIKey";
@@ -31,7 +31,7 @@ suite("AuthenticatedClient v1", () => {
     assert.deepStrictEqual(client._rpoptions, {
       baseUrl: apiUri,
       timeout: DefaultTimeout,
-      json: true
+      json: true,
     });
     assert.deepStrictEqual(client.symbol, DefaultSymbol);
     assert.deepStrictEqual(client.currency, DefaultCurrency);
@@ -61,20 +61,20 @@ suite("AuthenticatedClient v1", () => {
           {
             pairs: "BTC",
             maker_fees: "0.1",
-            taker_fees: "0.2"
+            taker_fees: "0.2",
           },
           {
             pairs: "LTC",
             maker_fees: "0.1",
-            taker_fees: "0.2"
+            taker_fees: "0.2",
           },
           {
             pairs: "ETH",
             maker_fees: "0.1",
-            taker_fees: "0.2"
-          }
-        ]
-      }
+            taker_fees: "0.2",
+          },
+        ],
+      },
     ];
     const uri = "/v1/account_infos";
     nock(apiUri)
@@ -90,8 +90,8 @@ suite("AuthenticatedClient v1", () => {
         BTC: "0.0004",
         LTC: "0.001",
         ETH: "0.00135",
-        ETC: "0.01"
-      }
+        ETC: "0.01",
+      },
     };
     const uri = "/v1/account_fees";
     nock(apiUri)
@@ -112,8 +112,8 @@ suite("AuthenticatedClient v1", () => {
           vol: 0,
           vol_maker: 0,
           vol_BFX: 0,
-          vol_BFX_maker: 0
-        }
+          vol_BFX_maker: 0,
+        },
       ],
       fees_funding_30d: {},
       fees_funding_total_30d: 0,
@@ -122,7 +122,7 @@ suite("AuthenticatedClient v1", () => {
       maker_fee: 0.001,
       taker_fee: 0.002,
       deriv_maker_rebate: -0.0002,
-      deriv_taker_fee: 0.00075
+      deriv_taker_fee: 0.00075,
     };
     const uri = "/v1/summary";
     nock(apiUri)
@@ -137,7 +137,7 @@ suite("AuthenticatedClient v1", () => {
       result: "success",
       method: "zcash",
       currency: "ZEC",
-      address: "t1ZQ8G1k4TyPUnb8gyJyNGogApsHVK7mysp"
+      address: "t1ZQ8G1k4TyPUnb8gyJyNGogApsHVK7mysp",
     };
     const uri = "/v1/deposit/new";
     const method = "zcash";
@@ -163,7 +163,7 @@ suite("AuthenticatedClient v1", () => {
       positions: { read: true, write: true },
       funding: { read: true, write: true },
       wallets: { read: true, write: true },
-      withdraw: { read: false, write: true }
+      withdraw: { read: false, write: true },
     };
     const uri = "/v1/key_info";
     nock(apiUri)
@@ -188,17 +188,17 @@ suite("AuthenticatedClient v1", () => {
           on_pair: "BTCUSD",
           initial_margin: "30.0",
           margin_requirement: "15.0",
-          tradable_balance: "732.192590045666666667"
+          tradable_balance: "732.192590045666666667",
         },
         {
           on_pair: "LTCUSD",
           initial_margin: "30.0",
           margin_requirement: "15.0",
-          tradable_balance: "732.192590045666666667"
-        }
+          tradable_balance: "732.192590045666666667",
+        },
       ],
       message:
-        "Margin requirement, leverage and tradable balance are now per pair. Values displayed in the root of the JSON message are incorrect (deprecated). You will find the correct ones under margin_limits, for each pair. Please update your code as soon as possible."
+        "Margin requirement, leverage and tradable balance are now per pair. Values displayed in the root of the JSON message are incorrect (deprecated). You will find the correct ones under margin_limits, for each pair. Please update your code as soon as possible.",
     };
     const uri = "/v1/margin_infos";
     nock(apiUri)
@@ -212,7 +212,7 @@ suite("AuthenticatedClient v1", () => {
     const response: WalletBalance[] = [
       { type: "exchange", currency: "zil", amount: "0.0", available: "0.0" },
       { type: "trading", currency: "bab", amount: "0.0", available: "0.0" },
-      { type: "deposit", currency: "zec", amount: "0.0", available: "0.0" }
+      { type: "deposit", currency: "zec", amount: "0.0", available: "0.0" },
     ];
     const uri = "/v1/balances";
     nock(apiUri)
@@ -226,8 +226,8 @@ suite("AuthenticatedClient v1", () => {
     const response: TransferResponse = [
       {
         status: "success",
-        message: "1.00954735 Bitcoin Cash transfered from Margin to Exchange"
-      }
+        message: "1.00954735 Bitcoin Cash transfered from Margin to Exchange",
+      },
     ];
     const uri = "/v1/transfer";
     const amount = "1.00954735";
@@ -259,8 +259,8 @@ suite("AuthenticatedClient v1", () => {
         message:
           "Cannot withdraw 1.0004 BTC from your exchange wallet. The available balance is only 0.0 BTC. If you have limit orders, open positions, unused or active margin funding, this will decrease your available balance. To increase it, you can cancel limit orders or reduce/close your positions.",
         withdrawal_id: 0,
-        fees: "0.0004"
-      }
+        fees: "0.0004",
+      },
     ];
     const uri = "/v1/withdraw";
     const amount = "1.0";
@@ -302,7 +302,7 @@ suite("AuthenticatedClient v1", () => {
       executed_amount: "0.0",
       src: "api",
       meta: { $F7: 1 },
-      order_id: 4
+      order_id: 4,
     };
     const uri = "/v1/order/new";
     const amount = "1";
@@ -348,7 +348,7 @@ suite("AuthenticatedClient v1", () => {
           remaining_amount: "1.0",
           executed_amount: "0.0",
           src: "api",
-          meta: { $F7: 1 }
+          meta: { $F7: 1 },
         },
         {
           id: 321,
@@ -371,10 +371,10 @@ suite("AuthenticatedClient v1", () => {
           remaining_amount: "2.0",
           executed_amount: "0.0",
           src: "api",
-          meta: { $F7: 1 }
-        }
+          meta: { $F7: 1 },
+        },
       ],
-      status: "success"
+      status: "success",
     };
     const uri = "/v1/order/new/multi";
     const order1: OrderParams = {
@@ -384,7 +384,7 @@ suite("AuthenticatedClient v1", () => {
       exchange: "bitfinex",
       symbol: "ETCUSD",
       side: "buy",
-      is_postonly: true
+      is_postonly: true,
     };
     const order2: OrderParams = {
       amount: "2",
@@ -393,7 +393,7 @@ suite("AuthenticatedClient v1", () => {
       exchange: "bitfinex",
       symbol: "ETCUSD",
       side: "buy",
-      is_postonly: true
+      is_postonly: true,
     };
     const orders = [order1, order2];
     nock(apiUri)
@@ -428,7 +428,7 @@ suite("AuthenticatedClient v1", () => {
       remaining_amount: "1.0",
       executed_amount: "0.0",
       src: "api",
-      meta: { $F7: 1 }
+      meta: { $F7: 1 },
     };
     const uri = "/v1/order/cancel";
     const order_id = 234;
@@ -444,7 +444,7 @@ suite("AuthenticatedClient v1", () => {
 
   test(".cancelOrders()", async () => {
     const response = {
-      result: "All (2) submitted for cancellation; waiting for confirmation."
+      result: "All (2) submitted for cancellation; waiting for confirmation.",
     };
     const uri = "/v1/order/cancel/multi";
     const order_id1 = 123;
@@ -462,7 +462,7 @@ suite("AuthenticatedClient v1", () => {
 
   test(".cancelAllOrders()", async () => {
     const response = {
-      result: "All (1) submitted for cancellation; waiting for confirmation."
+      result: "All (1) submitted for cancellation; waiting for confirmation.",
     };
     const uri = "/v1/order/cancel/all";
     nock(apiUri)
@@ -495,7 +495,7 @@ suite("AuthenticatedClient v1", () => {
       executed_amount: "0.0",
       src: "api",
       meta: { $F7: 1 },
-      order_id: 1
+      order_id: 1,
     };
     const uri = "/v1/order/cancel/replace";
     const amount = "3";
@@ -514,7 +514,7 @@ suite("AuthenticatedClient v1", () => {
       exchange,
       symbol,
       side,
-      is_postonly
+      is_postonly,
     };
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
@@ -549,7 +549,7 @@ suite("AuthenticatedClient v1", () => {
       remaining_amount: "3.0",
       executed_amount: "0.0",
       src: "api",
-      meta: { $F7: 1 }
+      meta: { $F7: 1 },
     };
     const uri = "/v1/order/status";
     const order_id = 234;
@@ -587,8 +587,8 @@ suite("AuthenticatedClient v1", () => {
         remaining_amount: "3.0",
         executed_amount: "0.0",
         src: "api",
-        meta: { $F7: 1 }
-      }
+        meta: { $F7: 1 },
+      },
     ];
     const uri = "/v1/orders";
     nock(apiUri)
@@ -624,8 +624,8 @@ suite("AuthenticatedClient v1", () => {
         remaining_amount: "3.0",
         executed_amount: "0.0",
         src: "api",
-        meta: { $F7: 1 }
-      }
+        meta: { $F7: 1 },
+      },
     ];
     const limit = 25;
     const uri = "/v1/orders/hist";
@@ -650,8 +650,8 @@ suite("AuthenticatedClient v1", () => {
         amount: "1.0",
         timestamp: "1444141857.0",
         swap: "0.0",
-        pl: "-2.22042"
-      }
+        pl: "-2.22042",
+      },
     ];
     const uri = "/v1/positions";
     nock(apiUri)
@@ -673,7 +673,7 @@ suite("AuthenticatedClient v1", () => {
       amount: "1.0",
       timestamp: "1444141857.0",
       swap: "0.0",
-      pl: "-2.2304"
+      pl: "-2.2304",
     };
     const uri = "/v1/position/claim";
     const position_id = 943715;

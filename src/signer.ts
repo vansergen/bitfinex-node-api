@@ -20,6 +20,6 @@ export function Signer({ key, secret, body }: SignerOptions): SignedHeaders {
     "X-BFX-SIGNATURE": crypto
       .createHmac("sha384", secret)
       .update(payload)
-      .digest("hex")
+      .digest("hex"),
   };
 }

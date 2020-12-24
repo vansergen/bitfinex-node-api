@@ -94,7 +94,7 @@ export class PublicClient1 extends RPC {
   constructor({
     symbol = DefaultSymbol,
     timeout = DefaultTimeout,
-    currency = DefaultCurrency
+    currency = DefaultCurrency,
   }: PublicClient1Params = {}) {
     super({ timeout, baseUrl: "https://api.bitfinex.com", json: true });
     this.symbol = symbol;
@@ -128,9 +128,10 @@ export class PublicClient1 extends RPC {
   /**
    * Get the full order book.
    */
-  getOrderBook({ symbol = this.symbol, ...qs }: GetOrderBook = {}): Promise<
-    OrderBook
-  > {
+  getOrderBook({
+    symbol = this.symbol,
+    ...qs
+  }: GetOrderBook = {}): Promise<OrderBook> {
     return this.get({ uri: "/v1/book/" + symbol, qs });
   }
 

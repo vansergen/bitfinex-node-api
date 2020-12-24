@@ -11,7 +11,7 @@ import {
   OrderBook,
   Trade,
   Lend,
-  SymbolDetail
+  SymbolDetail,
 } from "../index";
 
 const client = new PublicClient1();
@@ -22,7 +22,7 @@ suite("PublicClient v1", () => {
     assert.deepStrictEqual(client._rpoptions, {
       baseUrl: apiUri,
       timeout: DefaultTimeout,
-      json: true
+      json: true,
     });
     assert.deepStrictEqual(client.symbol, DefaultSymbol);
     assert.deepStrictEqual(client.currency, DefaultCurrency);
@@ -35,7 +35,7 @@ suite("PublicClient v1", () => {
     assert.deepStrictEqual(client._rpoptions, {
       baseUrl: apiUri,
       timeout: timeout,
-      json: true
+      json: true,
     });
     assert.deepStrictEqual(client.symbol, symbol);
   });
@@ -50,7 +50,7 @@ suite("PublicClient v1", () => {
       low: "244.2",
       high: "248.19",
       volume: "7842.11542563",
-      timestamp: "1444253422.348340958"
+      timestamp: "1444253422.348340958",
     };
     nock(apiUri)
       .get("/v1/pubticker/" + symbol)
@@ -64,16 +64,16 @@ suite("PublicClient v1", () => {
     const response: Stats = [
       {
         period: 1,
-        volume: "7967.96766158"
+        volume: "7967.96766158",
       },
       {
         period: 7,
-        volume: "55938.67260266"
+        volume: "55938.67260266",
       },
       {
         period: 30,
-        volume: "275148.09653645"
-      }
+        volume: "275148.09653645",
+      },
     ];
     nock(apiUri)
       .get("/v1/stats/" + symbol)
@@ -93,8 +93,8 @@ suite("PublicClient v1", () => {
           amount: "5000.0",
           period: 30,
           timestamp: "1444257541.0",
-          frr: "No"
-        }
+          frr: "No",
+        },
       ],
       asks: [
         {
@@ -102,9 +102,9 @@ suite("PublicClient v1", () => {
           amount: "407.5",
           period: 2,
           timestamp: "1444260343.0",
-          frr: "No"
-        }
-      ]
+          frr: "No",
+        },
+      ],
     };
     nock(apiUri)
       .get("/v1/lendbook/" + currency)
@@ -113,7 +113,7 @@ suite("PublicClient v1", () => {
     const data = await client.getFundingBook({
       currency,
       limit_bids,
-      limit_asks
+      limit_asks,
     });
     assert.deepStrictEqual(data, response);
   });
@@ -128,16 +128,16 @@ suite("PublicClient v1", () => {
         {
           price: "574.61",
           amount: "0.1439327",
-          timestamp: "1472506127.0"
-        }
+          timestamp: "1472506127.0",
+        },
       ],
       asks: [
         {
           price: "574.62",
           amount: "19.1334",
-          timestamp: "1472506126.0"
-        }
-      ]
+          timestamp: "1472506126.0",
+        },
+      ],
     };
     nock(apiUri)
       .get("/v1/book/" + symbol)
@@ -147,7 +147,7 @@ suite("PublicClient v1", () => {
       symbol,
       limit_bids,
       limit_asks,
-      group
+      group,
     });
     assert.deepStrictEqual(data, response);
   });
@@ -163,8 +163,8 @@ suite("PublicClient v1", () => {
         price: "244.8",
         amount: "0.03297384",
         exchange: "bitfinex",
-        type: "sell"
-      }
+        type: "sell",
+      },
     ];
     nock(apiUri)
       .get("/v1/trades/" + symbol)
@@ -173,7 +173,7 @@ suite("PublicClient v1", () => {
     const data = await client.getTrades({
       symbol,
       timestamp,
-      limit_trades
+      limit_trades,
     });
     assert.deepStrictEqual(data, response);
   });
@@ -187,8 +187,8 @@ suite("PublicClient v1", () => {
         rate: "9.8998",
         amount_lent: "22528933.77950878",
         amount_used: "0.0",
-        timestamp: 1444264307
-      }
+        timestamp: 1444264307,
+      },
     ];
     nock(apiUri)
       .get("/v1/lends/" + currency)
@@ -197,16 +197,14 @@ suite("PublicClient v1", () => {
     const data = await client.getLends({
       currency,
       timestamp,
-      limit_lends
+      limit_lends,
     });
     assert.deepStrictEqual(data, response);
   });
 
   test(".getSymbols()", async () => {
     const response = ["btcusd", "ltcusd", "ltcbtc"];
-    nock(apiUri)
-      .get("/v1/symbols")
-      .reply(200, response);
+    nock(apiUri).get("/v1/symbols").reply(200, response);
     const data = await client.getSymbols();
     assert.deepStrictEqual(data, response);
   });
@@ -221,7 +219,7 @@ suite("PublicClient v1", () => {
         maximum_order_size: "2000.0",
         minimum_order_size: "0.01",
         expiration: "NA",
-        margin: true
+        margin: true,
       },
       {
         pair: "ltcusd",
@@ -231,7 +229,7 @@ suite("PublicClient v1", () => {
         maximum_order_size: "5000.0",
         minimum_order_size: "0.1",
         expiration: "NA",
-        margin: true
+        margin: true,
       },
       {
         pair: "ltcbtc",
@@ -241,12 +239,10 @@ suite("PublicClient v1", () => {
         maximum_order_size: "5000.0",
         minimum_order_size: "0.1",
         expiration: "NA",
-        margin: true
-      }
+        margin: true,
+      },
     ];
-    nock(apiUri)
-      .get("/v1/symbols_details")
-      .reply(200, response);
+    nock(apiUri).get("/v1/symbols_details").reply(200, response);
     const data = await client.getSymbolDetails();
     assert.deepStrictEqual(data, response);
   });
