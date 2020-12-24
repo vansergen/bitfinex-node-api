@@ -1,4 +1,5 @@
 import { PublicClient1, PublicClient1Params, Currency, Symb } from "./public1";
+import type { RequestPromise, OptionsWithUri } from "request-promise-native";
 import { Signer } from "./signer";
 
 export type DepositParams = {
@@ -106,9 +107,9 @@ export type Summary = {
       vol_BFX_maker: number;
     }
   ];
-  fees_funding_30d: {};
+  fees_funding_30d: Record<string, never>;
   fees_funding_total_30d: number;
-  fees_trading_30d: {};
+  fees_trading_30d: Record<string, never>;
   fees_trading_total_30d: number;
   maker_fee: number;
   taker_fee: number;
@@ -201,7 +202,7 @@ export type OrderResponse = {
   executed_amount: string;
   order_id?: number;
   src?: string;
-  meta?: object;
+  meta?: Record<string, unknown>;
 };
 
 export type NewOrdersResponse = { order_ids: OrderResponse[]; status: string };
@@ -233,7 +234,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     this.secret = secret;
   }
 
-  post({ body = {}, uri }: { body?: object; uri: string }): Promise<any> {
+  post({ body = {}, uri }: OptionsWithUri): RequestPromise<any> {
     body = { ...body, nonce: this.nonce(), request: uri };
     const headers = Signer({ key: this.key, secret: this.secret, body });
     return super.post({ body, headers, uri });

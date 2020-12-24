@@ -1,5 +1,5 @@
-import * as assert from "assert";
-import * as nock from "nock";
+import assert from "assert";
+import nock from "nock";
 import {
   AuthenticatedClient1,
   DefaultTimeout,
@@ -40,7 +40,7 @@ suite("AuthenticatedClient v1", () => {
   });
 
   test(".post()", async () => {
-    const response: any = {};
+    const response = {} as const;
     const uri = "/some-uri";
     nock(apiUri)
       .post(uri, ({ request, nonce }) => request === uri && nonce)
@@ -141,8 +141,8 @@ suite("AuthenticatedClient v1", () => {
     };
     const uri = "/v1/deposit/new";
     const method = "zcash";
-    const wallet_name: "trading" = "trading";
-    const renew: 1 = 1;
+    const wallet_name = "trading" as const;
+    const renew = 1 as const;
     const params = { wallet_name, renew, method };
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
@@ -232,8 +232,8 @@ suite("AuthenticatedClient v1", () => {
     const uri = "/v1/transfer";
     const amount = "1.00954735";
     const currency = "BAB";
-    const walletfrom: "trading" = "trading";
-    const walletto: "exchange" = "exchange";
+    const walletfrom = "trading" as const;
+    const walletto = "exchange" as const;
     const params = { amount, currency, walletfrom, walletto };
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
@@ -265,7 +265,7 @@ suite("AuthenticatedClient v1", () => {
     const uri = "/v1/withdraw";
     const amount = "1.0";
     const address = "1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur";
-    const walletselected: "exchange" = "exchange";
+    const walletselected = "exchange" as const;
     const withdraw_type = "bitcoin";
     const params = { amount, address, walletselected, withdraw_type };
     nock(apiUri)
@@ -307,10 +307,10 @@ suite("AuthenticatedClient v1", () => {
     const uri = "/v1/order/new";
     const amount = "1";
     const price = "3";
-    const type: "limit" = "limit";
-    const exchange: "bitfinex" = "bitfinex";
+    const type = "limit" as const;
+    const exchange = "bitfinex" as const;
     const symbol = "ETCUSD";
-    const side: "buy" = "buy";
+    const side = "buy" as const;
     const is_postonly = true;
     const params = { amount, price, type, exchange, symbol, side, is_postonly };
     nock(apiUri)
@@ -398,6 +398,7 @@ suite("AuthenticatedClient v1", () => {
     const orders = [order1, order2];
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
+        assert.ok(typeof nonce === "string");
         assert.deepStrictEqual(rest, { orders });
         return request === uri;
       })
@@ -434,6 +435,7 @@ suite("AuthenticatedClient v1", () => {
     const order_id = 234;
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
+        assert.ok(typeof nonce === "string");
         assert.deepStrictEqual(rest, { order_id });
         return request === uri;
       })
@@ -452,6 +454,7 @@ suite("AuthenticatedClient v1", () => {
     const order_ids = [order_id1, order_id2];
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
+        assert.ok(typeof nonce === "string");
         assert.deepStrictEqual(rest, { order_ids });
         return request === uri;
       })
@@ -500,9 +503,9 @@ suite("AuthenticatedClient v1", () => {
     const uri = "/v1/order/cancel/replace";
     const amount = "3";
     const price = "101";
-    const type: "limit" = "limit";
-    const exchange: "bitfinex" = "bitfinex";
-    const side: "sell" = "sell";
+    const type = "limit" as const;
+    const exchange = "bitfinex" as const;
+    const side = "sell" as const;
     const is_postonly = true;
     const symbol = "ETCUSD";
     const order_id = 1;

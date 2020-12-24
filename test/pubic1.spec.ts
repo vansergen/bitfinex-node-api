@@ -1,5 +1,5 @@
-import * as assert from "assert";
-import * as nock from "nock";
+import assert from "assert";
+import nock from "nock";
 import {
   PublicClient1,
   DefaultCurrency,

@@ -1,9 +1,9 @@
-import * as crypto from "crypto";
+import { createHmac } from "crypto";
 
 export type SignerOptions = {
   key: string;
   secret: string;
-  body: object;
+  body: Record<string, unknown>;
 };
 
 export type SignedHeaders = {
@@ -17,8 +17,7 @@ export function Signer({ key, secret, body }: SignerOptions): SignedHeaders {
   return {
     "X-BFX-APIKEY": key,
     "X-BFX-PAYLOAD": payload,
-    "X-BFX-SIGNATURE": crypto
-      .createHmac("sha384", secret)
+    "X-BFX-SIGNATURE": createHmac("sha384", secret)
       .update(payload)
       .digest("hex"),
   };
