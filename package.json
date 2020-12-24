@@ -31,13 +31,10 @@
     "prettier": "prettier -c **/*.{js,md,ts,json}",
     "prettier-write": "npm run prettier -- --write",
     "lint": "eslint --ext .ts,.js ./",
-    "lint-fix": "npm run lint -- --fix",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "lint-fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "rpc-request": "^3.1.6",
-    "snyk": "^1.316.2"
+    "rpc-request": "^3.1.6"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
@@ -73,6 +70,5 @@
   },
   "directories": {
     "test": "test"
-  },
-  "snyk": true
+  }
 }
