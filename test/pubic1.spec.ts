@@ -5,7 +5,7 @@ import {
   DefaultCurrency,
   DefaultSymbol,
   Ticker,
-  Stats,
+  Stat,
   FundingBook,
   OrderBook,
   Trade,
@@ -65,7 +65,7 @@ suite("PublicClient v1", () => {
 
   test(".getStats()", async () => {
     const symbol = "ethbtc";
-    const response: Stats = [
+    const response: Stat[] = [
       {
         period: 1,
         volume: "7967.96766158",
@@ -85,7 +85,7 @@ suite("PublicClient v1", () => {
   });
 
   test(".getStats() (with no `symbol`)", async () => {
-    const response: Stats = [
+    const response: Stat[] = [
       {
         period: 1,
         volume: "7967.96766158",

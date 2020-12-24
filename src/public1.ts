@@ -44,7 +44,10 @@ export interface Ticker {
   timestamp: string;
 }
 
-export type Stats = { period: number; volume: string }[];
+export interface Stat {
+  period: number;
+  volume: string;
+}
 
 export interface FundingBookItem {
   rate: string;
@@ -127,8 +130,8 @@ export class PublicClient1 extends FetchClient<unknown> {
   /**
    * Various statistics about the requested pair.
    */
-  public async getStats({ symbol = this.symbol }: Symb = {}): Promise<Stats> {
-    const stats = (await this.get(`/v1/stats/${symbol}`)) as Stats;
+  public async getStats({ symbol = this.symbol }: Symb = {}): Promise<Stat[]> {
+    const stats = (await this.get(`/v1/stats/${symbol}`)) as Stat[];
     return stats;
   }
 
