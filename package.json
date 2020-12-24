@@ -24,19 +24,22 @@
   },
   "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run prettier && npm run lint && npm run build && npm run prettier-write && npm run lint-fix",
-    "postpublish": "rm -fr build",
-    "test": "mocha -r ts-node/register --full-trace --ui tdd --bail --extension ts",
-    "prettier": "prettier -c **/*.{js,md,ts,json}",
-    "prettier-write": "npm run prettier -- --write",
-    "lint": "eslint --ext .ts,.js ./",
-    "lint-fix": "npm run lint -- --fix"
+    "build": "npm run build:remove && tsc",
+    "build:remove": "rm -rf ./build",
+    "build:test": "npm run build && npm run build:remove",
+    "lint": "eslint --ext .ts ./",
+    "lint:fix": "npm run lint -- --fix",
+    "postpublish": "npm run build:remove",
+    "prepublishOnly": "npm run build && npm run lint:fix && npm run prettier:write",
+    "prettier": "prettier -c .",
+    "prettier:write": "npm run prettier -- --write",
+    "test": "mocha -r ts-node/register --full-trace --ui tdd --bail --extension ts"
   },
   "dependencies": {
     "rpc-request": "^3.1.6"
   },
   "devDependencies": {
+    "@b2broker/tsconfig": "^1.0.3",
     "@types/mocha": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
