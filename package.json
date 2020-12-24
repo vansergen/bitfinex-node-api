@@ -38,7 +38,7 @@
     "test": "mocha -r ts-node/register --full-trace --ui tdd --bail --extension ts"
   },
   "dependencies": {
-    "rpc-request": "^3.1.6"
+    "rpc-request": "^5.0.1"
   },
   "devDependencies": {
     "@b2broker/tsconfig": "^1.0.3",
