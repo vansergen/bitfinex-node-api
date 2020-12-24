@@ -55,16 +55,6 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
-  "lint-staged": {
-    "*.{js,ts,json,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{ts,js}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "funding": {
     "type": "Coinbase Commerce",
     "url": "https://commerce.coinbase.com/checkout/221a3057-e35f-4559-97e4-af020145df62"
