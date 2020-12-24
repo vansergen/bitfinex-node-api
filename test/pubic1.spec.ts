@@ -2,6 +2,7 @@ import * as assert from "assert";
 import * as nock from "nock";
 import {
   PublicClient1,
+  DefaultCurrency,
   DefaultSymbol,
   DefaultTimeout,
   Ticker,
@@ -24,6 +25,7 @@ suite("PublicClient v1", () => {
       json: true
     });
     assert.deepStrictEqual(client.symbol, DefaultSymbol);
+    assert.deepStrictEqual(client.currency, DefaultCurrency);
   });
 
   test("constructor (with options)", () => {
