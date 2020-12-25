@@ -1,6 +1,6 @@
 import { FetchClient } from "rpc-request";
 
-export const ApiUri = "https://api.bitfinex.com/";
+export const ApiUri = "https://api.bitfinex.com/v1/";
 export const DefaultSymbol = "BTCUSD";
 export const DefaultCurrency = "USD";
 
@@ -123,7 +123,7 @@ export class PublicClient1 extends FetchClient<unknown> {
    * Get the ticker
    */
   public async getTicker({ symbol = this.symbol }: Symb = {}): Promise<Ticker> {
-    const ticker = (await this.get(`/v1/pubticker/${symbol}`)) as Ticker;
+    const ticker = (await this.get(`pubticker/${symbol}`)) as Ticker;
     return ticker;
   }
 
@@ -131,7 +131,7 @@ export class PublicClient1 extends FetchClient<unknown> {
    * Various statistics about the requested pair.
    */
   public async getStats({ symbol = this.symbol }: Symb = {}): Promise<Stat[]> {
-    const stats = (await this.get(`/v1/stats/${symbol}`)) as Stat[];
+    const stats = (await this.get(`stats/${symbol}`)) as Stat[];
     return stats;
   }
 
@@ -142,7 +142,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     currency = this.currency,
     ...qs
   }: GetFundingBook = {}): Promise<FundingBook> {
-    const url = new URL(`/v1/lendbook/${currency}`, ApiUri);
+    const url = new URL(`lendbook/${currency}`, ApiUri);
     PublicClient1.addOptions(url, { ...qs });
     const path = `${url.pathname}${url.search}`;
     const book = (await this.get(path)) as FundingBook;
@@ -156,7 +156,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     symbol = this.symbol,
     ...qs
   }: GetOrderBook = {}): Promise<OrderBook> {
-    const url = new URL(`/v1/book/${symbol}`, ApiUri);
+    const url = new URL(`book/${symbol}`, ApiUri);
     PublicClient1.addOptions(url, { ...qs });
     const path = `${url.pathname}${url.search}`;
     const book = (await this.get(path)) as OrderBook;
@@ -170,7 +170,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     symbol = this.symbol,
     ...qs
   }: GetTrades = {}): Promise<Trade[]> {
-    const url = new URL(`/v1/trades/${symbol}`, ApiUri);
+    const url = new URL(`trades/${symbol}`, ApiUri);
     PublicClient1.addOptions(url, { ...qs });
     const path = `${url.pathname}${url.search}`;
     const trades = (await this.get(path)) as Trade[];
@@ -184,7 +184,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     currency = this.currency,
     ...qs
   }: GetLends = {}): Promise<Lend[]> {
-    const url = new URL(`/v1/lends/${currency}`, ApiUri);
+    const url = new URL(`lends/${currency}`, ApiUri);
     PublicClient1.addOptions(url, { ...qs });
     const path = `${url.pathname}${url.search}`;
     const lends = (await this.get(path)) as Lend[];
@@ -195,7 +195,7 @@ export class PublicClient1 extends FetchClient<unknown> {
    * Get the list of symbol names.
    */
   public async getSymbols(): Promise<string[]> {
-    const symbols = (await this.get("/v1/symbols")) as string[];
+    const symbols = (await this.get("symbols")) as string[];
     return symbols;
   }
 
@@ -203,7 +203,7 @@ export class PublicClient1 extends FetchClient<unknown> {
    * Get a list of valid symbol IDs and the pair details.
    */
   public async getSymbolDetails(): Promise<SymbolDetail[]> {
-    const details = (await this.get("/v1/symbols_details")) as SymbolDetail[];
+    const details = (await this.get("symbols_details")) as SymbolDetail[];
     return details;
   }
 
