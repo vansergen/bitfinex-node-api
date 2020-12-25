@@ -2,7 +2,7 @@ import assert from "assert";
 import nock from "nock";
 import {
   AuthenticatedClient1,
-  DefaultTimeout,
+  Signer,
   DefaultSymbol,
   DefaultCurrency,
   AccountInfo,
@@ -18,35 +18,36 @@ import {
   OrderParams,
   NewOrdersResponse,
   Position,
+  aff_code,
 } from "../index";
 
 const key = "BitfinexAPIKey";
 const secret = "BitfinexAPISecret";
 const apiUri = "https://api.bitfinex.com";
+const NONCE = 1;
 
 const client = new AuthenticatedClient1({ key, secret });
 
 suite("AuthenticatedClient v1", () => {
-  test("constructor", () => {
-    assert.deepStrictEqual(client._rpoptions, {
-      baseUrl: apiUri,
-      timeout: DefaultTimeout,
-      json: true,
-    });
-    assert.deepStrictEqual(client.symbol, DefaultSymbol);
-    assert.deepStrictEqual(client.currency, DefaultCurrency);
-    assert.deepStrictEqual(client.key, key);
-    assert.deepStrictEqual(client.secret, secret);
-  });
-
   test(".post()", async () => {
+    const otherClient = new AuthenticatedClient1({ key, secret });
+    const _nonce = (): number => NONCE;
+    otherClient.nonce = _nonce;
     const response = {} as const;
     const uri = "/some-uri";
+    const payload = Buffer.from(
+      JSON.stringify({ nonce: `NONCE`, request: uri })
+    ).toString("base64");
     nock(apiUri)
-      .post(uri, ({ request, nonce }) => request === uri && nonce)
+      .post(
+        uri,
+        ({ request, nonce }) => request === uri && typeof nonce === "string",
+        { reqheaders: { ...Signer({ key, secret, payload }) } }
+      )
       .reply(200, response);
-    const data = await client.post({ uri });
+    const data = await client.post(uri);
     assert.deepStrictEqual(data, response);
+    assert.deepStrictEqual(otherClient.nonce, _nonce);
   });
 
   test(".getAccountInfo()", async () => {
@@ -246,6 +247,29 @@ suite("AuthenticatedClient v1", () => {
     assert.deepStrictEqual(data, response);
   });
 
+  test(".transfer() (with no `currency`)", async () => {
+    const response: TransferResponse = [
+      {
+        status: "success",
+        message: "1.00954735 Bitcoin Cash transfered from Margin to Exchange",
+      },
+    ];
+    const uri = "/v1/transfer";
+    const amount = "1.00954735";
+    const walletfrom = "trading" as const;
+    const walletto = "exchange" as const;
+    const params = { amount, walletfrom, walletto };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { ...params, currency: DefaultCurrency });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.transfer(params);
+    assert.deepStrictEqual(data, response);
+  });
+
   test(".withdraw()", async () => {
     const response: WithdrawResponse = [
       {
@@ -315,7 +339,55 @@ suite("AuthenticatedClient v1", () => {
     const params = { amount, price, type, exchange, symbol, side, is_postonly };
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
-        assert.deepStrictEqual(rest, params);
+        assert.deepStrictEqual(rest, { ...params, aff_code });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.newOrder(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".newOrder() (with no `symbol`)", async () => {
+    const response: OrderResponse = {
+      id: 1,
+      cid: 4,
+      cid_date: "2019-11-29",
+      gid: null,
+      symbol: "etcusd",
+      exchange: "bitfinex",
+      price: "3.0",
+      avg_execution_price: "0.0",
+      side: "buy",
+      type: "limit",
+      timestamp: "1575025695.649883424",
+      is_live: true,
+      is_cancelled: false,
+      is_hidden: false,
+      oco_order: null,
+      was_forced: false,
+      original_amount: "1.0",
+      remaining_amount: "1.0",
+      executed_amount: "0.0",
+      src: "api",
+      meta: { $F7: 1 },
+      order_id: 4,
+    };
+    const uri = "/v1/order/new";
+    const amount = "1";
+    const price = "3";
+    const type = "limit" as const;
+    const exchange = "bitfinex" as const;
+    const side = "buy" as const;
+    const is_postonly = true;
+    const params = { amount, price, type, exchange, side, is_postonly };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {
+          ...params,
+          symbol: DefaultSymbol,
+          aff_code,
+        });
         assert.ok(nonce);
         return request === uri;
       })
@@ -400,6 +472,89 @@ suite("AuthenticatedClient v1", () => {
       .post(uri, ({ request, nonce, ...rest }) => {
         assert.ok(typeof nonce === "string");
         assert.deepStrictEqual(rest, { orders });
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.newOrders({ orders });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".newOrders() (with no `symbol`)", async () => {
+    const response: NewOrdersResponse = {
+      order_ids: [
+        {
+          id: 654,
+          cid: 456,
+          cid_date: "2019-11-29",
+          gid: null,
+          symbol: "etcusd",
+          exchange: "bitfinex",
+          price: "3.0",
+          avg_execution_price: "0.0",
+          side: "buy",
+          type: "limit",
+          timestamp: "1575030779.494391951",
+          is_live: true,
+          is_cancelled: false,
+          is_hidden: false,
+          oco_order: null,
+          was_forced: false,
+          original_amount: "1.0",
+          remaining_amount: "1.0",
+          executed_amount: "0.0",
+          src: "api",
+          meta: { $F7: 1 },
+        },
+        {
+          id: 321,
+          cid: 123,
+          cid_date: "2019-11-29",
+          gid: null,
+          symbol: "etcusd",
+          exchange: "bitfinex",
+          price: "5.0",
+          avg_execution_price: "0.0",
+          side: "buy",
+          type: "limit",
+          timestamp: "1575030779.513995919",
+          is_live: true,
+          is_cancelled: false,
+          is_hidden: false,
+          oco_order: null,
+          was_forced: false,
+          original_amount: "2.0",
+          remaining_amount: "2.0",
+          executed_amount: "0.0",
+          src: "api",
+          meta: { $F7: 1 },
+        },
+      ],
+      status: "success",
+    };
+    const uri = "/v1/order/new/multi";
+    const order1: OrderParams = {
+      amount: "1",
+      price: "3",
+      type: "limit",
+      exchange: "bitfinex",
+      side: "buy",
+      is_postonly: true,
+    };
+    const order2: OrderParams = {
+      amount: "2",
+      price: "5",
+      type: "limit",
+      exchange: "bitfinex",
+      symbol: "ETCUSD",
+      side: "buy",
+      is_postonly: true,
+    };
+    const orders = [order1, order2];
+    const expected = { orders: [{ ...order1, symbol: DefaultSymbol }, order2] };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.ok(typeof nonce === "string");
+        assert.deepStrictEqual(rest, expected);
         return request === uri;
       })
       .reply(200, response);
@@ -521,7 +676,64 @@ suite("AuthenticatedClient v1", () => {
     };
     nock(apiUri)
       .post(uri, ({ request, nonce, ...rest }) => {
-        assert.deepStrictEqual(rest, params);
+        assert.deepStrictEqual(rest, { ...params, aff_code });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.replaceOrder(params);
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".replaceOrder() (with no `symbol`)", async () => {
+    const response: OrderResponse = {
+      id: 1,
+      cid: 47212318175544,
+      cid_date: "2019-12-28",
+      gid: null,
+      symbol: DefaultSymbol,
+      exchange: "bitfinex",
+      price: "101.0",
+      avg_execution_price: "0.0",
+      side: "sell",
+      type: "limit",
+      timestamp: "1577538417.01",
+      is_live: true,
+      is_cancelled: false,
+      is_hidden: false,
+      oco_order: null,
+      was_forced: false,
+      original_amount: "3.0",
+      remaining_amount: "3.0",
+      executed_amount: "0.0",
+      src: "api",
+      meta: { $F7: 1 },
+      order_id: 1,
+    };
+    const uri = "/v1/order/cancel/replace";
+    const amount = "3";
+    const price = "101";
+    const type = "limit" as const;
+    const exchange = "bitfinex" as const;
+    const side = "sell" as const;
+    const is_postonly = true;
+    const order_id = 1;
+    const params = {
+      order_id,
+      amount,
+      price,
+      type,
+      exchange,
+      side,
+      is_postonly,
+    };
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {
+          ...params,
+          symbol: DefaultSymbol,
+          aff_code,
+        });
         assert.ok(nonce);
         return request === uri;
       })
