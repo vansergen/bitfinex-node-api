@@ -1,20 +1,22 @@
 import { PublicClient1, PublicClient1Params, Currency, Symb } from "./public1";
-import type { RequestPromise, OptionsWithUri } from "request-promise-native";
 import { Signer } from "./signer";
+import type { RequestInit } from "node-fetch";
 
-export type DepositParams = {
+export const aff_code = "rX7Hc9_O2";
+
+export interface DepositParams {
   method: string;
   wallet_name: "trading" | "exchange" | "deposit";
   renew?: 0 | 1;
-};
+}
 
-export type TransferParams = Currency & {
+export interface TransferParams extends Currency {
   amount: string;
   walletfrom: "trading" | "deposit" | "exchange";
   walletto: "trading" | "deposit" | "exchange";
-};
+}
 
-export type WithdrawParams = {
+export interface WithdrawParams {
   withdraw_type: string;
   walletselected: "trading" | "exchange" | "deposit";
   amount: string;
@@ -36,9 +38,16 @@ export type WithdrawParams = {
   intermediary_bank_country?: string;
   intermediary_bank_account?: string;
   intermediary_bank_swift?: string;
-};
+}
 
-export type ClaimParams = { position_id: number; amount?: string };
+export interface OrderHistoryParams {
+  limit?: number;
+}
+
+export interface ClaimParams {
+  position_id: number;
+  amount?: string;
+}
 
 export type OrderType =
   | "market"
@@ -52,7 +61,7 @@ export type OrderType =
   | "exchange trailing-stop"
   | "exchange fill-or-kill";
 
-export type OrderParams = Symb & {
+export interface OrderParams extends Symb {
   amount: string;
   price: string;
   side: "buy" | "sell";
@@ -65,9 +74,13 @@ export type OrderParams = Symb & {
   buy_price_oco?: string;
   sell_price_oco?: string;
   lev?: number;
-};
+}
 
-export type ReplaceOrderParams = Symb & {
+export interface OrdersParams {
+  orders: OrderParams[];
+}
+
+export interface ReplaceOrderParams extends Symb {
   order_id: number;
   amount: string;
   price?: string;
@@ -78,8 +91,7 @@ export type ReplaceOrderParams = Symb & {
   is_postonly?: boolean;
   use_remaining?: boolean;
   lev?: number;
-  aff_code?: string;
-};
+}
 
 export type AccountInfo = [
   {
@@ -92,9 +104,11 @@ export type AccountInfo = [
   }
 ];
 
-export type AccountFees = { withdraw: { [currency: string]: string } };
+export interface AccountFees {
+  withdraw: { [currency: string]: string };
+}
 
-export type Summary = {
+export interface Summary {
   time: string;
   status: { resid_hint: null };
   is_locked: boolean;
@@ -115,18 +129,21 @@ export type Summary = {
   taker_fee: number;
   deriv_maker_rebate: number;
   deriv_taker_fee: number;
-};
+}
 
-export type DepositAddress = {
+export interface DepositAddress {
   result: string;
   method: string;
   currency: string;
   address: string;
-};
+}
 
-export type KeyPermission = { read: boolean; write: boolean };
+export interface KeyPermission {
+  read: boolean;
+  write: boolean;
+}
 
-export type KeyPermissions = {
+export interface KeyPermissions {
   account: KeyPermission;
   history: KeyPermission;
   orders: KeyPermission;
@@ -134,9 +151,9 @@ export type KeyPermissions = {
   funding: KeyPermission;
   wallets: KeyPermission;
   withdraw: KeyPermission;
-};
+}
 
-export type MarginInformation = {
+export interface MarginInformation {
   margin_balance: string;
   tradable_balance: string;
   unrealized_pl: string;
@@ -152,14 +169,14 @@ export type MarginInformation = {
     tradable_balance: string;
   }[];
   message: string;
-};
+}
 
-export type WalletBalance = {
+export interface WalletBalance {
   type: "trading" | "deposit" | "exchange";
   currency: string;
   amount: string;
   available: string;
-};
+}
 
 export type TransferResponse = [
   { status: "error" | "success"; message: string }
@@ -180,7 +197,7 @@ export type WithdrawResponse = [
   }
 ];
 
-export type OrderResponse = {
+export interface OrderResponse {
   id: number;
   cid: number;
   cid_date: string;
@@ -203,11 +220,14 @@ export type OrderResponse = {
   order_id?: number;
   src?: string;
   meta?: Record<string, unknown>;
-};
+}
 
-export type NewOrdersResponse = { order_ids: OrderResponse[]; status: string };
+export interface NewOrdersResponse {
+  order_ids: OrderResponse[];
+  status: string;
+}
 
-export type Position = {
+export interface Position {
   id: number;
   symbol: string;
   status: string;
@@ -216,190 +236,251 @@ export type Position = {
   timestamp: string;
   swap: string;
   pl: string;
-};
+}
 
-export type AuthenticatedClient1Options = PublicClient1Params & {
+export interface AuthenticatedClient1Options extends PublicClient1Params {
   key: string;
   secret: string;
-};
+}
 
 export class AuthenticatedClient1 extends PublicClient1 {
-  readonly key: string;
-  readonly secret: string;
-  private _nonce?: () => string;
+  readonly #key: string;
+  readonly #secret: string;
+  #nonce: () => number;
 
-  constructor({ key, secret, ...rest }: AuthenticatedClient1Options) {
+  public constructor({ key, secret, ...rest }: AuthenticatedClient1Options) {
     super(rest);
-    this.key = key;
-    this.secret = secret;
+    this.#key = key;
+    this.#secret = secret;
+    this.#nonce = (): number => Date.now();
   }
 
-  post({ body = {}, uri }: OptionsWithUri): RequestPromise<any> {
-    body = { ...body, nonce: this.nonce(), request: uri };
-    const headers = Signer({ key: this.key, secret: this.secret, body });
-    return super.post({ body, headers, uri });
+  public async post(
+    path: string,
+    _options?: RequestInit | undefined,
+    params: Record<string, unknown> = {}
+  ): Promise<unknown> {
+    const data = { ...params, nonce: `${this.#nonce()}`, request: path };
+    const body = JSON.stringify(data);
+    const payload = Buffer.from(body).toString("base64");
+    const headers = Signer({ key: this.#key, secret: this.#secret, payload });
+    const response = await super.post(path, { ..._options, body, headers });
+    return response;
   }
 
   /**
    * Return information about your account (trading fees).
    */
-  getAccountInfo(): Promise<AccountInfo> {
-    return this.post({ uri: "/v1/account_infos" });
+  public async getAccountInfo(): Promise<AccountInfo> {
+    const request = "/v1/account_infos";
+    const info = (await this.post(request)) as AccountInfo;
+    return info;
   }
 
   /**
    * Return the fees applied to your withdrawals.
    */
-  getAccountFees(): Promise<AccountFees> {
-    return this.post({ uri: "/v1/account_fees" });
+  public async getAccountFees(): Promise<AccountFees> {
+    const request = "/v1/account_fees";
+    const fees = (await this.post(request)) as AccountFees;
+    return fees;
   }
 
   /**
    * Returns a 30-day summary of your trading volume and return on margin funding.
    */
-  getSummary(): Promise<Summary> {
-    return this.post({ uri: "/v1/summary" });
+  public async getSummary(): Promise<Summary> {
+    const request = "/v1/summary";
+    const summary = (await this.post(request)) as Summary;
+    return summary;
   }
 
   /**
    * Returns your deposit address to make a new deposit.
    */
-  getDepositAddress(body: DepositParams): Promise<DepositAddress> {
-    return this.post({ body, uri: "/v1/deposit/new" });
+  public async getDepositAddress(body: DepositParams): Promise<DepositAddress> {
+    const request = "/v1/deposit/new";
+    const data = { ...body };
+    const address = (await this.post(request, {}, data)) as DepositAddress;
+    return address;
   }
 
   /**
    * Returns the permissions of the key being used to generate this request.
    */
-  getKeyPermissions(): Promise<KeyPermissions> {
-    return this.post({ uri: "/v1/key_info" });
+  public async getKeyPermissions(): Promise<KeyPermissions> {
+    const request = "/v1/key_info";
+    const permissions = (await this.post(request)) as KeyPermissions;
+    return permissions;
   }
 
   /**
    * Returns the trading wallet information for margin trading.
    */
-  getMarginInformation(): Promise<MarginInformation> {
-    return this.post({ uri: "/v1/margin_infos" });
+  public async getMarginInformation(): Promise<MarginInformation> {
+    const request = "/v1/margin_infos";
+    const info = (await this.post(request)) as MarginInformation;
+    return info;
   }
 
   /**
    * Returns your balances.
    */
-  getWalletBalances(): Promise<WalletBalance[]> {
-    return this.post({ uri: "/v1/balances" });
+  public async getWalletBalances(): Promise<WalletBalance[]> {
+    const request = "/v1/balances";
+    const balances = (await this.post(request)) as WalletBalance[];
+    return balances;
   }
 
   /**
    * Move available balances between your wallets.
    */
-  transfer({
+  public async transfer({
     currency = this.currency,
-    ...body
+    ...rest
   }: TransferParams): Promise<TransferResponse> {
-    return this.post({ body: { currency, ...body }, uri: "/v1/transfer" });
+    const request = "/v1/transfer";
+    const data = { currency, ...rest };
+    const response = (await this.post(request, {}, data)) as TransferResponse;
+    return response;
   }
 
   /**
    * Request a withdrawal from one of your wallet.
    */
-  withdraw(body: WithdrawParams): Promise<WithdrawResponse> {
-    return this.post({ body, uri: "/v1/withdraw" });
+  public async withdraw(body: WithdrawParams): Promise<WithdrawResponse> {
+    const request = "/v1/withdraw";
+    const data = { ...body };
+    const response = (await this.post(request, {}, data)) as WithdrawResponse;
+    return response;
   }
 
   /**
    * Submit a new Order, can be used to create margin, exchange, and derivative orders.
    */
-  newOrder({
+  public async newOrder({
     symbol = this.symbol,
-    ...body
+    ...rest
   }: OrderParams): Promise<OrderResponse> {
-    return this.post({ body: { symbol, ...body }, uri: "/v1/order/new" });
+    const request = "/v1/order/new";
+    const data = { symbol, ...rest, aff_code };
+    const response = (await this.post(request, {}, data)) as OrderResponse;
+    return response;
   }
 
   /**
    * Submit several new orders at once, can be used to create margin, exchange, and derivative orders.
    */
-  newOrders({ orders }: { orders: OrderParams[] }): Promise<NewOrdersResponse> {
+  public async newOrders({ orders }: OrdersParams): Promise<NewOrdersResponse> {
     for (const order of orders) {
       if (!order.symbol) {
         order.symbol = this.symbol;
       }
     }
-    return this.post({ body: { orders }, uri: "/v1/order/new/multi" });
+    const request = "/v1/order/new/multi";
+    const data = { orders };
+    const response = (await this.post(request, {}, data)) as NewOrdersResponse;
+    return response;
   }
 
   /**
    * Cancel an order.
    */
-  cancelOrder(body: { order_id: number }): Promise<OrderResponse> {
-    return this.post({ body, uri: "/v1/order/cancel" });
+  public async cancelOrder(body: { order_id: number }): Promise<OrderResponse> {
+    const request = "/v1/order/cancel";
+    const data = { ...body };
+    const response = (await this.post(request, {}, data)) as OrderResponse;
+    return response;
   }
 
   /**
    * Cancel multiples orders at once.
    */
-  cancelOrders(body: { order_ids: number[] }): Promise<{ result: string }> {
-    return this.post({ body, uri: "/v1/order/cancel/multi" });
+  public async cancelOrders(body: {
+    order_ids: number[];
+  }): Promise<{ result: string }> {
+    const request = "/v1/order/cancel/multi";
+    const data = { ...body };
+    const response = (await this.post(request, {}, data)) as { result: string };
+    return response;
   }
 
   /**
    * Cancel all active orders at once.
    */
-  cancelAllOrders(): Promise<{ result: string }> {
-    return this.post({ uri: "/v1/order/cancel/all" });
+  public async cancelAllOrders(): Promise<{ result: string }> {
+    const request = "/v1/order/cancel/all";
+    const response = (await this.post(request, {})) as { result: string };
+    return response;
   }
 
   /**
    * Replace an order with a new one. Can be used to replace an order with a new margin, exchange, or derivative order.
    */
-  replaceOrder({
+  public async replaceOrder({
     symbol = this.symbol,
-    ...body
+    ...rest
   }: ReplaceOrderParams): Promise<OrderResponse> {
-    const uri = "/v1/order/cancel/replace";
-    return this.post({ body: { symbol, ...body }, uri });
+    const request = "/v1/order/cancel/replace";
+    const data = { symbol, ...rest, aff_code };
+    const response = (await this.post(request, {}, data)) as OrderResponse;
+    return response;
   }
 
   /**
    * Get the status of an order.
    */
-  getOrder(body: { order_id: number }): Promise<OrderResponse> {
-    return this.post({ body, uri: "/v1/order/status" });
+  public async getOrder(body: { order_id: number }): Promise<OrderResponse> {
+    const request = "/v1/order/status";
+    const data = { ...body };
+    const response = (await this.post(request, {}, data)) as OrderResponse;
+    return response;
   }
 
   /**
    * Get your active orders.
    */
-  getOrders(): Promise<OrderResponse[]> {
-    return this.post({ uri: "/v1/orders" });
+  public async getOrders(): Promise<OrderResponse[]> {
+    const request = "/v1/orders";
+    const orders = (await this.post(request)) as OrderResponse[];
+    return orders;
   }
 
   /**
    * Get your latest inactive orders.
    */
-  getOrderHistory(body?: { limit?: number }): Promise<OrderResponse[]> {
-    return this.post({ body, uri: "/v1/orders/hist" });
+  public async getOrderHistory(
+    body?: OrderHistoryParams
+  ): Promise<OrderResponse[]> {
+    const request = "/v1/orders/hist";
+    const data = { ...body };
+    const orders = (await this.post(request, {}, data)) as OrderResponse[];
+    return orders;
   }
 
   /**
    * Get your active positions.
    */
-  getPositions(): Promise<Position[]> {
-    return this.post({ uri: "/v1/positions" });
+  public async getPositions(): Promise<Position[]> {
+    const request = "/v1/positions";
+    const positions = (await this.post(request)) as Position[];
+    return positions;
   }
 
   /**
    * Claim your position.
    */
-  claimPosition(body: ClaimParams): Promise<Position> {
-    return this.post({ body, uri: "/v1/position/claim" });
+  public async claimPosition(body: ClaimParams): Promise<Position> {
+    const request = "/v1/position/claim";
+    const position = (await this.post(request, {}, { ...body })) as Position;
+    return position;
   }
 
-  set nonce(nonce: () => string) {
-    this._nonce = nonce;
+  public set nonce(nonce: () => number) {
+    this.#nonce = nonce;
   }
 
-  get nonce(): () => string {
-    return this._nonce ? this._nonce : (): string => Date.now().toString();
+  public get nonce(): () => number {
+    return this.#nonce;
   }
 }
