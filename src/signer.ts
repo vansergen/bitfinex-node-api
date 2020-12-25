@@ -3,7 +3,7 @@ import { createHmac } from "crypto";
 export type SignerOptions = {
   key: string;
   secret: string;
-  body: Record<string, unknown>;
+  payload: string;
 };
 
 export type SignedHeaders = {
@@ -12,13 +12,11 @@ export type SignedHeaders = {
   "X-BFX-SIGNATURE": string;
 };
 
-export function Signer({ key, secret, body }: SignerOptions): SignedHeaders {
-  const payload = Buffer.from(JSON.stringify(body)).toString("base64");
+export function Signer({ key, secret, payload }: SignerOptions): SignedHeaders {
+  const signature = createHmac("sha384", secret).update(payload).digest("hex");
   return {
     "X-BFX-APIKEY": key,
     "X-BFX-PAYLOAD": payload,
-    "X-BFX-SIGNATURE": createHmac("sha384", secret)
-      .update(payload)
-      .digest("hex"),
+    "X-BFX-SIGNATURE": signature,
   };
 }
