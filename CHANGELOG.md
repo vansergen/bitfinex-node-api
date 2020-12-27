@@ -1,5 +1,7 @@
 # Changelog
 
+### [2.0.1](https://github.com/vansergen/bitfinex-node-api/compare/v2.0.0...v2.0.1) (2020-12-27)
+
 ## [2.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v1.0.0...v2.0.0) (2020-12-27)
 
 ### ⚠ BREAKING CHANGES
