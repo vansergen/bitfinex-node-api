@@ -1,0 +1,8 @@
+{
+  "out": "docs",
+  "mode": "file",
+  "name": "bitfinex-node-api",
+  "exclude": "test/**/*",
+  "hideGenerator": true,
+  "gitRevision": "master"
+}

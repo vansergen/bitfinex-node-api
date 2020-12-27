@@ -1,35 +1,39 @@
-import { RPC } from "rpc-request";
+import { FetchClient } from "rpc-request";
 
-export const DefaultTimeout = 30000;
-export const DefaultSymbol = "btcusd";
-export const DefaultCurrency = "usd";
+export const ApiUri = "https://api.bitfinex.com/v1/";
+export const DefaultSymbol = "BTCUSD";
+export const DefaultCurrency = "USD";
 
-export type Symb = { symbol?: string };
+export interface Symb {
+  symbol?: string;
+}
 
-export type Currency = { currency?: string };
+export interface Currency {
+  currency?: string;
+}
 
-export type GetFundingBook = Currency & {
+export interface GetFundingBook extends Currency {
   limit_bids?: number;
   limit_asks?: number;
-};
+}
 
-export type GetOrderBook = Symb & {
+export interface GetOrderBook extends Symb {
   limit_bids?: number;
   limit_asks?: number;
   group?: 0 | 1;
-};
+}
 
-export type GetTrades = Symb & {
+export interface GetTrades extends Symb {
   timestamp?: number;
   limit_trades?: number;
-};
+}
 
-export type GetLends = Currency & {
+export interface GetLends extends Currency {
   timestamp?: number;
   limit_lends?: number;
-};
+}
 
-export type Ticker = {
+export interface Ticker {
   mid: string;
   bid: string;
   ask: string;
@@ -38,51 +42,54 @@ export type Ticker = {
   high: string;
   volume: string;
   timestamp: string;
-};
+}
 
-export type Stats = { period: number; volume: string }[];
+export interface Stat {
+  period: number;
+  volume: string;
+}
 
-export type FundingBookItem = {
+export interface FundingBookItem {
   rate: string;
   amount: string;
   period: number;
   timestamp: string;
   frr: "No" | "Yes";
-};
+}
 
-export type FundingBook = {
+export interface FundingBook {
   bids: FundingBookItem[];
   asks: FundingBookItem[];
-};
+}
 
-export type OrderBookItem = {
+export interface OrderBookItem {
   price: string;
   amount: string;
   timestamp: string;
-};
+}
 
-export type OrderBook = {
+export interface OrderBook {
   bids: OrderBookItem[];
   asks: OrderBookItem[];
-};
+}
 
-export type Trade = {
+export interface Trade {
   timestamp: number;
   tid: number;
   price: string;
   amount: string;
   exchange: "bitfinex";
   type: "sell" | "buy" | "";
-};
+}
 
-export type Lend = {
+export interface Lend {
   rate: string;
   amount_lent: string;
   amount_used: string;
   timestamp: number;
-};
+}
 
-export type SymbolDetail = {
+export interface SymbolDetail {
   pair: string;
   price_precision: number;
   initial_margin: string;
@@ -91,24 +98,23 @@ export type SymbolDetail = {
   minimum_order_size: string;
   expiration: string;
   margin: boolean;
-};
+}
 
-export type PublicClient1Params = {
+export interface PublicClient1Params {
   symbol?: string;
   timeout?: number;
   currency?: string;
-};
+}
 
-export class PublicClient1 extends RPC {
-  readonly symbol: string;
-  readonly currency: string;
+export class PublicClient1 extends FetchClient<unknown> {
+  public readonly symbol: string;
+  public readonly currency: string;
 
-  constructor({
+  public constructor({
     symbol = DefaultSymbol,
-    timeout = DefaultTimeout,
-    currency = DefaultCurrency
+    currency = DefaultCurrency,
   }: PublicClient1Params = {}) {
-    super({ timeout, baseUrl: "https://api.bitfinex.com", json: true });
+    super({}, { baseUrl: ApiUri, transform: "json" });
     this.symbol = symbol;
     this.currency = currency;
   }
@@ -116,63 +122,100 @@ export class PublicClient1 extends RPC {
   /**
    * Get the ticker
    */
-  getTicker({ symbol = this.symbol }: Symb = {}): Promise<Ticker> {
-    return this.get({ uri: "/v1/pubticker/" + symbol });
+  public async getTicker({ symbol = this.symbol }: Symb = {}): Promise<Ticker> {
+    const ticker = (await this.get(`pubticker/${symbol}`)) as Ticker;
+    return ticker;
   }
 
   /**
    * Various statistics about the requested pair.
    */
-  getStats({ symbol = this.symbol }: Symb = {}): Promise<Stats> {
-    return this.get({ uri: "/v1/stats/" + symbol });
+  public async getStats({ symbol = this.symbol }: Symb = {}): Promise<Stat[]> {
+    const stats = (await this.get(`stats/${symbol}`)) as Stat[];
+    return stats;
   }
 
   /**
    * Get the full margin funding book
    */
-  getFundingBook({
+  public async getFundingBook({
     currency = this.currency,
     ...qs
   }: GetFundingBook = {}): Promise<FundingBook> {
-    return this.get({ uri: "/v1/lendbook/" + currency, qs });
+    const url = new URL(`lendbook/${currency}`, ApiUri);
+    PublicClient1.addOptions(url, { ...qs });
+    const path = `${url.pathname}${url.search}`;
+    const book = (await this.get(path)) as FundingBook;
+    return book;
   }
 
   /**
    * Get the full order book.
    */
-  getOrderBook({ symbol = this.symbol, ...qs }: GetOrderBook = {}): Promise<
-    OrderBook
-  > {
-    return this.get({ uri: "/v1/book/" + symbol, qs });
+  public async getOrderBook({
+    symbol = this.symbol,
+    ...qs
+  }: GetOrderBook = {}): Promise<OrderBook> {
+    const url = new URL(`book/${symbol}`, ApiUri);
+    PublicClient1.addOptions(url, { ...qs });
+    const path = `${url.pathname}${url.search}`;
+    const book = (await this.get(path)) as OrderBook;
+    return book;
   }
 
   /**
    * Get a list of the most recent trades for the given symbol.
    */
-  getTrades({ symbol = this.symbol, ...qs }: GetTrades = {}): Promise<Trade[]> {
-    return this.get({ uri: "/v1/trades/" + symbol, qs });
+  public async getTrades({
+    symbol = this.symbol,
+    ...qs
+  }: GetTrades = {}): Promise<Trade[]> {
+    const url = new URL(`trades/${symbol}`, ApiUri);
+    PublicClient1.addOptions(url, { ...qs });
+    const path = `${url.pathname}${url.search}`;
+    const trades = (await this.get(path)) as Trade[];
+    return trades;
   }
 
   /**
    * Get a list of the most recent funding data for the given currency: total amount provided and Flash Return Rate (in % by 365 days) over time.
    */
-  getLends({ currency = this.currency, ...qs }: GetLends = {}): Promise<
-    Lend[]
-  > {
-    return this.get({ uri: "/v1/lends/" + currency, qs });
+  public async getLends({
+    currency = this.currency,
+    ...qs
+  }: GetLends = {}): Promise<Lend[]> {
+    const url = new URL(`lends/${currency}`, ApiUri);
+    PublicClient1.addOptions(url, { ...qs });
+    const path = `${url.pathname}${url.search}`;
+    const lends = (await this.get(path)) as Lend[];
+    return lends;
   }
 
   /**
    * Get the list of symbol names.
    */
-  getSymbols(): Promise<string[]> {
-    return this.get({ uri: "/v1/symbols" });
+  public async getSymbols(): Promise<string[]> {
+    const symbols = (await this.get("symbols")) as string[];
+    return symbols;
   }
 
   /**
    * Get a list of valid symbol IDs and the pair details.
    */
-  getSymbolDetails(): Promise<SymbolDetail[]> {
-    return this.get({ uri: "/v1/symbols_details" });
+  public async getSymbolDetails(): Promise<SymbolDetail[]> {
+    const details = (await this.get("symbols_details")) as SymbolDetail[];
+    return details;
+  }
+
+  protected static addOptions(
+    target: URL,
+    data: Record<string, string | number | boolean | undefined>
+  ): void {
+    for (const key in data) {
+      const value = data[key];
+      if (typeof value !== "undefined") {
+        target.searchParams.append(key, value.toString());
+      }
+    }
   }
 }
