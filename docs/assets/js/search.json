@@ -1,0 +1,4218 @@
+{
+  "kinds": {
+    "32": "Variable",
+    "64": "Function",
+    "128": "Class",
+    "256": "Interface",
+    "512": "Constructor",
+    "1024": "Property",
+    "2048": "Method",
+    "65536": "Type literal",
+    "262144": "Accessor",
+    "4194304": "Type alias"
+  },
+  "rows": [
+    {
+      "id": 0,
+      "kind": 256,
+      "name": "Symb",
+      "url": "interfaces/symb.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 1,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/symb.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Symb"
+    },
+    {
+      "id": 2,
+      "kind": 256,
+      "name": "Currency",
+      "url": "interfaces/currency.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 3,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/currency.html#currency-1",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Currency"
+    },
+    {
+      "id": 4,
+      "kind": 256,
+      "name": "GetFundingBook",
+      "url": "interfaces/getfundingbook.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 5,
+      "kind": 1024,
+      "name": "limit_bids",
+      "url": "interfaces/getfundingbook.html#limit_bids",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetFundingBook"
+    },
+    {
+      "id": 6,
+      "kind": 1024,
+      "name": "limit_asks",
+      "url": "interfaces/getfundingbook.html#limit_asks",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetFundingBook"
+    },
+    {
+      "id": 7,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/getfundingbook.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "GetFundingBook"
+    },
+    {
+      "id": 8,
+      "kind": 256,
+      "name": "GetOrderBook",
+      "url": "interfaces/getorderbook.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 9,
+      "kind": 1024,
+      "name": "limit_bids",
+      "url": "interfaces/getorderbook.html#limit_bids",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetOrderBook"
+    },
+    {
+      "id": 10,
+      "kind": 1024,
+      "name": "limit_asks",
+      "url": "interfaces/getorderbook.html#limit_asks",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetOrderBook"
+    },
+    {
+      "id": 11,
+      "kind": 1024,
+      "name": "group",
+      "url": "interfaces/getorderbook.html#group",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetOrderBook"
+    },
+    {
+      "id": 12,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/getorderbook.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "GetOrderBook"
+    },
+    {
+      "id": 13,
+      "kind": 256,
+      "name": "GetTrades",
+      "url": "interfaces/gettrades.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 14,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/gettrades.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetTrades"
+    },
+    {
+      "id": 15,
+      "kind": 1024,
+      "name": "limit_trades",
+      "url": "interfaces/gettrades.html#limit_trades",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetTrades"
+    },
+    {
+      "id": 16,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/gettrades.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "GetTrades"
+    },
+    {
+      "id": 17,
+      "kind": 256,
+      "name": "GetLends",
+      "url": "interfaces/getlends.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 18,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/getlends.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetLends"
+    },
+    {
+      "id": 19,
+      "kind": 1024,
+      "name": "limit_lends",
+      "url": "interfaces/getlends.html#limit_lends",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "GetLends"
+    },
+    {
+      "id": 20,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/getlends.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "GetLends"
+    },
+    {
+      "id": 21,
+      "kind": 256,
+      "name": "Ticker",
+      "url": "interfaces/ticker.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 22,
+      "kind": 1024,
+      "name": "mid",
+      "url": "interfaces/ticker.html#mid",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 23,
+      "kind": 1024,
+      "name": "bid",
+      "url": "interfaces/ticker.html#bid",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 24,
+      "kind": 1024,
+      "name": "ask",
+      "url": "interfaces/ticker.html#ask",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 25,
+      "kind": 1024,
+      "name": "last_price",
+      "url": "interfaces/ticker.html#last_price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 26,
+      "kind": 1024,
+      "name": "low",
+      "url": "interfaces/ticker.html#low",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 27,
+      "kind": 1024,
+      "name": "high",
+      "url": "interfaces/ticker.html#high",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 28,
+      "kind": 1024,
+      "name": "volume",
+      "url": "interfaces/ticker.html#volume",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 29,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/ticker.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Ticker"
+    },
+    {
+      "id": 30,
+      "kind": 256,
+      "name": "Stat",
+      "url": "interfaces/stat.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 31,
+      "kind": 1024,
+      "name": "period",
+      "url": "interfaces/stat.html#period",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Stat"
+    },
+    {
+      "id": 32,
+      "kind": 1024,
+      "name": "volume",
+      "url": "interfaces/stat.html#volume",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Stat"
+    },
+    {
+      "id": 33,
+      "kind": 256,
+      "name": "FundingBookItem",
+      "url": "interfaces/fundingbookitem.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 34,
+      "kind": 1024,
+      "name": "rate",
+      "url": "interfaces/fundingbookitem.html#rate",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBookItem"
+    },
+    {
+      "id": 35,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/fundingbookitem.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBookItem"
+    },
+    {
+      "id": 36,
+      "kind": 1024,
+      "name": "period",
+      "url": "interfaces/fundingbookitem.html#period",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBookItem"
+    },
+    {
+      "id": 37,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/fundingbookitem.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBookItem"
+    },
+    {
+      "id": 38,
+      "kind": 1024,
+      "name": "frr",
+      "url": "interfaces/fundingbookitem.html#frr",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBookItem"
+    },
+    {
+      "id": 39,
+      "kind": 256,
+      "name": "FundingBook",
+      "url": "interfaces/fundingbook.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 40,
+      "kind": 1024,
+      "name": "bids",
+      "url": "interfaces/fundingbook.html#bids",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBook"
+    },
+    {
+      "id": 41,
+      "kind": 1024,
+      "name": "asks",
+      "url": "interfaces/fundingbook.html#asks",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "FundingBook"
+    },
+    {
+      "id": 42,
+      "kind": 256,
+      "name": "OrderBookItem",
+      "url": "interfaces/orderbookitem.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 43,
+      "kind": 1024,
+      "name": "price",
+      "url": "interfaces/orderbookitem.html#price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderBookItem"
+    },
+    {
+      "id": 44,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/orderbookitem.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderBookItem"
+    },
+    {
+      "id": 45,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/orderbookitem.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderBookItem"
+    },
+    {
+      "id": 46,
+      "kind": 256,
+      "name": "OrderBook",
+      "url": "interfaces/orderbook.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 47,
+      "kind": 1024,
+      "name": "bids",
+      "url": "interfaces/orderbook.html#bids",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderBook"
+    },
+    {
+      "id": 48,
+      "kind": 1024,
+      "name": "asks",
+      "url": "interfaces/orderbook.html#asks",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderBook"
+    },
+    {
+      "id": 49,
+      "kind": 256,
+      "name": "Trade",
+      "url": "interfaces/trade.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 50,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/trade.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 51,
+      "kind": 1024,
+      "name": "tid",
+      "url": "interfaces/trade.html#tid",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 52,
+      "kind": 1024,
+      "name": "price",
+      "url": "interfaces/trade.html#price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 53,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/trade.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 54,
+      "kind": 1024,
+      "name": "exchange",
+      "url": "interfaces/trade.html#exchange",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 55,
+      "kind": 1024,
+      "name": "type",
+      "url": "interfaces/trade.html#type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Trade"
+    },
+    {
+      "id": 56,
+      "kind": 256,
+      "name": "Lend",
+      "url": "interfaces/lend.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 57,
+      "kind": 1024,
+      "name": "rate",
+      "url": "interfaces/lend.html#rate",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Lend"
+    },
+    {
+      "id": 58,
+      "kind": 1024,
+      "name": "amount_lent",
+      "url": "interfaces/lend.html#amount_lent",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Lend"
+    },
+    {
+      "id": 59,
+      "kind": 1024,
+      "name": "amount_used",
+      "url": "interfaces/lend.html#amount_used",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Lend"
+    },
+    {
+      "id": 60,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/lend.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Lend"
+    },
+    {
+      "id": 61,
+      "kind": 256,
+      "name": "SymbolDetail",
+      "url": "interfaces/symboldetail.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 62,
+      "kind": 1024,
+      "name": "pair",
+      "url": "interfaces/symboldetail.html#pair",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 63,
+      "kind": 1024,
+      "name": "price_precision",
+      "url": "interfaces/symboldetail.html#price_precision",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 64,
+      "kind": 1024,
+      "name": "initial_margin",
+      "url": "interfaces/symboldetail.html#initial_margin",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 65,
+      "kind": 1024,
+      "name": "minimum_margin",
+      "url": "interfaces/symboldetail.html#minimum_margin",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 66,
+      "kind": 1024,
+      "name": "maximum_order_size",
+      "url": "interfaces/symboldetail.html#maximum_order_size",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 67,
+      "kind": 1024,
+      "name": "minimum_order_size",
+      "url": "interfaces/symboldetail.html#minimum_order_size",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 68,
+      "kind": 1024,
+      "name": "expiration",
+      "url": "interfaces/symboldetail.html#expiration",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 69,
+      "kind": 1024,
+      "name": "margin",
+      "url": "interfaces/symboldetail.html#margin",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "SymbolDetail"
+    },
+    {
+      "id": 70,
+      "kind": 256,
+      "name": "PublicClient1Params",
+      "url": "interfaces/publicclient1params.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 71,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/publicclient1params.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "PublicClient1Params"
+    },
+    {
+      "id": 72,
+      "kind": 1024,
+      "name": "timeout",
+      "url": "interfaces/publicclient1params.html#timeout",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "PublicClient1Params"
+    },
+    {
+      "id": 73,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/publicclient1params.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "PublicClient1Params"
+    },
+    {
+      "id": 74,
+      "kind": 128,
+      "name": "PublicClient1",
+      "url": "classes/publicclient1.html",
+      "classes": "tsd-kind-class"
+    },
+    {
+      "id": 75,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "classes/publicclient1.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 76,
+      "kind": 1024,
+      "name": "currency",
+      "url": "classes/publicclient1.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 77,
+      "kind": 512,
+      "name": "constructor",
+      "url": "classes/publicclient1.html#constructor",
+      "classes": "tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 78,
+      "kind": 2048,
+      "name": "getTicker",
+      "url": "classes/publicclient1.html#getticker",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 79,
+      "kind": 2048,
+      "name": "getStats",
+      "url": "classes/publicclient1.html#getstats",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 80,
+      "kind": 2048,
+      "name": "getFundingBook",
+      "url": "classes/publicclient1.html#getfundingbook",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 81,
+      "kind": 2048,
+      "name": "getOrderBook",
+      "url": "classes/publicclient1.html#getorderbook",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 82,
+      "kind": 2048,
+      "name": "getTrades",
+      "url": "classes/publicclient1.html#gettrades",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 83,
+      "kind": 2048,
+      "name": "getLends",
+      "url": "classes/publicclient1.html#getlends",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 84,
+      "kind": 2048,
+      "name": "getSymbols",
+      "url": "classes/publicclient1.html#getsymbols",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 85,
+      "kind": 2048,
+      "name": "getSymbolDetails",
+      "url": "classes/publicclient1.html#getsymboldetails",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 86,
+      "kind": 2048,
+      "name": "addOptions",
+      "url": "classes/publicclient1.html#addoptions",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-protected tsd-is-static",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 87,
+      "kind": 1024,
+      "name": "#private",
+      "url": "classes/publicclient1.html#_private",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 88,
+      "kind": 262144,
+      "name": "fetchOptions",
+      "url": "classes/publicclient1.html#fetchoptions",
+      "classes": "tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 89,
+      "kind": 2048,
+      "name": "get",
+      "url": "classes/publicclient1.html#get",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 90,
+      "kind": 2048,
+      "name": "head",
+      "url": "classes/publicclient1.html#head",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 91,
+      "kind": 2048,
+      "name": "post",
+      "url": "classes/publicclient1.html#post",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 92,
+      "kind": 2048,
+      "name": "put",
+      "url": "classes/publicclient1.html#put",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 93,
+      "kind": 2048,
+      "name": "delete",
+      "url": "classes/publicclient1.html#delete",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 94,
+      "kind": 2048,
+      "name": "options",
+      "url": "classes/publicclient1.html#options",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 95,
+      "kind": 2048,
+      "name": "trace",
+      "url": "classes/publicclient1.html#trace",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 96,
+      "kind": 2048,
+      "name": "patch",
+      "url": "classes/publicclient1.html#patch",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 97,
+      "kind": 2048,
+      "name": "fetch",
+      "url": "classes/publicclient1.html#fetch",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "PublicClient1"
+    },
+    {
+      "id": 98,
+      "kind": 32,
+      "name": "ApiUri",
+      "url": "globals.html#apiuri",
+      "classes": "tsd-kind-variable"
+    },
+    {
+      "id": 99,
+      "kind": 32,
+      "name": "DefaultSymbol",
+      "url": "globals.html#defaultsymbol",
+      "classes": "tsd-kind-variable"
+    },
+    {
+      "id": 100,
+      "kind": 32,
+      "name": "DefaultCurrency",
+      "url": "globals.html#defaultcurrency",
+      "classes": "tsd-kind-variable"
+    },
+    {
+      "id": 101,
+      "kind": 4194304,
+      "name": "SignerOptions",
+      "url": "globals.html#signeroptions",
+      "classes": "tsd-kind-type-alias"
+    },
+    {
+      "id": 102,
+      "kind": 65536,
+      "name": "__type",
+      "url": "globals.html#signeroptions.__type",
+      "classes": "tsd-kind-type-literal tsd-parent-kind-type-alias",
+      "parent": "SignerOptions"
+    },
+    {
+      "id": 103,
+      "kind": 32,
+      "name": "key",
+      "url": "globals.html#signeroptions.__type.key",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignerOptions.__type"
+    },
+    {
+      "id": 104,
+      "kind": 32,
+      "name": "secret",
+      "url": "globals.html#signeroptions.__type.secret",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignerOptions.__type"
+    },
+    {
+      "id": 105,
+      "kind": 32,
+      "name": "payload",
+      "url": "globals.html#signeroptions.__type.payload",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignerOptions.__type"
+    },
+    {
+      "id": 106,
+      "kind": 4194304,
+      "name": "SignedHeaders",
+      "url": "globals.html#signedheaders",
+      "classes": "tsd-kind-type-alias"
+    },
+    {
+      "id": 107,
+      "kind": 65536,
+      "name": "__type",
+      "url": "globals.html#signedheaders.__type",
+      "classes": "tsd-kind-type-literal tsd-parent-kind-type-alias",
+      "parent": "SignedHeaders"
+    },
+    {
+      "id": 108,
+      "kind": 32,
+      "name": "X-BFX-APIKEY",
+      "url": "globals.html#signedheaders.__type.x_bfx_apikey",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignedHeaders.__type"
+    },
+    {
+      "id": 109,
+      "kind": 32,
+      "name": "X-BFX-PAYLOAD",
+      "url": "globals.html#signedheaders.__type.x_bfx_payload",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignedHeaders.__type"
+    },
+    {
+      "id": 110,
+      "kind": 32,
+      "name": "X-BFX-SIGNATURE",
+      "url": "globals.html#signedheaders.__type.x_bfx_signature",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "SignedHeaders.__type"
+    },
+    {
+      "id": 111,
+      "kind": 64,
+      "name": "Signer",
+      "url": "globals.html#signer",
+      "classes": "tsd-kind-function"
+    },
+    {
+      "id": 112,
+      "kind": 256,
+      "name": "DepositParams",
+      "url": "interfaces/depositparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 113,
+      "kind": 1024,
+      "name": "method",
+      "url": "interfaces/depositparams.html#method",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositParams"
+    },
+    {
+      "id": 114,
+      "kind": 1024,
+      "name": "wallet_name",
+      "url": "interfaces/depositparams.html#wallet_name",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositParams"
+    },
+    {
+      "id": 115,
+      "kind": 1024,
+      "name": "renew",
+      "url": "interfaces/depositparams.html#renew",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositParams"
+    },
+    {
+      "id": 116,
+      "kind": 256,
+      "name": "TransferParams",
+      "url": "interfaces/transferparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 117,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/transferparams.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "TransferParams"
+    },
+    {
+      "id": 118,
+      "kind": 1024,
+      "name": "walletfrom",
+      "url": "interfaces/transferparams.html#walletfrom",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "TransferParams"
+    },
+    {
+      "id": 119,
+      "kind": 1024,
+      "name": "walletto",
+      "url": "interfaces/transferparams.html#walletto",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "TransferParams"
+    },
+    {
+      "id": 120,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/transferparams.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "TransferParams"
+    },
+    {
+      "id": 121,
+      "kind": 256,
+      "name": "WithdrawParams",
+      "url": "interfaces/withdrawparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 122,
+      "kind": 1024,
+      "name": "withdraw_type",
+      "url": "interfaces/withdrawparams.html#withdraw_type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 123,
+      "kind": 1024,
+      "name": "walletselected",
+      "url": "interfaces/withdrawparams.html#walletselected",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 124,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/withdrawparams.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 125,
+      "kind": 1024,
+      "name": "address",
+      "url": "interfaces/withdrawparams.html#address",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 126,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/withdrawparams.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 127,
+      "kind": 1024,
+      "name": "payment_id",
+      "url": "interfaces/withdrawparams.html#payment_id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 128,
+      "kind": 1024,
+      "name": "account_name",
+      "url": "interfaces/withdrawparams.html#account_name",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 129,
+      "kind": 1024,
+      "name": "account_number",
+      "url": "interfaces/withdrawparams.html#account_number",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 130,
+      "kind": 1024,
+      "name": "swift",
+      "url": "interfaces/withdrawparams.html#swift",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 131,
+      "kind": 1024,
+      "name": "bank_name",
+      "url": "interfaces/withdrawparams.html#bank_name",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 132,
+      "kind": 1024,
+      "name": "bank_address",
+      "url": "interfaces/withdrawparams.html#bank_address",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 133,
+      "kind": 1024,
+      "name": "bank_city",
+      "url": "interfaces/withdrawparams.html#bank_city",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 134,
+      "kind": 1024,
+      "name": "bank_country",
+      "url": "interfaces/withdrawparams.html#bank_country",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 135,
+      "kind": 1024,
+      "name": "detail_payment",
+      "url": "interfaces/withdrawparams.html#detail_payment",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 136,
+      "kind": 1024,
+      "name": "expressWire",
+      "url": "interfaces/withdrawparams.html#expresswire",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 137,
+      "kind": 1024,
+      "name": "intermediary_bank_name",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_name",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 138,
+      "kind": 1024,
+      "name": "intermediary_bank_address",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_address",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 139,
+      "kind": 1024,
+      "name": "intermediary_bank_city",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_city",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 140,
+      "kind": 1024,
+      "name": "intermediary_bank_country",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_country",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 141,
+      "kind": 1024,
+      "name": "intermediary_bank_account",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_account",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 142,
+      "kind": 1024,
+      "name": "intermediary_bank_swift",
+      "url": "interfaces/withdrawparams.html#intermediary_bank_swift",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WithdrawParams"
+    },
+    {
+      "id": 143,
+      "kind": 256,
+      "name": "OrderHistoryParams",
+      "url": "interfaces/orderhistoryparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 144,
+      "kind": 1024,
+      "name": "limit",
+      "url": "interfaces/orderhistoryparams.html#limit",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderHistoryParams"
+    },
+    {
+      "id": 145,
+      "kind": 256,
+      "name": "ClaimParams",
+      "url": "interfaces/claimparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 146,
+      "kind": 1024,
+      "name": "position_id",
+      "url": "interfaces/claimparams.html#position_id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ClaimParams"
+    },
+    {
+      "id": 147,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/claimparams.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ClaimParams"
+    },
+    {
+      "id": 148,
+      "kind": 256,
+      "name": "OrderParams",
+      "url": "interfaces/orderparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 149,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/orderparams.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 150,
+      "kind": 1024,
+      "name": "price",
+      "url": "interfaces/orderparams.html#price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 151,
+      "kind": 1024,
+      "name": "side",
+      "url": "interfaces/orderparams.html#side",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 152,
+      "kind": 1024,
+      "name": "type",
+      "url": "interfaces/orderparams.html#type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 153,
+      "kind": 1024,
+      "name": "exchange",
+      "url": "interfaces/orderparams.html#exchange",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 154,
+      "kind": 1024,
+      "name": "is_hidden",
+      "url": "interfaces/orderparams.html#is_hidden",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 155,
+      "kind": 1024,
+      "name": "is_postonly",
+      "url": "interfaces/orderparams.html#is_postonly",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 156,
+      "kind": 1024,
+      "name": "use_all_available",
+      "url": "interfaces/orderparams.html#use_all_available",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 157,
+      "kind": 1024,
+      "name": "ocoorder",
+      "url": "interfaces/orderparams.html#ocoorder",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 158,
+      "kind": 1024,
+      "name": "buy_price_oco",
+      "url": "interfaces/orderparams.html#buy_price_oco",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 159,
+      "kind": 1024,
+      "name": "sell_price_oco",
+      "url": "interfaces/orderparams.html#sell_price_oco",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 160,
+      "kind": 1024,
+      "name": "lev",
+      "url": "interfaces/orderparams.html#lev",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 161,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/orderparams.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "OrderParams"
+    },
+    {
+      "id": 162,
+      "kind": 256,
+      "name": "OrdersParams",
+      "url": "interfaces/ordersparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 163,
+      "kind": 1024,
+      "name": "orders",
+      "url": "interfaces/ordersparams.html#orders",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrdersParams"
+    },
+    {
+      "id": 164,
+      "kind": 256,
+      "name": "ReplaceOrderParams",
+      "url": "interfaces/replaceorderparams.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 165,
+      "kind": 1024,
+      "name": "order_id",
+      "url": "interfaces/replaceorderparams.html#order_id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 166,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/replaceorderparams.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 167,
+      "kind": 1024,
+      "name": "price",
+      "url": "interfaces/replaceorderparams.html#price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 168,
+      "kind": 1024,
+      "name": "exchange",
+      "url": "interfaces/replaceorderparams.html#exchange",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 169,
+      "kind": 1024,
+      "name": "side",
+      "url": "interfaces/replaceorderparams.html#side",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 170,
+      "kind": 1024,
+      "name": "type",
+      "url": "interfaces/replaceorderparams.html#type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 171,
+      "kind": 1024,
+      "name": "is_hidden",
+      "url": "interfaces/replaceorderparams.html#is_hidden",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 172,
+      "kind": 1024,
+      "name": "is_postonly",
+      "url": "interfaces/replaceorderparams.html#is_postonly",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 173,
+      "kind": 1024,
+      "name": "use_remaining",
+      "url": "interfaces/replaceorderparams.html#use_remaining",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 174,
+      "kind": 1024,
+      "name": "lev",
+      "url": "interfaces/replaceorderparams.html#lev",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 175,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/replaceorderparams.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "ReplaceOrderParams"
+    },
+    {
+      "id": 176,
+      "kind": 256,
+      "name": "AccountFees",
+      "url": "interfaces/accountfees.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 177,
+      "kind": 1024,
+      "name": "withdraw",
+      "url": "interfaces/accountfees.html#withdraw",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "AccountFees"
+    },
+    {
+      "id": 178,
+      "kind": 65536,
+      "name": "__type",
+      "url": "interfaces/accountfees.html#withdraw.__type",
+      "classes": "tsd-kind-type-literal tsd-parent-kind-property",
+      "parent": "AccountFees.withdraw"
+    },
+    {
+      "id": 179,
+      "kind": 256,
+      "name": "Summary",
+      "url": "interfaces/summary.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 180,
+      "kind": 1024,
+      "name": "time",
+      "url": "interfaces/summary.html#time",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 181,
+      "kind": 1024,
+      "name": "status",
+      "url": "interfaces/summary.html#status",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 182,
+      "kind": 65536,
+      "name": "__type",
+      "url": "interfaces/summary.html#status.__type",
+      "classes": "tsd-kind-type-literal tsd-parent-kind-property",
+      "parent": "Summary.status"
+    },
+    {
+      "id": 183,
+      "kind": 32,
+      "name": "resid_hint",
+      "url": "interfaces/summary.html#status.__type.resid_hint",
+      "classes": "tsd-kind-variable tsd-parent-kind-type-literal",
+      "parent": "Summary.status.__type"
+    },
+    {
+      "id": 184,
+      "kind": 1024,
+      "name": "is_locked",
+      "url": "interfaces/summary.html#is_locked",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 185,
+      "kind": 1024,
+      "name": "trade_vol_30d",
+      "url": "interfaces/summary.html#trade_vol_30d",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 186,
+      "kind": 1024,
+      "name": "fees_funding_30d",
+      "url": "interfaces/summary.html#fees_funding_30d",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 187,
+      "kind": 1024,
+      "name": "fees_funding_total_30d",
+      "url": "interfaces/summary.html#fees_funding_total_30d",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 188,
+      "kind": 1024,
+      "name": "fees_trading_30d",
+      "url": "interfaces/summary.html#fees_trading_30d",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 189,
+      "kind": 1024,
+      "name": "fees_trading_total_30d",
+      "url": "interfaces/summary.html#fees_trading_total_30d",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 190,
+      "kind": 1024,
+      "name": "maker_fee",
+      "url": "interfaces/summary.html#maker_fee",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 191,
+      "kind": 1024,
+      "name": "taker_fee",
+      "url": "interfaces/summary.html#taker_fee",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 192,
+      "kind": 1024,
+      "name": "deriv_maker_rebate",
+      "url": "interfaces/summary.html#deriv_maker_rebate",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 193,
+      "kind": 1024,
+      "name": "deriv_taker_fee",
+      "url": "interfaces/summary.html#deriv_taker_fee",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Summary"
+    },
+    {
+      "id": 194,
+      "kind": 256,
+      "name": "DepositAddress",
+      "url": "interfaces/depositaddress.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 195,
+      "kind": 1024,
+      "name": "result",
+      "url": "interfaces/depositaddress.html#result",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositAddress"
+    },
+    {
+      "id": 196,
+      "kind": 1024,
+      "name": "method",
+      "url": "interfaces/depositaddress.html#method",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositAddress"
+    },
+    {
+      "id": 197,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/depositaddress.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositAddress"
+    },
+    {
+      "id": 198,
+      "kind": 1024,
+      "name": "address",
+      "url": "interfaces/depositaddress.html#address",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "DepositAddress"
+    },
+    {
+      "id": 199,
+      "kind": 256,
+      "name": "KeyPermission",
+      "url": "interfaces/keypermission.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 200,
+      "kind": 1024,
+      "name": "read",
+      "url": "interfaces/keypermission.html#read",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermission"
+    },
+    {
+      "id": 201,
+      "kind": 1024,
+      "name": "write",
+      "url": "interfaces/keypermission.html#write",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermission"
+    },
+    {
+      "id": 202,
+      "kind": 256,
+      "name": "KeyPermissions",
+      "url": "interfaces/keypermissions.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 203,
+      "kind": 1024,
+      "name": "account",
+      "url": "interfaces/keypermissions.html#account",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 204,
+      "kind": 1024,
+      "name": "history",
+      "url": "interfaces/keypermissions.html#history",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 205,
+      "kind": 1024,
+      "name": "orders",
+      "url": "interfaces/keypermissions.html#orders",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 206,
+      "kind": 1024,
+      "name": "positions",
+      "url": "interfaces/keypermissions.html#positions",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 207,
+      "kind": 1024,
+      "name": "funding",
+      "url": "interfaces/keypermissions.html#funding",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 208,
+      "kind": 1024,
+      "name": "wallets",
+      "url": "interfaces/keypermissions.html#wallets",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 209,
+      "kind": 1024,
+      "name": "withdraw",
+      "url": "interfaces/keypermissions.html#withdraw",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "KeyPermissions"
+    },
+    {
+      "id": 210,
+      "kind": 256,
+      "name": "MarginInformation",
+      "url": "interfaces/margininformation.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 211,
+      "kind": 1024,
+      "name": "margin_balance",
+      "url": "interfaces/margininformation.html#margin_balance",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 212,
+      "kind": 1024,
+      "name": "tradable_balance",
+      "url": "interfaces/margininformation.html#tradable_balance",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 213,
+      "kind": 1024,
+      "name": "unrealized_pl",
+      "url": "interfaces/margininformation.html#unrealized_pl",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 214,
+      "kind": 1024,
+      "name": "unrealized_swap",
+      "url": "interfaces/margininformation.html#unrealized_swap",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 215,
+      "kind": 1024,
+      "name": "net_value",
+      "url": "interfaces/margininformation.html#net_value",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 216,
+      "kind": 1024,
+      "name": "required_margin",
+      "url": "interfaces/margininformation.html#required_margin",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 217,
+      "kind": 1024,
+      "name": "leverage",
+      "url": "interfaces/margininformation.html#leverage",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 218,
+      "kind": 1024,
+      "name": "margin_requirement",
+      "url": "interfaces/margininformation.html#margin_requirement",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 219,
+      "kind": 1024,
+      "name": "margin_limits",
+      "url": "interfaces/margininformation.html#margin_limits",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 220,
+      "kind": 1024,
+      "name": "message",
+      "url": "interfaces/margininformation.html#message",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "MarginInformation"
+    },
+    {
+      "id": 221,
+      "kind": 256,
+      "name": "WalletBalance",
+      "url": "interfaces/walletbalance.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 222,
+      "kind": 1024,
+      "name": "type",
+      "url": "interfaces/walletbalance.html#type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WalletBalance"
+    },
+    {
+      "id": 223,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/walletbalance.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WalletBalance"
+    },
+    {
+      "id": 224,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/walletbalance.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WalletBalance"
+    },
+    {
+      "id": 225,
+      "kind": 1024,
+      "name": "available",
+      "url": "interfaces/walletbalance.html#available",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "WalletBalance"
+    },
+    {
+      "id": 226,
+      "kind": 256,
+      "name": "OrderResponse",
+      "url": "interfaces/orderresponse.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 227,
+      "kind": 1024,
+      "name": "id",
+      "url": "interfaces/orderresponse.html#id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 228,
+      "kind": 1024,
+      "name": "cid",
+      "url": "interfaces/orderresponse.html#cid",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 229,
+      "kind": 1024,
+      "name": "cid_date",
+      "url": "interfaces/orderresponse.html#cid_date",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 230,
+      "kind": 1024,
+      "name": "gid",
+      "url": "interfaces/orderresponse.html#gid",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 231,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/orderresponse.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 232,
+      "kind": 1024,
+      "name": "exchange",
+      "url": "interfaces/orderresponse.html#exchange",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 233,
+      "kind": 1024,
+      "name": "price",
+      "url": "interfaces/orderresponse.html#price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 234,
+      "kind": 1024,
+      "name": "avg_execution_price",
+      "url": "interfaces/orderresponse.html#avg_execution_price",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 235,
+      "kind": 1024,
+      "name": "side",
+      "url": "interfaces/orderresponse.html#side",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 236,
+      "kind": 1024,
+      "name": "type",
+      "url": "interfaces/orderresponse.html#type",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 237,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/orderresponse.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 238,
+      "kind": 1024,
+      "name": "oco_order",
+      "url": "interfaces/orderresponse.html#oco_order",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 239,
+      "kind": 1024,
+      "name": "is_live",
+      "url": "interfaces/orderresponse.html#is_live",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 240,
+      "kind": 1024,
+      "name": "is_cancelled",
+      "url": "interfaces/orderresponse.html#is_cancelled",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 241,
+      "kind": 1024,
+      "name": "is_hidden",
+      "url": "interfaces/orderresponse.html#is_hidden",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 242,
+      "kind": 1024,
+      "name": "was_forced",
+      "url": "interfaces/orderresponse.html#was_forced",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 243,
+      "kind": 1024,
+      "name": "original_amount",
+      "url": "interfaces/orderresponse.html#original_amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 244,
+      "kind": 1024,
+      "name": "remaining_amount",
+      "url": "interfaces/orderresponse.html#remaining_amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 245,
+      "kind": 1024,
+      "name": "executed_amount",
+      "url": "interfaces/orderresponse.html#executed_amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 246,
+      "kind": 1024,
+      "name": "order_id",
+      "url": "interfaces/orderresponse.html#order_id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 247,
+      "kind": 1024,
+      "name": "src",
+      "url": "interfaces/orderresponse.html#src",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 248,
+      "kind": 1024,
+      "name": "meta",
+      "url": "interfaces/orderresponse.html#meta",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "OrderResponse"
+    },
+    {
+      "id": 249,
+      "kind": 256,
+      "name": "NewOrdersResponse",
+      "url": "interfaces/newordersresponse.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 250,
+      "kind": 1024,
+      "name": "order_ids",
+      "url": "interfaces/newordersresponse.html#order_ids",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "NewOrdersResponse"
+    },
+    {
+      "id": 251,
+      "kind": 1024,
+      "name": "status",
+      "url": "interfaces/newordersresponse.html#status",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "NewOrdersResponse"
+    },
+    {
+      "id": 252,
+      "kind": 256,
+      "name": "Position",
+      "url": "interfaces/position.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 253,
+      "kind": 1024,
+      "name": "id",
+      "url": "interfaces/position.html#id",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 254,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/position.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 255,
+      "kind": 1024,
+      "name": "status",
+      "url": "interfaces/position.html#status",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 256,
+      "kind": 1024,
+      "name": "base",
+      "url": "interfaces/position.html#base",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 257,
+      "kind": 1024,
+      "name": "amount",
+      "url": "interfaces/position.html#amount",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 258,
+      "kind": 1024,
+      "name": "timestamp",
+      "url": "interfaces/position.html#timestamp",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 259,
+      "kind": 1024,
+      "name": "swap",
+      "url": "interfaces/position.html#swap",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 260,
+      "kind": 1024,
+      "name": "pl",
+      "url": "interfaces/position.html#pl",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "Position"
+    },
+    {
+      "id": 261,
+      "kind": 256,
+      "name": "AuthenticatedClient1Options",
+      "url": "interfaces/authenticatedclient1options.html",
+      "classes": "tsd-kind-interface"
+    },
+    {
+      "id": 262,
+      "kind": 1024,
+      "name": "key",
+      "url": "interfaces/authenticatedclient1options.html#key",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "AuthenticatedClient1Options"
+    },
+    {
+      "id": 263,
+      "kind": 1024,
+      "name": "secret",
+      "url": "interfaces/authenticatedclient1options.html#secret",
+      "classes": "tsd-kind-property tsd-parent-kind-interface",
+      "parent": "AuthenticatedClient1Options"
+    },
+    {
+      "id": 264,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "interfaces/authenticatedclient1options.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "AuthenticatedClient1Options"
+    },
+    {
+      "id": 265,
+      "kind": 1024,
+      "name": "timeout",
+      "url": "interfaces/authenticatedclient1options.html#timeout",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "AuthenticatedClient1Options"
+    },
+    {
+      "id": 266,
+      "kind": 1024,
+      "name": "currency",
+      "url": "interfaces/authenticatedclient1options.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-interface tsd-is-inherited",
+      "parent": "AuthenticatedClient1Options"
+    },
+    {
+      "id": 267,
+      "kind": 128,
+      "name": "AuthenticatedClient1",
+      "url": "classes/authenticatedclient1.html",
+      "classes": "tsd-kind-class"
+    },
+    {
+      "id": 268,
+      "kind": 1024,
+      "name": "#key",
+      "url": "classes/authenticatedclient1.html#_key",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-private",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 269,
+      "kind": 1024,
+      "name": "#secret",
+      "url": "classes/authenticatedclient1.html#_secret",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-private",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 270,
+      "kind": 1024,
+      "name": "#nonce",
+      "url": "classes/authenticatedclient1.html#_nonce",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-private",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 271,
+      "kind": 65536,
+      "name": "__type",
+      "url": "classes/authenticatedclient1.html#_nonce.__type",
+      "classes": "tsd-kind-type-literal tsd-parent-kind-property",
+      "parent": "AuthenticatedClient1.#nonce"
+    },
+    {
+      "id": 272,
+      "kind": 512,
+      "name": "constructor",
+      "url": "classes/authenticatedclient1.html#constructor",
+      "classes": "tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 273,
+      "kind": 2048,
+      "name": "post",
+      "url": "classes/authenticatedclient1.html#post",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 274,
+      "kind": 2048,
+      "name": "getAccountInfo",
+      "url": "classes/authenticatedclient1.html#getaccountinfo",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 275,
+      "kind": 2048,
+      "name": "getAccountFees",
+      "url": "classes/authenticatedclient1.html#getaccountfees",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 276,
+      "kind": 2048,
+      "name": "getSummary",
+      "url": "classes/authenticatedclient1.html#getsummary",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 277,
+      "kind": 2048,
+      "name": "getDepositAddress",
+      "url": "classes/authenticatedclient1.html#getdepositaddress",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 278,
+      "kind": 2048,
+      "name": "getKeyPermissions",
+      "url": "classes/authenticatedclient1.html#getkeypermissions",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 279,
+      "kind": 2048,
+      "name": "getMarginInformation",
+      "url": "classes/authenticatedclient1.html#getmargininformation",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 280,
+      "kind": 2048,
+      "name": "getWalletBalances",
+      "url": "classes/authenticatedclient1.html#getwalletbalances",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 281,
+      "kind": 2048,
+      "name": "transfer",
+      "url": "classes/authenticatedclient1.html#transfer",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 282,
+      "kind": 2048,
+      "name": "withdraw",
+      "url": "classes/authenticatedclient1.html#withdraw",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 283,
+      "kind": 2048,
+      "name": "newOrder",
+      "url": "classes/authenticatedclient1.html#neworder",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 284,
+      "kind": 2048,
+      "name": "newOrders",
+      "url": "classes/authenticatedclient1.html#neworders",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 285,
+      "kind": 2048,
+      "name": "cancelOrder",
+      "url": "classes/authenticatedclient1.html#cancelorder",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 286,
+      "kind": 2048,
+      "name": "cancelOrders",
+      "url": "classes/authenticatedclient1.html#cancelorders",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 287,
+      "kind": 2048,
+      "name": "cancelAllOrders",
+      "url": "classes/authenticatedclient1.html#cancelallorders",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 288,
+      "kind": 2048,
+      "name": "replaceOrder",
+      "url": "classes/authenticatedclient1.html#replaceorder",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 289,
+      "kind": 2048,
+      "name": "getOrder",
+      "url": "classes/authenticatedclient1.html#getorder",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 290,
+      "kind": 2048,
+      "name": "getOrders",
+      "url": "classes/authenticatedclient1.html#getorders",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 291,
+      "kind": 2048,
+      "name": "getOrderHistory",
+      "url": "classes/authenticatedclient1.html#getorderhistory",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 292,
+      "kind": 2048,
+      "name": "getPositions",
+      "url": "classes/authenticatedclient1.html#getpositions",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 293,
+      "kind": 2048,
+      "name": "claimPosition",
+      "url": "classes/authenticatedclient1.html#claimposition",
+      "classes": "tsd-kind-method tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 294,
+      "kind": 262144,
+      "name": "nonce",
+      "url": "classes/authenticatedclient1.html#nonce",
+      "classes": "tsd-kind-accessor tsd-parent-kind-class",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 295,
+      "kind": 1024,
+      "name": "symbol",
+      "url": "classes/authenticatedclient1.html#symbol",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 296,
+      "kind": 1024,
+      "name": "currency",
+      "url": "classes/authenticatedclient1.html#currency",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 297,
+      "kind": 2048,
+      "name": "getTicker",
+      "url": "classes/authenticatedclient1.html#getticker",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 298,
+      "kind": 2048,
+      "name": "getStats",
+      "url": "classes/authenticatedclient1.html#getstats",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 299,
+      "kind": 2048,
+      "name": "getFundingBook",
+      "url": "classes/authenticatedclient1.html#getfundingbook",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 300,
+      "kind": 2048,
+      "name": "getOrderBook",
+      "url": "classes/authenticatedclient1.html#getorderbook",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 301,
+      "kind": 2048,
+      "name": "getTrades",
+      "url": "classes/authenticatedclient1.html#gettrades",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 302,
+      "kind": 2048,
+      "name": "getLends",
+      "url": "classes/authenticatedclient1.html#getlends",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 303,
+      "kind": 2048,
+      "name": "getSymbols",
+      "url": "classes/authenticatedclient1.html#getsymbols",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 304,
+      "kind": 2048,
+      "name": "getSymbolDetails",
+      "url": "classes/authenticatedclient1.html#getsymboldetails",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 305,
+      "kind": 2048,
+      "name": "addOptions",
+      "url": "classes/authenticatedclient1.html#addoptions",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected tsd-is-static",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 306,
+      "kind": 1024,
+      "name": "#private",
+      "url": "classes/authenticatedclient1.html#_private",
+      "classes": "tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 307,
+      "kind": 262144,
+      "name": "fetchOptions",
+      "url": "classes/authenticatedclient1.html#fetchoptions",
+      "classes": "tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 308,
+      "kind": 2048,
+      "name": "get",
+      "url": "classes/authenticatedclient1.html#get",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 309,
+      "kind": 2048,
+      "name": "head",
+      "url": "classes/authenticatedclient1.html#head",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 310,
+      "kind": 2048,
+      "name": "put",
+      "url": "classes/authenticatedclient1.html#put",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 311,
+      "kind": 2048,
+      "name": "delete",
+      "url": "classes/authenticatedclient1.html#delete",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 312,
+      "kind": 2048,
+      "name": "options",
+      "url": "classes/authenticatedclient1.html#options",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 313,
+      "kind": 2048,
+      "name": "trace",
+      "url": "classes/authenticatedclient1.html#trace",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 314,
+      "kind": 2048,
+      "name": "patch",
+      "url": "classes/authenticatedclient1.html#patch",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 315,
+      "kind": 2048,
+      "name": "fetch",
+      "url": "classes/authenticatedclient1.html#fetch",
+      "classes": "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
+      "parent": "AuthenticatedClient1"
+    },
+    {
+      "id": 316,
+      "kind": 32,
+      "name": "aff_code",
+      "url": "globals.html#aff_code",
+      "classes": "tsd-kind-variable"
+    },
+    {
+      "id": 317,
+      "kind": 4194304,
+      "name": "OrderType",
+      "url": "globals.html#ordertype",
+      "classes": "tsd-kind-type-alias"
+    },
+    {
+      "id": 318,
+      "kind": 4194304,
+      "name": "AccountInfo",
+      "url": "globals.html#accountinfo",
+      "classes": "tsd-kind-type-alias"
+    },
+    {
+      "id": 319,
+      "kind": 4194304,
+      "name": "TransferResponse",
+      "url": "globals.html#transferresponse",
+      "classes": "tsd-kind-type-alias"
+    },
+    {
+      "id": 320,
+      "kind": 4194304,
+      "name": "WithdrawResponse",
+      "url": "globals.html#withdrawresponse",
+      "classes": "tsd-kind-type-alias"
+    }
+  ],
+  "index": {
+    "version": "2.3.9",
+    "fields": ["name", "parent"],
+    "fieldVectors": [
+      ["name/0", [0, 48.95]],
+      ["parent/0", []],
+      ["name/1", [1, 33.574]],
+      ["parent/1", [0, 4.532]],
+      ["name/2", [2, 31.959]],
+      ["parent/2", []],
+      ["name/3", [2, 31.959]],
+      ["parent/3", [2, 2.959]],
+      ["name/4", [3, 39.323]],
+      ["parent/4", []],
+      ["name/5", [4, 48.95]],
+      ["parent/5", [3, 3.641]],
+      ["name/6", [5, 48.95]],
+      ["parent/6", [3, 3.641]],
+      ["name/7", [2, 31.959]],
+      ["parent/7", [3, 3.641]],
+      ["name/8", [6, 37.881]],
+      ["parent/8", []],
+      ["name/9", [4, 48.95]],
+      ["parent/9", [6, 3.507]],
+      ["name/10", [5, 48.95]],
+      ["parent/10", [6, 3.507]],
+      ["name/11", [7, 54.097]],
+      ["parent/11", [6, 3.507]],
+      ["name/12", [1, 33.574]],
+      ["parent/12", [6, 3.507]],
+      ["name/13", [8, 39.323]],
+      ["parent/13", []],
+      ["name/14", [9, 35.499]],
+      ["parent/14", [8, 3.641]],
+      ["name/15", [10, 54.097]],
+      ["parent/15", [8, 3.641]],
+      ["name/16", [1, 33.574]],
+      ["parent/16", [8, 3.641]],
+      ["name/17", [11, 39.323]],
+      ["parent/17", []],
+      ["name/18", [9, 35.499]],
+      ["parent/18", [11, 3.641]],
+      ["name/19", [12, 54.097]],
+      ["parent/19", [11, 3.641]],
+      ["name/20", [2, 31.959]],
+      ["parent/20", [11, 3.641]],
+      ["name/21", [13, 35.499]],
+      ["parent/21", []],
+      ["name/22", [14, 54.097]],
+      ["parent/22", [13, 3.287]],
+      ["name/23", [15, 54.097]],
+      ["parent/23", [13, 3.287]],
+      ["name/24", [16, 54.097]],
+      ["parent/24", [13, 3.287]],
+      ["name/25", [17, 54.097]],
+      ["parent/25", [13, 3.287]],
+      ["name/26", [18, 54.097]],
+      ["parent/26", [13, 3.287]],
+      ["name/27", [19, 54.097]],
+      ["parent/27", [13, 3.287]],
+      ["name/28", [20, 48.95]],
+      ["parent/28", [13, 3.287]],
+      ["name/29", [9, 35.499]],
+      ["parent/29", [13, 3.287]],
+      ["name/30", [21, 45.56]],
+      ["parent/30", []],
+      ["name/31", [22, 48.95]],
+      ["parent/31", [21, 4.218]],
+      ["name/32", [20, 48.95]],
+      ["parent/32", [21, 4.218]],
+      ["name/33", [23, 39.323]],
+      ["parent/33", []],
+      ["name/34", [24, 48.95]],
+      ["parent/34", [23, 3.641]],
+      ["name/35", [25, 34.491]],
+      ["parent/35", [23, 3.641]],
+      ["name/36", [22, 48.95]],
+      ["parent/36", [23, 3.641]],
+      ["name/37", [9, 35.499]],
+      ["parent/37", [23, 3.641]],
+      ["name/38", [26, 54.097]],
+      ["parent/38", [23, 3.641]],
+      ["name/39", [27, 45.56]],
+      ["parent/39", []],
+      ["name/40", [28, 48.95]],
+      ["parent/40", [27, 4.218]],
+      ["name/41", [29, 48.95]],
+      ["parent/41", [27, 4.218]],
+      ["name/42", [30, 43.028]],
+      ["parent/42", []],
+      ["name/43", [31, 41.006]],
+      ["parent/43", [30, 3.984]],
+      ["name/44", [25, 34.491]],
+      ["parent/44", [30, 3.984]],
+      ["name/45", [9, 35.499]],
+      ["parent/45", [30, 3.984]],
+      ["name/46", [32, 45.56]],
+      ["parent/46", []],
+      ["name/47", [28, 48.95]],
+      ["parent/47", [32, 4.218]],
+      ["name/48", [29, 48.95]],
+      ["parent/48", [32, 4.218]],
+      ["name/49", [33, 37.881]],
+      ["parent/49", []],
+      ["name/50", [9, 35.499]],
+      ["parent/50", [33, 3.507]],
+      ["name/51", [34, 54.097]],
+      ["parent/51", [33, 3.507]],
+      ["name/52", [31, 41.006]],
+      ["parent/52", [33, 3.507]],
+      ["name/53", [25, 34.491]],
+      ["parent/53", [33, 3.507]],
+      ["name/54", [35, 43.028]],
+      ["parent/54", [33, 3.507]],
+      ["name/55", [36, 41.006]],
+      ["parent/55", [33, 3.507]],
+      ["name/56", [37, 41.006]],
+      ["parent/56", []],
+      ["name/57", [24, 48.95]],
+      ["parent/57", [37, 3.797]],
+      ["name/58", [38, 54.097]],
+      ["parent/58", [37, 3.797]],
+      ["name/59", [39, 54.097]],
+      ["parent/59", [37, 3.797]],
+      ["name/60", [9, 35.499]],
+      ["parent/60", [37, 3.797]],
+      ["name/61", [40, 35.499]],
+      ["parent/61", []],
+      ["name/62", [41, 54.097]],
+      ["parent/62", [40, 3.287]],
+      ["name/63", [42, 54.097]],
+      ["parent/63", [40, 3.287]],
+      ["name/64", [43, 54.097]],
+      ["parent/64", [40, 3.287]],
+      ["name/65", [44, 54.097]],
+      ["parent/65", [40, 3.287]],
+      ["name/66", [45, 54.097]],
+      ["parent/66", [40, 3.287]],
+      ["name/67", [46, 54.097]],
+      ["parent/67", [40, 3.287]],
+      ["name/68", [47, 54.097]],
+      ["parent/68", [40, 3.287]],
+      ["name/69", [48, 54.097]],
+      ["parent/69", [40, 3.287]],
+      ["name/70", [49, 43.028]],
+      ["parent/70", []],
+      ["name/71", [1, 33.574]],
+      ["parent/71", [49, 3.984]],
+      ["name/72", [50, 48.95]],
+      ["parent/72", [49, 3.984]],
+      ["name/73", [2, 31.959]],
+      ["parent/73", [49, 3.984]],
+      ["name/74", [51, 25.954]],
+      ["parent/74", []],
+      ["name/75", [1, 33.574]],
+      ["parent/75", [51, 2.403]],
+      ["name/76", [2, 31.959]],
+      ["parent/76", [51, 2.403]],
+      ["name/77", [52, 48.95]],
+      ["parent/77", [51, 2.403]],
+      ["name/78", [53, 48.95]],
+      ["parent/78", [51, 2.403]],
+      ["name/79", [54, 48.95]],
+      ["parent/79", [51, 2.403]],
+      ["name/80", [3, 39.323]],
+      ["parent/80", [51, 2.403]],
+      ["name/81", [6, 37.881]],
+      ["parent/81", [51, 2.403]],
+      ["name/82", [8, 39.323]],
+      ["parent/82", [51, 2.403]],
+      ["name/83", [11, 39.323]],
+      ["parent/83", [51, 2.403]],
+      ["name/84", [55, 48.95]],
+      ["parent/84", [51, 2.403]],
+      ["name/85", [56, 48.95]],
+      ["parent/85", [51, 2.403]],
+      ["name/86", [57, 48.95]],
+      ["parent/86", [51, 2.403]],
+      ["name/87", [58, 48.95]],
+      ["parent/87", [51, 2.403]],
+      ["name/88", [59, 48.95]],
+      ["parent/88", [51, 2.403]],
+      ["name/89", [60, 48.95]],
+      ["parent/89", [51, 2.403]],
+      ["name/90", [61, 48.95]],
+      ["parent/90", [51, 2.403]],
+      ["name/91", [62, 48.95]],
+      ["parent/91", [51, 2.403]],
+      ["name/92", [63, 48.95]],
+      ["parent/92", [51, 2.403]],
+      ["name/93", [64, 48.95]],
+      ["parent/93", [51, 2.403]],
+      ["name/94", [65, 48.95]],
+      ["parent/94", [51, 2.403]],
+      ["name/95", [66, 48.95]],
+      ["parent/95", [51, 2.403]],
+      ["name/96", [67, 48.95]],
+      ["parent/96", [51, 2.403]],
+      ["name/97", [68, 48.95]],
+      ["parent/97", [51, 2.403]],
+      ["name/98", [69, 54.097]],
+      ["parent/98", []],
+      ["name/99", [70, 54.097]],
+      ["parent/99", []],
+      ["name/100", [71, 54.097]],
+      ["parent/100", []],
+      ["name/101", [72, 48.95]],
+      ["parent/101", []],
+      ["name/102", [73, 41.006]],
+      ["parent/102", [72, 4.532]],
+      ["name/103", [74, 45.56]],
+      ["parent/103", [75, 4.218]],
+      ["name/104", [76, 45.56]],
+      ["parent/104", [75, 4.218]],
+      ["name/105", [77, 48.95]],
+      ["parent/105", [75, 4.218]],
+      ["name/106", [78, 48.95]],
+      ["parent/106", []],
+      ["name/107", [73, 41.006]],
+      ["parent/107", [78, 4.532]],
+      ["name/108", [79, 25.182, 80, 25.182, 81, 29.9]],
+      ["parent/108", [82, 4.218]],
+      ["name/109", [77, 27.056, 79, 25.182, 80, 25.182]],
+      ["parent/109", [82, 4.218]],
+      ["name/110", [79, 25.182, 80, 25.182, 83, 29.9]],
+      ["parent/110", [82, 4.218]],
+      ["name/111", [84, 54.097]],
+      ["parent/111", []],
+      ["name/112", [85, 43.028]],
+      ["parent/112", []],
+      ["name/113", [86, 48.95]],
+      ["parent/113", [85, 3.984]],
+      ["name/114", [87, 54.097]],
+      ["parent/114", [85, 3.984]],
+      ["name/115", [88, 54.097]],
+      ["parent/115", [85, 3.984]],
+      ["name/116", [89, 41.006]],
+      ["parent/116", []],
+      ["name/117", [25, 34.491]],
+      ["parent/117", [89, 3.797]],
+      ["name/118", [90, 54.097]],
+      ["parent/118", [89, 3.797]],
+      ["name/119", [91, 54.097]],
+      ["parent/119", [89, 3.797]],
+      ["name/120", [2, 31.959]],
+      ["parent/120", [89, 3.797]],
+      ["name/121", [92, 26.812]],
+      ["parent/121", []],
+      ["name/122", [93, 54.097]],
+      ["parent/122", [92, 2.482]],
+      ["name/123", [94, 54.097]],
+      ["parent/123", [92, 2.482]],
+      ["name/124", [25, 34.491]],
+      ["parent/124", [92, 2.482]],
+      ["name/125", [95, 48.95]],
+      ["parent/125", [92, 2.482]],
+      ["name/126", [2, 31.959]],
+      ["parent/126", [92, 2.482]],
+      ["name/127", [96, 54.097]],
+      ["parent/127", [92, 2.482]],
+      ["name/128", [97, 54.097]],
+      ["parent/128", [92, 2.482]],
+      ["name/129", [98, 54.097]],
+      ["parent/129", [92, 2.482]],
+      ["name/130", [99, 54.097]],
+      ["parent/130", [92, 2.482]],
+      ["name/131", [100, 54.097]],
+      ["parent/131", [92, 2.482]],
+      ["name/132", [101, 54.097]],
+      ["parent/132", [92, 2.482]],
+      ["name/133", [102, 54.097]],
+      ["parent/133", [92, 2.482]],
+      ["name/134", [103, 54.097]],
+      ["parent/134", [92, 2.482]],
+      ["name/135", [104, 54.097]],
+      ["parent/135", [92, 2.482]],
+      ["name/136", [105, 54.097]],
+      ["parent/136", [92, 2.482]],
+      ["name/137", [106, 54.097]],
+      ["parent/137", [92, 2.482]],
+      ["name/138", [107, 54.097]],
+      ["parent/138", [92, 2.482]],
+      ["name/139", [108, 54.097]],
+      ["parent/139", [92, 2.482]],
+      ["name/140", [109, 54.097]],
+      ["parent/140", [92, 2.482]],
+      ["name/141", [110, 54.097]],
+      ["parent/141", [92, 2.482]],
+      ["name/142", [111, 54.097]],
+      ["parent/142", [92, 2.482]],
+      ["name/143", [112, 48.95]],
+      ["parent/143", []],
+      ["name/144", [113, 54.097]],
+      ["parent/144", [112, 4.532]],
+      ["name/145", [114, 45.56]],
+      ["parent/145", []],
+      ["name/146", [115, 54.097]],
+      ["parent/146", [114, 4.218]],
+      ["name/147", [25, 34.491]],
+      ["parent/147", [114, 4.218]],
+      ["name/148", [116, 31.239]],
+      ["parent/148", []],
+      ["name/149", [25, 34.491]],
+      ["parent/149", [116, 2.892]],
+      ["name/150", [31, 41.006]],
+      ["parent/150", [116, 2.892]],
+      ["name/151", [117, 45.56]],
+      ["parent/151", [116, 2.892]],
+      ["name/152", [36, 41.006]],
+      ["parent/152", [116, 2.892]],
+      ["name/153", [35, 43.028]],
+      ["parent/153", [116, 2.892]],
+      ["name/154", [118, 45.56]],
+      ["parent/154", [116, 2.892]],
+      ["name/155", [119, 48.95]],
+      ["parent/155", [116, 2.892]],
+      ["name/156", [120, 54.097]],
+      ["parent/156", [116, 2.892]],
+      ["name/157", [121, 54.097]],
+      ["parent/157", [116, 2.892]],
+      ["name/158", [122, 54.097]],
+      ["parent/158", [116, 2.892]],
+      ["name/159", [123, 54.097]],
+      ["parent/159", [116, 2.892]],
+      ["name/160", [124, 48.95]],
+      ["parent/160", [116, 2.892]],
+      ["name/161", [1, 33.574]],
+      ["parent/161", [116, 2.892]],
+      ["name/162", [125, 48.95]],
+      ["parent/162", []],
+      ["name/163", [126, 48.95]],
+      ["parent/163", [125, 4.532]],
+      ["name/164", [127, 32.734]],
+      ["parent/164", []],
+      ["name/165", [128, 48.95]],
+      ["parent/165", [127, 3.031]],
+      ["name/166", [25, 34.491]],
+      ["parent/166", [127, 3.031]],
+      ["name/167", [31, 41.006]],
+      ["parent/167", [127, 3.031]],
+      ["name/168", [35, 43.028]],
+      ["parent/168", [127, 3.031]],
+      ["name/169", [117, 45.56]],
+      ["parent/169", [127, 3.031]],
+      ["name/170", [36, 41.006]],
+      ["parent/170", [127, 3.031]],
+      ["name/171", [118, 45.56]],
+      ["parent/171", [127, 3.031]],
+      ["name/172", [119, 48.95]],
+      ["parent/172", [127, 3.031]],
+      ["name/173", [129, 54.097]],
+      ["parent/173", [127, 3.031]],
+      ["name/174", [124, 48.95]],
+      ["parent/174", [127, 3.031]],
+      ["name/175", [1, 33.574]],
+      ["parent/175", [127, 3.031]],
+      ["name/176", [130, 48.95]],
+      ["parent/176", []],
+      ["name/177", [131, 45.56]],
+      ["parent/177", [130, 4.532]],
+      ["name/178", [73, 41.006]],
+      ["parent/178", [132, 5.009]],
+      ["name/179", [133, 31.959]],
+      ["parent/179", []],
+      ["name/180", [134, 54.097]],
+      ["parent/180", [133, 2.959]],
+      ["name/181", [135, 45.56]],
+      ["parent/181", [133, 2.959]],
+      ["name/182", [73, 41.006]],
+      ["parent/182", [136, 5.009]],
+      ["name/183", [137, 54.097]],
+      ["parent/183", [138, 5.009]],
+      ["name/184", [139, 54.097]],
+      ["parent/184", [133, 2.959]],
+      ["name/185", [140, 54.097]],
+      ["parent/185", [133, 2.959]],
+      ["name/186", [141, 54.097]],
+      ["parent/186", [133, 2.959]],
+      ["name/187", [142, 54.097]],
+      ["parent/187", [133, 2.959]],
+      ["name/188", [143, 54.097]],
+      ["parent/188", [133, 2.959]],
+      ["name/189", [144, 54.097]],
+      ["parent/189", [133, 2.959]],
+      ["name/190", [145, 54.097]],
+      ["parent/190", [133, 2.959]],
+      ["name/191", [146, 54.097]],
+      ["parent/191", [133, 2.959]],
+      ["name/192", [147, 54.097]],
+      ["parent/192", [133, 2.959]],
+      ["name/193", [148, 54.097]],
+      ["parent/193", [133, 2.959]],
+      ["name/194", [149, 41.006]],
+      ["parent/194", []],
+      ["name/195", [150, 54.097]],
+      ["parent/195", [149, 3.797]],
+      ["name/196", [86, 48.95]],
+      ["parent/196", [149, 3.797]],
+      ["name/197", [2, 31.959]],
+      ["parent/197", [149, 3.797]],
+      ["name/198", [95, 48.95]],
+      ["parent/198", [149, 3.797]],
+      ["name/199", [151, 45.56]],
+      ["parent/199", []],
+      ["name/200", [152, 54.097]],
+      ["parent/200", [151, 4.218]],
+      ["name/201", [153, 54.097]],
+      ["parent/201", [151, 4.218]],
+      ["name/202", [154, 36.62]],
+      ["parent/202", []],
+      ["name/203", [155, 54.097]],
+      ["parent/203", [154, 3.391]],
+      ["name/204", [156, 54.097]],
+      ["parent/204", [154, 3.391]],
+      ["name/205", [126, 48.95]],
+      ["parent/205", [154, 3.391]],
+      ["name/206", [157, 54.097]],
+      ["parent/206", [154, 3.391]],
+      ["name/207", [158, 54.097]],
+      ["parent/207", [154, 3.391]],
+      ["name/208", [159, 54.097]],
+      ["parent/208", [154, 3.391]],
+      ["name/209", [131, 45.56]],
+      ["parent/209", [154, 3.391]],
+      ["name/210", [160, 33.574]],
+      ["parent/210", []],
+      ["name/211", [161, 54.097]],
+      ["parent/211", [160, 3.109]],
+      ["name/212", [162, 54.097]],
+      ["parent/212", [160, 3.109]],
+      ["name/213", [163, 54.097]],
+      ["parent/213", [160, 3.109]],
+      ["name/214", [164, 54.097]],
+      ["parent/214", [160, 3.109]],
+      ["name/215", [165, 54.097]],
+      ["parent/215", [160, 3.109]],
+      ["name/216", [166, 54.097]],
+      ["parent/216", [160, 3.109]],
+      ["name/217", [167, 54.097]],
+      ["parent/217", [160, 3.109]],
+      ["name/218", [168, 54.097]],
+      ["parent/218", [160, 3.109]],
+      ["name/219", [169, 54.097]],
+      ["parent/219", [160, 3.109]],
+      ["name/220", [170, 54.097]],
+      ["parent/220", [160, 3.109]],
+      ["name/221", [171, 41.006]],
+      ["parent/221", []],
+      ["name/222", [36, 41.006]],
+      ["parent/222", [171, 3.797]],
+      ["name/223", [2, 31.959]],
+      ["parent/223", [171, 3.797]],
+      ["name/224", [25, 34.491]],
+      ["parent/224", [171, 3.797]],
+      ["name/225", [172, 54.097]],
+      ["parent/225", [171, 3.797]],
+      ["name/226", [173, 26.373]],
+      ["parent/226", []],
+      ["name/227", [174, 48.95]],
+      ["parent/227", [173, 2.442]],
+      ["name/228", [175, 54.097]],
+      ["parent/228", [173, 2.442]],
+      ["name/229", [176, 54.097]],
+      ["parent/229", [173, 2.442]],
+      ["name/230", [177, 54.097]],
+      ["parent/230", [173, 2.442]],
+      ["name/231", [1, 33.574]],
+      ["parent/231", [173, 2.442]],
+      ["name/232", [35, 43.028]],
+      ["parent/232", [173, 2.442]],
+      ["name/233", [31, 41.006]],
+      ["parent/233", [173, 2.442]],
+      ["name/234", [178, 54.097]],
+      ["parent/234", [173, 2.442]],
+      ["name/235", [117, 45.56]],
+      ["parent/235", [173, 2.442]],
+      ["name/236", [36, 41.006]],
+      ["parent/236", [173, 2.442]],
+      ["name/237", [9, 35.499]],
+      ["parent/237", [173, 2.442]],
+      ["name/238", [179, 54.097]],
+      ["parent/238", [173, 2.442]],
+      ["name/239", [180, 54.097]],
+      ["parent/239", [173, 2.442]],
+      ["name/240", [181, 54.097]],
+      ["parent/240", [173, 2.442]],
+      ["name/241", [118, 45.56]],
+      ["parent/241", [173, 2.442]],
+      ["name/242", [182, 54.097]],
+      ["parent/242", [173, 2.442]],
+      ["name/243", [183, 54.097]],
+      ["parent/243", [173, 2.442]],
+      ["name/244", [184, 54.097]],
+      ["parent/244", [173, 2.442]],
+      ["name/245", [185, 54.097]],
+      ["parent/245", [173, 2.442]],
+      ["name/246", [128, 48.95]],
+      ["parent/246", [173, 2.442]],
+      ["name/247", [186, 54.097]],
+      ["parent/247", [173, 2.442]],
+      ["name/248", [187, 54.097]],
+      ["parent/248", [173, 2.442]],
+      ["name/249", [188, 45.56]],
+      ["parent/249", []],
+      ["name/250", [189, 54.097]],
+      ["parent/250", [188, 4.218]],
+      ["name/251", [135, 45.56]],
+      ["parent/251", [188, 4.218]],
+      ["name/252", [190, 35.499]],
+      ["parent/252", []],
+      ["name/253", [174, 48.95]],
+      ["parent/253", [190, 3.287]],
+      ["name/254", [1, 33.574]],
+      ["parent/254", [190, 3.287]],
+      ["name/255", [135, 45.56]],
+      ["parent/255", [190, 3.287]],
+      ["name/256", [191, 54.097]],
+      ["parent/256", [190, 3.287]],
+      ["name/257", [25, 34.491]],
+      ["parent/257", [190, 3.287]],
+      ["name/258", [9, 35.499]],
+      ["parent/258", [190, 3.287]],
+      ["name/259", [192, 54.097]],
+      ["parent/259", [190, 3.287]],
+      ["name/260", [193, 54.097]],
+      ["parent/260", [190, 3.287]],
+      ["name/261", [194, 39.323]],
+      ["parent/261", []],
+      ["name/262", [74, 45.56]],
+      ["parent/262", [194, 3.641]],
+      ["name/263", [76, 45.56]],
+      ["parent/263", [194, 3.641]],
+      ["name/264", [1, 33.574]],
+      ["parent/264", [194, 3.641]],
+      ["name/265", [50, 48.95]],
+      ["parent/265", [194, 3.641]],
+      ["name/266", [2, 31.959]],
+      ["parent/266", [194, 3.641]],
+      ["name/267", [195, 19.073]],
+      ["parent/267", []],
+      ["name/268", [74, 45.56]],
+      ["parent/268", [195, 1.766]],
+      ["name/269", [76, 45.56]],
+      ["parent/269", [195, 1.766]],
+      ["name/270", [196, 48.95]],
+      ["parent/270", [195, 1.766]],
+      ["name/271", [73, 41.006]],
+      ["parent/271", [197, 5.009]],
+      ["name/272", [52, 48.95]],
+      ["parent/272", [195, 1.766]],
+      ["name/273", [62, 48.95]],
+      ["parent/273", [195, 1.766]],
+      ["name/274", [198, 54.097]],
+      ["parent/274", [195, 1.766]],
+      ["name/275", [199, 54.097]],
+      ["parent/275", [195, 1.766]],
+      ["name/276", [200, 54.097]],
+      ["parent/276", [195, 1.766]],
+      ["name/277", [201, 54.097]],
+      ["parent/277", [195, 1.766]],
+      ["name/278", [202, 54.097]],
+      ["parent/278", [195, 1.766]],
+      ["name/279", [203, 54.097]],
+      ["parent/279", [195, 1.766]],
+      ["name/280", [204, 54.097]],
+      ["parent/280", [195, 1.766]],
+      ["name/281", [205, 54.097]],
+      ["parent/281", [195, 1.766]],
+      ["name/282", [131, 45.56]],
+      ["parent/282", [195, 1.766]],
+      ["name/283", [206, 54.097]],
+      ["parent/283", [195, 1.766]],
+      ["name/284", [207, 54.097]],
+      ["parent/284", [195, 1.766]],
+      ["name/285", [208, 54.097]],
+      ["parent/285", [195, 1.766]],
+      ["name/286", [209, 54.097]],
+      ["parent/286", [195, 1.766]],
+      ["name/287", [210, 54.097]],
+      ["parent/287", [195, 1.766]],
+      ["name/288", [211, 54.097]],
+      ["parent/288", [195, 1.766]],
+      ["name/289", [212, 54.097]],
+      ["parent/289", [195, 1.766]],
+      ["name/290", [213, 54.097]],
+      ["parent/290", [195, 1.766]],
+      ["name/291", [214, 54.097]],
+      ["parent/291", [195, 1.766]],
+      ["name/292", [215, 54.097]],
+      ["parent/292", [195, 1.766]],
+      ["name/293", [216, 54.097]],
+      ["parent/293", [195, 1.766]],
+      ["name/294", [196, 48.95]],
+      ["parent/294", [195, 1.766]],
+      ["name/295", [1, 33.574]],
+      ["parent/295", [195, 1.766]],
+      ["name/296", [2, 31.959]],
+      ["parent/296", [195, 1.766]],
+      ["name/297", [53, 48.95]],
+      ["parent/297", [195, 1.766]],
+      ["name/298", [54, 48.95]],
+      ["parent/298", [195, 1.766]],
+      ["name/299", [3, 39.323]],
+      ["parent/299", [195, 1.766]],
+      ["name/300", [6, 37.881]],
+      ["parent/300", [195, 1.766]],
+      ["name/301", [8, 39.323]],
+      ["parent/301", [195, 1.766]],
+      ["name/302", [11, 39.323]],
+      ["parent/302", [195, 1.766]],
+      ["name/303", [55, 48.95]],
+      ["parent/303", [195, 1.766]],
+      ["name/304", [56, 48.95]],
+      ["parent/304", [195, 1.766]],
+      ["name/305", [57, 48.95]],
+      ["parent/305", [195, 1.766]],
+      ["name/306", [58, 48.95]],
+      ["parent/306", [195, 1.766]],
+      ["name/307", [59, 48.95]],
+      ["parent/307", [195, 1.766]],
+      ["name/308", [60, 48.95]],
+      ["parent/308", [195, 1.766]],
+      ["name/309", [61, 48.95]],
+      ["parent/309", [195, 1.766]],
+      ["name/310", [63, 48.95]],
+      ["parent/310", [195, 1.766]],
+      ["name/311", [64, 48.95]],
+      ["parent/311", [195, 1.766]],
+      ["name/312", [65, 48.95]],
+      ["parent/312", [195, 1.766]],
+      ["name/313", [66, 48.95]],
+      ["parent/313", [195, 1.766]],
+      ["name/314", [67, 48.95]],
+      ["parent/314", [195, 1.766]],
+      ["name/315", [68, 48.95]],
+      ["parent/315", [195, 1.766]],
+      ["name/316", [217, 54.097]],
+      ["parent/316", []],
+      ["name/317", [218, 54.097]],
+      ["parent/317", []],
+      ["name/318", [219, 54.097]],
+      ["parent/318", []],
+      ["name/319", [220, 54.097]],
+      ["parent/319", []],
+      ["name/320", [221, 54.097]],
+      ["parent/320", []]
+    ],
+    "invertedIndex": [
+      [
+        "__type",
+        {
+          "_index": 73,
+          "name": { "102": {}, "107": {}, "178": {}, "182": {}, "271": {} },
+          "parent": {}
+        }
+      ],
+      ["account", { "_index": 155, "name": { "203": {} }, "parent": {} }],
+      ["account_name", { "_index": 97, "name": { "128": {} }, "parent": {} }],
+      ["account_number", { "_index": 98, "name": { "129": {} }, "parent": {} }],
+      [
+        "accountfees",
+        { "_index": 130, "name": { "176": {} }, "parent": { "177": {} } }
+      ],
+      [
+        "accountfees.withdraw",
+        { "_index": 132, "name": {}, "parent": { "178": {} } }
+      ],
+      ["accountinfo", { "_index": 219, "name": { "318": {} }, "parent": {} }],
+      [
+        "addoptions",
+        { "_index": 57, "name": { "86": {}, "305": {} }, "parent": {} }
+      ],
+      [
+        "address",
+        { "_index": 95, "name": { "125": {}, "198": {} }, "parent": {} }
+      ],
+      ["aff_code", { "_index": 217, "name": { "316": {} }, "parent": {} }],
+      [
+        "amount",
+        {
+          "_index": 25,
+          "name": {
+            "35": {},
+            "44": {},
+            "53": {},
+            "117": {},
+            "124": {},
+            "147": {},
+            "149": {},
+            "166": {},
+            "224": {},
+            "257": {}
+          },
+          "parent": {}
+        }
+      ],
+      ["amount_lent", { "_index": 38, "name": { "58": {} }, "parent": {} }],
+      ["amount_used", { "_index": 39, "name": { "59": {} }, "parent": {} }],
+      ["apikey", { "_index": 81, "name": { "108": {} }, "parent": {} }],
+      ["apiuri", { "_index": 69, "name": { "98": {} }, "parent": {} }],
+      ["ask", { "_index": 16, "name": { "24": {} }, "parent": {} }],
+      ["asks", { "_index": 29, "name": { "41": {}, "48": {} }, "parent": {} }],
+      [
+        "authenticatedclient1",
+        {
+          "_index": 195,
+          "name": { "267": {} },
+          "parent": {
+            "268": {},
+            "269": {},
+            "270": {},
+            "272": {},
+            "273": {},
+            "274": {},
+            "275": {},
+            "276": {},
+            "277": {},
+            "278": {},
+            "279": {},
+            "280": {},
+            "281": {},
+            "282": {},
+            "283": {},
+            "284": {},
+            "285": {},
+            "286": {},
+            "287": {},
+            "288": {},
+            "289": {},
+            "290": {},
+            "291": {},
+            "292": {},
+            "293": {},
+            "294": {},
+            "295": {},
+            "296": {},
+            "297": {},
+            "298": {},
+            "299": {},
+            "300": {},
+            "301": {},
+            "302": {},
+            "303": {},
+            "304": {},
+            "305": {},
+            "306": {},
+            "307": {},
+            "308": {},
+            "309": {},
+            "310": {},
+            "311": {},
+            "312": {},
+            "313": {},
+            "314": {},
+            "315": {}
+          }
+        }
+      ],
+      [
+        "authenticatedclient1.#nonce",
+        { "_index": 197, "name": {}, "parent": { "271": {} } }
+      ],
+      [
+        "authenticatedclient1options",
+        {
+          "_index": 194,
+          "name": { "261": {} },
+          "parent": { "262": {}, "263": {}, "264": {}, "265": {}, "266": {} }
+        }
+      ],
+      ["available", { "_index": 172, "name": { "225": {} }, "parent": {} }],
+      [
+        "avg_execution_price",
+        { "_index": 178, "name": { "234": {} }, "parent": {} }
+      ],
+      ["bank_address", { "_index": 101, "name": { "132": {} }, "parent": {} }],
+      ["bank_city", { "_index": 102, "name": { "133": {} }, "parent": {} }],
+      ["bank_country", { "_index": 103, "name": { "134": {} }, "parent": {} }],
+      ["bank_name", { "_index": 100, "name": { "131": {} }, "parent": {} }],
+      ["base", { "_index": 191, "name": { "256": {} }, "parent": {} }],
+      [
+        "bfx",
+        {
+          "_index": 80,
+          "name": { "108": {}, "109": {}, "110": {} },
+          "parent": {}
+        }
+      ],
+      ["bid", { "_index": 15, "name": { "23": {} }, "parent": {} }],
+      ["bids", { "_index": 28, "name": { "40": {}, "47": {} }, "parent": {} }],
+      ["buy_price_oco", { "_index": 122, "name": { "158": {} }, "parent": {} }],
+      [
+        "cancelallorders",
+        { "_index": 210, "name": { "287": {} }, "parent": {} }
+      ],
+      ["cancelorder", { "_index": 208, "name": { "285": {} }, "parent": {} }],
+      ["cancelorders", { "_index": 209, "name": { "286": {} }, "parent": {} }],
+      ["cid", { "_index": 175, "name": { "228": {} }, "parent": {} }],
+      ["cid_date", { "_index": 176, "name": { "229": {} }, "parent": {} }],
+      [
+        "claimparams",
+        {
+          "_index": 114,
+          "name": { "145": {} },
+          "parent": { "146": {}, "147": {} }
+        }
+      ],
+      ["claimposition", { "_index": 216, "name": { "293": {} }, "parent": {} }],
+      [
+        "constructor",
+        { "_index": 52, "name": { "77": {}, "272": {} }, "parent": {} }
+      ],
+      [
+        "currency",
+        {
+          "_index": 2,
+          "name": {
+            "2": {},
+            "3": {},
+            "7": {},
+            "20": {},
+            "73": {},
+            "76": {},
+            "120": {},
+            "126": {},
+            "197": {},
+            "223": {},
+            "266": {},
+            "296": {}
+          },
+          "parent": { "3": {} }
+        }
+      ],
+      [
+        "defaultcurrency",
+        { "_index": 71, "name": { "100": {} }, "parent": {} }
+      ],
+      ["defaultsymbol", { "_index": 70, "name": { "99": {} }, "parent": {} }],
+      [
+        "delete",
+        { "_index": 64, "name": { "93": {}, "311": {} }, "parent": {} }
+      ],
+      [
+        "depositaddress",
+        {
+          "_index": 149,
+          "name": { "194": {} },
+          "parent": { "195": {}, "196": {}, "197": {}, "198": {} }
+        }
+      ],
+      [
+        "depositparams",
+        {
+          "_index": 85,
+          "name": { "112": {} },
+          "parent": { "113": {}, "114": {}, "115": {} }
+        }
+      ],
+      [
+        "deriv_maker_rebate",
+        { "_index": 147, "name": { "192": {} }, "parent": {} }
+      ],
+      [
+        "deriv_taker_fee",
+        { "_index": 148, "name": { "193": {} }, "parent": {} }
+      ],
+      [
+        "detail_payment",
+        { "_index": 104, "name": { "135": {} }, "parent": {} }
+      ],
+      [
+        "exchange",
+        {
+          "_index": 35,
+          "name": { "54": {}, "153": {}, "168": {}, "232": {} },
+          "parent": {}
+        }
+      ],
+      [
+        "executed_amount",
+        { "_index": 185, "name": { "245": {} }, "parent": {} }
+      ],
+      ["expiration", { "_index": 47, "name": { "68": {} }, "parent": {} }],
+      ["expresswire", { "_index": 105, "name": { "136": {} }, "parent": {} }],
+      [
+        "fees_funding_30d",
+        { "_index": 141, "name": { "186": {} }, "parent": {} }
+      ],
+      [
+        "fees_funding_total_30d",
+        { "_index": 142, "name": { "187": {} }, "parent": {} }
+      ],
+      [
+        "fees_trading_30d",
+        { "_index": 143, "name": { "188": {} }, "parent": {} }
+      ],
+      [
+        "fees_trading_total_30d",
+        { "_index": 144, "name": { "189": {} }, "parent": {} }
+      ],
+      [
+        "fetch",
+        { "_index": 68, "name": { "97": {}, "315": {} }, "parent": {} }
+      ],
+      [
+        "fetchoptions",
+        { "_index": 59, "name": { "88": {}, "307": {} }, "parent": {} }
+      ],
+      ["frr", { "_index": 26, "name": { "38": {} }, "parent": {} }],
+      ["funding", { "_index": 158, "name": { "207": {} }, "parent": {} }],
+      [
+        "fundingbook",
+        { "_index": 27, "name": { "39": {} }, "parent": { "40": {}, "41": {} } }
+      ],
+      [
+        "fundingbookitem",
+        {
+          "_index": 23,
+          "name": { "33": {} },
+          "parent": { "34": {}, "35": {}, "36": {}, "37": {}, "38": {} }
+        }
+      ],
+      ["get", { "_index": 60, "name": { "89": {}, "308": {} }, "parent": {} }],
+      [
+        "getaccountfees",
+        { "_index": 199, "name": { "275": {} }, "parent": {} }
+      ],
+      [
+        "getaccountinfo",
+        { "_index": 198, "name": { "274": {} }, "parent": {} }
+      ],
+      [
+        "getdepositaddress",
+        { "_index": 201, "name": { "277": {} }, "parent": {} }
+      ],
+      [
+        "getfundingbook",
+        {
+          "_index": 3,
+          "name": { "4": {}, "80": {}, "299": {} },
+          "parent": { "5": {}, "6": {}, "7": {} }
+        }
+      ],
+      [
+        "getkeypermissions",
+        { "_index": 202, "name": { "278": {} }, "parent": {} }
+      ],
+      [
+        "getlends",
+        {
+          "_index": 11,
+          "name": { "17": {}, "83": {}, "302": {} },
+          "parent": { "18": {}, "19": {}, "20": {} }
+        }
+      ],
+      [
+        "getmargininformation",
+        { "_index": 203, "name": { "279": {} }, "parent": {} }
+      ],
+      ["getorder", { "_index": 212, "name": { "289": {} }, "parent": {} }],
+      [
+        "getorderbook",
+        {
+          "_index": 6,
+          "name": { "8": {}, "81": {}, "300": {} },
+          "parent": { "9": {}, "10": {}, "11": {}, "12": {} }
+        }
+      ],
+      [
+        "getorderhistory",
+        { "_index": 214, "name": { "291": {} }, "parent": {} }
+      ],
+      ["getorders", { "_index": 213, "name": { "290": {} }, "parent": {} }],
+      ["getpositions", { "_index": 215, "name": { "292": {} }, "parent": {} }],
+      [
+        "getstats",
+        { "_index": 54, "name": { "79": {}, "298": {} }, "parent": {} }
+      ],
+      ["getsummary", { "_index": 200, "name": { "276": {} }, "parent": {} }],
+      [
+        "getsymboldetails",
+        { "_index": 56, "name": { "85": {}, "304": {} }, "parent": {} }
+      ],
+      [
+        "getsymbols",
+        { "_index": 55, "name": { "84": {}, "303": {} }, "parent": {} }
+      ],
+      [
+        "getticker",
+        { "_index": 53, "name": { "78": {}, "297": {} }, "parent": {} }
+      ],
+      [
+        "gettrades",
+        {
+          "_index": 8,
+          "name": { "13": {}, "82": {}, "301": {} },
+          "parent": { "14": {}, "15": {}, "16": {} }
+        }
+      ],
+      [
+        "getwalletbalances",
+        { "_index": 204, "name": { "280": {} }, "parent": {} }
+      ],
+      ["gid", { "_index": 177, "name": { "230": {} }, "parent": {} }],
+      ["group", { "_index": 7, "name": { "11": {} }, "parent": {} }],
+      ["head", { "_index": 61, "name": { "90": {}, "309": {} }, "parent": {} }],
+      ["high", { "_index": 19, "name": { "27": {} }, "parent": {} }],
+      ["history", { "_index": 156, "name": { "204": {} }, "parent": {} }],
+      ["id", { "_index": 174, "name": { "227": {}, "253": {} }, "parent": {} }],
+      ["initial_margin", { "_index": 43, "name": { "64": {} }, "parent": {} }],
+      [
+        "intermediary_bank_account",
+        { "_index": 110, "name": { "141": {} }, "parent": {} }
+      ],
+      [
+        "intermediary_bank_address",
+        { "_index": 107, "name": { "138": {} }, "parent": {} }
+      ],
+      [
+        "intermediary_bank_city",
+        { "_index": 108, "name": { "139": {} }, "parent": {} }
+      ],
+      [
+        "intermediary_bank_country",
+        { "_index": 109, "name": { "140": {} }, "parent": {} }
+      ],
+      [
+        "intermediary_bank_name",
+        { "_index": 106, "name": { "137": {} }, "parent": {} }
+      ],
+      [
+        "intermediary_bank_swift",
+        { "_index": 111, "name": { "142": {} }, "parent": {} }
+      ],
+      ["is_cancelled", { "_index": 181, "name": { "240": {} }, "parent": {} }],
+      [
+        "is_hidden",
+        {
+          "_index": 118,
+          "name": { "154": {}, "171": {}, "241": {} },
+          "parent": {}
+        }
+      ],
+      ["is_live", { "_index": 180, "name": { "239": {} }, "parent": {} }],
+      ["is_locked", { "_index": 139, "name": { "184": {} }, "parent": {} }],
+      [
+        "is_postonly",
+        { "_index": 119, "name": { "155": {}, "172": {} }, "parent": {} }
+      ],
+      [
+        "key",
+        {
+          "_index": 74,
+          "name": { "103": {}, "262": {}, "268": {} },
+          "parent": {}
+        }
+      ],
+      [
+        "keypermission",
+        {
+          "_index": 151,
+          "name": { "199": {} },
+          "parent": { "200": {}, "201": {} }
+        }
+      ],
+      [
+        "keypermissions",
+        {
+          "_index": 154,
+          "name": { "202": {} },
+          "parent": {
+            "203": {},
+            "204": {},
+            "205": {},
+            "206": {},
+            "207": {},
+            "208": {},
+            "209": {}
+          }
+        }
+      ],
+      ["last_price", { "_index": 17, "name": { "25": {} }, "parent": {} }],
+      [
+        "lend",
+        {
+          "_index": 37,
+          "name": { "56": {} },
+          "parent": { "57": {}, "58": {}, "59": {}, "60": {} }
+        }
+      ],
+      [
+        "lev",
+        { "_index": 124, "name": { "160": {}, "174": {} }, "parent": {} }
+      ],
+      ["leverage", { "_index": 167, "name": { "217": {} }, "parent": {} }],
+      ["limit", { "_index": 113, "name": { "144": {} }, "parent": {} }],
+      [
+        "limit_asks",
+        { "_index": 5, "name": { "6": {}, "10": {} }, "parent": {} }
+      ],
+      [
+        "limit_bids",
+        { "_index": 4, "name": { "5": {}, "9": {} }, "parent": {} }
+      ],
+      ["limit_lends", { "_index": 12, "name": { "19": {} }, "parent": {} }],
+      ["limit_trades", { "_index": 10, "name": { "15": {} }, "parent": {} }],
+      ["low", { "_index": 18, "name": { "26": {} }, "parent": {} }],
+      ["maker_fee", { "_index": 145, "name": { "190": {} }, "parent": {} }],
+      ["margin", { "_index": 48, "name": { "69": {} }, "parent": {} }],
+      [
+        "margin_balance",
+        { "_index": 161, "name": { "211": {} }, "parent": {} }
+      ],
+      ["margin_limits", { "_index": 169, "name": { "219": {} }, "parent": {} }],
+      [
+        "margin_requirement",
+        { "_index": 168, "name": { "218": {} }, "parent": {} }
+      ],
+      [
+        "margininformation",
+        {
+          "_index": 160,
+          "name": { "210": {} },
+          "parent": {
+            "211": {},
+            "212": {},
+            "213": {},
+            "214": {},
+            "215": {},
+            "216": {},
+            "217": {},
+            "218": {},
+            "219": {},
+            "220": {}
+          }
+        }
+      ],
+      [
+        "maximum_order_size",
+        { "_index": 45, "name": { "66": {} }, "parent": {} }
+      ],
+      ["message", { "_index": 170, "name": { "220": {} }, "parent": {} }],
+      ["meta", { "_index": 187, "name": { "248": {} }, "parent": {} }],
+      [
+        "method",
+        { "_index": 86, "name": { "113": {}, "196": {} }, "parent": {} }
+      ],
+      ["mid", { "_index": 14, "name": { "22": {} }, "parent": {} }],
+      ["minimum_margin", { "_index": 44, "name": { "65": {} }, "parent": {} }],
+      [
+        "minimum_order_size",
+        { "_index": 46, "name": { "67": {} }, "parent": {} }
+      ],
+      ["net_value", { "_index": 165, "name": { "215": {} }, "parent": {} }],
+      ["neworder", { "_index": 206, "name": { "283": {} }, "parent": {} }],
+      ["neworders", { "_index": 207, "name": { "284": {} }, "parent": {} }],
+      [
+        "newordersresponse",
+        {
+          "_index": 188,
+          "name": { "249": {} },
+          "parent": { "250": {}, "251": {} }
+        }
+      ],
+      [
+        "nonce",
+        { "_index": 196, "name": { "270": {}, "294": {} }, "parent": {} }
+      ],
+      ["oco_order", { "_index": 179, "name": { "238": {} }, "parent": {} }],
+      ["ocoorder", { "_index": 121, "name": { "157": {} }, "parent": {} }],
+      [
+        "options",
+        { "_index": 65, "name": { "94": {}, "312": {} }, "parent": {} }
+      ],
+      [
+        "order_id",
+        { "_index": 128, "name": { "165": {}, "246": {} }, "parent": {} }
+      ],
+      ["order_ids", { "_index": 189, "name": { "250": {} }, "parent": {} }],
+      [
+        "orderbook",
+        { "_index": 32, "name": { "46": {} }, "parent": { "47": {}, "48": {} } }
+      ],
+      [
+        "orderbookitem",
+        {
+          "_index": 30,
+          "name": { "42": {} },
+          "parent": { "43": {}, "44": {}, "45": {} }
+        }
+      ],
+      [
+        "orderhistoryparams",
+        { "_index": 112, "name": { "143": {} }, "parent": { "144": {} } }
+      ],
+      [
+        "orderparams",
+        {
+          "_index": 116,
+          "name": { "148": {} },
+          "parent": {
+            "149": {},
+            "150": {},
+            "151": {},
+            "152": {},
+            "153": {},
+            "154": {},
+            "155": {},
+            "156": {},
+            "157": {},
+            "158": {},
+            "159": {},
+            "160": {},
+            "161": {}
+          }
+        }
+      ],
+      [
+        "orderresponse",
+        {
+          "_index": 173,
+          "name": { "226": {} },
+          "parent": {
+            "227": {},
+            "228": {},
+            "229": {},
+            "230": {},
+            "231": {},
+            "232": {},
+            "233": {},
+            "234": {},
+            "235": {},
+            "236": {},
+            "237": {},
+            "238": {},
+            "239": {},
+            "240": {},
+            "241": {},
+            "242": {},
+            "243": {},
+            "244": {},
+            "245": {},
+            "246": {},
+            "247": {},
+            "248": {}
+          }
+        }
+      ],
+      [
+        "orders",
+        { "_index": 126, "name": { "163": {}, "205": {} }, "parent": {} }
+      ],
+      [
+        "ordersparams",
+        { "_index": 125, "name": { "162": {} }, "parent": { "163": {} } }
+      ],
+      ["ordertype", { "_index": 218, "name": { "317": {} }, "parent": {} }],
+      [
+        "original_amount",
+        { "_index": 183, "name": { "243": {} }, "parent": {} }
+      ],
+      ["pair", { "_index": 41, "name": { "62": {} }, "parent": {} }],
+      [
+        "patch",
+        { "_index": 67, "name": { "96": {}, "314": {} }, "parent": {} }
+      ],
+      [
+        "payload",
+        { "_index": 77, "name": { "105": {}, "109": {} }, "parent": {} }
+      ],
+      ["payment_id", { "_index": 96, "name": { "127": {} }, "parent": {} }],
+      [
+        "period",
+        { "_index": 22, "name": { "31": {}, "36": {} }, "parent": {} }
+      ],
+      ["pl", { "_index": 193, "name": { "260": {} }, "parent": {} }],
+      [
+        "position",
+        {
+          "_index": 190,
+          "name": { "252": {} },
+          "parent": {
+            "253": {},
+            "254": {},
+            "255": {},
+            "256": {},
+            "257": {},
+            "258": {},
+            "259": {},
+            "260": {}
+          }
+        }
+      ],
+      ["position_id", { "_index": 115, "name": { "146": {} }, "parent": {} }],
+      ["positions", { "_index": 157, "name": { "206": {} }, "parent": {} }],
+      ["post", { "_index": 62, "name": { "91": {}, "273": {} }, "parent": {} }],
+      [
+        "price",
+        {
+          "_index": 31,
+          "name": { "43": {}, "52": {}, "150": {}, "167": {}, "233": {} },
+          "parent": {}
+        }
+      ],
+      ["price_precision", { "_index": 42, "name": { "63": {} }, "parent": {} }],
+      [
+        "private",
+        { "_index": 58, "name": { "87": {}, "306": {} }, "parent": {} }
+      ],
+      [
+        "publicclient1",
+        {
+          "_index": 51,
+          "name": { "74": {} },
+          "parent": {
+            "75": {},
+            "76": {},
+            "77": {},
+            "78": {},
+            "79": {},
+            "80": {},
+            "81": {},
+            "82": {},
+            "83": {},
+            "84": {},
+            "85": {},
+            "86": {},
+            "87": {},
+            "88": {},
+            "89": {},
+            "90": {},
+            "91": {},
+            "92": {},
+            "93": {},
+            "94": {},
+            "95": {},
+            "96": {},
+            "97": {}
+          }
+        }
+      ],
+      [
+        "publicclient1params",
+        {
+          "_index": 49,
+          "name": { "70": {} },
+          "parent": { "71": {}, "72": {}, "73": {} }
+        }
+      ],
+      ["put", { "_index": 63, "name": { "92": {}, "310": {} }, "parent": {} }],
+      ["rate", { "_index": 24, "name": { "34": {}, "57": {} }, "parent": {} }],
+      ["read", { "_index": 152, "name": { "200": {} }, "parent": {} }],
+      [
+        "remaining_amount",
+        { "_index": 184, "name": { "244": {} }, "parent": {} }
+      ],
+      ["renew", { "_index": 88, "name": { "115": {} }, "parent": {} }],
+      ["replaceorder", { "_index": 211, "name": { "288": {} }, "parent": {} }],
+      [
+        "replaceorderparams",
+        {
+          "_index": 127,
+          "name": { "164": {} },
+          "parent": {
+            "165": {},
+            "166": {},
+            "167": {},
+            "168": {},
+            "169": {},
+            "170": {},
+            "171": {},
+            "172": {},
+            "173": {},
+            "174": {},
+            "175": {}
+          }
+        }
+      ],
+      [
+        "required_margin",
+        { "_index": 166, "name": { "216": {} }, "parent": {} }
+      ],
+      ["resid_hint", { "_index": 137, "name": { "183": {} }, "parent": {} }],
+      ["result", { "_index": 150, "name": { "195": {} }, "parent": {} }],
+      [
+        "secret",
+        {
+          "_index": 76,
+          "name": { "104": {}, "263": {}, "269": {} },
+          "parent": {}
+        }
+      ],
+      [
+        "sell_price_oco",
+        { "_index": 123, "name": { "159": {} }, "parent": {} }
+      ],
+      [
+        "side",
+        {
+          "_index": 117,
+          "name": { "151": {}, "169": {}, "235": {} },
+          "parent": {}
+        }
+      ],
+      ["signature", { "_index": 83, "name": { "110": {} }, "parent": {} }],
+      [
+        "signedheaders",
+        { "_index": 78, "name": { "106": {} }, "parent": { "107": {} } }
+      ],
+      [
+        "signedheaders.__type",
+        {
+          "_index": 82,
+          "name": {},
+          "parent": { "108": {}, "109": {}, "110": {} }
+        }
+      ],
+      ["signer", { "_index": 84, "name": { "111": {} }, "parent": {} }],
+      [
+        "signeroptions",
+        { "_index": 72, "name": { "101": {} }, "parent": { "102": {} } }
+      ],
+      [
+        "signeroptions.__type",
+        {
+          "_index": 75,
+          "name": {},
+          "parent": { "103": {}, "104": {}, "105": {} }
+        }
+      ],
+      ["src", { "_index": 186, "name": { "247": {} }, "parent": {} }],
+      [
+        "stat",
+        { "_index": 21, "name": { "30": {} }, "parent": { "31": {}, "32": {} } }
+      ],
+      [
+        "status",
+        {
+          "_index": 135,
+          "name": { "181": {}, "251": {}, "255": {} },
+          "parent": {}
+        }
+      ],
+      [
+        "summary",
+        {
+          "_index": 133,
+          "name": { "179": {} },
+          "parent": {
+            "180": {},
+            "181": {},
+            "184": {},
+            "185": {},
+            "186": {},
+            "187": {},
+            "188": {},
+            "189": {},
+            "190": {},
+            "191": {},
+            "192": {},
+            "193": {}
+          }
+        }
+      ],
+      [
+        "summary.status",
+        { "_index": 136, "name": {}, "parent": { "182": {} } }
+      ],
+      [
+        "summary.status.__type",
+        { "_index": 138, "name": {}, "parent": { "183": {} } }
+      ],
+      ["swap", { "_index": 192, "name": { "259": {} }, "parent": {} }],
+      ["swift", { "_index": 99, "name": { "130": {} }, "parent": {} }],
+      ["symb", { "_index": 0, "name": { "0": {} }, "parent": { "1": {} } }],
+      [
+        "symbol",
+        {
+          "_index": 1,
+          "name": {
+            "1": {},
+            "12": {},
+            "16": {},
+            "71": {},
+            "75": {},
+            "161": {},
+            "175": {},
+            "231": {},
+            "254": {},
+            "264": {},
+            "295": {}
+          },
+          "parent": {}
+        }
+      ],
+      [
+        "symboldetail",
+        {
+          "_index": 40,
+          "name": { "61": {} },
+          "parent": {
+            "62": {},
+            "63": {},
+            "64": {},
+            "65": {},
+            "66": {},
+            "67": {},
+            "68": {},
+            "69": {}
+          }
+        }
+      ],
+      ["taker_fee", { "_index": 146, "name": { "191": {} }, "parent": {} }],
+      [
+        "ticker",
+        {
+          "_index": 13,
+          "name": { "21": {} },
+          "parent": {
+            "22": {},
+            "23": {},
+            "24": {},
+            "25": {},
+            "26": {},
+            "27": {},
+            "28": {},
+            "29": {}
+          }
+        }
+      ],
+      ["tid", { "_index": 34, "name": { "51": {} }, "parent": {} }],
+      ["time", { "_index": 134, "name": { "180": {} }, "parent": {} }],
+      [
+        "timeout",
+        { "_index": 50, "name": { "72": {}, "265": {} }, "parent": {} }
+      ],
+      [
+        "timestamp",
+        {
+          "_index": 9,
+          "name": {
+            "14": {},
+            "18": {},
+            "29": {},
+            "37": {},
+            "45": {},
+            "50": {},
+            "60": {},
+            "237": {},
+            "258": {}
+          },
+          "parent": {}
+        }
+      ],
+      [
+        "trace",
+        { "_index": 66, "name": { "95": {}, "313": {} }, "parent": {} }
+      ],
+      [
+        "tradable_balance",
+        { "_index": 162, "name": { "212": {} }, "parent": {} }
+      ],
+      [
+        "trade",
+        {
+          "_index": 33,
+          "name": { "49": {} },
+          "parent": {
+            "50": {},
+            "51": {},
+            "52": {},
+            "53": {},
+            "54": {},
+            "55": {}
+          }
+        }
+      ],
+      ["trade_vol_30d", { "_index": 140, "name": { "185": {} }, "parent": {} }],
+      ["transfer", { "_index": 205, "name": { "281": {} }, "parent": {} }],
+      [
+        "transferparams",
+        {
+          "_index": 89,
+          "name": { "116": {} },
+          "parent": { "117": {}, "118": {}, "119": {}, "120": {} }
+        }
+      ],
+      [
+        "transferresponse",
+        { "_index": 220, "name": { "319": {} }, "parent": {} }
+      ],
+      [
+        "type",
+        {
+          "_index": 36,
+          "name": { "55": {}, "152": {}, "170": {}, "222": {}, "236": {} },
+          "parent": {}
+        }
+      ],
+      ["unrealized_pl", { "_index": 163, "name": { "213": {} }, "parent": {} }],
+      [
+        "unrealized_swap",
+        { "_index": 164, "name": { "214": {} }, "parent": {} }
+      ],
+      [
+        "use_all_available",
+        { "_index": 120, "name": { "156": {} }, "parent": {} }
+      ],
+      ["use_remaining", { "_index": 129, "name": { "173": {} }, "parent": {} }],
+      [
+        "volume",
+        { "_index": 20, "name": { "28": {}, "32": {} }, "parent": {} }
+      ],
+      ["wallet_name", { "_index": 87, "name": { "114": {} }, "parent": {} }],
+      [
+        "walletbalance",
+        {
+          "_index": 171,
+          "name": { "221": {} },
+          "parent": { "222": {}, "223": {}, "224": {}, "225": {} }
+        }
+      ],
+      ["walletfrom", { "_index": 90, "name": { "118": {} }, "parent": {} }],
+      ["wallets", { "_index": 159, "name": { "208": {} }, "parent": {} }],
+      ["walletselected", { "_index": 94, "name": { "123": {} }, "parent": {} }],
+      ["walletto", { "_index": 91, "name": { "119": {} }, "parent": {} }],
+      ["was_forced", { "_index": 182, "name": { "242": {} }, "parent": {} }],
+      [
+        "withdraw",
+        {
+          "_index": 131,
+          "name": { "177": {}, "209": {}, "282": {} },
+          "parent": {}
+        }
+      ],
+      ["withdraw_type", { "_index": 93, "name": { "122": {} }, "parent": {} }],
+      [
+        "withdrawparams",
+        {
+          "_index": 92,
+          "name": { "121": {} },
+          "parent": {
+            "122": {},
+            "123": {},
+            "124": {},
+            "125": {},
+            "126": {},
+            "127": {},
+            "128": {},
+            "129": {},
+            "130": {},
+            "131": {},
+            "132": {},
+            "133": {},
+            "134": {},
+            "135": {},
+            "136": {},
+            "137": {},
+            "138": {},
+            "139": {},
+            "140": {},
+            "141": {},
+            "142": {}
+          }
+        }
+      ],
+      [
+        "withdrawresponse",
+        { "_index": 221, "name": { "320": {} }, "parent": {} }
+      ],
+      ["write", { "_index": 153, "name": { "201": {} }, "parent": {} }],
+      [
+        "x",
+        {
+          "_index": 79,
+          "name": { "108": {}, "109": {}, "110": {} },
+          "parent": {}
+        }
+      ]
+    ],
+    "pipeline": []
+  }
+}
