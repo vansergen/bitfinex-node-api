@@ -68,6 +68,14 @@ export interface PastTradesParams {
   reverse?: number;
 }
 
+export interface NewOfferParams {
+  currency: string;
+  amount: string;
+  rate: string;
+  period: number;
+  direction: "lend" | "loan";
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -305,6 +313,21 @@ export interface PastTrade {
   fee_amount: string;
   tid: number;
   order_id: number;
+}
+
+export interface Offer {
+  id: number;
+  currency: string;
+  rate: string;
+  period: number;
+  direction: "lend" | "loan";
+  timestamp: string;
+  is_live: boolean;
+  is_cancelled: boolean;
+  original_amount: string;
+  remaining_amount: string;
+  executed_amount: string;
+  offer_id: number;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -583,6 +606,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
       { ...rest, symbol }
     )) as PastTrade[];
     return trades;
+  }
+
+  /** Submit a new offer. */
+  public async newOffer(body: NewOfferParams): Promise<Offer> {
+    const request = "/v1/offer/new";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
   }
 
   public set nonce(nonce: () => number) {
