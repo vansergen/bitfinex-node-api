@@ -307,3 +307,12 @@ const since = "1444277602.0";
 const limit = 10;
 const history = await client.getDepositsWithdrawals({ currency, since, limit });
 ```
+
+- [`getPastTrades`](https://docs.bitfinex.com/v1/reference#rest-auth-past-trades)
+
+```typescript
+const symbol = "BTCEUR";
+const limit_trades = 25;
+const reverse = 1;
+const trades = await client.getPastTrades({ symbol, limit_trades, reverse });
+```
