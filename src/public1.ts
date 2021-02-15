@@ -79,7 +79,7 @@ export interface Trade {
   price: string;
   amount: string;
   exchange: "bitfinex";
-  type: "sell" | "buy" | "";
+  type: "sell" | "buy";
 }
 
 export interface Lend {
