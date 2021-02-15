@@ -21,6 +21,7 @@ import {
   HistoryBalance,
   DepositWithdrawal,
   PastTrade,
+  Offer,
   aff_code,
 } from "../index";
 
@@ -1017,6 +1018,50 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getPastTrades();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".newOffer()", async () => {
+    const response: Offer = {
+      id: 13800585,
+      currency: "USD",
+      rate: "20.0",
+      period: 2,
+      direction: "lend",
+      timestamp: "1444279698.21175971",
+      is_live: true,
+      is_cancelled: false,
+      original_amount: "50.0",
+      remaining_amount: "50.0",
+      executed_amount: "0.0",
+      offer_id: 13800585,
+    };
+    const uri = "/v1/offer/new";
+    const currency = "USD";
+    const amount = "50.0";
+    const rate = "20.0";
+    const period = 2;
+    const direction = "lend";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {
+          currency,
+          amount,
+          rate,
+          period,
+          direction,
+        });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.newOffer({
+      currency,
+      amount,
+      rate,
+      period,
+      direction,
+    });
     assert.deepStrictEqual(data, response);
   });
 });
