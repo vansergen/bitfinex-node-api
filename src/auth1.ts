@@ -60,6 +60,14 @@ export interface DepositsWithdrawalsParams {
   limit?: number;
 }
 
+export interface PastTradesParams {
+  symbol?: string;
+  timestamp?: string;
+  until?: string;
+  limit_trades?: number;
+  reverse?: number;
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -286,6 +294,17 @@ export interface DepositWithdrawal {
   timestamp: string;
   timestamp_created: string;
   fee: number;
+}
+
+export interface PastTrade {
+  price: string;
+  amount: string;
+  timestamp: string;
+  type: "Buy" | "Sell";
+  fee_currency: string;
+  fee_amount: string;
+  tid: number;
+  order_id: number;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -550,6 +569,20 @@ export class AuthenticatedClient1 extends PublicClient1 {
       { ...body }
     )) as DepositWithdrawal[];
     return balances;
+  }
+
+  /** Get past trades. */
+  public async getPastTrades({
+    symbol = this.symbol,
+    ...rest
+  }: PastTradesParams = {}): Promise<PastTrade[]> {
+    const request = "/v1/mytrades";
+    const trades = (await this.post(
+      request,
+      {},
+      { ...rest, symbol }
+    )) as PastTrade[];
+    return trades;
   }
 
   public set nonce(nonce: () => number) {
