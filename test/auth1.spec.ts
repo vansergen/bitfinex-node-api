@@ -20,6 +20,7 @@ import {
   Position,
   HistoryBalance,
   DepositWithdrawal,
+  PastTrade,
   aff_code,
 } from "../index";
 
@@ -963,6 +964,59 @@ suite("AuthenticatedClient v1", () => {
       since,
       limit,
     });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getPastTrades()", async () => {
+    const response: PastTrade[] = [
+      {
+        price: "216.94",
+        amount: "1.0",
+        timestamp: "1444131957.0",
+        type: "Buy",
+        fee_currency: "USD",
+        fee_amount: "-0.53328",
+        tid: 11970839,
+        order_id: 442913929,
+      },
+    ];
+    const uri = "/v1/mytrades";
+    const symbol = "BTCEUR";
+    const limit_trades = 1;
+    const reverse = 1;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { symbol, reverse, limit_trades });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getPastTrades({ symbol, reverse, limit_trades });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getPastTrades() (with no `symbol`)", async () => {
+    const response: PastTrade[] = [
+      {
+        price: "246.94",
+        amount: "1.0",
+        timestamp: "1444141857.0",
+        type: "Buy",
+        fee_currency: "USD",
+        fee_amount: "-0.49388",
+        tid: 11970839,
+        order_id: 446913929,
+      },
+    ];
+    const uri = "/v1/mytrades";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { symbol: DefaultSymbol });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getPastTrades();
     assert.deepStrictEqual(data, response);
   });
 });
