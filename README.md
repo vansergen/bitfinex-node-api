@@ -298,3 +298,12 @@ const currency = "USD";
 const since = "1444277602.0";
 const history = await client.getBalanceHistory({ currency, since });
 ```
+
+- [`getDepositsWithdrawals`](https://docs.bitfinex.com/v1/reference#rest-auth-deposit-withdrawal-history)
+
+```typescript
+const currency = "BTC";
+const since = "1444277602.0";
+const limit = 10;
+const history = await client.getDepositsWithdrawals({ currency, since, limit });
+```
