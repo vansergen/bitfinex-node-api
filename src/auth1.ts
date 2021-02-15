@@ -52,6 +52,14 @@ export interface BalanceHistoryParams {
   limit?: number;
 }
 
+export interface DepositsWithdrawalsParams {
+  currency: string;
+  method?: "bitcoin" | "litecoin" | "darkcoin" | "wire";
+  since?: string;
+  until?: string;
+  limit?: number;
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -252,6 +260,32 @@ export interface HistoryBalance {
   balance: string;
   description: string;
   timestamp: string;
+}
+
+export interface DepositWithdrawal {
+  id: number;
+  txid: number;
+  currency: string;
+  method: string;
+  type: string;
+  amount: string;
+  description: string;
+  address: string;
+  status:
+    | "SENDING"
+    | "PROCESSING"
+    | "PENDING"
+    | "POSTPENDING"
+    | "COMPLETED"
+    | "USER EMAILED"
+    | "APPROVED"
+    | "USER APPROVED"
+    | "CANCELED"
+    | "PENDING CANCELLATION"
+    | "UNCOMFIRMED";
+  timestamp: string;
+  timestamp_created: string;
+  fee: number;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -502,6 +536,19 @@ export class AuthenticatedClient1 extends PublicClient1 {
       {},
       { ...body }
     )) as HistoryBalance[];
+    return balances;
+  }
+
+  /** Get past deposits/withdrawals. */
+  public async getDepositsWithdrawals(
+    body: DepositsWithdrawalsParams
+  ): Promise<DepositWithdrawal[]> {
+    const request = "/v1/history/movements";
+    const balances = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as DepositWithdrawal[];
     return balances;
   }
 
