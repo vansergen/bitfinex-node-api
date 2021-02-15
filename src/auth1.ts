@@ -626,6 +626,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return offer;
   }
 
+  /** Get the status of an offer. */
+  public async offerStatus(body: CancelOfferParams): Promise<Offer> {
+    const request = "/v1/offer/status";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
+  }
+
   public set nonce(nonce: () => number) {
     this.#nonce = nonce;
   }
