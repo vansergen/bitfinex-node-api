@@ -22,6 +22,7 @@ import {
   DepositWithdrawal,
   PastTrade,
   Offer,
+  Credit,
   aff_code,
 } from "../index";
 
@@ -1116,6 +1117,30 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.offerStatus({ offer_id });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".activeCredits()", async () => {
+    const response: Credit[] = [
+      {
+        id: 328521022,
+        currency: "BTC",
+        status: "ACTIVE",
+        rate: "16.7",
+        period: 30,
+        amount: "2.14357361",
+        timestamp: "1611111111.0",
+      },
+    ];
+    const uri = "/v1/credits";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {});
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.activeCredits();
     assert.deepStrictEqual(data, response);
   });
 });
