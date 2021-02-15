@@ -333,3 +333,10 @@ const offer = await client.newOffer({
   direction,
 });
 ```
+
+- [`cancelOffer`](https://docs.bitfinex.com/v1/reference#rest-auth-cancel-offer)
+
+```typescript
+const offer_id = 13800585;
+const offer = await client.cancelOffer({ offer_id });
+```
