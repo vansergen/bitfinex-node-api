@@ -76,6 +76,10 @@ export interface NewOfferParams {
   direction: "lend" | "loan";
 }
 
+export interface CancelOfferParams {
+  offer_id: number;
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -327,7 +331,7 @@ export interface Offer {
   original_amount: string;
   remaining_amount: string;
   executed_amount: string;
-  offer_id: number;
+  offer_id?: number;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -611,6 +615,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
   /** Submit a new offer. */
   public async newOffer(body: NewOfferParams): Promise<Offer> {
     const request = "/v1/offer/new";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
+  }
+
+  /** Cancel an offer. */
+  public async cancelOffer(body: CancelOfferParams): Promise<Offer> {
+    const request = "/v1/offer/cancel";
     const offer = (await this.post(request, {}, { ...body })) as Offer;
     return offer;
   }
