@@ -316,3 +316,20 @@ const limit_trades = 25;
 const reverse = 1;
 const trades = await client.getPastTrades({ symbol, limit_trades, reverse });
 ```
+
+- [`newOffer`](https://docs.bitfinex.com/v1/reference#rest-auth-new-offer)
+
+```typescript
+const currency = "USD";
+const amount = "50.0";
+const rate = "20.0";
+const period = 2;
+const direction = "lend";
+const offer = await client.newOffer({
+  currency,
+  amount,
+  rate,
+  period,
+  direction,
+});
+```
