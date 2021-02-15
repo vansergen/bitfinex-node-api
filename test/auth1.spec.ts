@@ -1171,4 +1171,61 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.getOffers();
     assert.deepStrictEqual(data, response);
   });
+
+  test(".offersHistory()", async () => {
+    const response: Offer[] = [
+      {
+        id: 13800719,
+        currency: "USD",
+        rate: "31.39",
+        period: 2,
+        direction: "lend",
+        timestamp: "1444280237.0",
+        is_live: true,
+        is_cancelled: false,
+        original_amount: "50.0",
+        remaining_amount: "50.0",
+        executed_amount: "0.0",
+      },
+    ];
+    const uri = "/v1/offers/hist";
+    const limit = 25;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { limit });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.offersHistory({ limit });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".offersHistory() (with no arguments)", async () => {
+    const response: Offer[] = [
+      {
+        id: 13800719,
+        currency: "USD",
+        rate: "31.39",
+        period: 2,
+        direction: "lend",
+        timestamp: "1444280237.0",
+        is_live: true,
+        is_cancelled: false,
+        original_amount: "50.0",
+        remaining_amount: "50.0",
+        executed_amount: "0.0",
+      },
+    ];
+    const uri = "/v1/offers/hist";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {});
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.offersHistory();
+    assert.deepStrictEqual(data, response);
+  });
 });
