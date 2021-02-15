@@ -650,6 +650,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return credits;
   }
 
+  /** Get active offers. */
+  public async getOffers(): Promise<Offer[]> {
+    const request = "/v1/offers";
+    const offers = (await this.post(request, {}, {})) as Offer[];
+    return offers;
+  }
+
   public set nonce(nonce: () => number) {
     this.#nonce = nonce;
   }
