@@ -18,6 +18,7 @@ import {
   OrderParams,
   NewOrdersResponse,
   Position,
+  HistoryBalance,
   aff_code,
 } from "../index";
 
@@ -901,6 +902,30 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.claimPosition({ position_id, amount });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getBalanceHistory()", async () => {
+    const response: HistoryBalance[] = [
+      {
+        currency: "USD",
+        amount: "-246.94",
+        balance: "515.4476526",
+        description: "Position claimed @ 245.2 on wallet trading",
+        timestamp: "1444277602.0",
+      },
+    ];
+    const uri = "/v1/history";
+    const currency = "USD";
+    const since = "1444277602.0";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { currency, since });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getBalanceHistory({ currency, since });
     assert.deepStrictEqual(data, response);
   });
 });

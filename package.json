@@ -36,8 +36,9 @@
     "install:clean": "rm -fr node_modules && rm -f package-lock.json && npm install",
     "lint": "eslint --ext .ts ./",
     "lint:fix": "npm run lint -- --fix",
-    "postpublish": "npm run build:remove",
-    "prepublishOnly": "npm run build && npm run lint:fix && npm run prettier:write",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable && npm run build:remove",
+    "prepublishOnly": "pinst --disable && npm run build && npm run lint:fix && npm run prettier:write",
     "prettier": "prettier -c .",
     "prettier:write": "npm run prettier -- --write",
     "publish:test": "npm run prepublishOnly && npm pack --dry-run && npm run postpublish",
@@ -46,7 +47,7 @@
     "test:js": "npm run build && mocha --full-trace --ui tdd --bail ./build/test/**/*.spec.js && npm run build:remove"
   },
   "dependencies": {
-    "rpc-request": "^5.0.1"
+    "rpc-request": "^5.0.2"
   },
   "devDependencies": {
     "@b2broker/tsconfig": "^1.0.3",
@@ -55,17 +56,17 @@
     "@semantic-release/git": "^9.0.0",
     "@types/mocha": "^8.2.0",
     "commitlint-config-b2broker": "^1.0.0",
-    "coveralls": "^3.1.0",
     "eslint-config-b2broker-ts": "^1.0.0",
-    "husky": "^4.3.6",
-    "lint-staged": "^10.5.3",
-    "mocha": "^8.2.1",
-    "nock": "^13.0.5",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "mocha": "^8.3.0",
+    "nock": "^13.0.7",
     "nyc": "^15.1.0",
+    "pinst": "^2.1.4",
     "prettier": "^2.2.1",
-    "semantic-release": "^17.3.0",
+    "semantic-release": "^17.3.9",
     "ts-node": "^9.1.1",
-    "typedoc": "^0.19.2"
+    "typedoc": "^0.20.25"
   },
   "funding": {
     "type": "Coinbase Commerce",
