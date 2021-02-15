@@ -353,3 +353,9 @@ const offer = await client.offerStatus({ offer_id });
 ```typescript
 const credits = await client.activeCredits();
 ```
+
+- [`getOffers`](https://docs.bitfinex.com/v1/reference#rest-auth-offers)
+
+```typescript
+const offers = await client.getOffers();
+```
