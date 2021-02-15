@@ -657,6 +657,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return offers;
   }
 
+  /** Get latest inactive offers. */
+  public async offersHistory(body: OrderHistoryParams = {}): Promise<Offer[]> {
+    const request = "/v1/offers/hist";
+    const offers = (await this.post(request, {}, { ...body })) as Offer[];
+    return offers;
+  }
+
   public set nonce(nonce: () => number) {
     this.#nonce = nonce;
   }
