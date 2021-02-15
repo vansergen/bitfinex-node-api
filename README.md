@@ -347,3 +347,9 @@ const offer = await client.cancelOffer({ offer_id });
 const offer_id = 13800585;
 const offer = await client.offerStatus({ offer_id });
 ```
+
+- [`activeCredits`](https://docs.bitfinex.com/v1/reference#rest-auth-active-credits)
+
+```typescript
+const credits = await client.activeCredits();
+```
