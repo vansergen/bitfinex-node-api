@@ -19,6 +19,7 @@ import {
   NewOrdersResponse,
   Position,
   HistoryBalance,
+  DepositWithdrawal,
   aff_code,
 } from "../index";
 
@@ -926,6 +927,42 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getBalanceHistory({ currency, since });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getDepositsWithdrawals()", async () => {
+    const response: DepositWithdrawal[] = [
+      {
+        id: 581183,
+        txid: 123456,
+        currency: "BTC",
+        method: "BITCOIN",
+        type: "WITHDRAWAL",
+        amount: ".01",
+        description: "3QXYWgRGX2BPYBpUDBssGbeWEa5zq6snBZ, offchain transfer ",
+        address: "3QXYWgRGX2BPYBpUDBssGbeWEa5zq6snBZ",
+        status: "COMPLETED",
+        timestamp: "1443833327.0",
+        timestamp_created: "1443833327.1",
+        fee: 0.1,
+      },
+    ];
+    const uri = "/v1/history/movements";
+    const currency = "BTC";
+    const since = "1444277602.0";
+    const limit = 10;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { currency, since, limit });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getDepositsWithdrawals({
+      currency,
+      since,
+      limit,
+    });
     assert.deepStrictEqual(data, response);
   });
 });
