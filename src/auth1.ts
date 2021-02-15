@@ -44,6 +44,14 @@ export interface OrderHistoryParams {
   limit?: number;
 }
 
+export interface BalanceHistoryParams {
+  currency: string;
+  wallet?: "trading" | "exchange" | "deposit";
+  since?: string;
+  until?: string;
+  limit?: number;
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -236,6 +244,14 @@ export interface Position {
   timestamp: string;
   swap: string;
   pl: string;
+}
+
+export interface HistoryBalance {
+  currency: string;
+  amount: string;
+  balance: string;
+  description: string;
+  timestamp: string;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -474,6 +490,19 @@ export class AuthenticatedClient1 extends PublicClient1 {
     const request = "/v1/position/claim";
     const position = (await this.post(request, {}, { ...body })) as Position;
     return position;
+  }
+
+  /** Get balance ledger entries. */
+  public async getBalanceHistory(
+    body: BalanceHistoryParams
+  ): Promise<HistoryBalance[]> {
+    const request = "/v1/history";
+    const balances = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as HistoryBalance[];
+    return balances;
   }
 
   public set nonce(nonce: () => number) {
