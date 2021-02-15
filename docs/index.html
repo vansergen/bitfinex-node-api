@@ -565,6 +565,106 @@
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">since</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444277602.0&quot;</span><span style="color: #000000">;</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">history</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getBalanceHistory</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">since</span><span style="color: #000000"> });</span>
 </code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-deposit-withdrawal-history"
+                  ><code>getDepositsWithdrawals</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BTC&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">since</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444277602.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">history</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getDepositsWithdrawals</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">since</span><span style="color: #000000">, </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-past-trades"
+                  ><code>getPastTrades</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BTCEUR&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">25</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">reverse</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getPastTrades</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">limit_trades</span><span style="color: #000000">, </span><span style="color: #001080">reverse</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-new-offer"
+                  ><code>newOffer</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;50.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">rate</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;20.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">period</span><span style="color: #000000"> = </span><span style="color: #098658">2</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">direction</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;lend&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOffer</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">currency</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">rate</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">period</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">direction</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-cancel-offer"
+                  ><code>cancelOffer</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer_id</span><span style="color: #000000"> = </span><span style="color: #098658">13800585</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOffer</span><span style="color: #000000">({ </span><span style="color: #001080">offer_id</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offer-status"
+                  ><code>offerStatus</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer_id</span><span style="color: #000000"> = </span><span style="color: #098658">13800585</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">offerStatus</span><span style="color: #000000">({ </span><span style="color: #001080">offer_id</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-credits"
+                  ><code>activeCredits</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">credits</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">activeCredits</span><span style="color: #000000">();</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offers"
+                  ><code>getOffers</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offers</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOffers</span><span style="color: #000000">();</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offers-hist"
+                  ><code>offersHistory</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">25</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offers</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">offersHistory</span><span style="color: #000000">({ </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+</code></pre>
           </div>
         </div>
         <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -609,8 +709,20 @@
                 >
               </li>
               <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/cancelofferparams.html"
+                  class="tsd-kind-icon"
+                  >Cancel<wbr />Offer<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
                 <a href="interfaces/claimparams.html" class="tsd-kind-icon"
                   >Claim<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/credit.html" class="tsd-kind-icon"
+                  >Credit</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -626,6 +738,20 @@
               <li class="tsd-kind-interface">
                 <a href="interfaces/depositparams.html" class="tsd-kind-icon"
                   >Deposit<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/depositwithdrawal.html"
+                  class="tsd-kind-icon"
+                  >Deposit<wbr />Withdrawal</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/depositswithdrawalsparams.html"
+                  class="tsd-kind-icon"
+                  >Deposits<wbr />Withdrawals<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -684,11 +810,19 @@
                 >
               </li>
               <li class="tsd-kind-interface">
+                <a href="interfaces/newofferparams.html" class="tsd-kind-icon"
+                  >New<wbr />Offer<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
                 <a
                   href="interfaces/newordersresponse.html"
                   class="tsd-kind-icon"
                   >New<wbr />Orders<wbr />Response</a
                 >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/offer.html" class="tsd-kind-icon">Offer</a>
               </li>
               <li class="tsd-kind-interface">
                 <a href="interfaces/orderbook.html" class="tsd-kind-icon"
@@ -720,6 +854,16 @@
               <li class="tsd-kind-interface">
                 <a href="interfaces/ordersparams.html" class="tsd-kind-icon"
                   >Orders<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/pasttrade.html" class="tsd-kind-icon"
+                  >Past<wbr />Trade</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/pasttradesparams.html" class="tsd-kind-icon"
+                  >Past<wbr />Trades<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">

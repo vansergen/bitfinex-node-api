@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>KeyPermissions | bitfinex-node-api</title>
+    <title>DepositsWithdrawalsParams | bitfinex-node-api</title>
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -75,10 +75,12 @@
               <a href="../modules.html">bitfinex-node-api</a>
             </li>
             <li>
-              <a href="keypermissions.html">KeyPermissions</a>
+              <a href="depositswithdrawalsparams.html"
+                >DepositsWithdrawalsParams</a
+              >
             </li>
           </ul>
-          <h1>Interface KeyPermissions</h1>
+          <h1>Interface DepositsWithdrawalsParams</h1>
         </div>
       </div>
     </header>
@@ -89,7 +91,7 @@
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
               <li>
-                <span class="target">KeyPermissions</span>
+                <span class="target">DepositsWithdrawalsParams</span>
               </li>
             </ul>
           </section>
@@ -102,49 +104,37 @@
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="keypermissions.html#account"
+                        href="depositswithdrawalsparams.html#currency"
                         class="tsd-kind-icon"
-                        >account</a
+                        >currency</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="keypermissions.html#funding"
+                        href="depositswithdrawalsparams.html#limit"
                         class="tsd-kind-icon"
-                        >funding</a
+                        >limit</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="keypermissions.html#history"
+                        href="depositswithdrawalsparams.html#method"
                         class="tsd-kind-icon"
-                        >history</a
-                      >
-                    </li>
-                    <li class="tsd-kind-property tsd-parent-kind-interface">
-                      <a href="keypermissions.html#orders" class="tsd-kind-icon"
-                        >orders</a
+                        >method</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="keypermissions.html#positions"
+                        href="depositswithdrawalsparams.html#since"
                         class="tsd-kind-icon"
-                        >positions</a
+                        >since</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="keypermissions.html#wallets"
+                        href="depositswithdrawalsparams.html#until"
                         class="tsd-kind-icon"
-                        >wallets</a
-                      >
-                    </li>
-                    <li class="tsd-kind-property tsd-parent-kind-interface">
-                      <a
-                        href="keypermissions.html#withdraw"
-                        class="tsd-kind-icon"
-                        >withdraw</a
+                        >until</a
                       >
                     </li>
                   </ul>
@@ -157,24 +147,19 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="account" class="tsd-anchor"></a>
-              <h3>account</h3>
+              <a name="currency" class="tsd-anchor"></a>
+              <h3>currency</h3>
               <div class="tsd-signature tsd-kind-icon">
-                account<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
+                currency<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L183"
-                      >src/auth1.ts:183</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L56"
+                      >src/auth1.ts:56</a
                     >
                   </li>
                 </ul>
@@ -183,24 +168,23 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="funding" class="tsd-anchor"></a>
-              <h3>funding</h3>
+              <a name="limit" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span> limit
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                funding<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
+                limit<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">number</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L187"
-                      >src/auth1.ts:187</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L60"
+                      >src/auth1.ts:60</a
                     >
                   </li>
                 </ul>
@@ -209,24 +193,29 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="history" class="tsd-anchor"></a>
-              <h3>history</h3>
+              <a name="method" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span> method
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                history<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
+                method<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">&quot;bitcoin&quot;</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">&quot;litecoin&quot;</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">&quot;darkcoin&quot;</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">&quot;wire&quot;</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L184"
-                      >src/auth1.ts:184</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L57"
+                      >src/auth1.ts:57</a
                     >
                   </li>
                 </ul>
@@ -235,24 +224,23 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="orders" class="tsd-anchor"></a>
-              <h3>orders</h3>
+              <a name="since" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span> since
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                orders<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
+                since<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L185"
-                      >src/auth1.ts:185</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L58"
+                      >src/auth1.ts:58</a
                     >
                   </li>
                 </ul>
@@ -261,76 +249,23 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="positions" class="tsd-anchor"></a>
-              <h3>positions</h3>
+              <a name="until" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span> until
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                positions<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
+                until<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L186"
-                      >src/auth1.ts:186</a
-                    >
-                  </li>
-                </ul>
-              </aside>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
-            >
-              <a name="wallets" class="tsd-anchor"></a>
-              <h3>wallets</h3>
-              <div class="tsd-signature tsd-kind-icon">
-                wallets<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
-              </div>
-              <aside class="tsd-sources">
-                <ul>
-                  <li>
-                    Defined in
-                    <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L188"
-                      >src/auth1.ts:188</a
-                    >
-                  </li>
-                </ul>
-              </aside>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
-            >
-              <a name="withdraw" class="tsd-anchor"></a>
-              <h3>withdraw</h3>
-              <div class="tsd-signature tsd-kind-icon">
-                withdraw<span class="tsd-signature-symbol">:</span>
-                <a
-                  href="keypermission.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >KeyPermission</a
-                >
-              </div>
-              <aside class="tsd-sources">
-                <ul>
-                  <li>
-                    Defined in
-                    <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L189"
-                      >src/auth1.ts:189</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L59"
+                      >src/auth1.ts:59</a
                     >
                   </li>
                 </ul>
@@ -350,45 +285,43 @@
             <ul class="before-current"></ul>
             <ul class="current">
               <li class="current tsd-kind-interface">
-                <a href="keypermissions.html" class="tsd-kind-icon"
-                  >Key<wbr />Permissions</a
+                <a href="depositswithdrawalsparams.html" class="tsd-kind-icon"
+                  >Deposits<wbr />Withdrawals<wbr />Params</a
                 >
                 <ul>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#account" class="tsd-kind-icon"
-                      >account</a
-                    >
-                  </li>
-                  <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#funding" class="tsd-kind-icon"
-                      >funding</a
-                    >
-                  </li>
-                  <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#history" class="tsd-kind-icon"
-                      >history</a
-                    >
-                  </li>
-                  <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#orders" class="tsd-kind-icon"
-                      >orders</a
+                    <a
+                      href="depositswithdrawalsparams.html#currency"
+                      class="tsd-kind-icon"
+                      >currency</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
                     <a
-                      href="keypermissions.html#positions"
+                      href="depositswithdrawalsparams.html#limit"
                       class="tsd-kind-icon"
-                      >positions</a
+                      >limit</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#wallets" class="tsd-kind-icon"
-                      >wallets</a
+                    <a
+                      href="depositswithdrawalsparams.html#method"
+                      class="tsd-kind-icon"
+                      >method</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="keypermissions.html#withdraw" class="tsd-kind-icon"
-                      >withdraw</a
+                    <a
+                      href="depositswithdrawalsparams.html#since"
+                      class="tsd-kind-icon"
+                      >since</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a
+                      href="depositswithdrawalsparams.html#until"
+                      class="tsd-kind-icon"
+                      >until</a
                     >
                   </li>
                 </ul>

@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.2.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.1.0...v2.2.0) (2021-02-15)
+
+### Features
+
+- add the `activeCredits` method ([973bd1d](https://github.com/vansergen/bitfinex-node-api/commit/973bd1dc6cd09762d92eb3ad935ec5ab3d4ce541))
+- add the `cancelOffer` method ([ffee052](https://github.com/vansergen/bitfinex-node-api/commit/ffee05267ec231517d3ca355ef1c2ec8086331e8))
+- add the `getDepositsWithdrawals` method ([091c67c](https://github.com/vansergen/bitfinex-node-api/commit/091c67c4b4e16dd00d001abc4ae54ab07f028f9d))
+- add the `getOffers` method ([bb643e9](https://github.com/vansergen/bitfinex-node-api/commit/bb643e901fa8d759263c9e7e9ffa0a3252006893))
+- add the `getPastTrades` method ([c2fc288](https://github.com/vansergen/bitfinex-node-api/commit/c2fc28892c07feeee668b61dcc4d64f2e0c262ba))
+- add the `newOffer` method ([0e20249](https://github.com/vansergen/bitfinex-node-api/commit/0e2024930ed4e6bac0e907c1c5f8ccb7e20655ba))
+- add the `offersHistory` method ([2b6a768](https://github.com/vansergen/bitfinex-node-api/commit/2b6a768feec75fc15e2f9c9749a5bae44ad4159f))
+- add the `offerStatus` method ([2f24873](https://github.com/vansergen/bitfinex-node-api/commit/2f24873fc636a6da7fec531c29583b6d38955ef8))
+
+### Bug Fixes
+
+- update the `Trade` interface ([a2881bb](https://github.com/vansergen/bitfinex-node-api/commit/a2881bb45ca669406fe2545ee0e94d614db4e31e))
+
 ## [2.1.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.0.1...v2.1.0) (2021-02-15)
 
 ### Features
