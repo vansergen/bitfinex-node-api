@@ -1064,4 +1064,31 @@ suite("AuthenticatedClient v1", () => {
     });
     assert.deepStrictEqual(data, response);
   });
+
+  test(".cancelOffer()", async () => {
+    const response: Offer = {
+      id: 13800585,
+      currency: "USD",
+      rate: "20.0",
+      period: 2,
+      direction: "lend",
+      timestamp: "1444279698.0",
+      is_live: true,
+      is_cancelled: false,
+      original_amount: "50.0",
+      remaining_amount: "50.0",
+      executed_amount: "0.0",
+    };
+    const uri = "/v1/offer/cancel";
+    const offer_id = 13800585;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { offer_id });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.cancelOffer({ offer_id });
+    assert.deepStrictEqual(data, response);
+  });
 });
