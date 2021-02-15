@@ -334,6 +334,16 @@ export interface Offer {
   offer_id?: number;
 }
 
+export interface Credit {
+  id: number;
+  currency: string;
+  status: string;
+  rate: string;
+  period: number;
+  amount: string;
+  timestamp: string;
+}
+
 export interface AuthenticatedClient1Options extends PublicClient1Params {
   key: string;
   secret: string;
@@ -631,6 +641,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     const request = "/v1/offer/status";
     const offer = (await this.post(request, {}, { ...body })) as Offer;
     return offer;
+  }
+
+  /** Get the funds currently taken. */
+  public async activeCredits(): Promise<Credit[]> {
+    const request = "/v1/credits";
+    const credits = (await this.post(request, {}, {})) as Credit[];
+    return credits;
   }
 
   public set nonce(nonce: () => number) {
