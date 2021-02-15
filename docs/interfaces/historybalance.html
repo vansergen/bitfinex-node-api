@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GetLends | bitfinex-node-api</title>
+    <title>HistoryBalance | bitfinex-node-api</title>
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/main.css" />
@@ -75,10 +75,10 @@
               <a href="../modules.html">bitfinex-node-api</a>
             </li>
             <li>
-              <a href="getlends.html">GetLends</a>
+              <a href="historybalance.html">HistoryBalance</a>
             </li>
           </ul>
-          <h1>Interface GetLends</h1>
+          <h1>Interface HistoryBalance</h1>
         </div>
       </div>
     </header>
@@ -89,17 +89,7 @@
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
               <li>
-                <a
-                  href="currency.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >Currency</a
-                >
-                <ul class="tsd-hierarchy">
-                  <li>
-                    <span class="target">GetLends</span>
-                  </li>
-                </ul>
+                <span class="target">HistoryBalance</span>
               </li>
             </ul>
           </section>
@@ -110,20 +100,36 @@
                 <section class="tsd-index-section">
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
-                    <li
-                      class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"
-                    >
-                      <a href="getlends.html#currency" class="tsd-kind-icon"
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a href="historybalance.html#amount" class="tsd-kind-icon"
+                        >amount</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="historybalance.html#balance"
+                        class="tsd-kind-icon"
+                        >balance</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="historybalance.html#currency"
+                        class="tsd-kind-icon"
                         >currency</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
-                      <a href="getlends.html#limit_lends" class="tsd-kind-icon"
-                        >limit_<wbr />lends</a
+                      <a
+                        href="historybalance.html#description"
+                        class="tsd-kind-icon"
+                        >description</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
-                      <a href="getlends.html#timestamp" class="tsd-kind-icon"
+                      <a
+                        href="historybalance.html#timestamp"
+                        class="tsd-kind-icon"
                         >timestamp</a
                       >
                     </li>
@@ -135,31 +141,21 @@
           <section class="tsd-panel-group tsd-member-group">
             <h2>Properties</h2>
             <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="currency" class="tsd-anchor"></a>
-              <h3>
-                <span class="tsd-flag ts-flagOptional">Optional</span> currency
-              </h3>
+              <a name="amount" class="tsd-anchor"></a>
+              <h3>amount</h3>
               <div class="tsd-signature tsd-kind-icon">
-                currency<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">string</span>
+                amount<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
-                <p>
-                  Inherited from <a href="currency.html">Currency</a>.<a
-                    href="currency.html#currency-1"
-                    >currency</a
-                  >
-                </p>
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/public1.ts#L12"
-                      >src/public1.ts:12</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L251"
+                      >src/auth1.ts:251</a
                     >
                   </li>
                 </ul>
@@ -168,24 +164,61 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="limit_lends" class="tsd-anchor"></a>
-              <h3>
-                <span class="tsd-flag ts-flagOptional">Optional</span>
-                limit_<wbr />lends
-              </h3>
+              <a name="balance" class="tsd-anchor"></a>
+              <h3>balance</h3>
               <div class="tsd-signature tsd-kind-icon">
-                limit_<wbr />lends<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">number</span>
+                balance<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/public1.ts#L33"
-                      >src/public1.ts:33</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L252"
+                      >src/auth1.ts:252</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="currency" class="tsd-anchor"></a>
+              <h3>currency</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                currency<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L250"
+                      >src/auth1.ts:250</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="description" class="tsd-anchor"></a>
+              <h3>description</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                description<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L253"
+                      >src/auth1.ts:253</a
                     >
                   </li>
                 </ul>
@@ -195,22 +228,18 @@
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
               <a name="timestamp" class="tsd-anchor"></a>
-              <h3>
-                <span class="tsd-flag ts-flagOptional">Optional</span> timestamp
-              </h3>
+              <h3>timestamp</h3>
               <div class="tsd-signature tsd-kind-icon">
                 timestamp<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">number</span>
+                <span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/public1.ts#L32"
-                      >src/public1.ts:32</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L254"
+                      >src/auth1.ts:254</a
                     >
                   </li>
                 </ul>
@@ -230,24 +259,36 @@
             <ul class="before-current"></ul>
             <ul class="current">
               <li class="current tsd-kind-interface">
-                <a href="getlends.html" class="tsd-kind-icon"
-                  >Get<wbr />Lends</a
+                <a href="historybalance.html" class="tsd-kind-icon"
+                  >History<wbr />Balance</a
                 >
                 <ul>
-                  <li
-                    class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"
-                  >
-                    <a href="getlends.html#currency" class="tsd-kind-icon"
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="historybalance.html#amount" class="tsd-kind-icon"
+                      >amount</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="historybalance.html#balance" class="tsd-kind-icon"
+                      >balance</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="historybalance.html#currency" class="tsd-kind-icon"
                       >currency</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="getlends.html#limit_lends" class="tsd-kind-icon"
-                      >limit_<wbr />lends</a
+                    <a
+                      href="historybalance.html#description"
+                      class="tsd-kind-icon"
+                      >description</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface">
-                    <a href="getlends.html#timestamp" class="tsd-kind-icon"
+                    <a
+                      href="historybalance.html#timestamp"
+                      class="tsd-kind-icon"
                       >timestamp</a
                     >
                   </li>

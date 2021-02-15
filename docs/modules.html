@@ -7,6 +7,7 @@
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script async src="assets/js/search.js" id="search-script"></script>
   </head>
   <body>
     <header>
@@ -58,10 +59,6 @@
                   <label class="tsd-widget" for="tsd-filter-externals"
                     >Externals</label
                   >
-                  <input type="checkbox" id="tsd-filter-only-exported" />
-                  <label class="tsd-widget" for="tsd-filter-only-exported"
-                    >Only exported</label
-                  >
                 </div>
               </div>
               <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
@@ -73,11 +70,6 @@
       </div>
       <div class="tsd-page-title">
         <div class="container">
-          <ul class="tsd-breadcrumb">
-            <li>
-              <a href="globals.html">Globals</a>
-            </li>
-          </ul>
           <h1>bitfinex-node-api</h1>
         </div>
       </div>
@@ -121,6 +113,13 @@
                         href="interfaces/authenticatedclient1options.html"
                         class="tsd-kind-icon"
                         >Authenticated<wbr />Client1<wbr />Options</a
+                      >
+                    </li>
+                    <li class="tsd-kind-interface">
+                      <a
+                        href="interfaces/balancehistoryparams.html"
+                        class="tsd-kind-icon"
+                        >Balance<wbr />History<wbr />Params</a
                       >
                     </li>
                     <li class="tsd-kind-interface">
@@ -185,6 +184,13 @@
                     <li class="tsd-kind-interface">
                       <a href="interfaces/gettrades.html" class="tsd-kind-icon"
                         >Get<wbr />Trades</a
+                      >
+                    </li>
+                    <li class="tsd-kind-interface">
+                      <a
+                        href="interfaces/historybalance.html"
+                        class="tsd-kind-icon"
+                        >History<wbr />Balance</a
                       >
                     </li>
                     <li class="tsd-kind-interface">
@@ -338,35 +344,35 @@
                   <h3>Type aliases</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-type-alias">
-                      <a href="globals.html#accountinfo" class="tsd-kind-icon"
+                      <a href="modules.html#accountinfo" class="tsd-kind-icon"
                         >Account<wbr />Info</a
                       >
                     </li>
                     <li class="tsd-kind-type-alias">
-                      <a href="globals.html#ordertype" class="tsd-kind-icon"
+                      <a href="modules.html#ordertype" class="tsd-kind-icon"
                         >Order<wbr />Type</a
                       >
                     </li>
                     <li class="tsd-kind-type-alias">
-                      <a href="globals.html#signedheaders" class="tsd-kind-icon"
+                      <a href="modules.html#signedheaders" class="tsd-kind-icon"
                         >Signed<wbr />Headers</a
                       >
                     </li>
                     <li class="tsd-kind-type-alias">
-                      <a href="globals.html#signeroptions" class="tsd-kind-icon"
+                      <a href="modules.html#signeroptions" class="tsd-kind-icon"
                         >Signer<wbr />Options</a
                       >
                     </li>
                     <li class="tsd-kind-type-alias">
                       <a
-                        href="globals.html#transferresponse"
+                        href="modules.html#transferresponse"
                         class="tsd-kind-icon"
                         >Transfer<wbr />Response</a
                       >
                     </li>
                     <li class="tsd-kind-type-alias">
                       <a
-                        href="globals.html#withdrawresponse"
+                        href="modules.html#withdrawresponse"
                         class="tsd-kind-icon"
                         >Withdraw<wbr />Response</a
                       >
@@ -377,24 +383,24 @@
                   <h3>Variables</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-variable">
-                      <a href="globals.html#apiuri" class="tsd-kind-icon"
+                      <a href="modules.html#apiuri" class="tsd-kind-icon"
                         >Api<wbr />Uri</a
                       >
                     </li>
                     <li class="tsd-kind-variable">
                       <a
-                        href="globals.html#defaultcurrency"
+                        href="modules.html#defaultcurrency"
                         class="tsd-kind-icon"
                         >Default<wbr />Currency</a
                       >
                     </li>
                     <li class="tsd-kind-variable">
-                      <a href="globals.html#defaultsymbol" class="tsd-kind-icon"
+                      <a href="modules.html#defaultsymbol" class="tsd-kind-icon"
                         >Default<wbr />Symbol</a
                       >
                     </li>
                     <li class="tsd-kind-variable">
-                      <a href="globals.html#aff_code" class="tsd-kind-icon"
+                      <a href="modules.html#aff_code" class="tsd-kind-icon"
                         >aff_<wbr />code</a
                       >
                     </li>
@@ -404,7 +410,7 @@
                   <h3>Functions</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-function">
-                      <a href="globals.html#signer" class="tsd-kind-icon"
+                      <a href="modules.html#signer" class="tsd-kind-icon"
                         >Signer</a
                       >
                     </li>
@@ -463,8 +469,8 @@
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L96"
-                      >src/auth1.ts:96</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L104"
+                      >src/auth1.ts:104</a
                     >
                   </li>
                 </ul>
@@ -475,33 +481,40 @@
               <h3>Order<wbr />Type</h3>
               <div class="tsd-signature tsd-kind-icon">
                 Order<wbr />Type<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">"market"</span
+                <span class="tsd-signature-type">&quot;market&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"limit"</span
+                ><span class="tsd-signature-type">&quot;limit&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"stop"</span
+                ><span class="tsd-signature-type">&quot;stop&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"trailing-stop"</span
+                ><span class="tsd-signature-type"
+                  >&quot;trailing-stop&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"fill-or-kill"</span
+                ><span class="tsd-signature-type">&quot;fill-or-kill&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange market"</span
+                ><span class="tsd-signature-type"
+                  >&quot;exchange market&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange limit"</span
+                ><span class="tsd-signature-type"
+                  >&quot;exchange limit&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange stop"</span
+                ><span class="tsd-signature-type"
+                  >&quot;exchange stop&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange trailing-stop"</span
+                ><span class="tsd-signature-type"
+                  >&quot;exchange trailing-stop&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange fill-or-kill"</span>
+                ><span class="tsd-signature-type"
+                  >&quot;exchange fill-or-kill&quot;</span
+                >
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L52"
-                      >src/auth1.ts:52</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L60"
+                      >src/auth1.ts:60</a
                     >
                   </li>
                 </ul>
@@ -635,9 +648,9 @@
                 ><span class="tsd-signature-symbol">; </span>status<span
                   class="tsd-signature-symbol"
                   >: </span
-                ><span class="tsd-signature-type">"error"</span
+                ><span class="tsd-signature-type">&quot;error&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"success"</span
+                ><span class="tsd-signature-type">&quot;success&quot;</span
                 ><span class="tsd-signature-symbol"> }</span
                 ><span class="tsd-signature-symbol">]</span>
               </div>
@@ -646,8 +659,8 @@
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L181"
-                      >src/auth1.ts:181</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L189"
+                      >src/auth1.ts:189</a
                     >
                   </li>
                 </ul>
@@ -664,20 +677,14 @@
                 ><span class="tsd-signature-symbol">{ </span>address<span
                   class="tsd-signature-symbol"
                   >?: </span
-                ><span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
                 ><span class="tsd-signature-type">string</span
                 ><span class="tsd-signature-symbol">; </span>amount<span
                   class="tsd-signature-symbol"
                   >?: </span
-                ><span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
                 ><span class="tsd-signature-type">string</span
                 ><span class="tsd-signature-symbol">; </span>fees<span
                   class="tsd-signature-symbol"
                   >?: </span
-                ><span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
                 ><span class="tsd-signature-type">string</span
                 ><span class="tsd-signature-symbol">; </span>invoice<span
                   class="tsd-signature-symbol"
@@ -692,8 +699,6 @@
                 ><span class="tsd-signature-symbol">; </span>method<span
                   class="tsd-signature-symbol"
                   >?: </span
-                ><span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
                 ><span class="tsd-signature-type">string</span
                 ><span class="tsd-signature-symbol">; </span>payment_id<span
                   class="tsd-signature-symbol"
@@ -704,17 +709,17 @@
                 ><span class="tsd-signature-symbol">; </span>status<span
                   class="tsd-signature-symbol"
                   >: </span
-                ><span class="tsd-signature-type">"error"</span
+                ><span class="tsd-signature-type">&quot;error&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"success"</span
+                ><span class="tsd-signature-type">&quot;success&quot;</span
                 ><span class="tsd-signature-symbol">; </span>wallettype<span
                   class="tsd-signature-symbol"
                   >?: </span
-                ><span class="tsd-signature-type">"trading"</span
+                ><span class="tsd-signature-type">&quot;trading&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"deposit"</span
+                ><span class="tsd-signature-type">&quot;deposit&quot;</span
                 ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">"exchange"</span
+                ><span class="tsd-signature-type">&quot;exchange&quot;</span
                 ><span class="tsd-signature-symbol">; </span>withdrawal_id<span
                   class="tsd-signature-symbol"
                   >: </span
@@ -727,8 +732,8 @@
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L185"
-                      >src/auth1.ts:185</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/master/src/auth1.ts#L193"
+                      >src/auth1.ts:193</a
                     >
                   </li>
                 </ul>
@@ -745,7 +750,7 @@
               <div class="tsd-signature tsd-kind-icon">
                 Api<wbr />Uri<span class="tsd-signature-symbol">:</span>
                 <span class="tsd-signature-type"
-                  >"https://api.bitfinex.com/v1/"</span
+                  >&quot;https://api.bitfinex.com/v1/&quot;</span
                 ><span class="tsd-signature-symbol">
                   = &quot;https://api.bitfinex.com/v1/&quot;</span
                 >
@@ -772,7 +777,7 @@
                 Default<wbr />Currency<span class="tsd-signature-symbol"
                   >:</span
                 >
-                <span class="tsd-signature-type">"USD"</span
+                <span class="tsd-signature-type">&quot;USD&quot;</span
                 ><span class="tsd-signature-symbol"> = &quot;USD&quot;</span>
               </div>
               <aside class="tsd-sources">
@@ -795,7 +800,7 @@
               </h3>
               <div class="tsd-signature tsd-kind-icon">
                 Default<wbr />Symbol<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">"BTCUSD"</span
+                <span class="tsd-signature-type">&quot;BTCUSD&quot;</span
                 ><span class="tsd-signature-symbol"> = &quot;BTCUSD&quot;</span>
               </div>
               <aside class="tsd-sources">
@@ -817,7 +822,7 @@
               </h3>
               <div class="tsd-signature tsd-kind-icon">
                 aff_<wbr />code<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">"rX7Hc9_O2"</span
+                <span class="tsd-signature-type">&quot;rX7Hc9_O2&quot;</span
                 ><span class="tsd-signature-symbol">
                   = &quot;rX7Hc9_O2&quot;</span
                 >
@@ -844,24 +849,17 @@
                 <li class="tsd-signature tsd-kind-icon">
                   Signer<span class="tsd-signature-symbol">(</span
                   >__namedParameters<span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-symbol">{ </span>key<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">string</span
-                  ><span class="tsd-signature-symbol">; </span>payload<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">string</span
-                  ><span class="tsd-signature-symbol">; </span>secret<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">string</span
-                  ><span class="tsd-signature-symbol"> }</span
+                  ><a
+                    href="modules.html#signeroptions"
+                    class="tsd-signature-type"
+                    data-tsd-kind="Type alias"
+                    >SignerOptions</a
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
                   ><a
-                    href="globals.html#signedheaders"
+                    href="modules.html#signedheaders"
                     class="tsd-signature-type"
+                    data-tsd-kind="Type alias"
                     >SignedHeaders</a
                   >
                 </li>
@@ -884,46 +882,21 @@
                     <li>
                       <h5>
                         __namedParameters:
-                        <span class="tsd-signature-symbol">{ </span>key<span
-                          class="tsd-signature-symbol"
-                          >: </span
-                        ><span class="tsd-signature-type">string</span
-                        ><span class="tsd-signature-symbol">; </span
-                        >payload<span class="tsd-signature-symbol">: </span
-                        ><span class="tsd-signature-type">string</span
-                        ><span class="tsd-signature-symbol">; </span>secret<span
-                          class="tsd-signature-symbol"
-                          >: </span
-                        ><span class="tsd-signature-type">string</span
-                        ><span class="tsd-signature-symbol"> }</span>
+                        <a
+                          href="modules.html#signeroptions"
+                          class="tsd-signature-type"
+                          data-tsd-kind="Type alias"
+                          >SignerOptions</a
+                        >
                       </h5>
-                      <ul class="tsd-parameters">
-                        <li class="tsd-parameter">
-                          <h5>
-                            key<span class="tsd-signature-symbol">: </span
-                            ><span class="tsd-signature-type">string</span>
-                          </h5>
-                        </li>
-                        <li class="tsd-parameter">
-                          <h5>
-                            payload<span class="tsd-signature-symbol">: </span
-                            ><span class="tsd-signature-type">string</span>
-                          </h5>
-                        </li>
-                        <li class="tsd-parameter">
-                          <h5>
-                            secret<span class="tsd-signature-symbol">: </span
-                            ><span class="tsd-signature-type">string</span>
-                          </h5>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                   <h4 class="tsd-returns-title">
                     Returns
                     <a
-                      href="globals.html#signedheaders"
+                      href="modules.html#signedheaders"
                       class="tsd-signature-type"
+                      data-tsd-kind="Type alias"
                       >SignedHeaders</a
                     >
                   </h4>
@@ -935,8 +908,8 @@
         <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
           <nav class="tsd-navigation primary">
             <ul>
-              <li class="globals current">
-                <a href="globals.html"><em>Globals</em></a>
+              <li class="current">
+                <a href="modules.html">Exports</a>
               </li>
             </ul>
           </nav>
@@ -964,6 +937,13 @@
                   href="interfaces/authenticatedclient1options.html"
                   class="tsd-kind-icon"
                   >Authenticated<wbr />Client1<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/balancehistoryparams.html"
+                  class="tsd-kind-icon"
+                  >Balance<wbr />History<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -1014,6 +994,11 @@
               <li class="tsd-kind-interface">
                 <a href="interfaces/gettrades.html" class="tsd-kind-icon"
                   >Get<wbr />Trades</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/historybalance.html" class="tsd-kind-icon"
+                  >History<wbr />Balance</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -1134,57 +1119,57 @@
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#accountinfo" class="tsd-kind-icon"
+                <a href="modules.html#accountinfo" class="tsd-kind-icon"
                   >Account<wbr />Info</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#ordertype" class="tsd-kind-icon"
+                <a href="modules.html#ordertype" class="tsd-kind-icon"
                   >Order<wbr />Type</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#signedheaders" class="tsd-kind-icon"
+                <a href="modules.html#signedheaders" class="tsd-kind-icon"
                   >Signed<wbr />Headers</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#signeroptions" class="tsd-kind-icon"
+                <a href="modules.html#signeroptions" class="tsd-kind-icon"
                   >Signer<wbr />Options</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#transferresponse" class="tsd-kind-icon"
+                <a href="modules.html#transferresponse" class="tsd-kind-icon"
                   >Transfer<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#withdrawresponse" class="tsd-kind-icon"
+                <a href="modules.html#withdrawresponse" class="tsd-kind-icon"
                   >Withdraw<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#apiuri" class="tsd-kind-icon"
+                <a href="modules.html#apiuri" class="tsd-kind-icon"
                   >Api<wbr />Uri</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#defaultcurrency" class="tsd-kind-icon"
+                <a href="modules.html#defaultcurrency" class="tsd-kind-icon"
                   >Default<wbr />Currency</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#defaultsymbol" class="tsd-kind-icon"
+                <a href="modules.html#defaultsymbol" class="tsd-kind-icon"
                   >Default<wbr />Symbol</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#aff_code" class="tsd-kind-icon"
+                <a href="modules.html#aff_code" class="tsd-kind-icon"
                   >aff_<wbr />code</a
                 >
               </li>
               <li class="tsd-kind-function">
-                <a href="globals.html#signer" class="tsd-kind-icon">Signer</a>
+                <a href="modules.html#signer" class="tsd-kind-icon">Signer</a>
               </li>
             </ul>
           </nav>
@@ -1211,17 +1196,17 @@
           </ul>
           <ul class="tsd-legend">
             <li
+              class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
+            >
+              <span class="tsd-kind-icon">Inherited constructor</span>
+            </li>
+            <li
               class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
             >
               <span class="tsd-kind-icon">Inherited property</span>
             </li>
             <li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
               <span class="tsd-kind-icon">Inherited method</span>
-            </li>
-            <li
-              class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"
-            >
-              <span class="tsd-kind-icon">Inherited accessor</span>
             </li>
           </ul>
           <ul class="tsd-legend">

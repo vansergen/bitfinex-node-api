@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.0.1...v2.1.0) (2021-02-15)
+
+### Features
+
+- add the `getBalanceHistory` method ([5723a2f](https://github.com/vansergen/bitfinex-node-api/commit/5723a2fa800cec6f1c81b44f7a71b22a4e1a3d91))
+
+### Dependencies
+
+- remove `coveralls` ([13385be](https://github.com/vansergen/bitfinex-node-api/commit/13385be3418e6b4f31edce77a15c865a5410492b))
+- upgrade `rpc-request` to `v5.0.2` ([dc7c40d](https://github.com/vansergen/bitfinex-node-api/commit/dc7c40d13bcef295d4c6faa672fc95446eae9a53))
+
 ### [2.0.1](https://github.com/vansergen/bitfinex-node-api/compare/v2.0.0...v2.0.1) (2020-12-27)
 
 ## [2.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v1.0.0...v2.0.0) (2020-12-27)

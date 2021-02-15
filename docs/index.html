@@ -7,6 +7,7 @@
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script async src="assets/js/search.js" id="search-script"></script>
   </head>
   <body>
     <header>
@@ -58,10 +59,6 @@
                   <label class="tsd-widget" for="tsd-filter-externals"
                     >Externals</label
                   >
-                  <input type="checkbox" id="tsd-filter-only-exported" />
-                  <label class="tsd-widget" for="tsd-filter-only-exported"
-                    >Only exported</label
-                  >
                 </div>
               </div>
               <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
@@ -73,11 +70,6 @@
       </div>
       <div class="tsd-page-title">
         <div class="container">
-          <ul class="tsd-breadcrumb">
-            <li>
-              <a href="globals.html">Globals</a>
-            </li>
-          </ul>
           <h1>bitfinex-node-api</h1>
         </div>
       </div>
@@ -154,7 +146,8 @@
             >
               <h2>Installation</h2>
             </a>
-            <pre><code class="language-bash">npm install bitfinex-node-api</code></pre>
+            <pre><code class="language-bash"><span style="color: #000000">npm install bitfinex-node-api</span>
+</code></pre>
             <a
               href="#usage"
               id="usage"
@@ -169,8 +162,9 @@
             >
               <h3>PublicClient1</h3>
             </a>
-            <pre><code class="language-typescript"><span class="hljs-keyword">import</span> { PublicClient1 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;bitfinex-node-api&quot;</span>;
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> PublicClient1();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">PublicClient1</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex-node-api&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">PublicClient1</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -179,8 +173,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;btcusd&quot;</span>;
-<span class="hljs-keyword">const</span> ticker = <span class="hljs-keyword">await</span> client.getTicker({ symbol });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ticker</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTicker</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -189,8 +184,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;btcusd&quot;</span>;
-<span class="hljs-keyword">const</span> stats = <span class="hljs-keyword">await</span> client.getStats({ symbol });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">stats</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getStats</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -199,10 +195,11 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> currency = <span class="hljs-string">&quot;usd&quot;</span>;
-<span class="hljs-keyword">const</span> limit_bids = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">const</span> limit_asks = <span class="hljs-number">5</span>;
-<span class="hljs-keyword">const</span> book = <span class="hljs-keyword">await</span> client.getFundingBook({ currency, limit_bids, limit_asks });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;usd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_bids</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_asks</span><span style="color: #000000"> = </span><span style="color: #098658">5</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">book</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getFundingBook</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">limit_bids</span><span style="color: #000000">, </span><span style="color: #001080">limit_asks</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -211,16 +208,17 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;btcusd&quot;</span>;
-<span class="hljs-keyword">const</span> limit_bids = <span class="hljs-number">20</span>;
-<span class="hljs-keyword">const</span> limit_asks = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">const</span> group = <span class="hljs-number">1</span>;
-<span class="hljs-keyword">const</span> book = <span class="hljs-keyword">await</span> client.getOrderBook({
-  symbol,
-  limit_bids,
-  limit_asks,
-  group,
-});</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_bids</span><span style="color: #000000"> = </span><span style="color: #098658">20</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_asks</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">group</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">book</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrderBook</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">limit_bids</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">limit_asks</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">group</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -229,10 +227,11 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;btcusd&quot;</span>;
-<span class="hljs-keyword">const</span> timestamp = <span class="hljs-number">1444266681</span>;
-<span class="hljs-keyword">const</span> limit_trades = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">const</span> trades = <span class="hljs-keyword">await</span> client.getTrades({ symbol, timestamp, limit_trades });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">timestamp</span><span style="color: #000000"> = </span><span style="color: #098658">1444266681</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTrades</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">timestamp</span><span style="color: #000000">, </span><span style="color: #001080">limit_trades</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -241,10 +240,11 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> currency = <span class="hljs-string">&quot;usd&quot;</span>;
-<span class="hljs-keyword">const</span> timestamp = <span class="hljs-number">1444266681</span>;
-<span class="hljs-keyword">const</span> limit_lends = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">const</span> lends = <span class="hljs-keyword">await</span> client.getLends({ currency, timestamp, limit_lends });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;usd&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">timestamp</span><span style="color: #000000"> = </span><span style="color: #098658">1444266681</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_lends</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">lends</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getLends</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">timestamp</span><span style="color: #000000">, </span><span style="color: #001080">limit_lends</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -253,7 +253,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbols = <span class="hljs-keyword">await</span> client.getSymbols();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbols</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSymbols</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -262,7 +263,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> symbolDetails = <span class="hljs-keyword">await</span> client.getSymbolDetails();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbolDetails</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSymbolDetails</span><span style="color: #000000">();</span>
+</code></pre>
             <a
               href="#authenticatedclient1"
               id="authenticatedclient1"
@@ -270,10 +272,11 @@
             >
               <h3>AuthenticatedClient1</h3>
             </a>
-            <pre><code class="language-typescript"><span class="hljs-keyword">import</span> { AuthenticatedClient1 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;bitfinex-node-api&quot;</span>;
-<span class="hljs-keyword">const</span> key = <span class="hljs-string">&quot;BitfinexAPIKey&quot;</span>;
-<span class="hljs-keyword">const</span> secret = <span class="hljs-string">&quot;BitfinexAPISecret&quot;</span>;
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> AuthenticatedClient1({ key, secret });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AuthenticatedClient1</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex-node-api&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">key</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BitfinexAPIKey&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">secret</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BitfinexAPISecret&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AuthenticatedClient1</span><span style="color: #000000">({ </span><span style="color: #001080">key</span><span style="color: #000000">, </span><span style="color: #001080">secret</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -282,7 +285,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> client.getAccountInfo();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">info</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getAccountInfo</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a href="https://docs.bitfinex.com/v1/reference#rest-auth-fees"
@@ -290,7 +294,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> fees = <span class="hljs-keyword">await</span> client.getAccountFees();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fees</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getAccountFees</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -299,7 +304,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> summary = <span class="hljs-keyword">await</span> client.getSummary();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">summary</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSummary</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -308,10 +314,11 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> method = <span class="hljs-string">&quot;zcash&quot;</span>;
-<span class="hljs-keyword">const</span> wallet_name = <span class="hljs-string">&quot;trading&quot;</span>;
-<span class="hljs-keyword">const</span> renew = <span class="hljs-number">1</span>;
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.getDepositAddress({ method, wallet_name, renew });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">method</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;zcash&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet_name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;trading&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">renew</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getDepositAddress</span><span style="color: #000000">({ </span><span style="color: #001080">method</span><span style="color: #000000">, </span><span style="color: #001080">wallet_name</span><span style="color: #000000">, </span><span style="color: #001080">renew</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -320,7 +327,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> permissions = <span class="hljs-keyword">await</span> client.getKeyPermissions();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">permissions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getKeyPermissions</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -329,7 +337,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> marginInformation = <span class="hljs-keyword">await</span> client.getMarginInformation();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">marginInformation</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getMarginInformation</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -338,7 +347,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> balances = <span class="hljs-keyword">await</span> client.getWalletBalances();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">balances</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getWalletBalances</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -347,16 +357,17 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> amount = <span class="hljs-string">&quot;1.00954735&quot;</span>;
-<span class="hljs-keyword">const</span> currency = <span class="hljs-string">&quot;BAB&quot;</span>;
-<span class="hljs-keyword">const</span> walletfrom = <span class="hljs-string">&quot;trading&quot;</span>;
-<span class="hljs-keyword">const</span> walletto = <span class="hljs-string">&quot;exchange&quot;</span>;
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.transfer({
-  amount,
-  currency,
-  walletfrom,
-  walletto,
-});</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.00954735&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BAB&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletfrom</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;trading&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletto</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;exchange&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">transfer</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">currency</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">walletfrom</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">walletto</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -365,16 +376,17 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> amount = <span class="hljs-string">&quot;1.0&quot;</span>;
-<span class="hljs-keyword">const</span> address = <span class="hljs-string">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span>;
-<span class="hljs-keyword">const</span> walletselected = <span class="hljs-string">&quot;exchange&quot;</span>;
-<span class="hljs-keyword">const</span> withdraw_type = <span class="hljs-string">&quot;bitcoin&quot;</span>;
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.withdraw({
-  amount,
-  withdraw_type,
-  address,
-  walletselected,
-});</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">address</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletselected</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;exchange&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">withdraw_type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitcoin&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">withdraw</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">withdraw_type</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">address</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">walletselected</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -383,22 +395,23 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> amount = <span class="hljs-string">&quot;1&quot;</span>;
-<span class="hljs-keyword">const</span> price = <span class="hljs-string">&quot;3&quot;</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">type</span> = <span class="hljs-string">&quot;limit&quot;</span>;
-<span class="hljs-keyword">const</span> exchange = <span class="hljs-string">&quot;bitfinex&quot;</span>;
-<span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;ETCUSD&quot;</span>;
-<span class="hljs-keyword">const</span> side = <span class="hljs-string">&quot;buy&quot;</span>;
-<span class="hljs-keyword">const</span> is_postonly = <span class="hljs-literal">true</span>;
-<span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> client.newOrder({
-  amount,
-  price,
-  <span class="hljs-keyword">type</span>,
-  exchange,
-  symbol,
-  side,
-  is_postonly,
-});</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">price</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">exchange</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">side</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">is_postonly</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOrder</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">price</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">type</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">exchange</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">side</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">is_postonly</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -407,24 +420,25 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> order1 = {
-  <span class="hljs-attr">amount</span>: <span class="hljs-string">&quot;1&quot;</span>,
-  <span class="hljs-attr">price</span>: <span class="hljs-string">&quot;3&quot;</span>,
-  <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;limit&quot;</span>,
-  <span class="hljs-attr">exchange</span>: <span class="hljs-string">&quot;bitfinex&quot;</span>,
-  <span class="hljs-attr">symbol</span>: <span class="hljs-string">&quot;ETCUSD&quot;</span>,
-  <span class="hljs-attr">side</span>: <span class="hljs-string">&quot;buy&quot;</span>,
-  <span class="hljs-attr">is_postonly</span>: <span class="hljs-literal">true</span>,
-};
-<span class="hljs-keyword">const</span> order2 = {
-  <span class="hljs-attr">amount</span>: <span class="hljs-string">&quot;2&quot;</span>,
-  <span class="hljs-attr">price</span>: <span class="hljs-string">&quot;2&quot;</span>,
-  <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;limit&quot;</span>,
-  <span class="hljs-attr">symbol</span>: <span class="hljs-string">&quot;ETCUSD&quot;</span>,
-  <span class="hljs-attr">side</span>: <span class="hljs-string">&quot;buy&quot;</span>,
-};
-<span class="hljs-keyword">const</span> orders = [order1, order2];
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.newOrders({ orders });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order1</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;1&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">exchange:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">symbol:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">side:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">is_postonly:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order2</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;2&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;2&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">symbol:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">side:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = [</span><span style="color: #001080">order1</span><span style="color: #000000">, </span><span style="color: #001080">order2</span><span style="color: #000000">];</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOrders</span><span style="color: #000000">({ </span><span style="color: #001080">orders</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -433,8 +447,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> order_id = <span class="hljs-number">446915287</span>;
-<span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> client.cancelOrder({ order_id });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOrder</span><span style="color: #000000">({ </span><span style="color: #001080">order_id</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -443,10 +458,11 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> order_id1 = <span class="hljs-number">446915287</span>;
-<span class="hljs-keyword">const</span> order_id2 = <span class="hljs-number">446915287</span>;
-<span class="hljs-keyword">const</span> order_ids = [order_id1, order_id2];
-<span class="hljs-keyword">const</span> { result } = <span class="hljs-keyword">await</span> client.cancelOrders({ order_ids });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id1</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id2</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_ids</span><span style="color: #000000"> = [</span><span style="color: #001080">order_id1</span><span style="color: #000000">, </span><span style="color: #001080">order_id2</span><span style="color: #000000">];</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">result</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOrders</span><span style="color: #000000">({ </span><span style="color: #001080">order_ids</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -455,7 +471,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> { result } = <span class="hljs-keyword">await</span> client.cancelAllOrders();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">result</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelAllOrders</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -464,23 +481,24 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> amount = <span class="hljs-string">&quot;3&quot;</span>;
-<span class="hljs-keyword">const</span> price = <span class="hljs-string">&quot;101&quot;</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">type</span> = <span class="hljs-string">&quot;limit&quot;</span>;
-<span class="hljs-keyword">const</span> exchange = <span class="hljs-string">&quot;bitfinex&quot;</span>;
-<span class="hljs-keyword">const</span> side = <span class="hljs-string">&quot;sell&quot;</span>;
-<span class="hljs-keyword">const</span> is_postonly = <span class="hljs-literal">true</span>;
-<span class="hljs-keyword">const</span> symbol = <span class="hljs-string">&quot;ETCUSD&quot;</span>;
-<span class="hljs-keyword">const</span> order_id = <span class="hljs-number">1</span>;
-<span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> client.replaceOrder({
-  amount,
-  price,
-  <span class="hljs-keyword">type</span>,
-  exchange,
-  symbol,
-  side,
-  is_postonly,
-});</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">price</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;101&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">exchange</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">side</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;sell&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">is_postonly</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">replaceOrder</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">price</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">type</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">exchange</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">side</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">is_postonly</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -489,8 +507,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> order_id = <span class="hljs-number">448411153</span>;
-<span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> client.getOrder({ order_id });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">448411153</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrder</span><span style="color: #000000">({ </span><span style="color: #001080">order_id</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -499,7 +518,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> orders = <span class="hljs-keyword">await</span> client.getOrders();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrders</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -508,8 +528,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> limit = <span class="hljs-number">50</span>;
-<span class="hljs-keyword">const</span> orders = <span class="hljs-keyword">await</span> client.getOrderHistory({ limit });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">50</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrderHistory</span><span style="color: #000000">({ </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -518,7 +539,8 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> positions = <span class="hljs-keyword">await</span> client.getPositions();</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">positions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getPositions</span><span style="color: #000000">();</span>
+</code></pre>
             <ul>
               <li>
                 <a
@@ -527,16 +549,29 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span class="hljs-keyword">const</span> position_id = <span class="hljs-number">943715</span>;
-<span class="hljs-keyword">const</span> amount = <span class="hljs-string">&quot;1.0&quot;</span>;
-<span class="hljs-keyword">const</span> position = <span class="hljs-keyword">await</span> client.claimPosition({ position_id, amount });</code></pre>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position_id</span><span style="color: #000000"> = </span><span style="color: #098658">943715</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">claimPosition</span><span style="color: #000000">({ </span><span style="color: #001080">position_id</span><span style="color: #000000">, </span><span style="color: #001080">amount</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-balance-history"
+                  ><code>getBalanceHistory</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">since</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444277602.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">history</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getBalanceHistory</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">since</span><span style="color: #000000"> });</span>
+</code></pre>
           </div>
         </div>
         <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
           <nav class="tsd-navigation primary">
             <ul>
-              <li class="globals">
-                <a href="globals.html"><em>Globals</em></a>
+              <li class=" ">
+                <a href="modules.html">Exports</a>
               </li>
             </ul>
           </nav>
@@ -564,6 +599,13 @@
                   href="interfaces/authenticatedclient1options.html"
                   class="tsd-kind-icon"
                   >Authenticated<wbr />Client1<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/balancehistoryparams.html"
+                  class="tsd-kind-icon"
+                  >Balance<wbr />History<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -614,6 +656,11 @@
               <li class="tsd-kind-interface">
                 <a href="interfaces/gettrades.html" class="tsd-kind-icon"
                   >Get<wbr />Trades</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/historybalance.html" class="tsd-kind-icon"
+                  >History<wbr />Balance</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -734,57 +781,57 @@
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#accountinfo" class="tsd-kind-icon"
+                <a href="modules.html#accountinfo" class="tsd-kind-icon"
                   >Account<wbr />Info</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#ordertype" class="tsd-kind-icon"
+                <a href="modules.html#ordertype" class="tsd-kind-icon"
                   >Order<wbr />Type</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#signedheaders" class="tsd-kind-icon"
+                <a href="modules.html#signedheaders" class="tsd-kind-icon"
                   >Signed<wbr />Headers</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#signeroptions" class="tsd-kind-icon"
+                <a href="modules.html#signeroptions" class="tsd-kind-icon"
                   >Signer<wbr />Options</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#transferresponse" class="tsd-kind-icon"
+                <a href="modules.html#transferresponse" class="tsd-kind-icon"
                   >Transfer<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="globals.html#withdrawresponse" class="tsd-kind-icon"
+                <a href="modules.html#withdrawresponse" class="tsd-kind-icon"
                   >Withdraw<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#apiuri" class="tsd-kind-icon"
+                <a href="modules.html#apiuri" class="tsd-kind-icon"
                   >Api<wbr />Uri</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#defaultcurrency" class="tsd-kind-icon"
+                <a href="modules.html#defaultcurrency" class="tsd-kind-icon"
                   >Default<wbr />Currency</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#defaultsymbol" class="tsd-kind-icon"
+                <a href="modules.html#defaultsymbol" class="tsd-kind-icon"
                   >Default<wbr />Symbol</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="globals.html#aff_code" class="tsd-kind-icon"
+                <a href="modules.html#aff_code" class="tsd-kind-icon"
                   >aff_<wbr />code</a
                 >
               </li>
               <li class="tsd-kind-function">
-                <a href="globals.html#signer" class="tsd-kind-icon">Signer</a>
+                <a href="modules.html#signer" class="tsd-kind-icon">Signer</a>
               </li>
             </ul>
           </nav>
@@ -811,17 +858,17 @@
           </ul>
           <ul class="tsd-legend">
             <li
+              class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
+            >
+              <span class="tsd-kind-icon">Inherited constructor</span>
+            </li>
+            <li
               class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
             >
               <span class="tsd-kind-icon">Inherited property</span>
             </li>
             <li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
               <span class="tsd-kind-icon">Inherited method</span>
-            </li>
-            <li
-              class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"
-            >
-              <span class="tsd-kind-icon">Inherited accessor</span>
             </li>
           </ul>
           <ul class="tsd-legend">
