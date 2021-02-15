@@ -359,3 +359,10 @@ const credits = await client.activeCredits();
 ```typescript
 const offers = await client.getOffers();
 ```
+
+- [`offersHistory`](https://docs.bitfinex.com/v1/reference#rest-auth-offers-hist)
+
+```typescript
+const limit = 25;
+const offers = await client.offersHistory({ limit });
+```
