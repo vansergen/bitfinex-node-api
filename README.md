@@ -298,3 +298,71 @@ const currency = "USD";
 const since = "1444277602.0";
 const history = await client.getBalanceHistory({ currency, since });
 ```
+
+- [`getDepositsWithdrawals`](https://docs.bitfinex.com/v1/reference#rest-auth-deposit-withdrawal-history)
+
+```typescript
+const currency = "BTC";
+const since = "1444277602.0";
+const limit = 10;
+const history = await client.getDepositsWithdrawals({ currency, since, limit });
+```
+
+- [`getPastTrades`](https://docs.bitfinex.com/v1/reference#rest-auth-past-trades)
+
+```typescript
+const symbol = "BTCEUR";
+const limit_trades = 25;
+const reverse = 1;
+const trades = await client.getPastTrades({ symbol, limit_trades, reverse });
+```
+
+- [`newOffer`](https://docs.bitfinex.com/v1/reference#rest-auth-new-offer)
+
+```typescript
+const currency = "USD";
+const amount = "50.0";
+const rate = "20.0";
+const period = 2;
+const direction = "lend";
+const offer = await client.newOffer({
+  currency,
+  amount,
+  rate,
+  period,
+  direction,
+});
+```
+
+- [`cancelOffer`](https://docs.bitfinex.com/v1/reference#rest-auth-cancel-offer)
+
+```typescript
+const offer_id = 13800585;
+const offer = await client.cancelOffer({ offer_id });
+```
+
+- [`offerStatus`](https://docs.bitfinex.com/v1/reference#rest-auth-offer-status)
+
+```typescript
+const offer_id = 13800585;
+const offer = await client.offerStatus({ offer_id });
+```
+
+- [`activeCredits`](https://docs.bitfinex.com/v1/reference#rest-auth-active-credits)
+
+```typescript
+const credits = await client.activeCredits();
+```
+
+- [`getOffers`](https://docs.bitfinex.com/v1/reference#rest-auth-offers)
+
+```typescript
+const offers = await client.getOffers();
+```
+
+- [`offersHistory`](https://docs.bitfinex.com/v1/reference#rest-auth-offers-hist)
+
+```typescript
+const limit = 25;
+const offers = await client.offersHistory({ limit });
+```

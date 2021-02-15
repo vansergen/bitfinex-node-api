@@ -52,6 +52,34 @@ export interface BalanceHistoryParams {
   limit?: number;
 }
 
+export interface DepositsWithdrawalsParams {
+  currency: string;
+  method?: "bitcoin" | "litecoin" | "darkcoin" | "wire";
+  since?: string;
+  until?: string;
+  limit?: number;
+}
+
+export interface PastTradesParams {
+  symbol?: string;
+  timestamp?: string;
+  until?: string;
+  limit_trades?: number;
+  reverse?: number;
+}
+
+export interface NewOfferParams {
+  currency: string;
+  amount: string;
+  rate: string;
+  period: number;
+  direction: "lend" | "loan";
+}
+
+export interface CancelOfferParams {
+  offer_id: number;
+}
+
 export interface ClaimParams {
   position_id: number;
   amount?: string;
@@ -251,6 +279,68 @@ export interface HistoryBalance {
   amount: string;
   balance: string;
   description: string;
+  timestamp: string;
+}
+
+export interface DepositWithdrawal {
+  id: number;
+  txid: number;
+  currency: string;
+  method: string;
+  type: string;
+  amount: string;
+  description: string;
+  address: string;
+  status:
+    | "SENDING"
+    | "PROCESSING"
+    | "PENDING"
+    | "POSTPENDING"
+    | "COMPLETED"
+    | "USER EMAILED"
+    | "APPROVED"
+    | "USER APPROVED"
+    | "CANCELED"
+    | "PENDING CANCELLATION"
+    | "UNCOMFIRMED";
+  timestamp: string;
+  timestamp_created: string;
+  fee: number;
+}
+
+export interface PastTrade {
+  price: string;
+  amount: string;
+  timestamp: string;
+  type: "Buy" | "Sell";
+  fee_currency: string;
+  fee_amount: string;
+  tid: number;
+  order_id: number;
+}
+
+export interface Offer {
+  id: number;
+  currency: string;
+  rate: string;
+  period: number;
+  direction: "lend" | "loan";
+  timestamp: string;
+  is_live: boolean;
+  is_cancelled: boolean;
+  original_amount: string;
+  remaining_amount: string;
+  executed_amount: string;
+  offer_id?: number;
+}
+
+export interface Credit {
+  id: number;
+  currency: string;
+  status: string;
+  rate: string;
+  period: number;
+  amount: string;
   timestamp: string;
 }
 
@@ -503,6 +593,75 @@ export class AuthenticatedClient1 extends PublicClient1 {
       { ...body }
     )) as HistoryBalance[];
     return balances;
+  }
+
+  /** Get past deposits/withdrawals. */
+  public async getDepositsWithdrawals(
+    body: DepositsWithdrawalsParams
+  ): Promise<DepositWithdrawal[]> {
+    const request = "/v1/history/movements";
+    const balances = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as DepositWithdrawal[];
+    return balances;
+  }
+
+  /** Get past trades. */
+  public async getPastTrades({
+    symbol = this.symbol,
+    ...rest
+  }: PastTradesParams = {}): Promise<PastTrade[]> {
+    const request = "/v1/mytrades";
+    const trades = (await this.post(
+      request,
+      {},
+      { ...rest, symbol }
+    )) as PastTrade[];
+    return trades;
+  }
+
+  /** Submit a new offer. */
+  public async newOffer(body: NewOfferParams): Promise<Offer> {
+    const request = "/v1/offer/new";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
+  }
+
+  /** Cancel an offer. */
+  public async cancelOffer(body: CancelOfferParams): Promise<Offer> {
+    const request = "/v1/offer/cancel";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
+  }
+
+  /** Get the status of an offer. */
+  public async offerStatus(body: CancelOfferParams): Promise<Offer> {
+    const request = "/v1/offer/status";
+    const offer = (await this.post(request, {}, { ...body })) as Offer;
+    return offer;
+  }
+
+  /** Get the funds currently taken. */
+  public async activeCredits(): Promise<Credit[]> {
+    const request = "/v1/credits";
+    const credits = (await this.post(request, {}, {})) as Credit[];
+    return credits;
+  }
+
+  /** Get active offers. */
+  public async getOffers(): Promise<Offer[]> {
+    const request = "/v1/offers";
+    const offers = (await this.post(request, {}, {})) as Offer[];
+    return offers;
+  }
+
+  /** Get latest inactive offers. */
+  public async offersHistory(body: OrderHistoryParams = {}): Promise<Offer[]> {
+    const request = "/v1/offers/hist";
+    const offers = (await this.post(request, {}, { ...body })) as Offer[];
+    return offers;
   }
 
   public set nonce(nonce: () => number) {
