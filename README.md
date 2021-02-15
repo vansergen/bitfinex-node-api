@@ -290,3 +290,11 @@ const position_id = 943715;
 const amount = "1.0";
 const position = await client.claimPosition({ position_id, amount });
 ```
+
+- [`getBalanceHistory`](https://docs.bitfinex.com/v1/reference#rest-auth-balance-history)
+
+```typescript
+const currency = "USD";
+const since = "1444277602.0";
+const history = await client.getBalanceHistory({ currency, since });
+```
