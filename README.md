@@ -340,3 +340,10 @@ const offer = await client.newOffer({
 const offer_id = 13800585;
 const offer = await client.cancelOffer({ offer_id });
 ```
+
+- [`offerStatus`](https://docs.bitfinex.com/v1/reference#rest-auth-offer-status)
+
+```typescript
+const offer_id = 13800585;
+const offer = await client.offerStatus({ offer_id });
+```
