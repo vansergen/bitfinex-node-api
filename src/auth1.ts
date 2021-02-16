@@ -44,6 +44,12 @@ export interface OrderHistoryParams {
   limit?: number;
 }
 
+export interface FundingTradesParams {
+  symbol: string;
+  until?: string;
+  limit_trades?: number;
+}
+
 export interface BalanceHistoryParams {
   currency: string;
   wallet?: "trading" | "exchange" | "deposit";
@@ -342,6 +348,16 @@ export interface Credit {
   period: number;
   amount: string;
   timestamp: string;
+}
+
+export interface FundingTrade {
+  rate: string;
+  period: number;
+  amount: string;
+  timestamp: string;
+  type: "Buy" | "Sell";
+  tid: number;
+  offer_id: number;
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -661,6 +677,19 @@ export class AuthenticatedClient1 extends PublicClient1 {
   public async offersHistory(body: OrderHistoryParams = {}): Promise<Offer[]> {
     const request = "/v1/offers/hist";
     const offers = (await this.post(request, {}, { ...body })) as Offer[];
+    return offers;
+  }
+
+  /** Get past funding trades. */
+  public async getFundingTrades(
+    body: FundingTradesParams
+  ): Promise<FundingTrade[]> {
+    const request = "/v1/mytrades_funding";
+    const offers = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as FundingTrade[];
     return offers;
   }
 
