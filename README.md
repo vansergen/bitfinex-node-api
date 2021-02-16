@@ -375,3 +375,9 @@ const limit_trades = 1;
 const until = "1444141858.0";
 const trades = await client.getFundingTrades({ limit_trades, symbol, until });
 ```
+
+- [`getTakenFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-used-in-a-margin-position)
+
+```typescript
+const funds = await client.getTakenFunds();
+```
