@@ -25,6 +25,7 @@ import {
   Credit,
   FundingTrade,
   TakenFund,
+  TotalFund,
   aff_code,
 } from "../index";
 
@@ -1305,6 +1306,22 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getUnusedFunds();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getTotalFunds()", async () => {
+    const response: TotalFund[] = [
+      { position_pair: "BTCUSD", total_swaps: "34.24603414" },
+    ];
+    const uri = "/v1/total_taken_funds";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {});
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getTotalFunds();
     assert.deepStrictEqual(data, response);
   });
 });
