@@ -360,6 +360,17 @@ export interface FundingTrade {
   offer_id: number;
 }
 
+export interface TakenFund {
+  id: number;
+  position_id: number;
+  currency: string;
+  rate: string;
+  period: number;
+  amount: string;
+  timestamp: string;
+  auto_close: boolean;
+}
+
 export interface AuthenticatedClient1Options extends PublicClient1Params {
   key: string;
   secret: string;
@@ -685,12 +696,19 @@ export class AuthenticatedClient1 extends PublicClient1 {
     body: FundingTradesParams
   ): Promise<FundingTrade[]> {
     const request = "/v1/mytrades_funding";
-    const offers = (await this.post(
+    const trades = (await this.post(
       request,
       {},
       { ...body }
     )) as FundingTrade[];
-    return offers;
+    return trades;
+  }
+
+  /** Get funds used in a margin position. */
+  public async getTakenFunds(): Promise<TakenFund[]> {
+    const request = "/v1/taken_funds";
+    const funds = (await this.post(request, {}, {})) as TakenFund[];
+    return funds;
   }
 
   public set nonce(nonce: () => number) {
