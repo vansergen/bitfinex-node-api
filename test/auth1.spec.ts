@@ -24,6 +24,7 @@ import {
   Offer,
   Credit,
   FundingTrade,
+  TakenFund,
   aff_code,
 } from "../index";
 
@@ -1254,6 +1255,31 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.getFundingTrades({ limit_trades, symbol, until });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getTakenFunds()", async () => {
+    const response: TakenFund[] = [
+      {
+        id: 11576737,
+        position_id: 944309,
+        currency: "USD",
+        rate: "9.8874",
+        period: 2,
+        amount: "34.24603414",
+        timestamp: "1444280948.0",
+        auto_close: false,
+      },
+    ];
+    const uri = "/v1/taken_funds";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {});
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getTakenFunds();
     assert.deepStrictEqual(data, response);
   });
 });
