@@ -393,3 +393,10 @@ const funds = await client.getUnusedFunds();
 ```typescript
 const funds = await client.getTotalFunds();
 ```
+
+- [`closeFunding`](https://docs.bitfinex.com/v1/reference#rest-auth-close-margin-funding)
+
+```typescript
+const swap_id = 11576737;
+const funding = await client.closeFunding({ swap_id });
+```
