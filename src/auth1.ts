@@ -812,12 +812,12 @@ export class AuthenticatedClient1 extends PublicClient1 {
     body: ClosePositionParams
   ): Promise<ClosePositionResponse> {
     const request = "/v1/position/close";
-    const fund = (await this.post(
+    const response = (await this.post(
       request,
       {},
       { ...body }
     )) as ClosePositionResponse;
-    return fund;
+    return response;
   }
 
   public set nonce(nonce: () => number) {
