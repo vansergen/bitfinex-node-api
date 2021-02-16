@@ -50,6 +50,10 @@ export interface FundingTradesParams {
   limit_trades?: number;
 }
 
+export interface CloseFundingParams {
+  swap_id: number;
+}
+
 export interface BalanceHistoryParams {
   currency: string;
   wallet?: "trading" | "exchange" | "deposit";
@@ -548,7 +552,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   public async cancelAllOrders(): Promise<{ result: string }> {
     const request = "/v1/order/cancel/all";
-    const response = (await this.post(request, {})) as { result: string };
+    const response = (await this.post(request)) as { result: string };
     return response;
   }
 
@@ -678,14 +682,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
   /** Get the funds currently taken. */
   public async activeCredits(): Promise<Credit[]> {
     const request = "/v1/credits";
-    const credits = (await this.post(request, {}, {})) as Credit[];
+    const credits = (await this.post(request)) as Credit[];
     return credits;
   }
 
   /** Get active offers. */
   public async getOffers(): Promise<Offer[]> {
     const request = "/v1/offers";
-    const offers = (await this.post(request, {}, {})) as Offer[];
+    const offers = (await this.post(request)) as Offer[];
     return offers;
   }
 
@@ -712,22 +716,29 @@ export class AuthenticatedClient1 extends PublicClient1 {
   /** Get funds used in a margin position. */
   public async getTakenFunds(): Promise<TakenFund[]> {
     const request = "/v1/taken_funds";
-    const funds = (await this.post(request, {}, {})) as TakenFund[];
+    const funds = (await this.post(request)) as TakenFund[];
     return funds;
   }
 
   /** Get borrowed funds and not used in a margin position. */
   public async getUnusedFunds(): Promise<TakenFund[]> {
     const request = "/v1/unused_taken_funds";
-    const funds = (await this.post(request, {}, {})) as TakenFund[];
+    const funds = (await this.post(request)) as TakenFund[];
     return funds;
   }
 
   /** Get the total of active funding used in positions. */
   public async getTotalFunds(): Promise<TotalFund[]> {
     const request = "/v1/total_taken_funds";
-    const funds = (await this.post(request, {}, {})) as TotalFund[];
+    const funds = (await this.post(request)) as TotalFund[];
     return funds;
+  }
+
+  /** Close a taken funging. */
+  public async closeFunding(body: CloseFundingParams): Promise<TakenFund> {
+    const request = "/v1/funding/close";
+    const fund = (await this.post(request, {}, { ...body })) as TakenFund;
+    return fund;
   }
 
   public set nonce(nonce: () => number) {
