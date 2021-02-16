@@ -400,3 +400,10 @@ const funds = await client.getTotalFunds();
 const swap_id = 11576737;
 const funding = await client.closeFunding({ swap_id });
 ```
+
+- [`closePosition`](https://docs.bitfinex.com/v1/reference#close-position)
+
+```typescript
+const position_id = 943715;
+const response = await client.closePosition({ position_id });
+```
