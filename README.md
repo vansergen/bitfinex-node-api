@@ -366,3 +366,12 @@ const offers = await client.getOffers();
 const limit = 25;
 const offers = await client.offersHistory({ limit });
 ```
+
+- [`getFundingTrades`](https://docs.bitfinex.com/v1/reference#rest-auth-mytrades-funding)
+
+```typescript
+const symbol = "USD";
+const limit_trades = 1;
+const until = "1444141858.0";
+const trades = await client.getFundingTrades({ limit_trades, symbol, until });
+```
