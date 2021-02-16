@@ -387,3 +387,9 @@ const funds = await client.getTakenFunds();
 ```typescript
 const funds = await client.getUnusedFunds();
 ```
+
+- [`getTotalFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-total-taken-funds)
+
+```typescript
+const funds = await client.getTotalFunds();
+```
