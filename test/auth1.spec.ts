@@ -26,6 +26,7 @@ import {
   FundingTrade,
   TakenFund,
   TotalFund,
+  ClosePositionResponse,
   aff_code,
 } from "../index";
 
@@ -1346,6 +1347,82 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.closeFunding({ swap_id });
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".closePosition()", async () => {
+    const response: ClosePositionResponse = {
+      message: "Submitting a market order to liquidate this position.",
+      order: {
+        id: 14272189265,
+        type: "MARKET",
+        pair: "XLMUSD",
+        status: "ACTIVE (note:POSCLOSE)",
+        created_at: "2021-02-11T01:23:21.113271Z",
+        updated_at: "2021-02-11T01:23:21.113271Z",
+        user_id: 41812101,
+        amount: "-1000.0",
+        price: null,
+        originalamount: "-1000.0",
+        routing: "",
+        lockedperiod: null,
+        trailingprice: "0.0",
+        hidden: false,
+        vir: 1,
+        maxrate: "0.0",
+        placed_id: null,
+        placed_trades: null,
+        nopayback: null,
+        avg_price: "0.0",
+        active: 2,
+        fiat_currency: null,
+        cid: null,
+        cid_date: null,
+        mseq: 0,
+        gid: null,
+        flags: 0,
+        price_aux_limit: "0.0",
+        type_prev: null,
+        tif: null,
+        v_pair: "XLMUSD",
+        meta: null,
+        liq_stage: null,
+        pos_id: null,
+      },
+      position: {
+        id: 523032868,
+        pair: "XLMUSD",
+        status: "ACTIVE",
+        user_id: 41812101,
+        created_at: "2021-02-11T01:22:28.000000Z",
+        updated_at: "2021-02-11T01:22:28.000000Z",
+        amount: "1000.0",
+        base: "0.20102",
+        swap: "0.0",
+        noliquidation: null,
+        period: null,
+        vir: 1,
+        maxrate: "0.75",
+        swap_type: 0,
+        active: 1,
+        type: 0,
+        lev: 0,
+        stage: 0,
+        collateral: "0.0",
+        meta:
+          '{"reason": "TRADE", "order_id": 72856328294, "liq_stage": null, "trade_price": "0.20102", "trade_amount": "1000.0", "user_id_oppo": 6429651, "order_id_oppo": 62746392918}',
+      },
+    };
+    const uri = "/v1/position/close";
+    const position_id = 523032868;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { position_id });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.closePosition({ position_id });
     assert.deepStrictEqual(data, response);
   });
 });
