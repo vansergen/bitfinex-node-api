@@ -23,6 +23,7 @@ import {
   PastTrade,
   Offer,
   Credit,
+  FundingTrade,
   aff_code,
 } from "../index";
 
@@ -1226,6 +1227,33 @@ suite("AuthenticatedClient v1", () => {
       })
       .reply(200, response);
     const data = await client.offersHistory();
+    assert.deepStrictEqual(data, response);
+  });
+
+  test(".getFundingTrades()", async () => {
+    const response: FundingTrade[] = [
+      {
+        rate: "0.01",
+        period: 30,
+        amount: "1.0",
+        timestamp: "1444141857.0",
+        type: "Buy",
+        tid: 11970839,
+        offer_id: 446913929,
+      },
+    ];
+    const uri = "/v1/mytrades_funding";
+    const symbol = "USD";
+    const limit_trades = 1;
+    const until = "1444141858.0";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { limit_trades, symbol, until });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getFundingTrades({ limit_trades, symbol, until });
     assert.deepStrictEqual(data, response);
   });
 });
