@@ -54,6 +54,10 @@ export interface CloseFundingParams {
   swap_id: number;
 }
 
+export interface ClosePositionParams {
+  position_id: number;
+}
+
 export interface BalanceHistoryParams {
   currency: string;
   wallet?: "trading" | "exchange" | "deposit";
@@ -378,6 +382,68 @@ export interface TakenFund {
 export interface TotalFund {
   position_pair: string;
   total_swaps: string;
+}
+
+export interface ClosePositionResponse {
+  message: string;
+  order: {
+    id: number;
+    type: "MARKET";
+    pair: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
+    user_id: number;
+    amount: string;
+    price: null;
+    originalamount: string;
+    routing: string;
+    lockedperiod: null;
+    trailingprice: string;
+    hidden: boolean;
+    vir: number;
+    maxrate: string;
+    placed_id: null;
+    placed_trades: null;
+    nopayback: null;
+    avg_price: string;
+    active: number;
+    fiat_currency: null;
+    cid: null;
+    cid_date: null;
+    mseq: number;
+    gid: null;
+    flags: number;
+    price_aux_limit: string;
+    type_prev: null;
+    tif: null;
+    v_pair: string;
+    meta: null;
+    liq_stage: null;
+    pos_id: null;
+  };
+  position: {
+    id: number;
+    pair: string;
+    status: "ACTIVE";
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+    amount: string;
+    base: string;
+    swap: string;
+    noliquidation: null;
+    period: null;
+    vir: number;
+    maxrate: string;
+    swap_type: number;
+    active: number;
+    type: number;
+    lev: number;
+    stage: number;
+    collateral: string;
+    meta?: string;
+  };
 }
 
 export interface AuthenticatedClient1Options extends PublicClient1Params {
@@ -738,6 +804,19 @@ export class AuthenticatedClient1 extends PublicClient1 {
   public async closeFunding(body: CloseFundingParams): Promise<TakenFund> {
     const request = "/v1/funding/close";
     const fund = (await this.post(request, {}, { ...body })) as TakenFund;
+    return fund;
+  }
+
+  /** Close the position with a market order. */
+  public async closePosition(
+    body: ClosePositionParams
+  ): Promise<ClosePositionResponse> {
+    const request = "/v1/position/close";
+    const fund = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as ClosePositionResponse;
     return fund;
   }
 
