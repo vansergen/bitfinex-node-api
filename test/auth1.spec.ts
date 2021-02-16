@@ -1282,4 +1282,29 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.getTakenFunds();
     assert.deepStrictEqual(data, response);
   });
+
+  test(".getUnusedFunds()", async () => {
+    const response: TakenFund[] = [
+      {
+        id: 11576737,
+        position_id: 944309,
+        currency: "USD",
+        rate: "9.8874",
+        period: 2,
+        amount: "34.24603414",
+        timestamp: "1444280948.0",
+        auto_close: false,
+      },
+    ];
+    const uri = "/v1/unused_taken_funds";
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, {});
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.getUnusedFunds();
+    assert.deepStrictEqual(data, response);
+  });
 });
