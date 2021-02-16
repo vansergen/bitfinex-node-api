@@ -1324,4 +1324,28 @@ suite("AuthenticatedClient v1", () => {
     const data = await client.getTotalFunds();
     assert.deepStrictEqual(data, response);
   });
+
+  test(".closeFunding()", async () => {
+    const response: TakenFund = {
+      id: 11576737,
+      position_id: 944309,
+      currency: "USD",
+      rate: "9.8874",
+      period: 2,
+      amount: "34.24603414",
+      timestamp: "1444280948.0",
+      auto_close: false,
+    };
+    const uri = "/v1/funding/close";
+    const swap_id = 11576737;
+    nock(apiUri)
+      .post(uri, ({ request, nonce, ...rest }) => {
+        assert.deepStrictEqual(rest, { swap_id });
+        assert.ok(nonce);
+        return request === uri;
+      })
+      .reply(200, response);
+    const data = await client.closeFunding({ swap_id });
+    assert.deepStrictEqual(data, response);
+  });
 });
