@@ -371,6 +371,11 @@ export interface TakenFund {
   auto_close: boolean;
 }
 
+export interface TotalFund {
+  position_pair: string;
+  total_swaps: string;
+}
+
 export interface AuthenticatedClient1Options extends PublicClient1Params {
   key: string;
   secret: string;
@@ -715,6 +720,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
   public async getUnusedFunds(): Promise<TakenFund[]> {
     const request = "/v1/unused_taken_funds";
     const funds = (await this.post(request, {}, {})) as TakenFund[];
+    return funds;
+  }
+
+  /** Get the total of active funding used in positions. */
+  public async getTotalFunds(): Promise<TotalFund[]> {
+    const request = "/v1/total_taken_funds";
+    const funds = (await this.post(request, {}, {})) as TotalFund[];
     return funds;
   }
 
