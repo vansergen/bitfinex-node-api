@@ -381,3 +381,9 @@ const trades = await client.getFundingTrades({ limit_trades, symbol, until });
 ```typescript
 const funds = await client.getTakenFunds();
 ```
+
+- [`getUnusedFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-not-used-in-a-margin-position)
+
+```typescript
+const funds = await client.getUnusedFunds();
+```
