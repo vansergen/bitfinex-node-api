@@ -711,6 +711,13 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return funds;
   }
 
+  /** Get borrowed funds and not used in a margin position. */
+  public async getUnusedFunds(): Promise<TakenFund[]> {
+    const request = "/v1/unused_taken_funds";
+    const funds = (await this.post(request, {}, {})) as TakenFund[];
+    return funds;
+  }
+
   public set nonce(nonce: () => number) {
     this.#nonce = nonce;
   }
