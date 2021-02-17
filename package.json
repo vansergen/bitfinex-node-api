@@ -1,6 +1,6 @@
 {
   "name": "bitfinex-node-api",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Bitfinex Node.js client",
   "main": "build/index.js",
   "types": "build/index.d.ts",

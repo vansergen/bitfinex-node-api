@@ -665,6 +665,70 @@
             <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">25</span><span style="color: #000000">;</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offers</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">offersHistory</span><span style="color: #000000">({ </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
 </code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-mytrades-funding"
+                  ><code>getFundingTrades</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">until</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444141858.0&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getFundingTrades</span><span style="color: #000000">({ </span><span style="color: #001080">limit_trades</span><span style="color: #000000">, </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">until</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-used-in-a-margin-position"
+                  ><code>getTakenFunds</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTakenFunds</span><span style="color: #000000">();</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-not-used-in-a-margin-position"
+                  ><code>getUnusedFunds</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getUnusedFunds</span><span style="color: #000000">();</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-total-taken-funds"
+                  ><code>getTotalFunds</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTotalFunds</span><span style="color: #000000">();</span>
+</code></pre>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.bitfinex.com/v1/reference#rest-auth-close-margin-funding"
+                  ><code>closeFunding</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">swap_id</span><span style="color: #000000"> = </span><span style="color: #098658">11576737</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funding</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">closeFunding</span><span style="color: #000000">({ </span><span style="color: #001080">swap_id</span><span style="color: #000000"> });</span>
+</code></pre>
+            <ul>
+              <li>
+                <a href="https://docs.bitfinex.com/v1/reference#close-position"
+                  ><code>closePosition</code></a
+                >
+              </li>
+            </ul>
+            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position_id</span><span style="color: #000000"> = </span><span style="color: #098658">943715</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">response</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">closePosition</span><span style="color: #000000">({ </span><span style="color: #001080">position_id</span><span style="color: #000000"> });</span>
+</code></pre>
           </div>
         </div>
         <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -721,6 +785,27 @@
                 >
               </li>
               <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/closefundingparams.html"
+                  class="tsd-kind-icon"
+                  >Close<wbr />Funding<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/closepositionparams.html"
+                  class="tsd-kind-icon"
+                  >Close<wbr />Position<wbr />Params</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/closepositionresponse.html"
+                  class="tsd-kind-icon"
+                  >Close<wbr />Position<wbr />Response</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
                 <a href="interfaces/credit.html" class="tsd-kind-icon"
                   >Credit</a
                 >
@@ -762,6 +847,18 @@
               <li class="tsd-kind-interface">
                 <a href="interfaces/fundingbookitem.html" class="tsd-kind-icon"
                   >Funding<wbr />Book<wbr />Item</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/fundingtrade.html" class="tsd-kind-icon"
+                  >Funding<wbr />Trade</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a
+                  href="interfaces/fundingtradesparams.html"
+                  class="tsd-kind-icon"
+                  >Funding<wbr />Trades<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
@@ -902,8 +999,18 @@
                 >
               </li>
               <li class="tsd-kind-interface">
+                <a href="interfaces/takenfund.html" class="tsd-kind-icon"
+                  >Taken<wbr />Fund</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
                 <a href="interfaces/ticker.html" class="tsd-kind-icon"
                   >Ticker</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="interfaces/totalfund.html" class="tsd-kind-icon"
+                  >Total<wbr />Fund</a
                 >
               </li>
               <li class="tsd-kind-interface">

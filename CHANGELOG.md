@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.2.0...v2.3.0) (2021-02-17)
+
+### Features
+
+- add the `closeFunding` method ([3b7f2a6](https://github.com/vansergen/bitfinex-node-api/commit/3b7f2a66e18721f6c5b5ea3fa1b4c61e7cdbd62f))
+- add the `closePosition` method ([1704a23](https://github.com/vansergen/bitfinex-node-api/commit/1704a237d15b82876ef08a033ee90f7908643ff0))
+- add the `getFundingTrades` method ([191d596](https://github.com/vansergen/bitfinex-node-api/commit/191d596162268b5c25fcfcef2365f98ac4ddc339))
+- add the `getTakenFunds` method ([c53a180](https://github.com/vansergen/bitfinex-node-api/commit/c53a180fa27ce012c330aa4c560750669a7a1c3a))
+- add the `getTotalFunds` method ([a2c34ed](https://github.com/vansergen/bitfinex-node-api/commit/a2c34ed248c5790e6939a03932700c711d6f0889))
+- add the `getUnusedFunds` method ([b80b4c6](https://github.com/vansergen/bitfinex-node-api/commit/b80b4c608d38f3c40f046622c0a8c318ca1f84fa))
+
 ## [2.2.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.1.0...v2.2.0) (2021-02-15)
 
 ### Features
