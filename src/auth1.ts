@@ -44,6 +44,20 @@ export interface OrderHistoryParams {
   limit?: number;
 }
 
+export interface FundingTradesParams {
+  symbol: string;
+  until?: string;
+  limit_trades?: number;
+}
+
+export interface CloseFundingParams {
+  swap_id: number;
+}
+
+export interface ClosePositionParams {
+  position_id: number;
+}
+
 export interface BalanceHistoryParams {
   currency: string;
   wallet?: "trading" | "exchange" | "deposit";
@@ -344,6 +358,94 @@ export interface Credit {
   timestamp: string;
 }
 
+export interface FundingTrade {
+  rate: string;
+  period: number;
+  amount: string;
+  timestamp: string;
+  type: "Buy" | "Sell";
+  tid: number;
+  offer_id: number;
+}
+
+export interface TakenFund {
+  id: number;
+  position_id: number;
+  currency: string;
+  rate: string;
+  period: number;
+  amount: string;
+  timestamp: string;
+  auto_close: boolean;
+}
+
+export interface TotalFund {
+  position_pair: string;
+  total_swaps: string;
+}
+
+export interface ClosePositionResponse {
+  message: string;
+  order: {
+    id: number;
+    type: "MARKET";
+    pair: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
+    user_id: number;
+    amount: string;
+    price: null;
+    originalamount: string;
+    routing: string;
+    lockedperiod: null;
+    trailingprice: string;
+    hidden: boolean;
+    vir: number;
+    maxrate: string;
+    placed_id: null;
+    placed_trades: null;
+    nopayback: null;
+    avg_price: string;
+    active: number;
+    fiat_currency: null;
+    cid: null;
+    cid_date: null;
+    mseq: number;
+    gid: null;
+    flags: number;
+    price_aux_limit: string;
+    type_prev: null;
+    tif: null;
+    v_pair: string;
+    meta: null;
+    liq_stage: null;
+    pos_id: null;
+  };
+  position: {
+    id: number;
+    pair: string;
+    status: "ACTIVE";
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+    amount: string;
+    base: string;
+    swap: string;
+    noliquidation: null;
+    period: null;
+    vir: number;
+    maxrate: string;
+    swap_type: number;
+    active: number;
+    type: number;
+    lev: number;
+    stage: number;
+    collateral: string;
+    meta?: string;
+  };
+}
+
 export interface AuthenticatedClient1Options extends PublicClient1Params {
   key: string;
   secret: string;
@@ -516,7 +618,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
    */
   public async cancelAllOrders(): Promise<{ result: string }> {
     const request = "/v1/order/cancel/all";
-    const response = (await this.post(request, {})) as { result: string };
+    const response = (await this.post(request)) as { result: string };
     return response;
   }
 
@@ -646,14 +748,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
   /** Get the funds currently taken. */
   public async activeCredits(): Promise<Credit[]> {
     const request = "/v1/credits";
-    const credits = (await this.post(request, {}, {})) as Credit[];
+    const credits = (await this.post(request)) as Credit[];
     return credits;
   }
 
   /** Get active offers. */
   public async getOffers(): Promise<Offer[]> {
     const request = "/v1/offers";
-    const offers = (await this.post(request, {}, {})) as Offer[];
+    const offers = (await this.post(request)) as Offer[];
     return offers;
   }
 
@@ -662,6 +764,60 @@ export class AuthenticatedClient1 extends PublicClient1 {
     const request = "/v1/offers/hist";
     const offers = (await this.post(request, {}, { ...body })) as Offer[];
     return offers;
+  }
+
+  /** Get past funding trades. */
+  public async getFundingTrades(
+    body: FundingTradesParams
+  ): Promise<FundingTrade[]> {
+    const request = "/v1/mytrades_funding";
+    const trades = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as FundingTrade[];
+    return trades;
+  }
+
+  /** Get funds used in a margin position. */
+  public async getTakenFunds(): Promise<TakenFund[]> {
+    const request = "/v1/taken_funds";
+    const funds = (await this.post(request)) as TakenFund[];
+    return funds;
+  }
+
+  /** Get borrowed funds and not used in a margin position. */
+  public async getUnusedFunds(): Promise<TakenFund[]> {
+    const request = "/v1/unused_taken_funds";
+    const funds = (await this.post(request)) as TakenFund[];
+    return funds;
+  }
+
+  /** Get the total of active funding used in positions. */
+  public async getTotalFunds(): Promise<TotalFund[]> {
+    const request = "/v1/total_taken_funds";
+    const funds = (await this.post(request)) as TotalFund[];
+    return funds;
+  }
+
+  /** Close a taken funging. */
+  public async closeFunding(body: CloseFundingParams): Promise<TakenFund> {
+    const request = "/v1/funding/close";
+    const fund = (await this.post(request, {}, { ...body })) as TakenFund;
+    return fund;
+  }
+
+  /** Close the position with a market order. */
+  public async closePosition(
+    body: ClosePositionParams
+  ): Promise<ClosePositionResponse> {
+    const request = "/v1/position/close";
+    const response = (await this.post(
+      request,
+      {},
+      { ...body }
+    )) as ClosePositionResponse;
+    return response;
   }
 
   public set nonce(nonce: () => number) {

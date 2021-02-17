@@ -366,3 +366,44 @@ const offers = await client.getOffers();
 const limit = 25;
 const offers = await client.offersHistory({ limit });
 ```
+
+- [`getFundingTrades`](https://docs.bitfinex.com/v1/reference#rest-auth-mytrades-funding)
+
+```typescript
+const symbol = "USD";
+const limit_trades = 1;
+const until = "1444141858.0";
+const trades = await client.getFundingTrades({ limit_trades, symbol, until });
+```
+
+- [`getTakenFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-used-in-a-margin-position)
+
+```typescript
+const funds = await client.getTakenFunds();
+```
+
+- [`getUnusedFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-not-used-in-a-margin-position)
+
+```typescript
+const funds = await client.getUnusedFunds();
+```
+
+- [`getTotalFunds`](https://docs.bitfinex.com/v1/reference#rest-auth-total-taken-funds)
+
+```typescript
+const funds = await client.getTotalFunds();
+```
+
+- [`closeFunding`](https://docs.bitfinex.com/v1/reference#rest-auth-close-margin-funding)
+
+```typescript
+const swap_id = 11576737;
+const funding = await client.closeFunding({ swap_id });
+```
+
+- [`closePosition`](https://docs.bitfinex.com/v1/reference#close-position)
+
+```typescript
+const position_id = 943715;
+const response = await client.closePosition({ position_id });
+```
