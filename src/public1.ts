@@ -119,25 +119,19 @@ export class PublicClient1 extends FetchClient<unknown> {
     this.currency = currency;
   }
 
-  /**
-   * Get the ticker
-   */
+  /** Get the ticker */
   public async getTicker({ symbol = this.symbol }: Symb = {}): Promise<Ticker> {
     const ticker = (await this.get(`pubticker/${symbol}`)) as Ticker;
     return ticker;
   }
 
-  /**
-   * Various statistics about the requested pair.
-   */
+  /** Various statistics about the requested pair. */
   public async getStats({ symbol = this.symbol }: Symb = {}): Promise<Stat[]> {
     const stats = (await this.get(`stats/${symbol}`)) as Stat[];
     return stats;
   }
 
-  /**
-   * Get the full margin funding book
-   */
+  /** Get the full margin funding book */
   public async getFundingBook({
     currency = this.currency,
     ...qs
@@ -149,9 +143,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     return book;
   }
 
-  /**
-   * Get the full order book.
-   */
+  /** Get the full order book. */
   public async getOrderBook({
     symbol = this.symbol,
     ...qs
@@ -163,9 +155,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     return book;
   }
 
-  /**
-   * Get a list of the most recent trades for the given symbol.
-   */
+  /** Get a list of the most recent trades for the given symbol. */
   public async getTrades({
     symbol = this.symbol,
     ...qs
@@ -177,9 +167,7 @@ export class PublicClient1 extends FetchClient<unknown> {
     return trades;
   }
 
-  /**
-   * Get a list of the most recent funding data for the given currency: total amount provided and Flash Return Rate (in % by 365 days) over time.
-   */
+  /** Get a list of the most recent funding data for the given currency: total amount provided and Flash Return Rate (in % by 365 days) over time. */
   public async getLends({
     currency = this.currency,
     ...qs
@@ -191,17 +179,13 @@ export class PublicClient1 extends FetchClient<unknown> {
     return lends;
   }
 
-  /**
-   * Get the list of symbol names.
-   */
+  /** Get the list of symbol names. */
   public async getSymbols(): Promise<string[]> {
     const symbols = (await this.get("symbols")) as string[];
     return symbols;
   }
 
-  /**
-   * Get a list of valid symbol IDs and the pair details.
-   */
+  /** Get a list of valid symbol IDs and the pair details. */
   public async getSymbolDetails(): Promise<SymbolDetail[]> {
     const details = (await this.get("symbols_details")) as SymbolDetail[];
     return details;

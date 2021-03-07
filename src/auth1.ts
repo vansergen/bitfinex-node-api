@@ -476,36 +476,28 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Return information about your account (trading fees).
-   */
+  /** Return information about your account (trading fees). */
   public async getAccountInfo(): Promise<AccountInfo> {
     const request = "/v1/account_infos";
     const info = (await this.post(request)) as AccountInfo;
     return info;
   }
 
-  /**
-   * Return the fees applied to your withdrawals.
-   */
+  /** Return the fees applied to your withdrawals. */
   public async getAccountFees(): Promise<AccountFees> {
     const request = "/v1/account_fees";
     const fees = (await this.post(request)) as AccountFees;
     return fees;
   }
 
-  /**
-   * Returns a 30-day summary of your trading volume and return on margin funding.
-   */
+  /** Returns a 30-day summary of your trading volume and return on margin funding. */
   public async getSummary(): Promise<Summary> {
     const request = "/v1/summary";
     const summary = (await this.post(request)) as Summary;
     return summary;
   }
 
-  /**
-   * Returns your deposit address to make a new deposit.
-   */
+  /** Returns your deposit address to make a new deposit. */
   public async getDepositAddress(body: DepositParams): Promise<DepositAddress> {
     const request = "/v1/deposit/new";
     const data = { ...body };
@@ -513,36 +505,28 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return address;
   }
 
-  /**
-   * Returns the permissions of the key being used to generate this request.
-   */
+  /** Returns the permissions of the key being used to generate this request. */
   public async getKeyPermissions(): Promise<KeyPermissions> {
     const request = "/v1/key_info";
     const permissions = (await this.post(request)) as KeyPermissions;
     return permissions;
   }
 
-  /**
-   * Returns the trading wallet information for margin trading.
-   */
+  /** Returns the trading wallet information for margin trading. */
   public async getMarginInformation(): Promise<MarginInformation> {
     const request = "/v1/margin_infos";
     const info = (await this.post(request)) as MarginInformation;
     return info;
   }
 
-  /**
-   * Returns your balances.
-   */
+  /** Returns your balances. */
   public async getWalletBalances(): Promise<WalletBalance[]> {
     const request = "/v1/balances";
     const balances = (await this.post(request)) as WalletBalance[];
     return balances;
   }
 
-  /**
-   * Move available balances between your wallets.
-   */
+  /** Move available balances between your wallets. */
   public async transfer({
     currency = this.currency,
     ...rest
@@ -553,9 +537,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Request a withdrawal from one of your wallet.
-   */
+  /** Request a withdrawal from one of your wallet. */
   public async withdraw(body: WithdrawParams): Promise<WithdrawResponse> {
     const request = "/v1/withdraw";
     const data = { ...body };
@@ -563,9 +545,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Submit a new Order, can be used to create margin, exchange, and derivative orders.
-   */
+  /** Submit a new Order, can be used to create margin, exchange, and derivative orders. */
   public async newOrder({
     symbol = this.symbol,
     ...rest
@@ -576,9 +556,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Submit several new orders at once, can be used to create margin, exchange, and derivative orders.
-   */
+  /** Submit several new orders at once, can be used to create margin, exchange, and derivative orders. */
   public async newOrders({ orders }: OrdersParams): Promise<NewOrdersResponse> {
     for (const order of orders) {
       if (!order.symbol) {
@@ -591,9 +569,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Cancel an order.
-   */
+  /** Cancel an order. */
   public async cancelOrder(body: { order_id: number }): Promise<OrderResponse> {
     const request = "/v1/order/cancel";
     const data = { ...body };
@@ -601,9 +577,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Cancel multiples orders at once.
-   */
+  /** Cancel multiples orders at once. */
   public async cancelOrders(body: {
     order_ids: number[];
   }): Promise<{ result: string }> {
@@ -613,18 +587,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Cancel all active orders at once.
-   */
+  /** Cancel all active orders at once. */
   public async cancelAllOrders(): Promise<{ result: string }> {
     const request = "/v1/order/cancel/all";
     const response = (await this.post(request)) as { result: string };
     return response;
   }
 
-  /**
-   * Replace an order with a new one. Can be used to replace an order with a new margin, exchange, or derivative order.
-   */
+  /** Replace an order with a new one. Can be used to replace an order with a new margin, exchange, or derivative order. */
   public async replaceOrder({
     symbol = this.symbol,
     ...rest
@@ -635,9 +605,7 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Get the status of an order.
-   */
+  /** Get the status of an order. */
   public async getOrder(body: { order_id: number }): Promise<OrderResponse> {
     const request = "/v1/order/status";
     const data = { ...body };
@@ -645,18 +613,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return response;
   }
 
-  /**
-   * Get your active orders.
-   */
+  /** Get your active orders. */
   public async getOrders(): Promise<OrderResponse[]> {
     const request = "/v1/orders";
     const orders = (await this.post(request)) as OrderResponse[];
     return orders;
   }
 
-  /**
-   * Get your latest inactive orders.
-   */
+  /** Get your latest inactive orders. */
   public async getOrderHistory(
     body?: OrderHistoryParams
   ): Promise<OrderResponse[]> {
@@ -666,18 +630,14 @@ export class AuthenticatedClient1 extends PublicClient1 {
     return orders;
   }
 
-  /**
-   * Get your active positions.
-   */
+  /** Get your active positions. */
   public async getPositions(): Promise<Position[]> {
     const request = "/v1/positions";
     const positions = (await this.post(request)) as Position[];
     return positions;
   }
 
-  /**
-   * Claim your position.
-   */
+  /** Claim your position. */
   public async claimPosition(body: ClaimParams): Promise<Position> {
     const request = "/v1/position/claim";
     const position = (await this.post(request, {}, { ...body })) as Position;
