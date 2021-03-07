@@ -1,5 +1,11 @@
 # Changelog
 
+### [2.3.1](https://github.com/vansergen/bitfinex-node-api/compare/v2.3.0...v2.3.1) (2021-03-07)
+
+### Dependencies
+
+- upgrade `rpc-request` to `v5.0.3` ([26d4980](https://github.com/vansergen/bitfinex-node-api/commit/26d498002761282f65a8c06f1c6e171571b907e1))
+
 ## [2.3.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.2.0...v2.3.0) (2021-02-17)
 
 ### Features
