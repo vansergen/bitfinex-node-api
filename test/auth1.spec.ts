@@ -1409,8 +1409,7 @@ suite("AuthenticatedClient v1", () => {
         lev: 0,
         stage: 0,
         collateral: "0.0",
-        meta:
-          '{"reason": "TRADE", "order_id": 72856328294, "liq_stage": null, "trade_price": "0.20102", "trade_amount": "1000.0", "user_id_oppo": 6429651, "order_id_oppo": 62746392918}',
+        meta: '{"reason": "TRADE", "order_id": 72856328294, "liq_stage": null, "trade_price": "0.20102", "trade_amount": "1000.0", "user_id_oppo": 6429651, "order_id_oppo": 62746392918}',
       },
     };
     const uri = "/v1/position/close";
