@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.3.1...v3.0.0) (2022-05-20)
+
+### ⚠ BREAKING CHANGES
+
+- drop Node.js `<16.15.0` support
+
+### Performance Improvements
+
+- drop Node.js `<16.15.0` support ([c90ee5e](https://github.com/vansergen/bitfinex-node-api/commit/c90ee5e947eef1081046c5b49151e98830df38be))
+
+### Metadata
+
+- update `LICENSE` ([dfd3d60](https://github.com/vansergen/bitfinex-node-api/commit/dfd3d609e21e3f98993114a78f41684f16c029dc))
+
 ### [2.3.1](https://github.com/vansergen/bitfinex-node-api/compare/v2.3.0...v2.3.1) (2021-03-07)
 
 ### Dependencies

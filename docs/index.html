@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html class="default no-js">
+<html class="default">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <title>bitfinex-node-api</title>
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <script async src="assets/js/search.js" id="search-script"></script>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/highlight.css" />
+    <script async src="assets/search.js" id="search-script"></script>
   </head>
   <body>
+    <script>
+      document.body.classList.add(localStorage.getItem("tsd-theme") || "os");
+    </script>
     <header>
       <div class="tsd-page-toolbar">
         <div class="container">
           <div class="table-wrap">
-            <div
-              class="table-cell"
-              id="tsd-search"
-              data-index="assets/js/search.json"
-              data-base="."
-            >
+            <div class="table-cell" id="tsd-search" data-base=".">
               <div class="field">
                 <label
                   for="tsd-search-field"
                   class="tsd-widget search no-caption"
                   >Search</label
-                >
-                <input id="tsd-search-field" type="text" />
+                ><input type="text" id="tsd-search-field" />
               </div>
               <ul class="results">
                 <li class="state loading">Preparing search index...</li>
@@ -51,12 +49,17 @@
                       <li data-value="private" class="selected">All</li>
                     </ul>
                   </div>
-                  <input type="checkbox" id="tsd-filter-inherited" checked />
-                  <label class="tsd-widget" for="tsd-filter-inherited"
+                  <input
+                    type="checkbox"
+                    id="tsd-filter-inherited"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-inherited"
                     >Inherited</label
-                  >
-                  <input type="checkbox" id="tsd-filter-externals" checked />
-                  <label class="tsd-widget" for="tsd-filter-externals"
+                  ><input
+                    type="checkbox"
+                    id="tsd-filter-externals"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-externals"
                     >Externals</label
                   >
                 </div>
@@ -69,9 +72,7 @@
         </div>
       </div>
       <div class="tsd-page-title">
-        <div class="container">
-          <h1>bitfinex-node-api</h1>
-        </div>
+        <div class="container"><h1>bitfinex-node-api</h1></div>
       </div>
     </header>
     <div class="container container-main">
@@ -94,9 +95,9 @@
                   alt="npm"
                 />
                 <a
-                  href="https://coveralls.io/github/vansergen/bitfinex-node-api?branch=master"
+                  href="https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main"
                   ><img
-                    src="https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=master"
+                    src="https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main"
                     alt="Coverage Status"
                 /></a>
                 <a
@@ -139,6 +140,7 @@
               </h1>
             </a>
             <p>Bitfinex Node.js library</p>
+
             <a
               href="#installation"
               id="installation"
@@ -146,8 +148,9 @@
             >
               <h2>Installation</h2>
             </a>
-            <pre><code class="language-bash"><span style="color: #000000">npm install bitfinex-node-api</span>
+            <pre><code class="language-bash"><span class="hl-0">npm install bitfinex-node-api</span>
 </code></pre>
+
             <a
               href="#usage"
               id="usage"
@@ -155,6 +158,7 @@
             >
               <h2>Usage</h2>
             </a>
+
             <a
               href="#publicclient1"
               id="publicclient1"
@@ -162,8 +166,7 @@
             >
               <h3>PublicClient1</h3>
             </a>
-            <pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">PublicClient1</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex-node-api&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">PublicClient1</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">PublicClient1</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex-node-api&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">client</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">PublicClient1</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -173,8 +176,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ticker</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTicker</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ticker</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTicker</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -184,8 +186,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">stats</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getStats</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">stats</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getStats</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -195,10 +196,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;usd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_bids</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_asks</span><span style="color: #000000"> = </span><span style="color: #098658">5</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">book</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getFundingBook</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">limit_bids</span><span style="color: #000000">, </span><span style="color: #001080">limit_asks</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;usd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_bids</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_asks</span><span class="hl-0"> = </span><span class="hl-7">5</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">book</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getFundingBook</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">limit_bids</span><span class="hl-0">, </span><span class="hl-2">limit_asks</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -208,16 +206,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_bids</span><span style="color: #000000"> = </span><span style="color: #098658">20</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_asks</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">group</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">book</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrderBook</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">limit_bids</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">limit_asks</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">group</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_bids</span><span class="hl-0"> = </span><span class="hl-7">20</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_asks</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">group</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">book</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrderBook</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">limit_bids</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">limit_asks</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">group</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -227,10 +216,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;btcusd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">timestamp</span><span style="color: #000000"> = </span><span style="color: #098658">1444266681</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTrades</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">timestamp</span><span style="color: #000000">, </span><span style="color: #001080">limit_trades</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">timestamp</span><span class="hl-0"> = </span><span class="hl-7">1444266681</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTrades</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">timestamp</span><span class="hl-0">, </span><span class="hl-2">limit_trades</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -240,10 +226,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;usd&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">timestamp</span><span style="color: #000000"> = </span><span style="color: #098658">1444266681</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_lends</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">lends</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getLends</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">timestamp</span><span style="color: #000000">, </span><span style="color: #001080">limit_lends</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;usd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">timestamp</span><span class="hl-0"> = </span><span class="hl-7">1444266681</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_lends</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">lends</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getLends</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">timestamp</span><span class="hl-0">, </span><span class="hl-2">limit_lends</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -253,7 +236,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbols</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSymbols</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbols</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSymbols</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -263,8 +246,9 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbolDetails</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSymbolDetails</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbolDetails</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSymbolDetails</span><span class="hl-0">();</span>
 </code></pre>
+
             <a
               href="#authenticatedclient1"
               id="authenticatedclient1"
@@ -272,10 +256,7 @@
             >
               <h3>AuthenticatedClient1</h3>
             </a>
-            <pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AuthenticatedClient1</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex-node-api&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">key</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BitfinexAPIKey&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">secret</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BitfinexAPISecret&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AuthenticatedClient1</span><span style="color: #000000">({ </span><span style="color: #001080">key</span><span style="color: #000000">, </span><span style="color: #001080">secret</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">AuthenticatedClient1</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex-node-api&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">key</span><span class="hl-0"> = </span><span class="hl-3">&quot;BitfinexAPIKey&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">secret</span><span class="hl-0"> = </span><span class="hl-3">&quot;BitfinexAPISecret&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">client</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">AuthenticatedClient1</span><span class="hl-0">({ </span><span class="hl-2">key</span><span class="hl-0">, </span><span class="hl-2">secret</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -285,7 +266,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">info</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getAccountInfo</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">info</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getAccountInfo</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -294,7 +275,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fees</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getAccountFees</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">fees</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getAccountFees</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -304,7 +285,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">summary</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getSummary</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">summary</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSummary</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -314,10 +295,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">method</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;zcash&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wallet_name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;trading&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">renew</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getDepositAddress</span><span style="color: #000000">({ </span><span style="color: #001080">method</span><span style="color: #000000">, </span><span style="color: #001080">wallet_name</span><span style="color: #000000">, </span><span style="color: #001080">renew</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">method</span><span class="hl-0"> = </span><span class="hl-3">&quot;zcash&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">wallet_name</span><span class="hl-0"> = </span><span class="hl-3">&quot;trading&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">renew</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getDepositAddress</span><span class="hl-0">({ </span><span class="hl-2">method</span><span class="hl-0">, </span><span class="hl-2">wallet_name</span><span class="hl-0">, </span><span class="hl-2">renew</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -327,7 +305,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">permissions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getKeyPermissions</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">permissions</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getKeyPermissions</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -337,7 +315,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">marginInformation</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getMarginInformation</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">marginInformation</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getMarginInformation</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -347,7 +325,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">balances</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getWalletBalances</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">balances</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getWalletBalances</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -357,16 +335,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.00954735&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BAB&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletfrom</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;trading&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletto</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;exchange&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">transfer</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">currency</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">walletfrom</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">walletto</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.00954735&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;BAB&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletfrom</span><span class="hl-0"> = </span><span class="hl-3">&quot;trading&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletto</span><span class="hl-0"> = </span><span class="hl-3">&quot;exchange&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">transfer</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">currency</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletfrom</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletto</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -376,16 +345,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">address</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">walletselected</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;exchange&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">withdraw_type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitcoin&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">withdraw</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">withdraw_type</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">address</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">walletselected</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">address</span><span class="hl-0"> = </span><span class="hl-3">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletselected</span><span class="hl-0"> = </span><span class="hl-3">&quot;exchange&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">withdraw_type</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitcoin&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">withdraw</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">withdraw_type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">address</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletselected</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -395,22 +355,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">price</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">exchange</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">side</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">is_postonly</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOrder</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">price</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">type</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">exchange</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">side</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">is_postonly</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">price</span><span class="hl-0"> = </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">type</span><span class="hl-0"> = </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">exchange</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">side</span><span class="hl-0"> = </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">is_postonly</span><span class="hl-0"> = </span><span class="hl-4">true</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOrder</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -420,24 +365,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order1</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;1&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">exchange:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">symbol:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">side:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">is_postonly:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
-<span style="color: #000000">};</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order2</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;2&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;2&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">symbol:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">side:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;buy&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">};</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = [</span><span style="color: #001080">order1</span><span style="color: #000000">, </span><span style="color: #001080">order2</span><span style="color: #000000">];</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOrders</span><span style="color: #000000">({ </span><span style="color: #001080">orders</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order1</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-2">amount:</span><span class="hl-0"> </span><span class="hl-3">&quot;1&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price:</span><span class="hl-0"> </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange:</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol:</span><span class="hl-0"> </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side:</span><span class="hl-0"> </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly:</span><span class="hl-0"> </span><span class="hl-4">true</span><span class="hl-0">,</span><br/><span class="hl-0">};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order2</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-2">amount:</span><span class="hl-0"> </span><span class="hl-3">&quot;2&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price:</span><span class="hl-0"> </span><span class="hl-3">&quot;2&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol:</span><span class="hl-0"> </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side:</span><span class="hl-0"> </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = [</span><span class="hl-2">order1</span><span class="hl-0">, </span><span class="hl-2">order2</span><span class="hl-0">];</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOrders</span><span class="hl-0">({ </span><span class="hl-2">orders</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -447,8 +375,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOrder</span><span style="color: #000000">({ </span><span style="color: #001080">order_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOrder</span><span class="hl-0">({ </span><span class="hl-2">order_id</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -458,10 +385,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id1</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id2</span><span style="color: #000000"> = </span><span style="color: #098658">446915287</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_ids</span><span style="color: #000000"> = [</span><span style="color: #001080">order_id1</span><span style="color: #000000">, </span><span style="color: #001080">order_id2</span><span style="color: #000000">];</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">result</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOrders</span><span style="color: #000000">({ </span><span style="color: #001080">order_ids</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id1</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id2</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_ids</span><span class="hl-0"> = [</span><span class="hl-2">order_id1</span><span class="hl-0">, </span><span class="hl-2">order_id2</span><span class="hl-0">];</span><br/><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-5">result</span><span class="hl-0"> } = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOrders</span><span class="hl-0">({ </span><span class="hl-2">order_ids</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -471,7 +395,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">result</span><span style="color: #000000"> } = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelAllOrders</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-5">result</span><span class="hl-0"> } = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelAllOrders</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -481,23 +405,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;3&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">price</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;101&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">type</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;limit&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">exchange</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bitfinex&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">side</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;sell&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">is_postonly</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ETCUSD&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">replaceOrder</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">price</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">type</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">exchange</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">symbol</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">side</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">is_postonly</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">price</span><span class="hl-0"> = </span><span class="hl-3">&quot;101&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">type</span><span class="hl-0"> = </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">exchange</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">side</span><span class="hl-0"> = </span><span class="hl-3">&quot;sell&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">is_postonly</span><span class="hl-0"> = </span><span class="hl-4">true</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">replaceOrder</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -507,8 +415,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order_id</span><span style="color: #000000"> = </span><span style="color: #098658">448411153</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">order</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrder</span><span style="color: #000000">({ </span><span style="color: #001080">order_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">448411153</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrder</span><span class="hl-0">({ </span><span class="hl-2">order_id</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -518,7 +425,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrders</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrders</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -528,8 +435,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">50</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">orders</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOrderHistory</span><span style="color: #000000">({ </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">50</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrderHistory</span><span class="hl-0">({ </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -539,7 +445,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">positions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getPositions</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">positions</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getPositions</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -549,9 +455,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position_id</span><span style="color: #000000"> = </span><span style="color: #098658">943715</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">claimPosition</span><span style="color: #000000">({ </span><span style="color: #001080">position_id</span><span style="color: #000000">, </span><span style="color: #001080">amount</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position_id</span><span class="hl-0"> = </span><span class="hl-7">943715</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">claimPosition</span><span class="hl-0">({ </span><span class="hl-2">position_id</span><span class="hl-0">, </span><span class="hl-2">amount</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -561,9 +465,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">since</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444277602.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">history</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getBalanceHistory</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">since</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">since</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444277602.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">history</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getBalanceHistory</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">since</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -573,10 +475,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BTC&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">since</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444277602.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">10</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">history</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getDepositsWithdrawals</span><span style="color: #000000">({ </span><span style="color: #001080">currency</span><span style="color: #000000">, </span><span style="color: #001080">since</span><span style="color: #000000">, </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;BTC&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">since</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444277602.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">history</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getDepositsWithdrawals</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">since</span><span class="hl-0">, </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -586,10 +485,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;BTCEUR&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">25</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">reverse</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getPastTrades</span><span style="color: #000000">({ </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">limit_trades</span><span style="color: #000000">, </span><span style="color: #001080">reverse</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;BTCEUR&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">25</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">reverse</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getPastTrades</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">limit_trades</span><span class="hl-0">, </span><span class="hl-2">reverse</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -599,18 +495,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currency</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">amount</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;50.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">rate</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;20.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">period</span><span style="color: #000000"> = </span><span style="color: #098658">2</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">direction</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;lend&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newOffer</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">currency</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">amount</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">rate</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">period</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">direction</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;50.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">rate</span><span class="hl-0"> = </span><span class="hl-3">&quot;20.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">period</span><span class="hl-0"> = </span><span class="hl-7">2</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">direction</span><span class="hl-0"> = </span><span class="hl-3">&quot;lend&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOffer</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">currency</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">rate</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">period</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">direction</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
 </code></pre>
             <ul>
               <li>
@@ -620,8 +505,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer_id</span><span style="color: #000000"> = </span><span style="color: #098658">13800585</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">cancelOffer</span><span style="color: #000000">({ </span><span style="color: #001080">offer_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer_id</span><span class="hl-0"> = </span><span class="hl-7">13800585</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOffer</span><span class="hl-0">({ </span><span class="hl-2">offer_id</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -631,8 +515,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer_id</span><span style="color: #000000"> = </span><span style="color: #098658">13800585</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offer</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">offerStatus</span><span style="color: #000000">({ </span><span style="color: #001080">offer_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer_id</span><span class="hl-0"> = </span><span class="hl-7">13800585</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">offerStatus</span><span class="hl-0">({ </span><span class="hl-2">offer_id</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -642,7 +525,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">credits</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">activeCredits</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">credits</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">activeCredits</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -652,7 +535,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offers</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getOffers</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offers</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOffers</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -662,8 +545,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit</span><span style="color: #000000"> = </span><span style="color: #098658">25</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">offers</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">offersHistory</span><span style="color: #000000">({ </span><span style="color: #001080">limit</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">25</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offers</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">offersHistory</span><span class="hl-0">({ </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -673,10 +555,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">symbol</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;USD&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">limit_trades</span><span style="color: #000000"> = </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">until</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;1444141858.0&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trades</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getFundingTrades</span><span style="color: #000000">({ </span><span style="color: #001080">limit_trades</span><span style="color: #000000">, </span><span style="color: #001080">symbol</span><span style="color: #000000">, </span><span style="color: #001080">until</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">until</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444141858.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getFundingTrades</span><span class="hl-0">({ </span><span class="hl-2">limit_trades</span><span class="hl-0">, </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">until</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -686,7 +565,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTakenFunds</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTakenFunds</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -696,7 +575,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getUnusedFunds</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getUnusedFunds</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -706,7 +585,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funds</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">getTotalFunds</span><span style="color: #000000">();</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTotalFunds</span><span class="hl-0">();</span>
 </code></pre>
             <ul>
               <li>
@@ -716,8 +595,7 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">swap_id</span><span style="color: #000000"> = </span><span style="color: #098658">11576737</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">funding</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">closeFunding</span><span style="color: #000000">({ </span><span style="color: #001080">swap_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">swap_id</span><span class="hl-0"> = </span><span class="hl-7">11576737</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funding</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">closeFunding</span><span class="hl-0">({ </span><span class="hl-2">swap_id</span><span class="hl-0"> });</span>
 </code></pre>
             <ul>
               <li>
@@ -726,353 +604,350 @@
                 >
               </li>
             </ul>
-            <pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">position_id</span><span style="color: #000000"> = </span><span style="color: #098658">943715</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">response</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">closePosition</span><span style="color: #000000">({ </span><span style="color: #001080">position_id</span><span style="color: #000000"> });</span>
+            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position_id</span><span class="hl-0"> = </span><span class="hl-7">943715</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">response</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">closePosition</span><span class="hl-0">({ </span><span class="hl-2">position_id</span><span class="hl-0"> });</span>
 </code></pre>
           </div>
         </div>
         <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
           <nav class="tsd-navigation primary">
             <ul>
-              <li class=" ">
-                <a href="modules.html">Exports</a>
-              </li>
+              <li class="current"><a href="modules.html">Exports</a></li>
             </ul>
           </nav>
           <nav class="tsd-navigation secondary menu-sticky">
-            <ul class="before-current">
+            <ul>
               <li class="tsd-kind-class">
                 <a
-                  href="classes/authenticatedclient1.html"
+                  href="classes/AuthenticatedClient1.html"
                   class="tsd-kind-icon"
                   >Authenticated<wbr />Client1</a
                 >
               </li>
               <li class="tsd-kind-class">
-                <a href="classes/publicclient1.html" class="tsd-kind-icon"
+                <a href="classes/PublicClient1.html" class="tsd-kind-icon"
                   >Public<wbr />Client1</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/accountfees.html" class="tsd-kind-icon"
+                <a href="interfaces/AccountFees.html" class="tsd-kind-icon"
                   >Account<wbr />Fees</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/authenticatedclient1options.html"
+                  href="interfaces/AuthenticatedClient1Options.html"
                   class="tsd-kind-icon"
                   >Authenticated<wbr />Client1<wbr />Options</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/balancehistoryparams.html"
+                  href="interfaces/BalanceHistoryParams.html"
                   class="tsd-kind-icon"
                   >Balance<wbr />History<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/cancelofferparams.html"
+                  href="interfaces/CancelOfferParams.html"
                   class="tsd-kind-icon"
                   >Cancel<wbr />Offer<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/claimparams.html" class="tsd-kind-icon"
+                <a href="interfaces/ClaimParams.html" class="tsd-kind-icon"
                   >Claim<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/closefundingparams.html"
+                  href="interfaces/CloseFundingParams.html"
                   class="tsd-kind-icon"
                   >Close<wbr />Funding<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/closepositionparams.html"
+                  href="interfaces/ClosePositionParams.html"
                   class="tsd-kind-icon"
                   >Close<wbr />Position<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/closepositionresponse.html"
+                  href="interfaces/ClosePositionResponse.html"
                   class="tsd-kind-icon"
                   >Close<wbr />Position<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/credit.html" class="tsd-kind-icon"
+                <a href="interfaces/Credit.html" class="tsd-kind-icon"
                   >Credit</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/currency.html" class="tsd-kind-icon"
+                <a href="interfaces/Currency.html" class="tsd-kind-icon"
                   >Currency</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/depositaddress.html" class="tsd-kind-icon"
+                <a href="interfaces/DepositAddress.html" class="tsd-kind-icon"
                   >Deposit<wbr />Address</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/depositparams.html" class="tsd-kind-icon"
+                <a href="interfaces/DepositParams.html" class="tsd-kind-icon"
                   >Deposit<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/depositwithdrawal.html"
+                  href="interfaces/DepositWithdrawal.html"
                   class="tsd-kind-icon"
                   >Deposit<wbr />Withdrawal</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/depositswithdrawalsparams.html"
+                  href="interfaces/DepositsWithdrawalsParams.html"
                   class="tsd-kind-icon"
                   >Deposits<wbr />Withdrawals<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/fundingbook.html" class="tsd-kind-icon"
+                <a href="interfaces/FundingBook.html" class="tsd-kind-icon"
                   >Funding<wbr />Book</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/fundingbookitem.html" class="tsd-kind-icon"
+                <a href="interfaces/FundingBookItem.html" class="tsd-kind-icon"
                   >Funding<wbr />Book<wbr />Item</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/fundingtrade.html" class="tsd-kind-icon"
+                <a href="interfaces/FundingTrade.html" class="tsd-kind-icon"
                   >Funding<wbr />Trade</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/fundingtradesparams.html"
+                  href="interfaces/FundingTradesParams.html"
                   class="tsd-kind-icon"
                   >Funding<wbr />Trades<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/getfundingbook.html" class="tsd-kind-icon"
+                <a href="interfaces/GetFundingBook.html" class="tsd-kind-icon"
                   >Get<wbr />Funding<wbr />Book</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/getlends.html" class="tsd-kind-icon"
+                <a href="interfaces/GetLends.html" class="tsd-kind-icon"
                   >Get<wbr />Lends</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/getorderbook.html" class="tsd-kind-icon"
+                <a href="interfaces/GetOrderBook.html" class="tsd-kind-icon"
                   >Get<wbr />Order<wbr />Book</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/gettrades.html" class="tsd-kind-icon"
+                <a href="interfaces/GetTrades.html" class="tsd-kind-icon"
                   >Get<wbr />Trades</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/historybalance.html" class="tsd-kind-icon"
+                <a href="interfaces/HistoryBalance.html" class="tsd-kind-icon"
                   >History<wbr />Balance</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/keypermission.html" class="tsd-kind-icon"
+                <a href="interfaces/KeyPermission.html" class="tsd-kind-icon"
                   >Key<wbr />Permission</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/keypermissions.html" class="tsd-kind-icon"
+                <a href="interfaces/KeyPermissions.html" class="tsd-kind-icon"
                   >Key<wbr />Permissions</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/lend.html" class="tsd-kind-icon">Lend</a>
+                <a href="interfaces/Lend.html" class="tsd-kind-icon">Lend</a>
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/margininformation.html"
+                  href="interfaces/MarginInformation.html"
                   class="tsd-kind-icon"
                   >Margin<wbr />Information</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/newofferparams.html" class="tsd-kind-icon"
+                <a href="interfaces/NewOfferParams.html" class="tsd-kind-icon"
                   >New<wbr />Offer<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/newordersresponse.html"
+                  href="interfaces/NewOrdersResponse.html"
                   class="tsd-kind-icon"
                   >New<wbr />Orders<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/offer.html" class="tsd-kind-icon">Offer</a>
+                <a href="interfaces/Offer.html" class="tsd-kind-icon">Offer</a>
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/orderbook.html" class="tsd-kind-icon"
+                <a href="interfaces/OrderBook.html" class="tsd-kind-icon"
                   >Order<wbr />Book</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/orderbookitem.html" class="tsd-kind-icon"
+                <a href="interfaces/OrderBookItem.html" class="tsd-kind-icon"
                   >Order<wbr />Book<wbr />Item</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/orderhistoryparams.html"
+                  href="interfaces/OrderHistoryParams.html"
                   class="tsd-kind-icon"
                   >Order<wbr />History<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/orderparams.html" class="tsd-kind-icon"
+                <a href="interfaces/OrderParams.html" class="tsd-kind-icon"
                   >Order<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/orderresponse.html" class="tsd-kind-icon"
+                <a href="interfaces/OrderResponse.html" class="tsd-kind-icon"
                   >Order<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/ordersparams.html" class="tsd-kind-icon"
+                <a href="interfaces/OrdersParams.html" class="tsd-kind-icon"
                   >Orders<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/pasttrade.html" class="tsd-kind-icon"
+                <a href="interfaces/PastTrade.html" class="tsd-kind-icon"
                   >Past<wbr />Trade</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/pasttradesparams.html" class="tsd-kind-icon"
+                <a href="interfaces/PastTradesParams.html" class="tsd-kind-icon"
                   >Past<wbr />Trades<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/position.html" class="tsd-kind-icon"
+                <a href="interfaces/Position.html" class="tsd-kind-icon"
                   >Position</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/publicclient1params.html"
+                  href="interfaces/PublicClient1Params.html"
                   class="tsd-kind-icon"
                   >Public<wbr />Client1<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
                 <a
-                  href="interfaces/replaceorderparams.html"
+                  href="interfaces/ReplaceOrderParams.html"
                   class="tsd-kind-icon"
                   >Replace<wbr />Order<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/stat.html" class="tsd-kind-icon">Stat</a>
+                <a href="interfaces/Stat.html" class="tsd-kind-icon">Stat</a>
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/summary.html" class="tsd-kind-icon"
+                <a href="interfaces/Summary.html" class="tsd-kind-icon"
                   >Summary</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/symb.html" class="tsd-kind-icon">Symb</a>
+                <a href="interfaces/Symb.html" class="tsd-kind-icon">Symb</a>
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/symboldetail.html" class="tsd-kind-icon"
+                <a href="interfaces/SymbolDetail.html" class="tsd-kind-icon"
                   >Symbol<wbr />Detail</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/takenfund.html" class="tsd-kind-icon"
+                <a href="interfaces/TakenFund.html" class="tsd-kind-icon"
                   >Taken<wbr />Fund</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/ticker.html" class="tsd-kind-icon"
+                <a href="interfaces/Ticker.html" class="tsd-kind-icon"
                   >Ticker</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/totalfund.html" class="tsd-kind-icon"
+                <a href="interfaces/TotalFund.html" class="tsd-kind-icon"
                   >Total<wbr />Fund</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/trade.html" class="tsd-kind-icon">Trade</a>
+                <a href="interfaces/Trade.html" class="tsd-kind-icon">Trade</a>
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/transferparams.html" class="tsd-kind-icon"
+                <a href="interfaces/TransferParams.html" class="tsd-kind-icon"
                   >Transfer<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/walletbalance.html" class="tsd-kind-icon"
+                <a href="interfaces/WalletBalance.html" class="tsd-kind-icon"
                   >Wallet<wbr />Balance</a
                 >
               </li>
               <li class="tsd-kind-interface">
-                <a href="interfaces/withdrawparams.html" class="tsd-kind-icon"
+                <a href="interfaces/WithdrawParams.html" class="tsd-kind-icon"
                   >Withdraw<wbr />Params</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#accountinfo" class="tsd-kind-icon"
+                <a href="modules.html#AccountInfo" class="tsd-kind-icon"
                   >Account<wbr />Info</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#ordertype" class="tsd-kind-icon"
+                <a href="modules.html#OrderType" class="tsd-kind-icon"
                   >Order<wbr />Type</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#signedheaders" class="tsd-kind-icon"
+                <a href="modules.html#SignedHeaders" class="tsd-kind-icon"
                   >Signed<wbr />Headers</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#signeroptions" class="tsd-kind-icon"
+                <a href="modules.html#SignerOptions" class="tsd-kind-icon"
                   >Signer<wbr />Options</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#transferresponse" class="tsd-kind-icon"
+                <a href="modules.html#TransferResponse" class="tsd-kind-icon"
                   >Transfer<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-type-alias">
-                <a href="modules.html#withdrawresponse" class="tsd-kind-icon"
+                <a href="modules.html#WithdrawResponse" class="tsd-kind-icon"
                   >Withdraw<wbr />Response</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="modules.html#apiuri" class="tsd-kind-icon"
+                <a href="modules.html#ApiUri" class="tsd-kind-icon"
                   >Api<wbr />Uri</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="modules.html#defaultcurrency" class="tsd-kind-icon"
+                <a href="modules.html#DefaultCurrency" class="tsd-kind-icon"
                   >Default<wbr />Currency</a
                 >
               </li>
               <li class="tsd-kind-variable">
-                <a href="modules.html#defaultsymbol" class="tsd-kind-icon"
+                <a href="modules.html#DefaultSymbol" class="tsd-kind-icon"
                   >Default<wbr />Symbol</a
                 >
               </li>
@@ -1082,14 +957,14 @@
                 >
               </li>
               <li class="tsd-kind-function">
-                <a href="modules.html#signer" class="tsd-kind-icon">Signer</a>
+                <a href="modules.html#Signer" class="tsd-kind-icon">Signer</a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
     </div>
-    <footer>
+    <footer class="">
       <div class="container">
         <h2>Legend</h2>
         <div class="tsd-legend-group">
@@ -1108,11 +983,6 @@
             </li>
           </ul>
           <ul class="tsd-legend">
-            <li
-              class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"
-            >
-              <span class="tsd-kind-icon">Inherited constructor</span>
-            </li>
             <li
               class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
             >
@@ -1133,9 +1003,18 @@
             </li>
           </ul>
         </div>
+        <h2>Settings</h2>
+        <p>
+          Theme
+          <select id="theme">
+            <option value="os">OS</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </p>
       </div>
     </footer>
     <div class="overlay"></div>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/main.js"></script>
   </body>
 </html>
