@@ -19,7 +19,7 @@
     "exchange"
   ],
   "author": "Sergey Bakulin <sergey.bakulin.github@gmail.com>",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/vansergen/bitfinex-node-api/issues"
   },
