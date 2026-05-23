@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: push
 
 jobs:
   test:
@@ -8,38 +8,38 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16, 17, 18]
+        node-version: [24, 26]
 
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@main
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
 
-      - name: Node.js version
-        run: node --version
-
-      - name: npm version
-        run: npm --version
-
-      - name: Git version
-        run: git --version
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Commitlint
-        run: npm run commitlint:all
 
       - name: Prettier
         run: npm run prettier
 
       - name: ESLint
-        run: npm run lint
+        run: npm run eslint
+
+      - name: Commitlint
+        run: npm run commitlint
+
+      - name: Tests
+        run: npm test
+
+      - name: Pack (test)
+        run: npm pack --dry-run
+
+      - name: Docs
+        run: npm run docs:build
 
       - name: Coverage
         run: npm run coverage
@@ -50,12 +50,6 @@ jobs:
           github-token: ${{ secrets.github_token }}
           flag-name: Node.js v${{ matrix.node-version }}
           parallel: true
-
-      - name: Publish test
-        run: npm run publish:test
-
-      - name: npm vulnerabilities
-        run: npm audit --production
 
   coverage:
     needs: [test]
@@ -69,59 +63,48 @@ jobs:
           github-token: ${{ secrets.github_token }}
           parallel-finished: true
 
-  docs:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@main
-
-      - uses: actions/setup-node@main
-        with:
-          node-version: 16
-          check-latest: true
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Docs
-        run: npm run docs:build
-
   release:
-    needs: [test, docs, coverage]
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    needs: [test, coverage]
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@main
+      - uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version: 24
           check-latest: true
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Decrypt PGP key
-        run: ./.github/scripts/decrypt.sh
+      - name: Import GPG key
+        run: echo $GPG_KEY | base64 --decode | gpg --batch --import
         env:
-          PRIVATE_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+
+      - name: Add the custom gpg executable
+        run: |
+          rm -rf /tmp/gpg.sh
+          echo 'gpg --batch --pinentry-mode=loopback --passphrase $GPG_KEY_PASSPHRASE $@' >> /tmp/gpg.sh
+          chmod +x /tmp/gpg.sh
 
       - name: Setup git
-        run: ./.github/scripts/git.sh
+        run: |
+          git config commit.gpgsign true
+          git config user.signingkey $GPG_KEY_ID
+          git config gpg.program /tmp/gpg.sh
         env:
-          PGP_KEY_ID: ${{ secrets.PGP_KEY_ID }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Release
-        run: npm run release
+        run: npx semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
-          PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+          GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Cleanup
-        run: ./.github/scripts/cleanup.sh
