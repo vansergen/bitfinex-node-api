@@ -1,27 +1,30 @@
-# nyc test coverage
-.nyc_output
+# Coverage directory
+coverage/*
 
-# Coverage directory used by nyc
-coverage
+# Environment files
+.env
+.env.*
+
+# Local IDE / agent configuration
+.claude/*
+.cursor/*
+.vscode/*
 
 # GitHub folder
-.github/
+.github/*
 
 # Tests
-test/
-build/test/
+test/*
+dist/test/*
 
 # Documentation
-docs/
+docs/*
 
 # Commitlint config - https://commitlint.js.org/
 .commitlintrc.json
 
 # ESLint config - https://eslint.org/
-.eslintrc.json
-
-# ESLint ignore - https://eslint.org/docs/user-guide/configuring#eslintignore
-.eslintignore
+eslint.config.js
 
 # husky config - https://github.com/typicode/husky
 .husky
@@ -31,7 +34,6 @@ docs/
 
 # Prettier ignore
 .prettierignore
-.prettierignore_docs
 
 # semantic-release config - https://semantic-release.gitbook.io/semantic-release/
 .releaserc.json
@@ -46,5 +48,5 @@ typedoc.json
 CODE_OF_CONDUCT.md
 
 # Source files
-src/
+src/*
 index.ts
