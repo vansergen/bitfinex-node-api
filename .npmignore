@@ -17,6 +17,10 @@ coverage/*
 test/*
 dist/test/*
 
+# Examples
+examples/*
+dist/examples/*
+
 # Documentation
 docs/*
 

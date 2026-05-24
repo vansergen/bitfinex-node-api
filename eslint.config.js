@@ -5,7 +5,7 @@ import config from "@binden/eslint-config-ts";
 
 export default [
   ...config,
-  { ignores: ["dist/*", "docs/*", "coverage/*"] },
+  { ignores: ["dist/*", "docs/*", "coverage/*", "examples/*"] },
   {
     rules: {
       "@typescript-eslint/prefer-promise-reject-errors": "warn",
