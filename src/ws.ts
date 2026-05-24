@@ -13,7 +13,8 @@ export class WSAbort extends Error {
   }
 }
 
-export type IBookPrecision = "P0" | "P1" | "P2" | "P3" | "R0";
+export type IAggregatedBookPrecision = "P0" | "P1" | "P2" | "P3";
+export type IBookPrecision = IAggregatedBookPrecision | "R0";
 export type IBookFrequency = "F0" | "F1";
 export type IPublicChannelName = "book" | "ticker" | "trades";
 
@@ -53,6 +54,7 @@ export interface ISubscribedMessage {
   channel: IPublicChannelName;
   chanId: number;
   pair?: string;
+  currency?: string;
   prec?: IBookPrecision;
   freq?: IBookFrequency;
   len?: string;
@@ -140,6 +142,30 @@ export interface ITickerMessage {
 }
 
 /**
+ * Funding ticker update. Bitfinex v1 accepts funding symbols such as `fUSD`
+ * on the ticker channel and replies with `currency: "USD"`.
+ */
+export interface IFundingTickerMessage {
+  channel_id: number;
+  type: "funding_ticker";
+  currency: string;
+  frr: number;
+  bid: number;
+  bid_period: number;
+  bid_size: number;
+  ask: number;
+  ask_period: number;
+  ask_size: number;
+  daily_change: number;
+  daily_change_perc: number;
+  last_price: number;
+  volume: number;
+  high: number;
+  low: number;
+  frr_amount_available: number;
+}
+
+/**
  * A single executed trade row used inside `trades_snapshot`.
  *
  * https://docs.bitfinex.com/v1/reference/ws-public-trades
@@ -151,6 +177,15 @@ export interface IWSTrade {
   amount: number;
 }
 
+/** A funding trade row used inside `funding_trades_snapshot`. */
+export interface IWSFundingTrade {
+  id: string;
+  timestamp: number;
+  amount: number;
+  rate: number;
+  period: number;
+}
+
 /**
  * Initial snapshot for a `trades` subscription.
  * Raw frame: `[CHAN_ID, [[ID, TIMESTAMP, PRICE, AMOUNT], ...]]`.
@@ -159,6 +194,17 @@ export interface ITradesSnapshotMessage {
   channel_id: number;
   type: "trades_snapshot";
   trades: IWSTrade[];
+}
+
+/**
+ * Initial snapshot for a funding `trades` subscription.
+ * Raw frame: `[CHAN_ID, [[ID, TIMESTAMP, AMOUNT, RATE, PERIOD], ...]]`.
+ */
+export interface IFundingTradesSnapshotMessage {
+  channel_id: number;
+  type: "funding_trades_snapshot";
+  currency: string;
+  trades: IWSFundingTrade[];
 }
 
 /**
@@ -188,6 +234,20 @@ export interface ITradeUpdatedMessage {
   amount: number;
 }
 
+/** `fte` — a funding trade has just executed. */
+export interface IFundingTradeExecutedMessage extends IWSFundingTrade {
+  channel_id: number;
+  type: "funding_trade_executed";
+  currency: string;
+}
+
+/** `ftu` — a funding trade execution update. */
+export interface IFundingTradeUpdatedMessage extends IWSFundingTrade {
+  channel_id: number;
+  type: "funding_trade_updated";
+  currency: string;
+}
+
 /**
  * A single price level inside an aggregated order book.
  * `count > 0` — the level exists (`amount > 0` is a bid, `< 0` is an ask).
@@ -195,6 +255,17 @@ export interface ITradeUpdatedMessage {
  */
 export interface IBookLevel {
   price: number;
+  count: number;
+  amount: number;
+}
+
+/**
+ * A single rate level inside an aggregated funding book.
+ * `amount > 0` means bid, `amount < 0` means ask.
+ */
+export interface IFundingBookLevel {
+  rate: number;
+  period: number;
   count: number;
   amount: number;
 }
@@ -212,12 +283,30 @@ export interface IBookSnapshotMessage {
 }
 
 /**
+ * Initial snapshot for an aggregated funding `book` subscription.
+ * Raw frame: `[CHAN_ID, [[RATE, PERIOD, COUNT, AMOUNT], ...]]`.
+ */
+export interface IFundingBookSnapshotMessage {
+  channel_id: number;
+  type: "funding_book_snapshot";
+  currency: string;
+  book: IFundingBookLevel[];
+}
+
+/**
  * Live update of a single price level in the aggregated book.
  * Raw frame: `[CHAN_ID, PRICE, COUNT, AMOUNT]`.
  */
 export interface IBookUpdateMessage extends IBookLevel {
   channel_id: number;
   type: "book_update";
+}
+
+/** Live update of a single rate level in the aggregated funding book. */
+export interface IFundingBookUpdateMessage extends IFundingBookLevel {
+  channel_id: number;
+  type: "funding_book_update";
+  currency: string;
 }
 
 /**
@@ -227,6 +316,14 @@ export interface IBookUpdateMessage extends IBookLevel {
 export interface IRawBookLevel {
   order_id: number;
   price: number;
+  amount: number;
+}
+
+/** A single offer in the raw (`R0`) funding book. */
+export interface IRawFundingBookLevel {
+  offer_id: number;
+  period: number;
+  rate: number;
   amount: number;
 }
 
@@ -243,12 +340,30 @@ export interface IRawBookSnapshotMessage {
 }
 
 /**
+ * Initial snapshot for a raw funding `book` subscription (`prec = R0`).
+ * Raw frame: `[CHAN_ID, [[OFFER_ID, PERIOD, RATE, AMOUNT], ...]]`.
+ */
+export interface IRawFundingBookSnapshotMessage {
+  channel_id: number;
+  type: "raw_funding_book_snapshot";
+  currency: string;
+  book: IRawFundingBookLevel[];
+}
+
+/**
  * Live update of a single order in the raw book.
  * Raw frame: `[CHAN_ID, ORDER_ID, PRICE, AMOUNT]`.
  */
 export interface IRawBookUpdateMessage extends IRawBookLevel {
   channel_id: number;
   type: "raw_book_update";
+}
+
+/** Live update of a single offer in the raw funding book. */
+export interface IRawFundingBookUpdateMessage extends IRawFundingBookLevel {
+  channel_id: number;
+  type: "raw_funding_book_update";
+  currency: string;
 }
 
 /* ----------------------------- Authenticated ------------------------------ */
@@ -342,9 +457,17 @@ export type IChannelMessage =
   | IAuthChannelEnvelope
   | IBookSnapshotMessage
   | IBookUpdateMessage
+  | IFundingBookSnapshotMessage
+  | IFundingBookUpdateMessage
+  | IFundingTickerMessage
+  | IFundingTradeExecutedMessage
+  | IFundingTradesSnapshotMessage
+  | IFundingTradeUpdatedMessage
   | IHeartbeatMessage
   | IRawBookSnapshotMessage
   | IRawBookUpdateMessage
+  | IRawFundingBookSnapshotMessage
+  | IRawFundingBookUpdateMessage
   | ITickerMessage
   | ITradeExecutedMessage
   | ITradeUpdatedMessage
@@ -360,6 +483,7 @@ export type IMessage = IChannelMessage | IEventMessage;
 
 interface ISubscriptionInfo {
   channel: IPublicChannelName;
+  currency?: string;
   pair?: string;
   prec?: IBookPrecision;
   freq?: IBookFrequency;
@@ -420,6 +544,27 @@ function parseChannelFrame(
 
   switch (sub.channel) {
     case "ticker":
+      if (typeof sub.currency !== "undefined") {
+        return {
+          channel_id,
+          type: "funding_ticker",
+          currency: sub.currency,
+          frr: frame[1] as number,
+          bid: frame[2] as number,
+          bid_period: frame[3] as number,
+          bid_size: frame[4] as number,
+          ask: frame[5] as number,
+          ask_period: frame[6] as number,
+          ask_size: frame[7] as number,
+          daily_change: frame[8] as number,
+          daily_change_perc: frame[9] as number,
+          last_price: frame[10] as number,
+          volume: frame[11] as number,
+          high: frame[12] as number,
+          low: frame[13] as number,
+          frr_amount_available: frame[16] as number,
+        };
+      }
       return {
         channel_id,
         type: "ticker",
@@ -437,6 +582,20 @@ function parseChannelFrame(
 
     case "trades": {
       if (Array.isArray(frame[1])) {
+        if (typeof sub.currency !== "undefined") {
+          return {
+            channel_id,
+            type: "funding_trades_snapshot",
+            currency: sub.currency,
+            trades: (frame[1] as unknown[][]).map((row) => ({
+              id: String(row[0]),
+              timestamp: row[1] as number,
+              amount: row[2] as number,
+              rate: row[3] as number,
+              period: row[4] as number,
+            })),
+          };
+        }
         return {
           channel_id,
           type: "trades_snapshot",
@@ -446,6 +605,23 @@ function parseChannelFrame(
             price: row[2] as number,
             amount: row[3] as number,
           })),
+        };
+      }
+      if (typeof sub.currency !== "undefined") {
+        const tag = frame[1] as "fte" | "ftu";
+        const payload = Array.isArray(frame[2])
+          ? (frame[2] as unknown[])
+          : frame.slice(2);
+        return {
+          channel_id,
+          type:
+            tag === "fte" ? "funding_trade_executed" : "funding_trade_updated",
+          currency: sub.currency,
+          id: String(payload[0]),
+          timestamp: payload[1] as number,
+          amount: payload[2] as number,
+          rate: payload[3] as number,
+          period: payload[4] as number,
         };
       }
       const tag = frame[1] as "te" | "tu";
@@ -477,6 +653,19 @@ function parseChannelFrame(
     case "book": {
       if (sub.prec === "R0") {
         if (Array.isArray(frame[1])) {
+          if (typeof sub.currency !== "undefined") {
+            return {
+              channel_id,
+              type: "raw_funding_book_snapshot",
+              currency: sub.currency,
+              book: (frame[1] as unknown[][]).map((row) => ({
+                offer_id: row[0] as number,
+                period: row[1] as number,
+                rate: row[2] as number,
+                amount: row[3] as number,
+              })),
+            };
+          }
           return {
             channel_id,
             type: "raw_book_snapshot",
@@ -485,6 +674,17 @@ function parseChannelFrame(
               price: row[1] as number,
               amount: row[2] as number,
             })),
+          };
+        }
+        if (typeof sub.currency !== "undefined") {
+          return {
+            channel_id,
+            type: "raw_funding_book_update",
+            currency: sub.currency,
+            offer_id: frame[1] as number,
+            period: frame[2] as number,
+            rate: frame[3] as number,
+            amount: frame[4] as number,
           };
         }
         return {
@@ -496,6 +696,19 @@ function parseChannelFrame(
         };
       }
       if (Array.isArray(frame[1])) {
+        if (typeof sub.currency !== "undefined") {
+          return {
+            channel_id,
+            type: "funding_book_snapshot",
+            currency: sub.currency,
+            book: (frame[1] as unknown[][]).map((row) => ({
+              rate: row[0] as number,
+              period: row[1] as number,
+              count: row[2] as number,
+              amount: row[3] as number,
+            })),
+          };
+        }
         return {
           channel_id,
           type: "book_snapshot",
@@ -504,6 +717,17 @@ function parseChannelFrame(
             count: row[1] as number,
             amount: row[2] as number,
           })),
+        };
+      }
+      if (typeof sub.currency !== "undefined") {
+        return {
+          channel_id,
+          type: "funding_book_update",
+          currency: sub.currency,
+          rate: frame[1] as number,
+          period: frame[2] as number,
+          count: frame[3] as number,
+          amount: frame[4] as number,
         };
       }
       return {
@@ -534,8 +758,13 @@ export interface ISubscribeTradesOptions extends ISignal {
 
 export interface ISubscribeBookOptions extends ISignal {
   pair?: string;
-  prec?: IBookPrecision;
+  prec?: IAggregatedBookPrecision;
   freq?: IBookFrequency;
+  len?: number | string;
+}
+
+export interface ISubscribeRawBookOptions extends ISignal {
+  pair?: string;
   len?: number | string;
 }
 
@@ -774,6 +1003,11 @@ export class WebSocketClient extends EventEmitter {
     len,
     signal,
   }: ISubscribeBookOptions = {}): Promise<ISubscribedMessage> {
+    if (prec === ("R0" as IAggregatedBookPrecision)) {
+      return Promise.reject(
+        new Error('Use rawBooks() or subscribeRawBook() for precision "R0"'),
+      );
+    }
     const payload: Record<string, string> = {
       channel: "book",
       pair,
@@ -791,7 +1025,7 @@ export class WebSocketClient extends EventEmitter {
     pair = this.#symbol,
     len,
     signal,
-  }: ISubscribeBookOptions = {}): Promise<ISubscribedMessage> {
+  }: ISubscribeRawBookOptions = {}): Promise<ISubscribedMessage> {
     const payload: Record<string, string> = {
       channel: "book",
       pair,
@@ -875,19 +1109,20 @@ export class WebSocketClient extends EventEmitter {
     pair = this.#symbol,
     signal,
   }: ISubscribeTickerOptions = {}): AsyncGenerator<
-    ITickerMessage,
+    IFundingTickerMessage | ITickerMessage,
     void,
     undefined
   > {
+    type T = IFundingTickerMessage | ITickerMessage;
     const sub = await this.subscribeTicker({ pair, signal });
-    const predicate = (message: IMessage): message is ITickerMessage =>
+    const predicate = (message: IMessage): message is T =>
       "channel_id" in message &&
       message.channel_id === sub.chanId &&
-      message.type === "ticker";
+      (message.type === "funding_ticker" || message.type === "ticker");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     while (true) {
-      yield await this.#send<ITickerMessage>(null, { predicate, signal });
+      yield await this.#send<T>(null, { predicate, signal });
     }
   }
 
@@ -899,11 +1134,19 @@ export class WebSocketClient extends EventEmitter {
     pair = this.#symbol,
     signal,
   }: ISubscribeTradesOptions = {}): AsyncGenerator<
-    ITradeExecutedMessage | ITradesSnapshotMessage | ITradeUpdatedMessage,
+    | IFundingTradeExecutedMessage
+    | IFundingTradesSnapshotMessage
+    | IFundingTradeUpdatedMessage
+    | ITradeExecutedMessage
+    | ITradesSnapshotMessage
+    | ITradeUpdatedMessage,
     void,
     undefined
   > {
     type T =
+      | IFundingTradeExecutedMessage
+      | IFundingTradesSnapshotMessage
+      | IFundingTradeUpdatedMessage
       | ITradeExecutedMessage
       | ITradesSnapshotMessage
       | ITradeUpdatedMessage;
@@ -912,8 +1155,11 @@ export class WebSocketClient extends EventEmitter {
       "channel_id" in message &&
       message.channel_id === sub.chanId &&
       (message.type === "trades_snapshot" ||
+        message.type === "funding_trades_snapshot" ||
         message.type === "trade_executed" ||
-        message.type === "trade_updated");
+        message.type === "trade_updated" ||
+        message.type === "funding_trade_executed" ||
+        message.type === "funding_trade_updated");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     while (true) {
@@ -932,11 +1178,18 @@ export class WebSocketClient extends EventEmitter {
     len,
     signal,
   }: ISubscribeBookOptions = {}): AsyncGenerator<
-    IBookSnapshotMessage | IBookUpdateMessage,
+    | IBookSnapshotMessage
+    | IBookUpdateMessage
+    | IFundingBookSnapshotMessage
+    | IFundingBookUpdateMessage,
     void,
     undefined
   > {
-    type B = IBookSnapshotMessage | IBookUpdateMessage;
+    type B =
+      | IBookSnapshotMessage
+      | IBookUpdateMessage
+      | IFundingBookSnapshotMessage
+      | IFundingBookUpdateMessage;
     const sub = await this.subscribeBook({
       pair,
       prec,
@@ -947,7 +1200,10 @@ export class WebSocketClient extends EventEmitter {
     const predicate = (message: IMessage): message is B =>
       "channel_id" in message &&
       message.channel_id === sub.chanId &&
-      (message.type === "book_snapshot" || message.type === "book_update");
+      (message.type === "book_snapshot" ||
+        message.type === "book_update" ||
+        message.type === "funding_book_snapshot" ||
+        message.type === "funding_book_update");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     while (true) {
@@ -963,12 +1219,19 @@ export class WebSocketClient extends EventEmitter {
     pair = this.#symbol,
     len,
     signal,
-  }: ISubscribeBookOptions = {}): AsyncGenerator<
-    IRawBookSnapshotMessage | IRawBookUpdateMessage,
+  }: ISubscribeRawBookOptions = {}): AsyncGenerator<
+    | IRawBookSnapshotMessage
+    | IRawBookUpdateMessage
+    | IRawFundingBookSnapshotMessage
+    | IRawFundingBookUpdateMessage,
     void,
     undefined
   > {
-    type R = IRawBookSnapshotMessage | IRawBookUpdateMessage;
+    type R =
+      | IRawBookSnapshotMessage
+      | IRawBookUpdateMessage
+      | IRawFundingBookSnapshotMessage
+      | IRawFundingBookUpdateMessage;
     const sub = await this.subscribeRawBook({
       pair,
       signal,
@@ -978,7 +1241,9 @@ export class WebSocketClient extends EventEmitter {
       "channel_id" in message &&
       message.channel_id === sub.chanId &&
       (message.type === "raw_book_snapshot" ||
-        message.type === "raw_book_update");
+        message.type === "raw_book_update" ||
+        message.type === "raw_funding_book_snapshot" ||
+        message.type === "raw_funding_book_update");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     while (true) {
@@ -1069,6 +1334,9 @@ export class WebSocketClient extends EventEmitter {
         if (typeof sub.pair !== "undefined") {
           info.pair = sub.pair;
         }
+        if (typeof sub.currency !== "undefined") {
+          info.currency = sub.currency;
+        }
         if (typeof sub.prec !== "undefined") {
           info.prec = sub.prec;
         }
@@ -1093,11 +1361,16 @@ export class WebSocketClient extends EventEmitter {
   ): Promise<ISubscribedMessage> {
     const payload = { event: "subscribe", ...params };
     const { channel, pair } = params;
+    const funding_currency =
+      typeof pair === "string" && pair.startsWith("f") ? pair.slice(1) : null;
+    const currency = funding_currency ?? pair;
     const predicate = (message: IMessage): message is ISubscribedMessage =>
       "event" in message &&
       message.event === "subscribed" &&
       message.channel === channel &&
-      (typeof pair === "undefined" || message.pair === pair);
+      (typeof pair === "undefined" ||
+        message.pair === pair ||
+        message.currency === currency);
 
     return this.#send<ISubscribedMessage>(payload, { predicate, signal });
   }

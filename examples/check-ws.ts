@@ -6,6 +6,7 @@
  *
  * Optional env vars:
  *   BFX_PAIR          Trading pair (default: BTCUSD)
+ *   BFX_FUNDING       Funding currency for ticker checks (default: USD)
  *   BFX_TIMEOUT_MS    Per-channel wait timeout in ms (default: 30000)
  *   BFX_VERBOSE       Set to "1" to dump every WS frame (default: off)
  */
@@ -19,6 +20,7 @@ import {
 } from "../index.js";
 
 const pair = process.env.BFX_PAIR ?? "BTCUSD";
+const funding = process.env.BFX_FUNDING ?? "USD";
 const timeout = Number(process.env.BFX_TIMEOUT_MS ?? 30_000);
 const verbose = process.env.BFX_VERBOSE === "1";
 
@@ -179,6 +181,134 @@ async function checkTicker(ws: WebSocketClient): Promise<void> {
       false,
       (error as Error).message,
     );
+  }
+
+  capture.stop();
+  await checkUnsubscribe(ws, sub.chanId);
+}
+
+async function checkFundingTicker(ws: WebSocketClient): Promise<void> {
+  console.log(`\n[funding ticker ${funding}]`);
+  const capture = startCapture(ws);
+  let sub: ISubscribedMessage;
+  try {
+    sub = await ws.subscribeTicker({ pair: funding });
+    record(
+      "subscribe",
+      sub.event === "subscribed" &&
+        sub.channel === "ticker" &&
+        sub.currency === funding.replace(/^f/u, ""),
+      `chanId=${sub.chanId}, currency=${sub.currency ?? "?"}`,
+    );
+  } catch (error) {
+    record("subscribe", false, (error as Error).message);
+    capture.stop();
+    return;
+  }
+
+  try {
+    const msg = await capture.next(sub.chanId, timeout);
+    if (msg.type === "funding_ticker") {
+      const ok =
+        msg.currency === sub.currency &&
+        isNum(msg.frr) &&
+        isNum(msg.bid) &&
+        isNum(msg.bid_period) &&
+        isNum(msg.bid_size) &&
+        isNum(msg.ask) &&
+        isNum(msg.ask_period) &&
+        isNum(msg.ask_size) &&
+        isNum(msg.daily_change) &&
+        isNum(msg.daily_change_perc) &&
+        isNum(msg.last_price) &&
+        isNum(msg.volume) &&
+        isNum(msg.high) &&
+        isNum(msg.low) &&
+        isNum(msg.frr_amount_available);
+      record(
+        "first funding_ticker (all interface fields)",
+        ok,
+        ok
+          ? `currency=${msg.currency}, frr=${msg.frr}, bid=${msg.bid}, ask=${msg.ask}`
+          : `got: ${preview(msg)}`,
+      );
+    } else {
+      record(
+        "first funding_ticker (all interface fields)",
+        false,
+        `unexpected type: ${msg.type}`,
+      );
+    }
+  } catch (error) {
+    record(
+      "first funding_ticker (all interface fields)",
+      false,
+      (error as Error).message,
+    );
+  }
+
+  capture.stop();
+  await checkUnsubscribe(ws, sub.chanId);
+}
+
+async function checkFundingTrades(ws: WebSocketClient): Promise<void> {
+  console.log(`\n[funding trades ${funding}]`);
+  const capture = startCapture(ws);
+  let sub: ISubscribedMessage;
+  try {
+    sub = await ws.subscribeTrades({ pair: funding });
+    record(
+      "subscribe",
+      sub.event === "subscribed" &&
+        sub.channel === "trades" &&
+        sub.currency === funding.replace(/^f/u, ""),
+      `chanId=${sub.chanId}, currency=${sub.currency ?? "?"}`,
+    );
+  } catch (error) {
+    record("subscribe", false, (error as Error).message);
+    capture.stop();
+    return;
+  }
+
+  try {
+    const msg = await capture.next(sub.chanId, timeout);
+    if (msg.type === "funding_trades_snapshot") {
+      const ok =
+        msg.currency === sub.currency &&
+        msg.trades.length > 0 &&
+        msg.trades.every(
+          (t) =>
+            typeof t.id === "string" &&
+            isNum(t.timestamp) &&
+            isNum(t.amount) &&
+            isNum(t.rate) &&
+            isNum(t.period),
+        );
+      record(
+        "funding_trades_snapshot",
+        ok,
+        ok
+          ? `${msg.trades.length} trades, rate=${msg.trades[0]!.rate}`
+          : `bad rows: ${preview(msg)}`,
+      );
+    } else if (
+      msg.type === "funding_trade_executed" ||
+      msg.type === "funding_trade_updated"
+    ) {
+      record(
+        "first frame is a funding trade update",
+        isNum(msg.amount) && isNum(msg.rate) && isNum(msg.period),
+        `${msg.type}: rate=${msg.rate}, amount=${msg.amount}`,
+      );
+    } else {
+      record(
+        "first funding trades frame",
+        false,
+        `unexpected: ${preview(msg)}`,
+      );
+    }
+  } catch (error) {
+    record("first funding trades frame", false, (error as Error).message);
   }
 
   capture.stop();
@@ -398,6 +528,125 @@ async function checkRawBook(ws: WebSocketClient): Promise<void> {
     } catch (error) {
       record("follow-up raw_book_update", false, (error as Error).message);
     }
+  }
+
+  capture.stop();
+  await checkUnsubscribe(ws, sub.chanId);
+}
+
+async function checkFundingBook(ws: WebSocketClient): Promise<void> {
+  console.log(`\n[funding book ${funding}]`);
+  const capture = startCapture(ws);
+  let sub: ISubscribedMessage;
+  try {
+    sub = await ws.subscribeBook({ pair: funding, prec: "P0", freq: "F0" });
+    record(
+      "subscribe",
+      sub.event === "subscribed" &&
+        sub.channel === "book" &&
+        sub.currency === funding.replace(/^f/u, ""),
+      `chanId=${sub.chanId}, currency=${sub.currency ?? "?"}`,
+    );
+  } catch (error) {
+    record("subscribe", false, (error as Error).message);
+    capture.stop();
+    return;
+  }
+
+  try {
+    const msg = await capture.next(sub.chanId, timeout);
+    if (msg.type === "funding_book_snapshot") {
+      const ok =
+        msg.currency === sub.currency &&
+        msg.book.length > 0 &&
+        msg.book.every(
+          (l) =>
+            isNum(l.rate) &&
+            isNum(l.period) &&
+            isNum(l.count) &&
+            isNum(l.amount),
+        );
+      record(
+        "funding_book_snapshot",
+        ok,
+        ok ? `${msg.book.length} rate levels` : `bad: ${preview(msg)}`,
+      );
+    } else if (msg.type === "funding_book_update") {
+      record(
+        "first frame is a funding_book_update",
+        isNum(msg.rate) &&
+          isNum(msg.period) &&
+          isNum(msg.count) &&
+          isNum(msg.amount),
+        `rate=${msg.rate}, period=${msg.period}, amount=${msg.amount}`,
+      );
+    } else {
+      record("first funding book frame", false, `unexpected: ${preview(msg)}`);
+    }
+  } catch (error) {
+    record("first funding book frame", false, (error as Error).message);
+  }
+
+  capture.stop();
+  await checkUnsubscribe(ws, sub.chanId);
+}
+
+async function checkRawFundingBook(ws: WebSocketClient): Promise<void> {
+  console.log(`\n[raw funding book ${funding}]`);
+  const capture = startCapture(ws);
+  let sub: ISubscribedMessage;
+  try {
+    sub = await ws.subscribeRawBook({ pair: funding });
+    record(
+      "subscribe",
+      sub.event === "subscribed" &&
+        sub.channel === "book" &&
+        sub.prec === "R0" &&
+        sub.currency === funding.replace(/^f/u, ""),
+      `chanId=${sub.chanId}, currency=${sub.currency ?? "?"}`,
+    );
+  } catch (error) {
+    record("subscribe", false, (error as Error).message);
+    capture.stop();
+    return;
+  }
+
+  try {
+    const msg = await capture.next(sub.chanId, timeout);
+    if (msg.type === "raw_funding_book_snapshot") {
+      const ok =
+        msg.currency === sub.currency &&
+        msg.book.length > 0 &&
+        msg.book.every(
+          (l) =>
+            isNum(l.offer_id) &&
+            isNum(l.period) &&
+            isNum(l.rate) &&
+            isNum(l.amount),
+        );
+      record(
+        "raw_funding_book_snapshot",
+        ok,
+        ok ? `${msg.book.length} offers` : `bad: ${preview(msg)}`,
+      );
+    } else if (msg.type === "raw_funding_book_update") {
+      record(
+        "first frame is a raw_funding_book_update",
+        isNum(msg.offer_id) &&
+          isNum(msg.period) &&
+          isNum(msg.rate) &&
+          isNum(msg.amount),
+        `offer=${msg.offer_id}, rate=${msg.rate}`,
+      );
+    } else {
+      record(
+        "first raw funding book frame",
+        false,
+        `unexpected: ${preview(msg)}`,
+      );
+    }
+  } catch (error) {
+    record("first raw funding book frame", false, (error as Error).message);
   }
 
   capture.stop();
@@ -636,9 +885,13 @@ async function main(): Promise<void> {
   await checkPing(ws);
   await checkPreAbortedSignal(ws);
   await checkTicker(ws);
+  await checkFundingTicker(ws);
   await checkTrades(ws);
+  await checkFundingTrades(ws);
   await checkBook(ws);
   await checkRawBook(ws);
+  await checkFundingBook(ws);
+  await checkRawFundingBook(ws);
   await checkConcurrentSubscriptions(ws);
   await checkPostUnsubscribeSilence(ws);
   await checkSubscriptionsRegistry(ws);

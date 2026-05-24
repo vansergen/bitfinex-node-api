@@ -411,7 +411,8 @@ const pong = await ws.ping();
 ```
 
 - [`subscribeTicker`](https://docs.bitfinex.com/v1/reference/ws-public-ticker) —
-  push every ticker update for a pair.
+  push every ticker update for a pair. Funding currencies such as `USD`/`fUSD`
+  are emitted as `funding_ticker` messages.
 
 ```typescript
 const subscription = await ws.subscribeTicker({ pair: "BTCUSD" });
@@ -432,9 +433,34 @@ const subscription = await ws.subscribeTicker({ pair: "BTCUSD" });
 // }
 ```
 
+```typescript
+const subscription = await ws.subscribeTicker({ pair: "USD" });
+// Incoming `message` payload:
+// {
+//   channel_id: 57169,
+//   type: "funding_ticker",
+//   currency: "USD",
+//   frr: 0.00039778,
+//   bid: 0.00029,
+//   bid_period: 2,
+//   bid_size: 21298086.02518276,
+//   ask: 0.00008723,
+//   ask_period: 2,
+//   ask_size: 123300.84010007,
+//   daily_change: -0.000015,
+//   daily_change_perc: -0.15,
+//   last_price: 0.00007587,
+//   volume: 1000,
+//   high: 0.0004,
+//   low: 0.00007,
+//   frr_amount_available: 42,
+// }
+```
+
 - [`subscribeTrades`](https://docs.bitfinex.com/v1/reference/ws-public-trades) —
   pushes one initial snapshot of recent trades, then `trade_executed` (`te`)
-  and `trade_updated` (`tu`) live events.
+  and `trade_updated` (`tu`) live events. Funding currencies such as
+  `USD`/`fUSD` are emitted as funding trade messages.
 
 ```typescript
 const subscription = await ws.subscribeTrades({ pair: "BTCUSD" });
@@ -443,10 +469,17 @@ const subscription = await ws.subscribeTrades({ pair: "BTCUSD" });
 // Live update:
 // { channel_id, type: "trade_executed", seq, timestamp, price, amount }
 // { channel_id, type: "trade_updated", seq, id, timestamp, price, amount }
+// Funding snapshot:
+// { channel_id, type: "funding_trades_snapshot", currency,
+//   trades: [{ id, timestamp, amount, rate, period }, ...] }
+// Funding live update:
+// { channel_id, type: "funding_trade_executed", currency, id, timestamp, amount, rate, period }
+// { channel_id, type: "funding_trade_updated", currency, id, timestamp, amount, rate, period }
 ```
 
 - [`subscribeBook`](https://docs.bitfinex.com/v1/reference/ws-public-order-books) —
-  aggregated order book (`prec` ∈ `P0`–`P3`).
+  aggregated order book (`prec` ∈ `P0`–`P3`). Funding currencies such as
+  `USD`/`fUSD` are emitted as funding book messages.
 
 ```typescript
 const subscription = await ws.subscribeBook({
@@ -459,10 +492,16 @@ const subscription = await ws.subscribeBook({
 // { channel_id, type: "book_snapshot", book: [{ price, count, amount }, ...] }
 // Update:
 // { channel_id, type: "book_update", price, count, amount }
+// Funding snapshot:
+// { channel_id, type: "funding_book_snapshot", currency,
+//   book: [{ rate, period, count, amount }, ...] }
+// Funding update:
+// { channel_id, type: "funding_book_update", currency, rate, period, count, amount }
 ```
 
 - [`subscribeRawBook`](https://docs.bitfinex.com/v1/reference/ws-public-raw-order-books) —
-  raw order book at order-id granularity (`prec = R0`).
+  raw order book at order-id granularity (`prec = R0`). Funding currencies
+  are emitted as raw funding book messages.
 
 ```typescript
 const subscription = await ws.subscribeRawBook({ pair: "BTCUSD", len: 100 });
@@ -470,6 +509,11 @@ const subscription = await ws.subscribeRawBook({ pair: "BTCUSD", len: 100 });
 // { channel_id, type: "raw_book_snapshot", book: [{ order_id, price, amount }, ...] }
 // Update:
 // { channel_id, type: "raw_book_update", order_id, price, amount }
+// Funding snapshot:
+// { channel_id, type: "raw_funding_book_snapshot", currency,
+//   book: [{ offer_id, period, rate, amount }, ...] }
+// Funding update:
+// { channel_id, type: "raw_funding_book_update", currency, offer_id, period, rate, amount }
 ```
 
 - [Heartbeats](https://docs.bitfinex.com/v1/docs/ws-general#heartbeating) are
