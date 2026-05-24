@@ -1,12 +1,40 @@
 {
   "name": "bitfinex-node-api",
   "version": "3.0.0",
-  "description": "Bitfinex Node.js client",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "description": "Bitfinex Node.js API",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "directories": {
+    "test": "test"
+  },
   "engines": {
-    "node": ">=16.15.0",
-    "npm": ">=8.5.5"
+    "node": ">=24.16.0",
+    "npm": ">=11.13.0"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:remove": "rm -rf dist",
+    "ci:all": "npm ci && npm run prettier && npm run eslint && npm run commitlint && npm test && npm publish --dry-run && npm run docs:build && npm run coverage",
+    "commitlint": "commitlint --verbose --from=dc2607d7549e61b3c7710c0efd9e3532b07e8c82",
+    "coverage": "mkdir -p coverage && node --import=tsx --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info **/*.test.ts",
+    "docs:build": "typedoc",
+    "eslint": "eslint --no-warn-ignored **/*.ts",
+    "eslint:fix": "npm run eslint -- --fix",
+    "install:clean": "npm install",
+    "postbuild": "prettier -c -w dist",
+    "postdocs:build": "prettier -c -w docs",
+    "postpublish": "npm run build:remove",
+    "prebuild": "npm run build:remove",
+    "preinstall:clean": "rm -rf node_modules package-lock.json",
+    "prepare": "husky",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier -c .",
+    "prettier:write": "prettier -c -w .",
+    "preversion": "npm run docs:build",
+    "test": "node --import tsx --test test/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -14,64 +42,30 @@
   },
   "keywords": [
     "Bitfinex",
-    "API",
     "crypto",
-    "exchange"
+    "exchange",
+    "API"
   ],
   "author": "Sergey Bakulin <sergey.bakulin.github@gmail.com>",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/vansergen/bitfinex-node-api/issues"
   },
   "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
-  "scripts": {
-    "build": "npm run postpublish && tsc",
-    "commitlint": "commitlint --verbose",
-    "commitlint:all": "npm run commitlint -- --from=fddf9c37d0e4840a593a1e1242ea200a5dc38ef7",
-    "coverage": "nyc npm test && nyc report --reporter=lcov",
-    "docs:build": "rm -rf ./docs && typedoc && npm run prettier:write -- --ignore-path .prettierignore_docs",
-    "install:clean": "rm -fr node_modules && rm -f package-lock.json && npm install",
-    "lint": "eslint --ext .ts ./",
-    "lint:fix": "npm run lint -- --fix",
-    "postpublish": "rm -rf ./build",
-    "prepare": "husky install",
-    "prepublishOnly": "npm run build && npm run prettier:write",
-    "prettier": "prettier -c .",
-    "prettier:write": "npm run prettier -- --write",
-    "publish:test": "npm publish --dry-run",
-    "release": "semantic-release",
-    "test": "mocha -r ts-node/register --full-trace --ui tdd --bail ./test/*.spec.ts",
-    "test:js": "npm run build && mocha --full-trace --ui tdd --bail ./build/test/**/*.spec.js && npm run build:remove"
-  },
   "dependencies": {
-    "rpc-request": "^5.0.3"
-  },
-  "peerDependencies": {
-    "node-fetch": "3.0.0-beta.9"
+    "rpc-request": "^9.0.0"
   },
   "devDependencies": {
-    "@b2broker/tsconfig": "^1.0.3",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@types/mocha": "^9.1.1",
-    "commitlint-config-b2broker": "^1.0.7",
-    "eslint-config-b2broker-ts": "^2.0.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.1",
-    "mocha": "^10.0.0",
-    "nock": "^13.2.4",
-    "nyc": "^15.1.0",
-    "prettier": "^2.6.2",
-    "semantic-release": "^19.0.2",
-    "ts-node": "^10.7.0",
-    "typedoc": "^0.22.15"
-  },
-  "funding": {
-    "type": "Coinbase Commerce",
-    "url": "https://commerce.coinbase.com/checkout/221a3057-e35f-4559-97e4-af020145df62"
-  },
-  "directories": {
-    "test": "test"
+    "@binden/commitlint-config": "^3.0.0",
+    "@binden/eslint-config-ts": "^6.0.1",
+    "@binden/semantic-release-config": "^3.0.4",
+    "@binden/tsconfig": "^4.0.1",
+    "@types/ws": "^8.18.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "prettier": "^3.8.3",
+    "tsx": "^4.22.3",
+    "typedoc": "^0.28.19",
+    "ws": "^8.21.0"
   }
 }

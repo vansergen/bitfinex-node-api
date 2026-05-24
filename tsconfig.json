@@ -1,1 +1,4 @@
-{ "extends": "@b2broker/tsconfig", "compilerOptions": { "outDir": "./build" } }
+{
+  "extends": "@binden/tsconfig",
+  "compilerOptions": { "module": "NodeNext", "outDir": "dist" }
+}
