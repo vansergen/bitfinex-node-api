@@ -53,21 +53,19 @@
   },
   "homepage": "https://github.com/vansergen/bitfinex-node-api#readme",
   "dependencies": {
-    "rpc-request": "^9.0.0",
-    "ws": "^8.21.0"
-  },
-  "peerDependencies": {
-    "@types/ws": "^8.18.1"
+    "rpc-request": "^9.0.0"
   },
   "devDependencies": {
     "@binden/commitlint-config": "^3.0.0",
     "@binden/eslint-config-ts": "^6.0.1",
     "@binden/semantic-release-config": "^3.0.4",
     "@binden/tsconfig": "^4.0.1",
+    "@types/ws": "^8.18.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
     "prettier": "^3.8.3",
     "tsx": "^4.22.3",
-    "typedoc": "^0.28.19"
+    "typedoc": "^0.28.19",
+    "ws": "^8.21.0"
   }
 }
