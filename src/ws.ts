@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-declaration-merging */
 import { createHmac } from "node:crypto";
 import { EventEmitter } from "node:events";
-import { WebSocket } from "ws";
+import type { IWalletType } from "./auth.js";
 import { DefaultSymbol } from "./public.js";
 
 export const WebSocketURL = "wss://api.bitfinex.com/ws/1";
@@ -15,32 +15,35 @@ export class WSAbort extends Error {
 
 export type IBookPrecision = "P0" | "P1" | "P2" | "P3" | "R0";
 export type IBookFrequency = "F0" | "F1";
-
 export type IPublicChannelName = "book" | "ticker" | "trades";
 
 export interface ISignal {
   signal?: AbortSignal | null | undefined;
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Server events                                                              */
+/* -------------------------------------------------------------------------- */
+
 export interface IInfoMessage {
   event: "info";
   version?: number;
   code?: number;
   msg?: string;
+  serverId?: string;
+  platform?: { status: number };
 }
 
 export interface IPongMessage {
   event: "pong";
 }
 
-export interface IPingMessage {
-  event: "ping";
-}
-
 export interface IErrorMessage {
   event: "error";
-  msg: string;
+  msg?: string;
   code: number;
+  status?: string;
+  chanId?: number;
   pair?: string;
   channel?: string;
 }
@@ -78,9 +81,14 @@ export interface IAuthFailedMessage {
 
 export type IAuthMessage = IAuthFailedMessage | IAuthSuccessMessage;
 
+/**
+ * Success reply for an `unauth` event.
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-auth-unauthentication
+ */
 export interface IUnauthMessage {
   event: "unauth";
-  status: string;
+  status: "OK";
   chanId: 0;
 }
 
@@ -93,68 +101,190 @@ export type IEventMessage =
   | IUnauthMessage
   | IUnsubscribedMessage;
 
+/* -------------------------------------------------------------------------- */
+/*  Channel messages (parsed from raw arrays into typed objects)               */
+/* -------------------------------------------------------------------------- */
+
 /**
- * Ticker:
- * `[CHAN_ID, [BID, BID_SIZE, ASK, ASK_SIZE, DAILY_CHANGE,
- *             DAILY_CHANGE_PERC, LAST_PRICE, VOLUME, HIGH, LOW]]`
+ * Heartbeat keepalive emitted on any channel at most once per second when no
+ * data has arrived. Raw frame: `[CHAN_ID, "hb"]`.
+ *
+ * https://docs.bitfinex.com/v1/docs/ws-general
  */
-export type ITickerPayload = [
-  bid: number,
-  bid_size: number,
-  ask: number,
-  ask_size: number,
-  daily_change: number,
-  daily_change_perc: number,
-  last_price: number,
-  volume: number,
-  high: number,
-  low: number,
-];
+export interface IHeartbeatMessage {
+  channel_id: number;
+  type: "heartbeat";
+}
 
-export type ITickerSnapshot = [chanId: number, ticker: ITickerPayload];
+/**
+ * Ticker update. Both the initial snapshot and subsequent updates have the
+ * same shape. Raw frame:
+ * `[CHAN_ID, BID, BID_SIZE, ASK, ASK_SIZE, DAILY_CHANGE,
+ *  DAILY_CHANGE_PERC, LAST_PRICE, VOLUME, HIGH, LOW, ...]`
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-public-ticker
+ */
+export interface ITickerMessage {
+  channel_id: number;
+  type: "ticker";
+  bid: number;
+  bid_size: number;
+  ask: number;
+  ask_size: number;
+  daily_change: number;
+  daily_change_perc: number;
+  last_price: number;
+  volume: number;
+  high: number;
+  low: number;
+}
 
-export type ITradeRow = [
-  id: number,
-  timestamp: number,
-  price: number,
-  amount: number,
-];
+/**
+ * A single executed trade row used inside `trades_snapshot`.
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-public-trades
+ */
+export interface IWSTrade {
+  id: string;
+  timestamp: number;
+  price: number;
+  amount: number;
+}
 
-export type ITradeSnapshot = [chanId: number, trades: ITradeRow[]];
+/**
+ * Initial snapshot for a `trades` subscription.
+ * Raw frame: `[CHAN_ID, [[ID, TIMESTAMP, PRICE, AMOUNT], ...]]`.
+ */
+export interface ITradesSnapshotMessage {
+  channel_id: number;
+  type: "trades_snapshot";
+  trades: IWSTrade[];
+}
 
-export type ITradeExecuted = [
-  chanId: number,
-  type: "te" | "tu",
-  payload:
-    | [seq: string, ts: number, price: number, amount: number]
-    | [seq: string, id: number, ts: number, price: number, amount: number],
-];
+/**
+ * `te` — a trade has just executed (early notification).
+ * Raw frame: `[CHAN_ID, "te", [SEQ, TIMESTAMP, PRICE, AMOUNT]]`.
+ */
+export interface ITradeExecutedMessage {
+  channel_id: number;
+  type: "trade_executed";
+  seq: string;
+  timestamp: number;
+  price: number;
+  amount: number;
+}
 
-export type IBookPriceLevel = [price: number, count: number, amount: number];
-export type IRawBookPriceLevel = [
-  order_id: number,
-  price: number,
-  amount: number,
-];
+/**
+ * `tu` — a trade execution has been settled and now carries its final id.
+ * Raw frame: `[CHAN_ID, "tu", [SEQ, ID, TIMESTAMP, PRICE, AMOUNT]]`.
+ */
+export interface ITradeUpdatedMessage {
+  channel_id: number;
+  type: "trade_updated";
+  seq: string;
+  id: string;
+  timestamp: number;
+  price: number;
+  amount: number;
+}
 
-export type IBookSnapshot = [chanId: number, levels: IBookPriceLevel[]];
-export type IBookUpdate = [chanId: number, level: IBookPriceLevel];
+/**
+ * A single price level inside an aggregated order book.
+ * `count > 0` — the level exists (`amount > 0` is a bid, `< 0` is an ask).
+ * `count = 0` — remove the level.
+ */
+export interface IBookLevel {
+  price: number;
+  count: number;
+  amount: number;
+}
 
-export type IRawBookSnapshot = [chanId: number, levels: IRawBookPriceLevel[]];
-export type IRawBookUpdate = [chanId: number, level: IRawBookPriceLevel];
+/**
+ * Initial snapshot for an aggregated `book` subscription (`prec` ≠ `R0`).
+ * Raw frame: `[CHAN_ID, [[PRICE, COUNT, AMOUNT], ...]]`.
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-public-order-books
+ */
+export interface IBookSnapshotMessage {
+  channel_id: number;
+  type: "book_snapshot";
+  book: IBookLevel[];
+}
 
-export type IHeartbeat = [chanId: number, "hb"];
+/**
+ * Live update of a single price level in the aggregated book.
+ * Raw frame: `[CHAN_ID, PRICE, COUNT, AMOUNT]`.
+ */
+export interface IBookUpdateMessage extends IBookLevel {
+  channel_id: number;
+  type: "book_update";
+}
 
-export type IChannelMessage =
-  | IBookSnapshot
-  | IBookUpdate
-  | IHeartbeat
-  | IRawBookSnapshot
-  | IRawBookUpdate
-  | ITickerSnapshot
-  | ITradeExecuted
-  | ITradeSnapshot;
+/**
+ * A single order in the raw (`R0`) order book.
+ * `price = 0` means "remove the order with `order_id`".
+ */
+export interface IRawBookLevel {
+  order_id: number;
+  price: number;
+  amount: number;
+}
 
+/**
+ * Initial snapshot for a raw `book` subscription (`prec = R0`).
+ * Raw frame: `[CHAN_ID, [[ORDER_ID, PRICE, AMOUNT], ...]]`.
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-public-raw-order-books
+ */
+export interface IRawBookSnapshotMessage {
+  channel_id: number;
+  type: "raw_book_snapshot";
+  book: IRawBookLevel[];
+}
+
+/**
+ * Live update of a single order in the raw book.
+ * Raw frame: `[CHAN_ID, ORDER_ID, PRICE, AMOUNT]`.
+ */
+export interface IRawBookUpdateMessage extends IRawBookLevel {
+  channel_id: number;
+  type: "raw_book_update";
+}
+
+/* ----------------------------- Authenticated ------------------------------ */
+
+/**
+ * A single wallet row.
+ *
+ * https://docs.bitfinex.com/v1/reference/ws-auth-wallets
+ */
+export interface IWallet {
+  wallet_type: IWalletType;
+  currency: string;
+  balance: number;
+  unsettled_interest: number;
+  balance_available: number | null;
+}
+
+/** `ws` — wallet snapshot, sent once after authentication. */
+export interface IWalletSnapshotMessage {
+  channel_id: 0;
+  type: "wallet_snapshot";
+  wallets: IWallet[];
+}
+
+/** `wu` — wallet update. */
+export interface IWalletUpdateMessage extends IWallet {
+  channel_id: 0;
+  type: "wallet_update";
+}
+
+/**
+ * Bitfinex v1 mnemonic for authenticated channel frames that we deliver as a
+ * raw envelope (i.e. not `ws`/`wu`/`hb`, which are decoded into their own
+ * typed messages). Using a literal union keeps `IMessage` discriminated so
+ * narrowing via `msg.type === "ticker"` actually excludes the envelope.
+ */
 export type IAuthChannelType =
   | "bu"
   | "fcc"
@@ -183,17 +313,216 @@ export type IAuthChannelType =
   | "ps"
   | "pu"
   | "te"
-  | "tu"
-  | "ws"
-  | "wu";
+  | "tu";
 
-export type IAuthChannelMessage = [
-  chanId: 0,
-  type: IAuthChannelType,
-  payload: unknown,
-];
+/**
+ * Generic envelope for authenticated channel frames whose payload schema is
+ * not decoded by this client. Use the v1 mnemonic carried by `type` to
+ * interpret the raw `payload` against the official docs:
+ *
+ * - Orders: https://docs.bitfinex.com/v1/reference/ws-auth-orders
+ * - Positions: https://docs.bitfinex.com/v1/reference/ws-auth-positions
+ * - Trades: https://docs.bitfinex.com/v1/reference/ws-auth-trades
+ * - Funding offers: https://docs.bitfinex.com/v1/reference/ws-auth-offers
+ * - Funding credits: https://docs.bitfinex.com/v1/reference/ws-auth-credits
+ * - Funding loans: https://docs.bitfinex.com/v1/reference/ws-auth-loans
+ * - Funding trades: https://docs.bitfinex.com/v1/reference/ws-auth-funding-trades
+ * - Balance info: https://docs.bitfinex.com/v1/reference/ws-auth-balance-info
+ * - Margin info: https://docs.bitfinex.com/v1/reference/ws-auth-margin-info
+ * - Funding info: https://docs.bitfinex.com/v1/reference/ws-auth-funding-info
+ * - Notifications: https://docs.bitfinex.com/v1/reference/ws-auth-notifications
+ */
+export interface IAuthChannelEnvelope {
+  channel_id: 0;
+  type: IAuthChannelType;
+  payload: unknown;
+}
 
-export type IMessage = IChannelMessage | IEventMessage | IAuthChannelMessage;
+export type IChannelMessage =
+  | IAuthChannelEnvelope
+  | IBookSnapshotMessage
+  | IBookUpdateMessage
+  | IHeartbeatMessage
+  | IRawBookSnapshotMessage
+  | IRawBookUpdateMessage
+  | ITickerMessage
+  | ITradeExecutedMessage
+  | ITradeUpdatedMessage
+  | ITradesSnapshotMessage
+  | IWalletSnapshotMessage
+  | IWalletUpdateMessage;
+
+export type IMessage = IChannelMessage | IEventMessage;
+
+/* -------------------------------------------------------------------------- */
+/*  Internal subscription registry + parser                                    */
+/* -------------------------------------------------------------------------- */
+
+interface ISubscriptionInfo {
+  channel: IPublicChannelName;
+  pair?: string;
+  prec?: IBookPrecision;
+  freq?: IBookFrequency;
+  len?: string;
+}
+
+function asWallet(row: unknown[]): IWallet {
+  return {
+    wallet_type: row[0] as IWalletType,
+    currency: row[1] as string,
+    balance: row[2] as number,
+    unsettled_interest: row[3] as number,
+    balance_available: (row[4] as number | null) ?? null,
+  };
+}
+
+function parseAuthFrame(frame: unknown[]): IChannelMessage {
+  const type = frame[1] as string;
+  const [, , payload] = frame;
+
+  if (type === "ws" && Array.isArray(payload)) {
+    return {
+      channel_id: 0,
+      type: "wallet_snapshot",
+      wallets: (payload as unknown[][]).map(asWallet),
+    };
+  }
+
+  if (type === "wu" && Array.isArray(payload)) {
+    return {
+      channel_id: 0,
+      type: "wallet_update",
+      ...asWallet(payload as unknown[]),
+    };
+  }
+
+  return { channel_id: 0, type: type as IAuthChannelType, payload };
+}
+
+function parseChannelFrame(
+  frame: unknown[],
+  subscriptions: Map<number, ISubscriptionInfo>,
+): IChannelMessage | null {
+  const channel_id = frame[0] as number;
+
+  if (frame[1] === "hb") {
+    return { channel_id, type: "heartbeat" };
+  }
+
+  if (channel_id === 0) {
+    return parseAuthFrame(frame);
+  }
+
+  const sub = subscriptions.get(channel_id);
+  if (!sub) {
+    return null;
+  }
+
+  switch (sub.channel) {
+    case "ticker":
+      return {
+        channel_id,
+        type: "ticker",
+        bid: frame[1] as number,
+        bid_size: frame[2] as number,
+        ask: frame[3] as number,
+        ask_size: frame[4] as number,
+        daily_change: frame[5] as number,
+        daily_change_perc: frame[6] as number,
+        last_price: frame[7] as number,
+        volume: frame[8] as number,
+        high: frame[9] as number,
+        low: frame[10] as number,
+      };
+
+    case "trades": {
+      if (Array.isArray(frame[1])) {
+        return {
+          channel_id,
+          type: "trades_snapshot",
+          trades: (frame[1] as unknown[][]).map((row) => ({
+            id: String(row[0]),
+            timestamp: row[1] as number,
+            price: row[2] as number,
+            amount: row[3] as number,
+          })),
+        };
+      }
+      const tag = frame[1] as "te" | "tu";
+      // Accept both nested `[seq, ...]` and flat `seq, ...` payload layouts.
+      const payload = Array.isArray(frame[2])
+        ? (frame[2] as unknown[])
+        : frame.slice(2);
+      if (tag === "te") {
+        return {
+          channel_id,
+          type: "trade_executed",
+          seq: String(payload[0]),
+          timestamp: payload[1] as number,
+          price: payload[2] as number,
+          amount: payload[3] as number,
+        };
+      }
+      return {
+        channel_id,
+        type: "trade_updated",
+        seq: String(payload[0]),
+        id: String(payload[1]),
+        timestamp: payload[2] as number,
+        price: payload[3] as number,
+        amount: payload[4] as number,
+      };
+    }
+
+    case "book": {
+      if (sub.prec === "R0") {
+        if (Array.isArray(frame[1])) {
+          return {
+            channel_id,
+            type: "raw_book_snapshot",
+            book: (frame[1] as unknown[][]).map((row) => ({
+              order_id: row[0] as number,
+              price: row[1] as number,
+              amount: row[2] as number,
+            })),
+          };
+        }
+        return {
+          channel_id,
+          type: "raw_book_update",
+          order_id: frame[1] as number,
+          price: frame[2] as number,
+          amount: frame[3] as number,
+        };
+      }
+      if (Array.isArray(frame[1])) {
+        return {
+          channel_id,
+          type: "book_snapshot",
+          book: (frame[1] as unknown[][]).map((row) => ({
+            price: row[0] as number,
+            count: row[1] as number,
+            amount: row[2] as number,
+          })),
+        };
+      }
+      return {
+        channel_id,
+        type: "book_update",
+        price: frame[1] as number,
+        count: frame[2] as number,
+        amount: frame[3] as number,
+      };
+    }
+
+    default:
+      return null;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  WebSocketClient                                                            */
+/* -------------------------------------------------------------------------- */
 
 export interface ISubscribeTickerOptions extends ISignal {
   pair?: string;
@@ -214,10 +543,7 @@ export interface IUnsubscribeOptions extends ISignal {
   chanId: number;
 }
 
-export interface IAuthOptions extends ISignal {
-  filter?: string[];
-  dms?: 0 | 4;
-}
+export type IAuthOptions = ISignal;
 
 type IListenerPredicate<T extends IMessage = IMessage> = (
   message: IMessage,
@@ -281,6 +607,7 @@ export class WebSocketClient extends EventEmitter {
   readonly #symbol: string;
   readonly #auth: { key: string; secret: string } | null;
   readonly #nonce: () => string;
+  readonly #subscriptions = new Map<number, ISubscriptionInfo>();
   #ws: WebSocket | null;
 
   /** Create WebSocketClient. */
@@ -311,59 +638,65 @@ export class WebSocketClient extends EventEmitter {
     return this.#ws;
   }
 
+  /** Snapshot of active subscriptions keyed by `chanId`. */
+  public get subscriptions(): Map<number, ISubscriptionInfo> {
+    return new Map(this.#subscriptions);
+  }
+
   /** Connect to the websocket. */
   public connect(): Promise<void> {
-    const ws = this.#ws;
+    const NativeWebSocket = globalThis.WebSocket;
+    if (typeof NativeWebSocket === "undefined") {
+      return Promise.reject(
+        new Error(
+          "Global `WebSocket` is not available. Node.js >= 22 is required.",
+        ),
+      );
+    }
 
+    const ws = this.#ws;
     // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (ws?.readyState) {
-      case WebSocket.CLOSING:
-      case WebSocket.CONNECTING:
+      case NativeWebSocket.CLOSING:
+      case NativeWebSocket.CONNECTING:
         return Promise.reject(
           new Error(`Could not connect. State: ${ws.readyState}`),
         );
-      case WebSocket.OPEN:
+      case NativeWebSocket.OPEN:
         return Promise.resolve();
       default:
         break;
     }
 
     return new Promise<void>((resolve, reject) => {
-      const socket = new WebSocket(this.#ws_url)
-        .once("open", resolve)
-        .once("error", reject)
-        .on("open", () => {
-          this.emit("open");
-        })
-        .once("close", () => {
-          this.emit("close");
-        })
-        .on("message", (data: string) => {
-          try {
-            const message = JSON.parse(data) as IErrorMessage | IMessage;
-            if (
-              !Array.isArray(message) &&
-              "event" in message &&
-              message.event === "error"
-            ) {
-              this.emit("error", new Error(message.msg, { cause: message }));
-              return;
-            }
-            this.emit("message", message as IMessage);
-          } catch (error) {
-            this.emit(
-              "error",
-              new Error("Message could not be parsed by `JSON.parse`", {
-                cause: error,
-              }),
-            );
-          }
-        })
-        .on("error", (error) => {
-          if (typeof error !== "undefined") {
-            this.emit("error", error);
-          }
+      const socket = new NativeWebSocket(this.#ws_url.toString());
+
+      const on_open = (): void => {
+        resolve();
+        this.emit("open");
+      };
+      const on_close = (): void => {
+        this.#subscriptions.clear();
+        this.emit("close");
+      };
+      const on_error = (event: Event): void => {
+        const error = new Error("WebSocket connection error", {
+          cause: event,
         });
+        reject(error);
+        this.emit("error", error);
+      };
+      const on_message = (event: MessageEvent): void => {
+        const data = event.data as unknown;
+        if (typeof data === "string") {
+          this.#handleRawMessage(data);
+        }
+      };
+
+      socket.addEventListener("open", on_open, { once: true });
+      socket.addEventListener("close", on_close, { once: true });
+      socket.addEventListener("error", on_error);
+      socket.addEventListener("message", on_message);
 
       this.#ws = socket;
     });
@@ -376,12 +709,13 @@ export class WebSocketClient extends EventEmitter {
       return Promise.resolve();
     }
 
+    const NativeWebSocket = globalThis.WebSocket;
     // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (ws.readyState) {
-      case WebSocket.CLOSED:
+      case NativeWebSocket.CLOSED:
         return Promise.resolve();
-      case WebSocket.CLOSING:
-      case WebSocket.CONNECTING:
+      case NativeWebSocket.CLOSING:
+      case NativeWebSocket.CONNECTING:
         return Promise.reject(
           new Error(`Could not disconnect. State: ${ws.readyState}`),
         );
@@ -392,17 +726,18 @@ export class WebSocketClient extends EventEmitter {
     return new Promise<void>((resolve, reject) => {
       const listeners = {
         close: (): void => {
-          ws.off("error", listeners.error);
+          ws.removeEventListener("error", listeners.error);
           resolve();
         },
-        error: (error: unknown): void => {
-          ws.off("close", listeners.close);
-          // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
-          reject(error);
+        error: (event: Event): void => {
+          ws.removeEventListener("close", listeners.close);
+          reject(new Error("WebSocket close error", { cause: event }));
         },
       };
 
-      ws.once("error", listeners.error).once("close", listeners.close).close();
+      ws.addEventListener("close", listeners.close, { once: true });
+      ws.addEventListener("error", listeners.error, { once: true });
+      ws.close();
     });
   }
 
@@ -410,7 +745,7 @@ export class WebSocketClient extends EventEmitter {
   public ping({ signal }: ISignal = {}): Promise<IPongMessage> {
     const payload = { event: "ping" };
     const predicate = (message: IMessage): message is IPongMessage =>
-      !Array.isArray(message) && "event" in message && message.event === "pong";
+      "event" in message && message.event === "pong";
 
     return this.#send<IPongMessage>(payload, { predicate, signal });
   }
@@ -431,7 +766,7 @@ export class WebSocketClient extends EventEmitter {
     return this.#subscribe({ channel: "trades", pair }, { signal });
   }
 
-  /** Subscribe to the `book` channel. */
+  /** Subscribe to the aggregated `book` channel. */
   public subscribeBook({
     pair = this.#symbol,
     prec = "P0",
@@ -475,7 +810,6 @@ export class WebSocketClient extends EventEmitter {
   }: IUnsubscribeOptions): Promise<IUnsubscribedMessage> {
     const payload = { event: "unsubscribe", chanId };
     const predicate = (message: IMessage): message is IUnsubscribedMessage =>
-      !Array.isArray(message) &&
       "event" in message &&
       message.event === "unsubscribed" &&
       message.chanId === chanId;
@@ -483,12 +817,14 @@ export class WebSocketClient extends EventEmitter {
     return this.#send<IUnsubscribedMessage>(payload, { predicate, signal });
   }
 
-  /** Authenticate the connection. */
-  public auth({
-    filter,
-    dms,
-    signal,
-  }: IAuthOptions = {}): Promise<IAuthSuccessMessage> {
+  /**
+   * Authenticate the connection. Bitfinex v1 only accepts the five
+   * `apiKey`/`authSig`/`authNonce`/`authPayload`/`event` fields — the v2
+   * extensions (`filter`, `dms`, `calc`) are not part of the v1 contract.
+   *
+   * https://docs.bitfinex.com/v1/reference/ws-auth-authentication
+   */
+  public auth({ signal }: IAuthOptions = {}): Promise<IAuthSuccessMessage> {
     if (!this.#auth) {
       return Promise.reject(new Error("Auth credentials are missing"));
     }
@@ -499,22 +835,16 @@ export class WebSocketClient extends EventEmitter {
       .update(authPayload)
       .digest("hex");
 
-    const payload: Record<string, unknown> = {
+    const payload = {
       event: "auth",
       apiKey: this.#auth.key,
       authSig,
       authNonce,
       authPayload,
     };
-    if (typeof filter !== "undefined") {
-      payload.filter = filter;
-    }
-    if (typeof dms !== "undefined") {
-      payload.dms = dms;
-    }
 
     const predicate = (message: IMessage): message is IAuthMessage =>
-      !Array.isArray(message) && "event" in message && message.event === "auth";
+      "event" in message && message.event === "auth";
 
     return this.#send<IAuthMessage>(payload, { predicate, signal }).then(
       (response) => {
@@ -533,11 +863,148 @@ export class WebSocketClient extends EventEmitter {
   public unauth({ signal }: ISignal = {}): Promise<IUnauthMessage> {
     const payload = { event: "unauth" };
     const predicate = (message: IMessage): message is IUnauthMessage =>
-      !Array.isArray(message) &&
-      "event" in message &&
-      message.event === "unauth";
+      "event" in message && message.event === "unauth";
 
     return this.#send<IUnauthMessage>(payload, { predicate, signal });
+  }
+
+  /* ----------------------------- Async iterators ------------------------- */
+
+  /** Subscribe to `ticker` and yield every ticker update for the pair. */
+  public async *tickers({
+    pair = this.#symbol,
+    signal,
+  }: ISubscribeTickerOptions = {}): AsyncGenerator<
+    ITickerMessage,
+    void,
+    undefined
+  > {
+    const sub = await this.subscribeTicker({ pair, signal });
+    const predicate = (message: IMessage): message is ITickerMessage =>
+      "channel_id" in message &&
+      message.channel_id === sub.chanId &&
+      message.type === "ticker";
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      yield await this.#send<ITickerMessage>(null, { predicate, signal });
+    }
+  }
+
+  /**
+   * Subscribe to `trades` and yield the initial `trades_snapshot` followed
+   * by every `trade_executed`/`trade_updated` live event for the pair.
+   */
+  public async *trades({
+    pair = this.#symbol,
+    signal,
+  }: ISubscribeTradesOptions = {}): AsyncGenerator<
+    ITradeExecutedMessage | ITradesSnapshotMessage | ITradeUpdatedMessage,
+    void,
+    undefined
+  > {
+    type T =
+      | ITradeExecutedMessage
+      | ITradesSnapshotMessage
+      | ITradeUpdatedMessage;
+    const sub = await this.subscribeTrades({ pair, signal });
+    const predicate = (message: IMessage): message is T =>
+      "channel_id" in message &&
+      message.channel_id === sub.chanId &&
+      (message.type === "trades_snapshot" ||
+        message.type === "trade_executed" ||
+        message.type === "trade_updated");
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      yield await this.#send<T>(null, { predicate, signal });
+    }
+  }
+
+  /**
+   * Subscribe to the aggregated `book` channel and yield the initial
+   * `book_snapshot` followed by every `book_update`.
+   */
+  public async *books({
+    pair = this.#symbol,
+    prec = "P0",
+    freq = "F0",
+    len,
+    signal,
+  }: ISubscribeBookOptions = {}): AsyncGenerator<
+    IBookSnapshotMessage | IBookUpdateMessage,
+    void,
+    undefined
+  > {
+    type B = IBookSnapshotMessage | IBookUpdateMessage;
+    const sub = await this.subscribeBook({
+      pair,
+      prec,
+      freq,
+      signal,
+      ...(typeof len === "undefined" ? {} : { len }),
+    });
+    const predicate = (message: IMessage): message is B =>
+      "channel_id" in message &&
+      message.channel_id === sub.chanId &&
+      (message.type === "book_snapshot" || message.type === "book_update");
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      yield await this.#send<B>(null, { predicate, signal });
+    }
+  }
+
+  /**
+   * Subscribe to the raw (`R0`) book and yield `raw_book_snapshot` followed
+   * by `raw_book_update` events.
+   */
+  public async *rawBooks({
+    pair = this.#symbol,
+    len,
+    signal,
+  }: ISubscribeBookOptions = {}): AsyncGenerator<
+    IRawBookSnapshotMessage | IRawBookUpdateMessage,
+    void,
+    undefined
+  > {
+    type R = IRawBookSnapshotMessage | IRawBookUpdateMessage;
+    const sub = await this.subscribeRawBook({
+      pair,
+      signal,
+      ...(typeof len === "undefined" ? {} : { len }),
+    });
+    const predicate = (message: IMessage): message is R =>
+      "channel_id" in message &&
+      message.channel_id === sub.chanId &&
+      (message.type === "raw_book_snapshot" ||
+        message.type === "raw_book_update");
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      yield await this.#send<R>(null, { predicate, signal });
+    }
+  }
+
+  /**
+   * Yield every wallet snapshot/update arriving on the authenticated
+   * channel. The caller is expected to have called `auth()` first.
+   */
+  public async *wallets({ signal }: ISignal = {}): AsyncGenerator<
+    IWalletSnapshotMessage | IWalletUpdateMessage,
+    void,
+    undefined
+  > {
+    type W = IWalletSnapshotMessage | IWalletUpdateMessage;
+    const predicate = (message: IMessage): message is W =>
+      "channel_id" in message &&
+      message.channel_id === 0 &&
+      (message.type === "wallet_snapshot" || message.type === "wallet_update");
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      yield await this.#send<W>(null, { predicate, signal });
+    }
   }
 
   /** Send a raw payload to the websocket server. */
@@ -546,16 +1013,78 @@ export class WebSocketClient extends EventEmitter {
     if (!ws) {
       return Promise.reject(new Error("Websocket is not connected"));
     }
+    if (ws.readyState !== globalThis.WebSocket.OPEN) {
+      return Promise.reject(
+        new Error(`WebSocket is not open: readyState ${ws.readyState}`),
+      );
+    }
 
-    return new Promise((resolve, reject) => {
-      ws.send(JSON.stringify(payload), (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve();
+    try {
+      ws.send(JSON.stringify(payload));
+      return Promise.resolve();
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+      return Promise.reject(error);
+    }
+  }
+
+  #handleRawMessage(data: string): void {
+    // eslint-disable-next-line init-declarations
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(data) as unknown;
+    } catch (error) {
+      this.emit(
+        "error",
+        new Error("Message could not be parsed by `JSON.parse`", {
+          cause: error,
+        }),
+      );
+      return;
+    }
+
+    if (Array.isArray(parsed)) {
+      const transformed = parseChannelFrame(parsed, this.#subscriptions);
+      if (transformed !== null) {
+        this.emit("message", transformed);
+      }
+      return;
+    }
+
+    if (parsed !== null && typeof parsed === "object") {
+      const { event } = parsed as { event?: string };
+      if (event === "error") {
+        const err = parsed as IErrorMessage;
+        this.emit(
+          "error",
+          new Error(err.msg ?? `Bitfinex error (code ${err.code})`, {
+            cause: parsed,
+          }),
+        );
+        return;
+      }
+      if (event === "subscribed") {
+        const sub = parsed as ISubscribedMessage;
+        const info: ISubscriptionInfo = { channel: sub.channel };
+        if (typeof sub.pair !== "undefined") {
+          info.pair = sub.pair;
         }
-      });
-    });
+        if (typeof sub.prec !== "undefined") {
+          info.prec = sub.prec;
+        }
+        if (typeof sub.freq !== "undefined") {
+          info.freq = sub.freq;
+        }
+        if (typeof sub.len !== "undefined") {
+          info.len = sub.len;
+        }
+        this.#subscriptions.set(sub.chanId, info);
+      } else if (event === "unsubscribed") {
+        const unsub = parsed as IUnsubscribedMessage;
+        this.#subscriptions.delete(unsub.chanId);
+      }
+      this.emit("message", parsed as IMessage);
+    }
   }
 
   #subscribe(
@@ -565,7 +1094,6 @@ export class WebSocketClient extends EventEmitter {
     const payload = { event: "subscribe", ...params };
     const { channel, pair } = params;
     const predicate = (message: IMessage): message is ISubscribedMessage =>
-      !Array.isArray(message) &&
       "event" in message &&
       message.event === "subscribed" &&
       message.channel === channel &&
@@ -637,16 +1165,27 @@ export class WebSocketClient extends EventEmitter {
       }
 
       if (payload) {
-        ws.send(JSON.stringify(payload), (error) => {
-          if (error) {
-            if (use_abort) {
-              signal.removeEventListener("abort", listeners.abort);
-            }
-            reject(error);
-          } else if (!use_abort || !signal.aborted) {
+        if (ws.readyState !== globalThis.WebSocket.OPEN) {
+          if (use_abort) {
+            signal.removeEventListener("abort", listeners.abort);
+          }
+          reject(
+            new Error(`WebSocket is not open: readyState ${ws.readyState}`),
+          );
+          return;
+        }
+        try {
+          ws.send(JSON.stringify(payload));
+          if (!use_abort || !signal.aborted) {
             listeners.add_listeners();
           }
-        });
+        } catch (error) {
+          if (use_abort) {
+            signal.removeEventListener("abort", listeners.abort);
+          }
+          // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+          reject(error);
+        }
       } else {
         listeners.add_listeners();
       }
