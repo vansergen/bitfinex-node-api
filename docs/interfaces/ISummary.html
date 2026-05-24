@@ -1,0 +1,1028 @@
+<!doctype html>
+<html class="default" lang="en" data-base="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <title>ISummary | bitfinex-node-api</title>
+    <meta name="description" content="Documentation for bitfinex-node-api" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="../assets/highlight.css" />
+    <script defer src="../assets/main.js"></script>
+    <script async src="../assets/icons.js" id="tsd-icons-script"></script>
+    <script async src="../assets/search.js" id="tsd-search-script"></script>
+    <script async src="../assets/navigation.js" id="tsd-nav-script"></script>
+    <script
+      async
+      src="../assets/hierarchy.js"
+      id="tsd-hierarchy-script"
+    ></script>
+  </head>
+  <body>
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("tsd-theme") || "os";
+      document.body.style.display = "none";
+      setTimeout(
+        () =>
+          window.app
+            ? app.showPage()
+            : document.body.style.removeProperty("display"),
+        500,
+      );
+    </script>
+    <header class="tsd-page-toolbar">
+      <div class="tsd-toolbar-contents container">
+        <a href="../index.html" class="title">bitfinex-node-api</a>
+        <div id="tsd-toolbar-links"></div>
+        <button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="../assets/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+        <dialog id="tsd-search" aria-label="Search">
+          <input
+            role="combobox"
+            id="tsd-search-input"
+            aria-controls="tsd-search-results"
+            aria-autocomplete="list"
+            aria-expanded="true"
+            autocapitalize="off"
+            autocomplete="off"
+            placeholder="Search the docs"
+            maxlength="100"
+          />
+          <ul role="listbox" id="tsd-search-results"></ul>
+          <div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+            <div>Preparing search index...</div>
+          </div>
+        </dialog>
+        <a
+          href="#"
+          class="tsd-widget menu"
+          id="tsd-toolbar-menu-trigger"
+          data-toggle="menu"
+          aria-label="Menu"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="../assets/icons.svg#icon-menu"></use></svg
+        ></a>
+      </div>
+    </header>
+    <div class="container container-main">
+      <div class="col-content">
+        <div class="tsd-page-title">
+          <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
+            <li><a href="" aria-current="page">ISummary</a></li>
+          </ul>
+          <h1>Interface ISummary</h1>
+        </div>
+        <div class="tsd-signature">
+          <span class="tsd-signature-keyword">interface</span>
+          <span class="tsd-kind-interface">ISummary</span>
+          <span class="tsd-signature-symbol">{</span><br />    <a
+            class="tsd-kind-property"
+            href="#deriv_maker_rebate"
+            >deriv_maker_rebate</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#deriv_taker_fee"
+            >deriv_taker_fee</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#fees_funding_30d"
+            >fees_funding_30d</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">Record</span
+          ><span class="tsd-signature-symbol">&lt;</span
+          ><span class="tsd-signature-type">string</span
+          ><span class="tsd-signature-symbol">,</span>
+          <span class="tsd-signature-type">never</span
+          ><span class="tsd-signature-symbol">&gt;</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#fees_funding_total_30d"
+            >fees_funding_total_30d</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#fees_trading_30d"
+            >fees_trading_30d</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">Record</span
+          ><span class="tsd-signature-symbol">&lt;</span
+          ><span class="tsd-signature-type">string</span
+          ><span class="tsd-signature-symbol">,</span>
+          <span class="tsd-signature-type">never</span
+          ><span class="tsd-signature-symbol">&gt;</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#fees_trading_total_30d"
+            >fees_trading_total_30d</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#is_locked"
+            >is_locked</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">boolean</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#maker_fee"
+            >maker_fee</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#status"
+            >status</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-symbol">{</span>
+          <span class="tsd-kind-property">resid_hint</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">null</span>
+          <span class="tsd-signature-symbol">}</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#taker_fee"
+            >taker_fee</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#time"
+            >time</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">string</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#trade_vol_30d"
+            >trade_vol_30d</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-symbol">{</span><br />        <span
+            class="tsd-kind-property"
+            >curr</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">string</span
+          ><span class="tsd-signature-symbol">;</span><br />        <span
+            class="tsd-kind-property"
+            >vol</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />        <span
+            class="tsd-kind-property"
+            >vol_BFX</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />        <span
+            class="tsd-kind-property"
+            >vol_BFX_maker</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />        <span
+            class="tsd-kind-property"
+            >vol_maker</span
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <span
+            class="tsd-signature-symbol"
+            >}</span
+          ><span class="tsd-signature-symbol">[]</span
+          ><span class="tsd-signature-symbol">;</span><br /><span
+            class="tsd-signature-symbol"
+            >}</span
+          >
+        </div>
+        <aside class="tsd-sources">
+          <ul>
+            <li>
+              Defined in
+              <a
+                href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L175"
+                >src/auth.ts:175</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <section class="tsd-panel-group tsd-index-group">
+          <section class="tsd-panel tsd-index-panel">
+            <details class="tsd-index-content tsd-accordion" open>
+              <summary class="tsd-accordion-summary tsd-index-summary">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <use href="../assets/icons.svg#icon-chevronDown"></use>
+                </svg>
+                <h5 class="tsd-index-heading uppercase">Index</h5>
+              </summary>
+              <div class="tsd-accordion-details">
+                <section class="tsd-index-section">
+                  <h3 class="tsd-index-heading">Properties</h3>
+                  <div class="tsd-index-list">
+                    <a href="#deriv_maker_rebate" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>deriv_<wbr />maker_<wbr />rebate</span></a
+                    >
+                    <a href="#deriv_taker_fee" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>deriv_<wbr />taker_<wbr />fee</span></a
+                    >
+                    <a href="#fees_funding_30d" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>fees_<wbr />funding_<wbr />30d</span></a
+                    >
+                    <a href="#fees_funding_total_30d" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span
+                        >fees_<wbr />funding_<wbr />total_<wbr />30d</span
+                      ></a
+                    >
+                    <a href="#fees_trading_30d" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>fees_<wbr />trading_<wbr />30d</span></a
+                    >
+                    <a href="#fees_trading_total_30d" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span
+                        >fees_<wbr />trading_<wbr />total_<wbr />30d</span
+                      ></a
+                    >
+                    <a href="#is_locked" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>is_<wbr />locked</span></a
+                    >
+                    <a href="#maker_fee" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>maker_<wbr />fee</span></a
+                    >
+                    <a href="#status" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>status</span></a
+                    >
+                    <a href="#taker_fee" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>taker_<wbr />fee</span></a
+                    >
+                    <a href="#time" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>time</span></a
+                    >
+                    <a href="#trade_vol_30d" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>trade_<wbr />vol_<wbr />30d</span></a
+                    >
+                  </div>
+                </section>
+              </div>
+            </details>
+          </section>
+        </section>
+        <details class="tsd-panel-group tsd-member-group tsd-accordion" open>
+          <summary class="tsd-accordion-summary" data-key="section-Properties">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <use href="../assets/icons.svg#icon-chevronDown"></use>
+            </svg>
+            <h2>Properties</h2>
+          </summary>
+          <section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="deriv_maker_rebate">
+                <span>deriv_<wbr />maker_<wbr />rebate</span
+                ><a
+                  href="#deriv_maker_rebate"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">deriv_maker_rebate</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L192"
+                      >src/auth.ts:192</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="deriv_taker_fee">
+                <span>deriv_<wbr />taker_<wbr />fee</span
+                ><a
+                  href="#deriv_taker_fee"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">deriv_taker_fee</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L193"
+                      >src/auth.ts:193</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="fees_funding_30d">
+                <span>fees_<wbr />funding_<wbr />30d</span
+                ><a
+                  href="#fees_funding_30d"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">fees_funding_30d</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">Record</span
+                ><span class="tsd-signature-symbol">&lt;</span
+                ><span class="tsd-signature-type">string</span
+                ><span class="tsd-signature-symbol">,</span>
+                <span class="tsd-signature-type">never</span
+                ><span class="tsd-signature-symbol">&gt;</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L186"
+                      >src/auth.ts:186</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="fees_funding_total_30d">
+                <span>fees_<wbr />funding_<wbr />total_<wbr />30d</span
+                ><a
+                  href="#fees_funding_total_30d"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">fees_funding_total_30d</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L187"
+                      >src/auth.ts:187</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="fees_trading_30d">
+                <span>fees_<wbr />trading_<wbr />30d</span
+                ><a
+                  href="#fees_trading_30d"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">fees_trading_30d</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">Record</span
+                ><span class="tsd-signature-symbol">&lt;</span
+                ><span class="tsd-signature-type">string</span
+                ><span class="tsd-signature-symbol">,</span>
+                <span class="tsd-signature-type">never</span
+                ><span class="tsd-signature-symbol">&gt;</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L188"
+                      >src/auth.ts:188</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="fees_trading_total_30d">
+                <span>fees_<wbr />trading_<wbr />total_<wbr />30d</span
+                ><a
+                  href="#fees_trading_total_30d"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">fees_trading_total_30d</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L189"
+                      >src/auth.ts:189</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="is_locked">
+                <span>is_<wbr />locked</span
+                ><a
+                  href="#is_locked"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">is_locked</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">boolean</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L178"
+                      >src/auth.ts:178</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="maker_fee">
+                <span>maker_<wbr />fee</span
+                ><a
+                  href="#maker_fee"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">maker_fee</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L190"
+                      >src/auth.ts:190</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="status">
+                <span>status</span
+                ><a
+                  href="#status"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">status</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol">{</span>
+                <span class="tsd-kind-property">resid_hint</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">null</span>
+                <span class="tsd-signature-symbol">}</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L177"
+                      >src/auth.ts:177</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="taker_fee">
+                <span>taker_<wbr />fee</span
+                ><a
+                  href="#taker_fee"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">taker_fee</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L191"
+                      >src/auth.ts:191</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="time">
+                <span>time</span
+                ><a href="#time" aria-label="Permalink" class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">time</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L176"
+                      >src/auth.ts:176</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="trade_vol_30d">
+                <span>trade_<wbr />vol_<wbr />30d</span
+                ><a
+                  href="#trade_vol_30d"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">trade_vol_30d</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol">{</span><br />    <span
+                  class="tsd-kind-property"
+                  >curr</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span
+                ><span class="tsd-signature-symbol">;</span><br />    <span
+                  class="tsd-kind-property"
+                  >vol</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span
+                ><span class="tsd-signature-symbol">;</span><br />    <span
+                  class="tsd-kind-property"
+                  >vol_BFX</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span
+                ><span class="tsd-signature-symbol">;</span><br />    <span
+                  class="tsd-kind-property"
+                  >vol_BFX_maker</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span
+                ><span class="tsd-signature-symbol">;</span><br />    <span
+                  class="tsd-kind-property"
+                  >vol_maker</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span
+                ><span class="tsd-signature-symbol">;</span><br /><span
+                  class="tsd-signature-symbol"
+                  >}</span
+                ><span class="tsd-signature-symbol">[]</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/auth.ts#L179"
+                      >src/auth.ts:179</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+          </section>
+        </details>
+      </div>
+      <div class="col-sidebar">
+        <div class="page-menu">
+          <div class="tsd-navigation settings">
+            <details class="tsd-accordion">
+              <summary class="tsd-accordion-summary">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <use href="../assets/icons.svg#icon-chevronDown"></use>
+                </svg>
+                <h3>Settings</h3>
+              </summary>
+              <div class="tsd-accordion-details">
+                <div class="tsd-filter-visibility">
+                  <span class="settings-label">Member Visibility</span>
+                  <ul id="tsd-filter-options">
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-protected"
+                          name="protected"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Protected</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-inherited"
+                          name="inherited"
+                          checked
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Inherited</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-external"
+                          name="external"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>External</span></label
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="tsd-theme-toggle">
+                  <label class="settings-label" for="tsd-theme">Theme</label
+                  ><select id="tsd-theme">
+                    <option value="os">OS</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+          </div>
+          <details open class="tsd-accordion tsd-page-navigation">
+            <summary class="tsd-accordion-summary">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <use href="../assets/icons.svg#icon-chevronDown"></use>
+              </svg>
+              <h3>On This Page</h3>
+            </summary>
+            <div class="tsd-accordion-details">
+              <details open class="tsd-accordion tsd-page-navigation-section">
+                <summary
+                  class="tsd-accordion-summary"
+                  data-key="section-Properties"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <use href="../assets/icons.svg#icon-chevronDown"></use></svg
+                  >Properties
+                </summary>
+                <div>
+                  <a href="#deriv_maker_rebate"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>deriv_<wbr />maker_<wbr />rebate</span></a
+                  ><a href="#deriv_taker_fee"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>deriv_<wbr />taker_<wbr />fee</span></a
+                  ><a href="#fees_funding_30d"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>fees_<wbr />funding_<wbr />30d</span></a
+                  ><a href="#fees_funding_total_30d"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>fees_<wbr />funding_<wbr />total_<wbr />30d</span></a
+                  ><a href="#fees_trading_30d"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>fees_<wbr />trading_<wbr />30d</span></a
+                  ><a href="#fees_trading_total_30d"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>fees_<wbr />trading_<wbr />total_<wbr />30d</span></a
+                  ><a href="#is_locked"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>is_<wbr />locked</span></a
+                  ><a href="#maker_fee"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>maker_<wbr />fee</span></a
+                  ><a href="#status"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>status</span></a
+                  ><a href="#taker_fee"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>taker_<wbr />fee</span></a
+                  ><a href="#time"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>time</span></a
+                  ><a href="#trade_vol_30d"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>trade_<wbr />vol_<wbr />30d</span></a
+                  >
+                </div>
+              </details>
+            </div>
+          </details>
+        </div>
+        <div class="site-menu">
+          <nav class="tsd-navigation">
+            <a href="../modules.html">bitfinex-node-api</a>
+            <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+              <li>Loading...</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+    <div class="overlay"></div>
+  </body>
+</html>

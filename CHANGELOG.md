@@ -1,5 +1,27 @@
 # Changelog
 
+## [4.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v3.0.0...v4.0.0) (2026-05-24)
+
+### ⚠ BREAKING CHANGES
+
+- update license to MIT
+
+### Features
+
+- add WebSocketClient ([c07c71a](https://github.com/vansergen/bitfinex-node-api/commit/c07c71a101c83c7a1802a288a98ff339476521d9))
+
+### Bug Fixes
+
+- **ws:** add funding instruments support ([592d045](https://github.com/vansergen/bitfinex-node-api/commit/592d04508c3d0b7100424ac978fa0b3aef8803bd))
+
+### Performance Improvements
+
+- refactor WebSocketClient ([690f2d8](https://github.com/vansergen/bitfinex-node-api/commit/690f2d8999a14fa9fa16dceda7c9fa955c2d8909))
+
+### Miscellaneous Chores
+
+- update license to MIT ([a2eb87d](https://github.com/vansergen/bitfinex-node-api/commit/a2eb87d554985853b8878ba74edb78b0387117c2))
+
 ## [3.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v2.3.1...v3.0.0) (2022-05-20)
 
 ### ⚠ BREAKING CHANGES

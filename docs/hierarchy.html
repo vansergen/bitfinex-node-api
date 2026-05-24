@@ -1,0 +1,626 @@
+<!doctype html>
+<html class="default" lang="en" data-base="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <title>bitfinex-node-api</title>
+    <meta name="description" content="Documentation for bitfinex-node-api" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/highlight.css" />
+    <script defer src="assets/main.js"></script>
+    <script async src="assets/icons.js" id="tsd-icons-script"></script>
+    <script async src="assets/search.js" id="tsd-search-script"></script>
+    <script async src="assets/navigation.js" id="tsd-nav-script"></script>
+    <script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script>
+  </head>
+  <body>
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("tsd-theme") || "os";
+      document.body.style.display = "none";
+      setTimeout(
+        () =>
+          window.app
+            ? app.showPage()
+            : document.body.style.removeProperty("display"),
+        500,
+      );
+    </script>
+    <header class="tsd-page-toolbar">
+      <div class="tsd-toolbar-contents container">
+        <a href="index.html" class="title">bitfinex-node-api</a>
+        <div id="tsd-toolbar-links"></div>
+        <button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="assets/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+        <dialog id="tsd-search" aria-label="Search">
+          <input
+            role="combobox"
+            id="tsd-search-input"
+            aria-controls="tsd-search-results"
+            aria-autocomplete="list"
+            aria-expanded="true"
+            autocapitalize="off"
+            autocomplete="off"
+            placeholder="Search the docs"
+            maxlength="100"
+          />
+          <ul role="listbox" id="tsd-search-results"></ul>
+          <div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+            <div>Preparing search index...</div>
+          </div>
+        </dialog>
+        <a
+          href="#"
+          class="tsd-widget menu"
+          id="tsd-toolbar-menu-trigger"
+          data-toggle="menu"
+          aria-label="Menu"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="assets/icons.svg#icon-menu"></use></svg
+        ></a>
+      </div>
+    </header>
+    <div class="container container-main">
+      <div class="col-content">
+        <div class="tsd-page-title"><h1>bitfinex-node-api</h1></div>
+        <h2>Hierarchy Summary</h2>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="928" id="IBookLevel">
+            <a href="interfaces/IBookLevel.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IBookLevel</a
+            >
+            <ul>
+              <li data-refl="946" id="IBookUpdateMessage">
+                <a href="interfaces/IBookUpdateMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IBookUpdateMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="26" id="ICurrencyOptions">
+            <a href="interfaces/ICurrencyOptions.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >ICurrencyOptions</a
+            >
+            <ul>
+              <li data-refl="28" id="IFundingBookOptions">
+                <a href="interfaces/IFundingBookOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IFundingBookOptions</a
+                >
+              </li>
+              <li data-refl="41" id="ILendsOptions">
+                <a href="interfaces/ILendsOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ILendsOptions</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="932" id="IFundingBookLevel">
+            <a href="interfaces/IFundingBookLevel.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IFundingBookLevel</a
+            >
+            <ul>
+              <li data-refl="952" id="IFundingBookUpdateMessage">
+                <a href="interfaces/IFundingBookUpdateMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IFundingBookUpdateMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="94" id="IPublicClientOptions">
+            <a href="interfaces/IPublicClientOptions.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IPublicClientOptions</a
+            >
+            <ul>
+              <li data-refl="547" id="IAuthenticatedClientOptions">
+                <a href="interfaces/IAuthenticatedClientOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IAuthenticatedClientOptions</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="960" id="IRawBookLevel">
+            <a href="interfaces/IRawBookLevel.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IRawBookLevel</a
+            >
+            <ul>
+              <li data-refl="978" id="IRawBookUpdateMessage">
+                <a href="interfaces/IRawBookUpdateMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IRawBookUpdateMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="964" id="IRawFundingBookLevel">
+            <a href="interfaces/IRawFundingBookLevel.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IRawFundingBookLevel</a
+            >
+            <ul>
+              <li data-refl="984" id="IRawFundingBookUpdateMessage">
+                <a href="interfaces/IRawFundingBookUpdateMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IRawFundingBookUpdateMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="790" id="ISignal">
+            <a href="interfaces/ISignal.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >ISignal</a
+            >
+            <ul>
+              <li data-refl="1017" id="ISubscribeTickerOptions">
+                <a href="interfaces/ISubscribeTickerOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ISubscribeTickerOptions</a
+                >
+              </li>
+              <li data-refl="1020" id="ISubscribeTradesOptions">
+                <a href="interfaces/ISubscribeTradesOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ISubscribeTradesOptions</a
+                >
+              </li>
+              <li data-refl="1023" id="ISubscribeBookOptions">
+                <a href="interfaces/ISubscribeBookOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ISubscribeBookOptions</a
+                >
+              </li>
+              <li data-refl="1029" id="ISubscribeRawBookOptions">
+                <a href="interfaces/ISubscribeRawBookOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ISubscribeRawBookOptions</a
+                >
+              </li>
+              <li data-refl="1033" id="IUnsubscribeOptions">
+                <a href="interfaces/IUnsubscribeOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IUnsubscribeOptions</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="24" id="ISymbolOptions">
+            <a href="interfaces/ISymbolOptions.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >ISymbolOptions</a
+            >
+            <ul>
+              <li data-refl="32" id="IOrderBookOptions">
+                <a href="interfaces/IOrderBookOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IOrderBookOptions</a
+                >
+              </li>
+              <li data-refl="37" id="ITradesOptions">
+                <a href="interfaces/ITradesOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >ITradesOptions</a
+                >
+              </li>
+              <li data-refl="217" id="IOrderOptions">
+                <a href="interfaces/IOrderOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IOrderOptions</a
+                >
+                <ul>
+                  <li data-refl="231" id="IReplaceOrderOptions">
+                    <a href="interfaces/IReplaceOrderOptions.html"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Interface"
+                      >
+                        <use href="assets/icons.svg#icon-256"></use></svg
+                      >IReplaceOrderOptions</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li data-refl="267" id="IPastTradesOptions">
+                <a href="interfaces/IPastTradesOptions.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IPastTradesOptions</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="992" id="IWallet">
+            <a href="interfaces/IWallet.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IWallet</a
+            >
+            <ul>
+              <li data-refl="1002" id="IWalletUpdateMessage">
+                <a href="interfaces/IWalletUpdateMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IWalletUpdateMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="880" id="IWSFundingTrade">
+            <a href="interfaces/IWSFundingTrade.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Interface"
+              >
+                <use href="assets/icons.svg#icon-256"></use></svg
+              >IWSFundingTrade</a
+            >
+            <ul>
+              <li data-refl="910" id="IFundingTradeExecutedMessage">
+                <a href="interfaces/IFundingTradeExecutedMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IFundingTradeExecutedMessage</a
+                >
+              </li>
+              <li data-refl="919" id="IFundingTradeUpdatedMessage">
+                <a href="interfaces/IFundingTradeUpdatedMessage.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Interface"
+                  >
+                    <use href="assets/icons.svg#icon-256"></use></svg
+                  >IFundingTradeUpdatedMessage</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="tsd-full-hierarchy">
+          <li data-refl="98" id="PublicClient">
+            <a href="classes/PublicClient.html"
+              ><svg
+                class="tsd-kind-icon"
+                viewBox="0 0 24 24"
+                aria-label="Class"
+              >
+                <use href="assets/icons.svg#icon-128"></use></svg
+              >PublicClient</a
+            >
+            <ul>
+              <li data-refl="556" id="AuthenticatedClient">
+                <a href="classes/AuthenticatedClient.html"
+                  ><svg
+                    class="tsd-kind-icon"
+                    viewBox="0 0 24 24"
+                    aria-label="Class"
+                  >
+                    <use href="assets/icons.svg#icon-128"></use></svg
+                  >AuthenticatedClient</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sidebar">
+        <div class="page-menu">
+          <div class="tsd-navigation settings">
+            <details class="tsd-accordion">
+              <summary class="tsd-accordion-summary">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <use href="assets/icons.svg#icon-chevronDown"></use>
+                </svg>
+                <h3>Settings</h3>
+              </summary>
+              <div class="tsd-accordion-details">
+                <div class="tsd-filter-visibility">
+                  <span class="settings-label">Member Visibility</span>
+                  <ul id="tsd-filter-options">
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-protected"
+                          name="protected"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Protected</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-inherited"
+                          name="inherited"
+                          checked
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Inherited</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-external"
+                          name="external"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>External</span></label
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="tsd-theme-toggle">
+                  <label class="settings-label" for="tsd-theme">Theme</label
+                  ><select id="tsd-theme">
+                    <option value="os">OS</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="site-menu">
+          <nav class="tsd-navigation">
+            <a href="modules.html">bitfinex-node-api</a>
+            <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+              <li>Loading...</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+    <div class="overlay"></div>
+  </body>
+</html>

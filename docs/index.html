@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="default">
+<html class="default" lang="en" data-base="./">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
@@ -8,1013 +8,1213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="stylesheet" href="assets/highlight.css" />
-    <script async src="assets/search.js" id="search-script"></script>
+    <script defer src="assets/main.js"></script>
+    <script async src="assets/icons.js" id="tsd-icons-script"></script>
+    <script async src="assets/search.js" id="tsd-search-script"></script>
+    <script async src="assets/navigation.js" id="tsd-nav-script"></script>
+    <script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script>
   </head>
   <body>
     <script>
-      document.body.classList.add(localStorage.getItem("tsd-theme") || "os");
+      document.documentElement.dataset.theme =
+        localStorage.getItem("tsd-theme") || "os";
+      document.body.style.display = "none";
+      setTimeout(
+        () =>
+          window.app
+            ? app.showPage()
+            : document.body.style.removeProperty("display"),
+        500,
+      );
     </script>
-    <header>
-      <div class="tsd-page-toolbar">
-        <div class="container">
-          <div class="table-wrap">
-            <div class="table-cell" id="tsd-search" data-base=".">
-              <div class="field">
-                <label
-                  for="tsd-search-field"
-                  class="tsd-widget search no-caption"
-                  >Search</label
-                ><input type="text" id="tsd-search-field" />
-              </div>
-              <ul class="results">
-                <li class="state loading">Preparing search index...</li>
-                <li class="state failure">The search index is not available</li>
-              </ul>
-              <a href="index.html" class="title">bitfinex-node-api</a>
-            </div>
-            <div class="table-cell" id="tsd-widgets">
-              <div id="tsd-filter">
-                <a
-                  href="#"
-                  class="tsd-widget options no-caption"
-                  data-toggle="options"
-                  >Options</a
-                >
-                <div class="tsd-filter-group">
-                  <div class="tsd-select" id="tsd-filter-visibility">
-                    <span class="tsd-select-label">All</span>
-                    <ul class="tsd-select-list">
-                      <li data-value="public">Public</li>
-                      <li data-value="protected">Public/Protected</li>
-                      <li data-value="private" class="selected">All</li>
-                    </ul>
-                  </div>
-                  <input
-                    type="checkbox"
-                    id="tsd-filter-inherited"
-                    checked
-                  /><label class="tsd-widget" for="tsd-filter-inherited"
-                    >Inherited</label
-                  ><input
-                    type="checkbox"
-                    id="tsd-filter-externals"
-                    checked
-                  /><label class="tsd-widget" for="tsd-filter-externals"
-                    >Externals</label
-                  >
-                </div>
-              </div>
-              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
-                >Menu</a
-              >
-            </div>
+    <header class="tsd-page-toolbar">
+      <div class="tsd-toolbar-contents container">
+        <a href="index.html" class="title">bitfinex-node-api</a>
+        <div id="tsd-toolbar-links"></div>
+        <button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="assets/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+        <dialog id="tsd-search" aria-label="Search">
+          <input
+            role="combobox"
+            id="tsd-search-input"
+            aria-controls="tsd-search-results"
+            aria-autocomplete="list"
+            aria-expanded="true"
+            autocapitalize="off"
+            autocomplete="off"
+            placeholder="Search the docs"
+            maxlength="100"
+          />
+          <ul role="listbox" id="tsd-search-results"></ul>
+          <div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+            <div>Preparing search index...</div>
           </div>
-        </div>
-      </div>
-      <div class="tsd-page-title">
-        <div class="container"><h1>bitfinex-node-api</h1></div>
+        </dialog>
+        <a
+          href="#"
+          class="tsd-widget menu"
+          id="tsd-toolbar-menu-trigger"
+          data-toggle="menu"
+          aria-label="Menu"
+          ><svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <use href="assets/icons.svg#icon-menu"></use></svg
+        ></a>
       </div>
     </header>
     <div class="container container-main">
-      <div class="row">
-        <div class="col-8 col-content">
-          <div class="tsd-panel tsd-typography">
+      <div class="col-content">
+        <div class="tsd-page-title"><h1>bitfinex-node-api</h1></div>
+        <div class="tsd-panel tsd-typography">
+          <h1
+            id="bitfinex-nodejs-api-ci-status-npm-version-coverage-status-known-vulnerabilities-code-style-prettier-contributor-covenant-semantic-release-conventional-commits-npm-license-node-version-npm-downloads-github-top-language"
+            class="tsd-anchor-link"
+          >
+            Bitfinex Node.js API
             <a
-              href="#bitfinex-node-api-----------"
-              id="bitfinex-node-api-----------"
-              style="color: inherit; text-decoration: none"
-            >
-              <h1>
-                bitfinex-node-api
-                <img
-                  src="https://github.com/vansergen/bitfinex-node-api/workflows/CI/badge.svg"
-                  alt="CI Status"
-                />
-                <img
-                  src="https://img.shields.io/npm/v/bitfinex-node-api"
-                  alt="npm"
-                />
-                <a
-                  href="https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main"
-                  ><img
-                    src="https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main"
-                    alt="Coverage Status"
-                /></a>
-                <a
-                  href="https://snyk.io/test/github/vansergen/bitfinex-node-api"
-                  ><img
-                    src="https://snyk.io/test/github/vansergen/bitfinex-node-api/badge.svg"
-                    alt="Known Vulnerabilities"
-                /></a>
-                <a href="https://github.com/prettier/prettier"
-                  ><img
-                    src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"
-                    alt="code style: prettier"
-                /></a>
-                <a href="https://github.com/semantic-release/semantic-release"
-                  ><img
-                    src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"
-                    alt="semantic-release"
-                /></a>
-                <a href="https://conventionalcommits.org"
-                  ><img
-                    src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
-                    alt="Conventional Commits"
-                /></a>
-                <img
-                  src="https://img.shields.io/npm/l/bitfinex-node-api"
-                  alt="NPM license"
-                />
-                <img
-                  src="https://img.shields.io/node/v/bitfinex-node-api"
-                  alt="node version"
-                />
-                <img
-                  src="https://img.shields.io/npm/dt/bitfinex-node-api"
-                  alt="npm downloads"
-                />
-                <img
-                  src="https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api"
-                  alt="GitHub top language"
-                />
-              </h1>
-            </a>
-            <p>Bitfinex Node.js library</p>
-
+              href="https://github.com/vansergen/bitfinex-node-api/actions/workflows/ci.yml?query=branch%3Amain"
+              ><img
+                src="https://github.com/vansergen/bitfinex-node-api/workflows/CI/badge.svg?branch=main"
+                alt="CI Status"
+            /></a>
+            <a href="https://badge.fury.io/js/bitfinex-node-api"
+              ><img
+                src="https://badge.fury.io/js/bitfinex-node-api.svg"
+                alt="npm version"
+            /></a>
             <a
+              href="https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main"
+              ><img
+                src="https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main"
+                alt="Coverage Status"
+            /></a>
+            <a href="https://snyk.io/test/github/vansergen/bitfinex-node-api"
+              ><img
+                src="https://snyk.io/test/github/vansergen/bitfinex-node-api/badge.svg"
+                alt="Known Vulnerabilities"
+            /></a>
+            <a href="https://github.com/prettier/prettier"
+              ><img
+                src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"
+                alt="code style: prettier"
+            /></a>
+            <a href="code_of_conduct.md"
+              ><img
+                src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg"
+                alt="Contributor Covenant"
+            /></a>
+            <a href="https://github.com/semantic-release/semantic-release"
+              ><img
+                src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"
+                alt="semantic-release"
+            /></a>
+            <a href="https://conventionalcommits.org"
+              ><img
+                src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+                alt="Conventional Commits"
+            /></a>
+            <img
+              src="https://img.shields.io/npm/l/bitfinex-node-api"
+              alt="NPM license"
+            />
+            <img
+              src="https://img.shields.io/node/v/bitfinex-node-api"
+              alt="node version"
+            />
+            <img
+              src="https://img.shields.io/npm/dt/bitfinex-node-api"
+              alt="npm downloads"
+            />
+            <img
+              src="https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api"
+              alt="GitHub top language"
+            /><a
+              href="#bitfinex-nodejs-api-ci-status-npm-version-coverage-status-known-vulnerabilities-code-style-prettier-contributor-covenant-semantic-release-conventional-commits-npm-license-node-version-npm-downloads-github-top-language"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h1>
+          <p>
+            Node.js client for the
+            <a href="https://docs.bitfinex.com/v1/reference">Bitfinex v1 API</a>
+            — public and authenticated REST plus the v1
+            <a href="https://docs.bitfinex.com/v1/docs/ws-general">WebSocket</a>
+            endpoint.
+          </p>
+          <h2 id="installation" class="tsd-anchor-link">
+            Installation<a
               href="#installation"
-              id="installation"
-              style="color: inherit; text-decoration: none"
-            >
-              <h2>Installation</h2>
-            </a>
-            <pre><code class="language-bash"><span class="hl-0">npm install bitfinex-node-api</span>
-</code></pre>
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h2>
+          <pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">bitfinex-node-api</span>
+</code><button type="button">Copy</button></pre>
 
-            <a
-              href="#usage"
-              id="usage"
-              style="color: inherit; text-decoration: none"
-            >
-              <h2>Usage</h2>
-            </a>
+          <h2 id="usage" class="tsd-anchor-link">
+            Usage<a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h2>
+          <h3 id="publicclient" class="tsd-anchor-link">
+            PublicClient<a
+              href="#publicclient"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">PublicClient</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">PublicClient</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
 
-            <a
-              href="#publicclient1"
-              id="publicclient1"
-              style="color: inherit; text-decoration: none"
-            >
-              <h3>PublicClient1</h3>
-            </a>
-            <pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">PublicClient1</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex-node-api&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">client</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">PublicClient1</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-ticker"
-                  ><code>getTicker</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ticker</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTicker</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-stats"
-                  ><code>getStats</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">stats</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getStats</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-fundingbook"
-                  ><code>getFundingBook</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;usd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_bids</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_asks</span><span class="hl-0"> = </span><span class="hl-7">5</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">book</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getFundingBook</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">limit_bids</span><span class="hl-0">, </span><span class="hl-2">limit_asks</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-orderbook"
-                  ><code>getOrderBook</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_bids</span><span class="hl-0"> = </span><span class="hl-7">20</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_asks</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">group</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">book</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrderBook</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">limit_bids</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">limit_asks</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">group</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-trades"
-                  ><code>getTrades</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;btcusd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">timestamp</span><span class="hl-0"> = </span><span class="hl-7">1444266681</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTrades</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">timestamp</span><span class="hl-0">, </span><span class="hl-2">limit_trades</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-lends"
-                  ><code>getLends</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;usd&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">timestamp</span><span class="hl-0"> = </span><span class="hl-7">1444266681</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_lends</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">lends</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getLends</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">timestamp</span><span class="hl-0">, </span><span class="hl-2">limit_lends</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-symbols"
-                  ><code>getSymbols</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbols</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSymbols</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-public-symbol-details"
-                  ><code>getSymbolDetails</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbolDetails</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSymbolDetails</span><span class="hl-0">();</span>
-</code></pre>
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-ticker"
+                ><code>getTicker</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">ticker</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTicker</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
 
-            <a
-              href="#authenticatedclient1"
-              id="authenticatedclient1"
-              style="color: inherit; text-decoration: none"
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-public-stats"
+                ><code>getStats</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">stats</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getStats</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-fundingbook"
+                ><code>getFundingBook</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">book</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getFundingBook</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_bids:</span><span class="hl-1"> </span><span class="hl-7">10</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_asks:</span><span class="hl-1"> </span><span class="hl-7">5</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-orderbook"
+                ><code>getOrderBook</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">book</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getOrderBook</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_bids:</span><span class="hl-1"> </span><span class="hl-7">20</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_asks:</span><span class="hl-1"> </span><span class="hl-7">10</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">group:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-trades"
+                ><code>getTrades</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">trades</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTrades</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">timestamp:</span><span class="hl-1"> </span><span class="hl-7">1444266681</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_trades:</span><span class="hl-1"> </span><span class="hl-7">10</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-public-lends"
+                ><code>getLends</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">lends</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getLends</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">timestamp:</span><span class="hl-1"> </span><span class="hl-7">1444266681</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_lends:</span><span class="hl-1"> </span><span class="hl-7">10</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-symbols"
+                ><code>getSymbols</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">symbols</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getSymbols</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-public-symbol-details"
+                ><code>getSymbolDetails</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">details</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getSymbolDetails</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <h3 id="authenticatedclient" class="tsd-anchor-link">
+            AuthenticatedClient<a
+              href="#authenticatedclient"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">AuthenticatedClient</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">AuthenticatedClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPIKey&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">secret:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPISecret&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-account-info"
+                ><code>getAccountInfo</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">info</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getAccountInfo</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-auth-fees"
+                ><code>getAccountFees</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">fees</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getAccountFees</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-auth-summary"
+                ><code>getSummary</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">summary</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getSummary</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-auth-deposit"
+                ><code>getDepositAddress</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">address</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getDepositAddress</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">method:</span><span class="hl-1"> </span><span class="hl-2">&quot;bitcoin&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">wallet_name:</span><span class="hl-1"> </span><span class="hl-2">&quot;trading&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">renew:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/auth-key-permissions"
+                ><code>getKeyPermissions</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">permissions</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getKeyPermissions</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-margin-information"
+                ><code>getMarginInformation</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">margin</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getMarginInformation</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-wallet-balances"
+                ><code>getWalletBalances</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">balances</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getWalletBalances</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-transfer-between-wallets"
+                ><code>transfer</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">result</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">transfer</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1.00954735&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTC&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">walletfrom:</span><span class="hl-1"> </span><span class="hl-2">&quot;trading&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">walletto:</span><span class="hl-1"> </span><span class="hl-2">&quot;exchange&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-withdrawal"
+                ><code>withdraw</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">result</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">withdraw</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">withdraw_type:</span><span class="hl-1"> </span><span class="hl-2">&quot;bitcoin&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">address:</span><span class="hl-1"> </span><span class="hl-2">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">walletselected:</span><span class="hl-1"> </span><span class="hl-2">&quot;exchange&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-auth-orders"
+                ><code>newOrder</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">order</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">newOrder</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">price:</span><span class="hl-1"> </span><span class="hl-2">&quot;3&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;limit&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;ETCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">side:</span><span class="hl-1"> </span><span class="hl-2">&quot;buy&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">is_postonly:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-multiple-new-orders"
+                ><code>newOrders</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">result</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">newOrders</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">orders:</span><span class="hl-1"> [</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">price:</span><span class="hl-1"> </span><span class="hl-2">&quot;3&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;limit&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;ETCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">side:</span><span class="hl-1"> </span><span class="hl-2">&quot;buy&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">is_postonly:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;2&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">price:</span><span class="hl-1"> </span><span class="hl-2">&quot;2&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;limit&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;ETCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">side:</span><span class="hl-1"> </span><span class="hl-2">&quot;buy&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-cancel-order"
+                ><code>cancelOrder</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">order</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">cancelOrder</span><span class="hl-1">({ </span><span class="hl-4">order_id:</span><span class="hl-1"> </span><span class="hl-7">446915287</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-cancel-multiple-orders"
+                ><code>cancelOrders</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> { </span><span class="hl-6">result</span><span class="hl-1"> } = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">cancelOrders</span><span class="hl-1">({ </span><span class="hl-4">order_ids:</span><span class="hl-1"> [</span><span class="hl-7">1</span><span class="hl-1">, </span><span class="hl-7">2</span><span class="hl-1">] });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-cancel-all-orders"
+                ><code>cancelAllOrders</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> { </span><span class="hl-6">result</span><span class="hl-1"> } = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">cancelAllOrders</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-replace-order"
+                ><code>replaceOrder</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">order</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">replaceOrder</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">order_id:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;3&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">price:</span><span class="hl-1"> </span><span class="hl-2">&quot;101&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&quot;limit&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;ETCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">side:</span><span class="hl-1"> </span><span class="hl-2">&quot;sell&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">is_postonly:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-order-status"
+                ><code>getOrder</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">order</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getOrder</span><span class="hl-1">({ </span><span class="hl-4">order_id:</span><span class="hl-1"> </span><span class="hl-7">448411153</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-active-orders"
+                ><code>getOrders</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">orders</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getOrders</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-orders-history"
+                ><code>getOrderHistory</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">orders</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getOrderHistory</span><span class="hl-1">({ </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">50</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-active-positions"
+                ><code>getPositions</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">positions</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getPositions</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-claim-position"
+                ><code>claimPosition</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">position</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">claimPosition</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">position_id:</span><span class="hl-1"> </span><span class="hl-7">943715</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-balance-history"
+                ><code>getBalanceHistory</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">history</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getBalanceHistory</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">since:</span><span class="hl-1"> </span><span class="hl-2">&quot;1444277602.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-deposit-withdrawal-history"
+                ><code>getDepositsWithdrawals</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">history</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getDepositsWithdrawals</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTC&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">since:</span><span class="hl-1"> </span><span class="hl-2">&quot;1444277602.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">10</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-past-trades"
+                ><code>getPastTrades</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">trades</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getPastTrades</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCEUR&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_trades:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">reverse:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-new-offer"
+                ><code>newOffer</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">offer</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">newOffer</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">currency:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;50.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">rate:</span><span class="hl-1"> </span><span class="hl-2">&quot;20.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">period:</span><span class="hl-1"> </span><span class="hl-7">2</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">direction:</span><span class="hl-1"> </span><span class="hl-2">&quot;lend&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-cancel-offer"
+                ><code>cancelOffer</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">offer</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">cancelOffer</span><span class="hl-1">({ </span><span class="hl-4">offer_id:</span><span class="hl-1"> </span><span class="hl-7">13800585</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-offer-status"
+                ><code>offerStatus</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">offer</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">offerStatus</span><span class="hl-1">({ </span><span class="hl-4">offer_id:</span><span class="hl-1"> </span><span class="hl-7">13800585</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-active-credits"
+                ><code>activeCredits</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">credits</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">activeCredits</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/rest-auth-offers"
+                ><code>getOffers</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">offers</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getOffers</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-offers-hist"
+                ><code>offersHistory</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">offers</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">offersHistory</span><span class="hl-1">({ </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-mytrades-funding"
+                ><code>getFundingTrades</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">trades</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getFundingTrades</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit_trades:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">until:</span><span class="hl-1"> </span><span class="hl-2">&quot;1444141858.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-active-funding-used-in-a-margin-position"
+                ><code>getTakenFunds</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">funds</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTakenFunds</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-active-funding-not-used-in-a-margin-position"
+                ><code>getUnusedFunds</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">funds</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getUnusedFunds</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-total-taken-funds"
+                ><code>getTotalFunds</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">funds</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTotalFunds</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/rest-auth-close-margin-funding"
+                ><code>closeFunding</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">funding</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">closeFunding</span><span class="hl-1">({ </span><span class="hl-4">swap_id:</span><span class="hl-1"> </span><span class="hl-7">11576737</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/close-position"
+                ><code>closePosition</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">response</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">closePosition</span><span class="hl-1">({ </span><span class="hl-4">position_id:</span><span class="hl-1"> </span><span class="hl-7">943715</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <h3 id="websocketclient" class="tsd-anchor-link">
+            WebSocketClient<a
+              href="#websocketclient"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <p>
+            The
+            <a href="https://docs.bitfinex.com/v1/docs/ws-general"
+              >v1 WebSocket</a
             >
-              <h3>AuthenticatedClient1</h3>
-            </a>
-            <pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">AuthenticatedClient1</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex-node-api&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">key</span><span class="hl-0"> = </span><span class="hl-3">&quot;BitfinexAPIKey&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">secret</span><span class="hl-0"> = </span><span class="hl-3">&quot;BitfinexAPISecret&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">client</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">AuthenticatedClient1</span><span class="hl-0">({ </span><span class="hl-2">key</span><span class="hl-0">, </span><span class="hl-2">secret</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-account-info"
-                  ><code>getAccountInfo</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">info</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getAccountInfo</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a href="https://docs.bitfinex.com/v1/reference#rest-auth-fees"
-                  ><code>getAccountFees</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">fees</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getAccountFees</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-summary"
-                  ><code>getSummary</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">summary</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getSummary</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-deposit"
-                  ><code>getDepositAddress</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">method</span><span class="hl-0"> = </span><span class="hl-3">&quot;zcash&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">wallet_name</span><span class="hl-0"> = </span><span class="hl-3">&quot;trading&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">renew</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getDepositAddress</span><span class="hl-0">({ </span><span class="hl-2">method</span><span class="hl-0">, </span><span class="hl-2">wallet_name</span><span class="hl-0">, </span><span class="hl-2">renew</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#auth-key-permissions"
-                  ><code>getKeyPermissions</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">permissions</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getKeyPermissions</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-margin-information"
-                  ><code>getMarginInformation</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">marginInformation</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getMarginInformation</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-wallet-balances"
-                  ><code>getWalletBalances</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">balances</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getWalletBalances</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-transfer-between-wallets"
-                  ><code>transfer</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.00954735&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;BAB&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletfrom</span><span class="hl-0"> = </span><span class="hl-3">&quot;trading&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletto</span><span class="hl-0"> = </span><span class="hl-3">&quot;exchange&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">transfer</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">currency</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletfrom</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletto</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-withdrawal"
-                  ><code>withdraw</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">address</span><span class="hl-0"> = </span><span class="hl-3">&quot;1DKwqRhDmVyHJDL4FUYpDmQMYA3Rsxtvur&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">walletselected</span><span class="hl-0"> = </span><span class="hl-3">&quot;exchange&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">withdraw_type</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitcoin&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">withdraw</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">withdraw_type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">address</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">walletselected</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-orders"
-                  ><code>newOrder</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">price</span><span class="hl-0"> = </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">type</span><span class="hl-0"> = </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">exchange</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">side</span><span class="hl-0"> = </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">is_postonly</span><span class="hl-0"> = </span><span class="hl-4">true</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOrder</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-multiple-new-orders"
-                  ><code>newOrders</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order1</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-2">amount:</span><span class="hl-0"> </span><span class="hl-3">&quot;1&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price:</span><span class="hl-0"> </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange:</span><span class="hl-0"> </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol:</span><span class="hl-0"> </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side:</span><span class="hl-0"> </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly:</span><span class="hl-0"> </span><span class="hl-4">true</span><span class="hl-0">,</span><br/><span class="hl-0">};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order2</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-2">amount:</span><span class="hl-0"> </span><span class="hl-3">&quot;2&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price:</span><span class="hl-0"> </span><span class="hl-3">&quot;2&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type:</span><span class="hl-0"> </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol:</span><span class="hl-0"> </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side:</span><span class="hl-0"> </span><span class="hl-3">&quot;buy&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = [</span><span class="hl-2">order1</span><span class="hl-0">, </span><span class="hl-2">order2</span><span class="hl-0">];</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">result</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOrders</span><span class="hl-0">({ </span><span class="hl-2">orders</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-cancel-order"
-                  ><code>cancelOrder</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOrder</span><span class="hl-0">({ </span><span class="hl-2">order_id</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-cancel-multiple-orders"
-                  ><code>cancelOrders</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id1</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id2</span><span class="hl-0"> = </span><span class="hl-7">446915287</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_ids</span><span class="hl-0"> = [</span><span class="hl-2">order_id1</span><span class="hl-0">, </span><span class="hl-2">order_id2</span><span class="hl-0">];</span><br/><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-5">result</span><span class="hl-0"> } = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOrders</span><span class="hl-0">({ </span><span class="hl-2">order_ids</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-cancel-all-orders"
-                  ><code>cancelAllOrders</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-5">result</span><span class="hl-0"> } = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelAllOrders</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-replace-order"
-                  ><code>replaceOrder</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;3&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">price</span><span class="hl-0"> = </span><span class="hl-3">&quot;101&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">type</span><span class="hl-0"> = </span><span class="hl-3">&quot;limit&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">exchange</span><span class="hl-0"> = </span><span class="hl-3">&quot;bitfinex&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">side</span><span class="hl-0"> = </span><span class="hl-3">&quot;sell&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">is_postonly</span><span class="hl-0"> = </span><span class="hl-4">true</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;ETCUSD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">replaceOrder</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">price</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">type</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">exchange</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">symbol</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">side</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">is_postonly</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-order-status"
-                  ><code>getOrder</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order_id</span><span class="hl-0"> = </span><span class="hl-7">448411153</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">order</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrder</span><span class="hl-0">({ </span><span class="hl-2">order_id</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-orders"
-                  ><code>getOrders</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrders</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-orders-history"
-                  ><code>getOrderHistory</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">50</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">orders</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOrderHistory</span><span class="hl-0">({ </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-positions"
-                  ><code>getPositions</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">positions</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getPositions</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-claim-position"
-                  ><code>claimPosition</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position_id</span><span class="hl-0"> = </span><span class="hl-7">943715</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;1.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">claimPosition</span><span class="hl-0">({ </span><span class="hl-2">position_id</span><span class="hl-0">, </span><span class="hl-2">amount</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-balance-history"
-                  ><code>getBalanceHistory</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">since</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444277602.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">history</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getBalanceHistory</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">since</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-deposit-withdrawal-history"
-                  ><code>getDepositsWithdrawals</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;BTC&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">since</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444277602.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">10</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">history</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getDepositsWithdrawals</span><span class="hl-0">({ </span><span class="hl-2">currency</span><span class="hl-0">, </span><span class="hl-2">since</span><span class="hl-0">, </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-past-trades"
-                  ><code>getPastTrades</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;BTCEUR&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">25</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">reverse</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getPastTrades</span><span class="hl-0">({ </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">limit_trades</span><span class="hl-0">, </span><span class="hl-2">reverse</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-new-offer"
-                  ><code>newOffer</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">currency</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">amount</span><span class="hl-0"> = </span><span class="hl-3">&quot;50.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">rate</span><span class="hl-0"> = </span><span class="hl-3">&quot;20.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">period</span><span class="hl-0"> = </span><span class="hl-7">2</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">direction</span><span class="hl-0"> = </span><span class="hl-3">&quot;lend&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">newOffer</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">currency</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">amount</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">rate</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">period</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">direction</span><span class="hl-0">,</span><br/><span class="hl-0">});</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-cancel-offer"
-                  ><code>cancelOffer</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer_id</span><span class="hl-0"> = </span><span class="hl-7">13800585</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">cancelOffer</span><span class="hl-0">({ </span><span class="hl-2">offer_id</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offer-status"
-                  ><code>offerStatus</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer_id</span><span class="hl-0"> = </span><span class="hl-7">13800585</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offer</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">offerStatus</span><span class="hl-0">({ </span><span class="hl-2">offer_id</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-credits"
-                  ><code>activeCredits</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">credits</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">activeCredits</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offers"
-                  ><code>getOffers</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offers</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getOffers</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-offers-hist"
-                  ><code>offersHistory</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit</span><span class="hl-0"> = </span><span class="hl-7">25</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">offers</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">offersHistory</span><span class="hl-0">({ </span><span class="hl-2">limit</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-mytrades-funding"
-                  ><code>getFundingTrades</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">symbol</span><span class="hl-0"> = </span><span class="hl-3">&quot;USD&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">limit_trades</span><span class="hl-0"> = </span><span class="hl-7">1</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">until</span><span class="hl-0"> = </span><span class="hl-3">&quot;1444141858.0&quot;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">trades</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getFundingTrades</span><span class="hl-0">({ </span><span class="hl-2">limit_trades</span><span class="hl-0">, </span><span class="hl-2">symbol</span><span class="hl-0">, </span><span class="hl-2">until</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-used-in-a-margin-position"
-                  ><code>getTakenFunds</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTakenFunds</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-active-funding-not-used-in-a-margin-position"
-                  ><code>getUnusedFunds</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getUnusedFunds</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-total-taken-funds"
-                  ><code>getTotalFunds</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funds</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">getTotalFunds</span><span class="hl-0">();</span>
-</code></pre>
-            <ul>
-              <li>
-                <a
-                  href="https://docs.bitfinex.com/v1/reference#rest-auth-close-margin-funding"
-                  ><code>closeFunding</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">swap_id</span><span class="hl-0"> = </span><span class="hl-7">11576737</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">funding</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">closeFunding</span><span class="hl-0">({ </span><span class="hl-2">swap_id</span><span class="hl-0"> });</span>
-</code></pre>
-            <ul>
-              <li>
-                <a href="https://docs.bitfinex.com/v1/reference#close-position"
-                  ><code>closePosition</code></a
-                >
-              </li>
-            </ul>
-            <pre><code class="language-typescript"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">position_id</span><span class="hl-0"> = </span><span class="hl-7">943715</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">response</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0">.</span><span class="hl-6">closePosition</span><span class="hl-0">({ </span><span class="hl-2">position_id</span><span class="hl-0"> });</span>
-</code></pre>
-          </div>
+            endpoint (<code>wss://api.bitfinex.com/ws/1</code>). Raw array
+            frames are parsed into typed objects with named fields. Every
+            channel message carries <code>channel_id</code> and
+            <code>type</code> so consumers can discriminate without parsing
+            positional arrays.
+          </p>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">WebSocketClient</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">ws</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">WebSocketClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPIKey&quot;</span><span class="hl-1">, </span><span class="hl-8">// optional, only required for `auth`</span><br/><span class="hl-1">  </span><span class="hl-4">secret:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPISecret&quot;</span><span class="hl-1">, </span><span class="hl-8">// optional, only required for `auth`</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&quot;message&quot;</span><span class="hl-1">, (</span><span class="hl-4">message</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">message</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">connect</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>connect</code> / <code>disconnect</code></li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">connect</span><span class="hl-1">();</span><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">disconnect</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <code>ping</code> —
+              <a href="https://docs.bitfinex.com/v1/docs/ws-general#ping-pong"
+                >docs</a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">pong</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">ping</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/ws-public-ticker"
+                ><code>subscribeTicker</code></a
+              >
+              — push every ticker update for a pair. Funding currencies such as
+              <code>USD</code>/<code>fUSD</code> are emitted as
+              <code>funding_ticker</code> messages.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTicker</span><span class="hl-1">({ </span><span class="hl-4">pair:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// Incoming `message` payload:</span><br/><span class="hl-8">// {</span><br/><span class="hl-8">//   channel_id: 56771,</span><br/><span class="hl-8">//   type: &quot;ticker&quot;,</span><br/><span class="hl-8">//   bid: 76892,</span><br/><span class="hl-8">//   bid_size: 5.80585799,</span><br/><span class="hl-8">//   ask: 76926,</span><br/><span class="hl-8">//   ask_size: 7.03177505,</span><br/><span class="hl-8">//   daily_change: 810,</span><br/><span class="hl-8">//   daily_change_perc: 0.01064893,</span><br/><span class="hl-8">//   last_price: 76874,</span><br/><span class="hl-8">//   volume: 1438.81140233,</span><br/><span class="hl-8">//   high: 76984,</span><br/><span class="hl-8">//   low: 74027,</span><br/><span class="hl-8">// }</span>
+</code><button type="button">Copy</button></pre>
+
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTicker</span><span class="hl-1">({ </span><span class="hl-4">pair:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// Incoming `message` payload:</span><br/><span class="hl-8">// {</span><br/><span class="hl-8">//   channel_id: 57169,</span><br/><span class="hl-8">//   type: &quot;funding_ticker&quot;,</span><br/><span class="hl-8">//   currency: &quot;USD&quot;,</span><br/><span class="hl-8">//   frr: 0.00039778,</span><br/><span class="hl-8">//   bid: 0.00029,</span><br/><span class="hl-8">//   bid_period: 2,</span><br/><span class="hl-8">//   bid_size: 21298086.02518276,</span><br/><span class="hl-8">//   ask: 0.00008723,</span><br/><span class="hl-8">//   ask_period: 2,</span><br/><span class="hl-8">//   ask_size: 123300.84010007,</span><br/><span class="hl-8">//   daily_change: -0.000015,</span><br/><span class="hl-8">//   daily_change_perc: -0.15,</span><br/><span class="hl-8">//   last_price: 0.00007587,</span><br/><span class="hl-8">//   volume: 1000,</span><br/><span class="hl-8">//   high: 0.0004,</span><br/><span class="hl-8">//   low: 0.00007,</span><br/><span class="hl-8">//   frr_amount_available: 42,</span><br/><span class="hl-8">// }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/v1/reference/ws-public-trades"
+                ><code>subscribeTrades</code></a
+              >
+              — pushes one initial snapshot of recent trades, then
+              <code>trade_executed</code> (<code>te</code>) and
+              <code>trade_updated</code> (<code>tu</code>) live events. Funding
+              currencies such as <code>USD</code>/<code>fUSD</code> are emitted
+              as funding trade messages.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTrades</span><span class="hl-1">({ </span><span class="hl-4">pair:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// Snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;trades_snapshot&quot;, trades: [{ id, timestamp, price, amount }, ...] }</span><br/><span class="hl-8">// Live update:</span><br/><span class="hl-8">// { channel_id, type: &quot;trade_executed&quot;, seq, timestamp, price, amount }</span><br/><span class="hl-8">// { channel_id, type: &quot;trade_updated&quot;, seq, id, timestamp, price, amount }</span><br/><span class="hl-8">// Funding snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;funding_trades_snapshot&quot;, currency,</span><br/><span class="hl-8">//   trades: [{ id, timestamp, amount, rate, period }, ...] }</span><br/><span class="hl-8">// Funding live update:</span><br/><span class="hl-8">// { channel_id, type: &quot;funding_trade_executed&quot;, currency, id, timestamp, amount, rate, period }</span><br/><span class="hl-8">// { channel_id, type: &quot;funding_trade_updated&quot;, currency, id, timestamp, amount, rate, period }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/ws-public-order-books"
+                ><code>subscribeBook</code></a
+              >
+              — aggregated order book (<code>prec</code> ∈
+              <code>P0</code>–<code>P3</code>). Funding currencies such as
+              <code>USD</code>/<code>fUSD</code> are emitted as funding book
+              messages.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeBook</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">pair:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">prec:</span><span class="hl-1"> </span><span class="hl-2">&quot;P0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">freq:</span><span class="hl-1"> </span><span class="hl-2">&quot;F0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">len:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-8">// Snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;book_snapshot&quot;, book: [{ price, count, amount }, ...] }</span><br/><span class="hl-8">// Update:</span><br/><span class="hl-8">// { channel_id, type: &quot;book_update&quot;, price, count, amount }</span><br/><span class="hl-8">// Funding snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;funding_book_snapshot&quot;, currency,</span><br/><span class="hl-8">//   book: [{ rate, period, count, amount }, ...] }</span><br/><span class="hl-8">// Funding update:</span><br/><span class="hl-8">// { channel_id, type: &quot;funding_book_update&quot;, currency, rate, period, count, amount }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/ws-public-raw-order-books"
+                ><code>subscribeRawBook</code></a
+              >
+              — raw order book at order-id granularity (<code>prec = R0</code>).
+              Funding currencies are emitted as raw funding book messages.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeRawBook</span><span class="hl-1">({ </span><span class="hl-4">pair:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTCUSD&quot;</span><span class="hl-1">, </span><span class="hl-4">len:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1"> });</span><br/><span class="hl-8">// Snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;raw_book_snapshot&quot;, book: [{ order_id, price, amount }, ...] }</span><br/><span class="hl-8">// Update:</span><br/><span class="hl-8">// { channel_id, type: &quot;raw_book_update&quot;, order_id, price, amount }</span><br/><span class="hl-8">// Funding snapshot:</span><br/><span class="hl-8">// { channel_id, type: &quot;raw_funding_book_snapshot&quot;, currency,</span><br/><span class="hl-8">//   book: [{ offer_id, period, rate, amount }, ...] }</span><br/><span class="hl-8">// Funding update:</span><br/><span class="hl-8">// { channel_id, type: &quot;raw_funding_book_update&quot;, currency, offer_id, period, rate, amount }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/docs/ws-general#heartbeating"
+                >Heartbeats</a
+              >
+              are emitted on any channel that has not pushed data for a second:
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-8">// { channel_id, type: &quot;heartbeat&quot; }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>unsubscribe</code></li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">unsubscribe</span><span class="hl-1">({ </span><span class="hl-4">chanId:</span><span class="hl-1"> </span><span class="hl-4">subscription</span><span class="hl-1">.</span><span class="hl-4">chanId</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/ws-auth-authentication"
+                ><code>auth</code></a
+              >
+              — authenticate to receive private channels. v1 accepts only the
+              documented five fields (<code>event</code>, <code>apiKey</code>,
+              <code>authSig</code>, <code>authNonce</code>,
+              <code>authPayload</code>); the v2 extensions
+              <code>filter</code>/<code>dms</code>/<code>calc</code> are not
+              supported.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">response</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">auth</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>
+            Once authenticated the server pushes private events on channel id
+            <code>0</code>. This client decodes
+            <a href="https://docs.bitfinex.com/v1/reference/ws-auth-wallets"
+              >wallet snapshots and updates</a
+            >:
+          </p>
+          <pre><code class="typescript"><span class="hl-8">// { channel_id: 0, type: &quot;wallet_snapshot&quot;,</span><br/><span class="hl-8">//   wallets: [{ wallet_type, currency, balance, unsettled_interest, balance_available }, ...] }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;wallet_update&quot;,</span><br/><span class="hl-8">//   wallet_type, currency, balance, unsettled_interest, balance_available }</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>
+            Every other private message comes through as a generic envelope with
+            the v1 mnemonic carried in <code>type</code> and the raw payload
+            preserved:
+          </p>
+          <pre><code class="typescript"><span class="hl-8">// { channel_id: 0, type: &quot;os&quot; | &quot;on&quot; | &quot;ou&quot; | &quot;oc&quot; | ..., payload: [...] }</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>Refer to the official docs to interpret each payload:</p>
+          <table>
+            <thead>
+              <tr>
+                <th><code>type</code></th>
+                <th>Reference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>os</code>/<code>on</code>/<code>ou</code>/<code
+                    >oc</code
+                  >
+                </td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-orders"
+                    >Orders</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>ps</code>/<code>pn</code>/<code>pu</code>/<code
+                    >pc</code
+                  >
+                </td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-positions"
+                    >Positions</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>te</code>/<code>tu</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-trades"
+                    >Trades</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>fos</code>/<code>fon</code>/<code>fou</code>/<code
+                    >foc</code
+                  >
+                </td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-offers"
+                    >Funding offers</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>fcs</code>/<code>fcn</code>/<code>fcu</code>/<code
+                    >fcc</code
+                  >
+                </td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-credits"
+                    >Funding credits</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>fls</code>/<code>fln</code>/<code>flu</code>/<code
+                    >flc</code
+                  >
+                </td>
+                <td>
+                  <a href="https://docs.bitfinex.com/v1/reference/ws-auth-loans"
+                    >Funding loans</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>fte</code>/<code>ftu</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-funding-trades"
+                    >Funding trades</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>bu</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-balance-info"
+                    >Balance info</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>miu</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-margin-info"
+                    >Margin info</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>fiu</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-funding-info"
+                    >Funding info</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>n</code></td>
+                <td>
+                  <a
+                    href="https://docs.bitfinex.com/v1/reference/ws-auth-notifications"
+                    >Notifications</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/v1/reference/ws-auth-unauthentication"
+                ><code>unauth</code></a
+              >
+              — drop the authenticated session without closing the socket.
+              Failure comes back as
+              <code>{event: &quot;error&quot;, code: 10201, ...}</code> and is
+              surfaced as a rejection.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">unauth</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>send</code> — send any raw payload to the server.</li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">send</span><span class="hl-1">({ </span><span class="hl-4">event:</span><span class="hl-1"> </span><span class="hl-2">&quot;ping&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <h4 id="aborting-requests" class="tsd-anchor-link">
+            Aborting requests<a
+              href="#aborting-requests"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h4>
+          <p>
+            Every method that returns a promise accepts an
+            <code>AbortSignal</code>:
+          </p>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">controller</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">AbortController</span><span class="hl-1">();</span><br/><span class="hl-0">setTimeout</span><span class="hl-1">(() </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">controller</span><span class="hl-1">.</span><span class="hl-0">abort</span><span class="hl-1">();</span><br/><span class="hl-1">}, </span><span class="hl-7">1000</span><span class="hl-1">);</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">sub</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTicker</span><span class="hl-1">({ </span><span class="hl-4">signal:</span><span class="hl-1"> </span><span class="hl-4">controller</span><span class="hl-1">.</span><span class="hl-4">signal</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <h3 id="signature" class="tsd-anchor-link">
+            Signature<a
+              href="#signature"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">signature</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">headers</span><span class="hl-1"> = </span><span class="hl-0">signature</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPIKey&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">secret:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPISecret&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">payload:</span><span class="hl-1"> </span><span class="hl-4">Buffer</span><span class="hl-1">.</span><span class="hl-0">from</span><span class="hl-1">(</span><span class="hl-6">JSON</span><span class="hl-1">.</span><span class="hl-0">stringify</span><span class="hl-1">({ </span><span class="hl-4">request</span><span class="hl-1">, </span><span class="hl-4">nonce</span><span class="hl-1"> })).</span><span class="hl-0">toString</span><span class="hl-1">(</span><span class="hl-2">&quot;base64&quot;</span><span class="hl-1">),</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <h2 id="test" class="tsd-anchor-link">
+            Test<a href="#test" aria-label="Permalink" class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h2>
+          <pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">test</span>
+</code><button type="button">Copy</button></pre>
         </div>
-        <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-          <nav class="tsd-navigation primary">
-            <ul>
-              <li class="current"><a href="modules.html">Exports</a></li>
-            </ul>
-          </nav>
-          <nav class="tsd-navigation secondary menu-sticky">
-            <ul>
-              <li class="tsd-kind-class">
-                <a
-                  href="classes/AuthenticatedClient1.html"
-                  class="tsd-kind-icon"
-                  >Authenticated<wbr />Client1</a
+      </div>
+      <div class="col-sidebar">
+        <div class="page-menu">
+          <div class="tsd-navigation settings">
+            <details class="tsd-accordion">
+              <summary class="tsd-accordion-summary">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
                 >
-              </li>
-              <li class="tsd-kind-class">
-                <a href="classes/PublicClient1.html" class="tsd-kind-icon"
-                  >Public<wbr />Client1</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/AccountFees.html" class="tsd-kind-icon"
-                  >Account<wbr />Fees</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/AuthenticatedClient1Options.html"
-                  class="tsd-kind-icon"
-                  >Authenticated<wbr />Client1<wbr />Options</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/BalanceHistoryParams.html"
-                  class="tsd-kind-icon"
-                  >Balance<wbr />History<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/CancelOfferParams.html"
-                  class="tsd-kind-icon"
-                  >Cancel<wbr />Offer<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/ClaimParams.html" class="tsd-kind-icon"
-                  >Claim<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/CloseFundingParams.html"
-                  class="tsd-kind-icon"
-                  >Close<wbr />Funding<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/ClosePositionParams.html"
-                  class="tsd-kind-icon"
-                  >Close<wbr />Position<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/ClosePositionResponse.html"
-                  class="tsd-kind-icon"
-                  >Close<wbr />Position<wbr />Response</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Credit.html" class="tsd-kind-icon"
-                  >Credit</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Currency.html" class="tsd-kind-icon"
-                  >Currency</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/DepositAddress.html" class="tsd-kind-icon"
-                  >Deposit<wbr />Address</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/DepositParams.html" class="tsd-kind-icon"
-                  >Deposit<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/DepositWithdrawal.html"
-                  class="tsd-kind-icon"
-                  >Deposit<wbr />Withdrawal</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/DepositsWithdrawalsParams.html"
-                  class="tsd-kind-icon"
-                  >Deposits<wbr />Withdrawals<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/FundingBook.html" class="tsd-kind-icon"
-                  >Funding<wbr />Book</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/FundingBookItem.html" class="tsd-kind-icon"
-                  >Funding<wbr />Book<wbr />Item</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/FundingTrade.html" class="tsd-kind-icon"
-                  >Funding<wbr />Trade</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/FundingTradesParams.html"
-                  class="tsd-kind-icon"
-                  >Funding<wbr />Trades<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/GetFundingBook.html" class="tsd-kind-icon"
-                  >Get<wbr />Funding<wbr />Book</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/GetLends.html" class="tsd-kind-icon"
-                  >Get<wbr />Lends</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/GetOrderBook.html" class="tsd-kind-icon"
-                  >Get<wbr />Order<wbr />Book</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/GetTrades.html" class="tsd-kind-icon"
-                  >Get<wbr />Trades</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/HistoryBalance.html" class="tsd-kind-icon"
-                  >History<wbr />Balance</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/KeyPermission.html" class="tsd-kind-icon"
-                  >Key<wbr />Permission</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/KeyPermissions.html" class="tsd-kind-icon"
-                  >Key<wbr />Permissions</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Lend.html" class="tsd-kind-icon">Lend</a>
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/MarginInformation.html"
-                  class="tsd-kind-icon"
-                  >Margin<wbr />Information</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/NewOfferParams.html" class="tsd-kind-icon"
-                  >New<wbr />Offer<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/NewOrdersResponse.html"
-                  class="tsd-kind-icon"
-                  >New<wbr />Orders<wbr />Response</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Offer.html" class="tsd-kind-icon">Offer</a>
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/OrderBook.html" class="tsd-kind-icon"
-                  >Order<wbr />Book</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/OrderBookItem.html" class="tsd-kind-icon"
-                  >Order<wbr />Book<wbr />Item</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/OrderHistoryParams.html"
-                  class="tsd-kind-icon"
-                  >Order<wbr />History<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/OrderParams.html" class="tsd-kind-icon"
-                  >Order<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/OrderResponse.html" class="tsd-kind-icon"
-                  >Order<wbr />Response</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/OrdersParams.html" class="tsd-kind-icon"
-                  >Orders<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/PastTrade.html" class="tsd-kind-icon"
-                  >Past<wbr />Trade</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/PastTradesParams.html" class="tsd-kind-icon"
-                  >Past<wbr />Trades<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Position.html" class="tsd-kind-icon"
-                  >Position</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/PublicClient1Params.html"
-                  class="tsd-kind-icon"
-                  >Public<wbr />Client1<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a
-                  href="interfaces/ReplaceOrderParams.html"
-                  class="tsd-kind-icon"
-                  >Replace<wbr />Order<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Stat.html" class="tsd-kind-icon">Stat</a>
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Summary.html" class="tsd-kind-icon"
-                  >Summary</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Symb.html" class="tsd-kind-icon">Symb</a>
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/SymbolDetail.html" class="tsd-kind-icon"
-                  >Symbol<wbr />Detail</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/TakenFund.html" class="tsd-kind-icon"
-                  >Taken<wbr />Fund</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Ticker.html" class="tsd-kind-icon"
-                  >Ticker</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/TotalFund.html" class="tsd-kind-icon"
-                  >Total<wbr />Fund</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/Trade.html" class="tsd-kind-icon">Trade</a>
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/TransferParams.html" class="tsd-kind-icon"
-                  >Transfer<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/WalletBalance.html" class="tsd-kind-icon"
-                  >Wallet<wbr />Balance</a
-                >
-              </li>
-              <li class="tsd-kind-interface">
-                <a href="interfaces/WithdrawParams.html" class="tsd-kind-icon"
-                  >Withdraw<wbr />Params</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#AccountInfo" class="tsd-kind-icon"
-                  >Account<wbr />Info</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#OrderType" class="tsd-kind-icon"
-                  >Order<wbr />Type</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#SignedHeaders" class="tsd-kind-icon"
-                  >Signed<wbr />Headers</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#SignerOptions" class="tsd-kind-icon"
-                  >Signer<wbr />Options</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#TransferResponse" class="tsd-kind-icon"
-                  >Transfer<wbr />Response</a
-                >
-              </li>
-              <li class="tsd-kind-type-alias">
-                <a href="modules.html#WithdrawResponse" class="tsd-kind-icon"
-                  >Withdraw<wbr />Response</a
-                >
-              </li>
-              <li class="tsd-kind-variable">
-                <a href="modules.html#ApiUri" class="tsd-kind-icon"
-                  >Api<wbr />Uri</a
-                >
-              </li>
-              <li class="tsd-kind-variable">
-                <a href="modules.html#DefaultCurrency" class="tsd-kind-icon"
-                  >Default<wbr />Currency</a
-                >
-              </li>
-              <li class="tsd-kind-variable">
-                <a href="modules.html#DefaultSymbol" class="tsd-kind-icon"
-                  >Default<wbr />Symbol</a
-                >
-              </li>
-              <li class="tsd-kind-variable">
-                <a href="modules.html#aff_code" class="tsd-kind-icon"
-                  >aff_<wbr />code</a
-                >
-              </li>
-              <li class="tsd-kind-function">
-                <a href="modules.html#Signer" class="tsd-kind-icon">Signer</a>
-              </li>
+                  <use href="assets/icons.svg#icon-chevronDown"></use>
+                </svg>
+                <h3>Settings</h3>
+              </summary>
+              <div class="tsd-accordion-details">
+                <div class="tsd-filter-visibility">
+                  <span class="settings-label">Member Visibility</span>
+                  <ul id="tsd-filter-options">
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-protected"
+                          name="protected"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Protected</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-inherited"
+                          name="inherited"
+                          checked
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>Inherited</span></label
+                      >
+                    </li>
+                    <li class="tsd-filter-item">
+                      <label class="tsd-filter-input"
+                        ><input
+                          type="checkbox"
+                          id="tsd-filter-external"
+                          name="external"
+                        /><svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <rect
+                            class="tsd-checkbox-background"
+                            width="30"
+                            height="30"
+                            x="1"
+                            y="1"
+                            rx="6"
+                            fill="none"
+                          ></rect>
+                          <path
+                            class="tsd-checkbox-checkmark"
+                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                            stroke="none"
+                            stroke-width="3.5"
+                            stroke-linejoin="round"
+                            fill="none"
+                          ></path></svg
+                        ><span>External</span></label
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="tsd-theme-toggle">
+                  <label class="settings-label" for="tsd-theme">Theme</label
+                  ><select id="tsd-theme">
+                    <option value="os">OS</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+          </div>
+          <details open class="tsd-accordion tsd-page-navigation">
+            <summary class="tsd-accordion-summary">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <use href="assets/icons.svg#icon-chevronDown"></use>
+              </svg>
+              <h3>On This Page</h3>
+            </summary>
+            <div class="tsd-accordion-details">
+              <a
+                href="#bitfinex-nodejs-api-ci-status-npm-version-coverage-status-known-vulnerabilities-code-style-prettier-contributor-covenant-semantic-release-conventional-commits-npm-license-node-version-npm-downloads-github-top-language"
+                ><span
+                  >Bitfinex <wbr />Node.js <wbr />API <wbr />CI <wbr />Status
+                  npm version <wbr />Coverage <wbr />Status <wbr />Known
+                  <wbr />Vulnerabilities code style: prettier <wbr />Contributor
+                  <wbr />Covenant semantic-<wbr />release <wbr />Conventional
+                  <wbr />Commits <wbr />NPM license node version npm downloads
+                  <wbr />Git<wbr />Hub top language</span
+                ></a
+              >
+              <ul>
+                <li>
+                  <a href="#installation"><span>Installation</span></a>
+                </li>
+                <li>
+                  <a href="#usage"><span>Usage</span></a>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <a href="#publicclient"
+                        ><span>Public<wbr />Client</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#authenticatedclient"
+                        ><span>Authenticated<wbr />Client</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#websocketclient"
+                        ><span>Web<wbr />Socket<wbr />Client</span></a
+                      >
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a href="#aborting-requests"
+                            ><span>Aborting requests</span></a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#signature"><span>Signature</span></a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#test"><span>Test</span></a>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="site-menu">
+          <nav class="tsd-navigation">
+            <a href="modules.html">bitfinex-node-api</a>
+            <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+              <li>Loading...</li>
             </ul>
           </nav>
         </div>
       </div>
     </div>
-    <footer class="">
-      <div class="container">
-        <h2>Legend</h2>
-        <div class="tsd-legend-group">
-          <ul class="tsd-legend">
-            <li class="tsd-kind-constructor tsd-parent-kind-class">
-              <span class="tsd-kind-icon">Constructor</span>
-            </li>
-            <li class="tsd-kind-property tsd-parent-kind-class">
-              <span class="tsd-kind-icon">Property</span>
-            </li>
-            <li class="tsd-kind-method tsd-parent-kind-class">
-              <span class="tsd-kind-icon">Method</span>
-            </li>
-            <li class="tsd-kind-accessor tsd-parent-kind-class">
-              <span class="tsd-kind-icon">Accessor</span>
-            </li>
-          </ul>
-          <ul class="tsd-legend">
-            <li
-              class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"
-            >
-              <span class="tsd-kind-icon">Inherited property</span>
-            </li>
-            <li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-              <span class="tsd-kind-icon">Inherited method</span>
-            </li>
-          </ul>
-          <ul class="tsd-legend">
-            <li class="tsd-kind-property tsd-parent-kind-interface">
-              <span class="tsd-kind-icon">Property</span>
-            </li>
-          </ul>
-          <ul class="tsd-legend">
-            <li class="tsd-kind-property tsd-parent-kind-class tsd-is-private">
-              <span class="tsd-kind-icon">Private property</span>
-            </li>
-          </ul>
-        </div>
-        <h2>Settings</h2>
-        <p>
-          Theme
-          <select id="theme">
-            <option value="os">OS</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </p>
-      </div>
-    </footer>
+    <footer></footer>
     <div class="overlay"></div>
-    <script src="assets/main.js"></script>
   </body>
 </html>
