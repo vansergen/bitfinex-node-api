@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.0.0...v4.1.0) (2026-05-27)
+
+### Features
+
+- add PublicClientV2 ([fe05842](https://github.com/vansergen/bitfinex-node-api/commit/fe05842ba5051ba0296dab3c835b45e311a0a175))
+
 ## [4.0.0](https://github.com/vansergen/bitfinex-node-api/compare/v3.0.0...v4.0.0) (2026-05-24)
 
 ### ⚠ BREAKING CHANGES

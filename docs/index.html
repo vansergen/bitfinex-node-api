@@ -155,7 +155,9 @@
             <a href="https://docs.bitfinex.com/v1/reference">Bitfinex v1 API</a>
             — public and authenticated REST plus the v1
             <a href="https://docs.bitfinex.com/v1/docs/ws-general">WebSocket</a>
-            endpoint.
+            endpoint — and the
+            <a href="https://docs.bitfinex.com/reference">v2 public REST</a>
+            endpoints.
           </p>
           <h2 id="installation" class="tsd-anchor-link">
             Installation<a
@@ -271,6 +273,235 @@
             </li>
           </ul>
           <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">details</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getSymbolDetails</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <h3 id="publicclientv2" class="tsd-anchor-link">
+            PublicClientV2<a
+              href="#publicclientv2"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <p>
+            Client for the
+            <a href="https://docs.bitfinex.com/reference"
+              >Bitfinex v2 public REST</a
+            >
+            endpoints (<code>https://api-pub.bitfinex.com/v2/</code>).
+            Positional arrays are decoded into typed objects with named fields.
+            Trading and funding pairs share the same endpoints; the decoded
+            payload is discriminated by a <code>type</code> field. Trading
+            symbols start with <code>t</code> (e.g. <code>tBTCUSD</code>);
+            funding currencies start with <code>f</code> (e.g.
+            <code>fUSD</code>).
+          </p>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">PublicClientV2</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">PublicClientV2</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-platform-status"
+                ><code>getPlatformStatus</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> { </span><span class="hl-6">status</span><span class="hl-1"> } = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getPlatformStatus</span><span class="hl-1">(); </span><span class="hl-8">// 0 = maintenance, 1 = operative</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-ticker"
+                ><code>getTicker</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">ticker</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTicker</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// { type: &quot;trading_ticker&quot;, symbol, bid, bid_size, ask, ask_size,</span><br/><span class="hl-8">//   daily_change, daily_change_relative, last_price, volume, high, low }</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">funding</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTicker</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;fUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// { type: &quot;funding_ticker&quot;, symbol, frr, bid, bid_period, bid_size,</span><br/><span class="hl-8">//   ask, ask_period, ask_size, daily_change, daily_change_relative,</span><br/><span class="hl-8">//   last_price, volume, high, low, frr_amount_available }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-tickers"
+                ><code>getTickers</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">tickers</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTickers</span><span class="hl-1">({ </span><span class="hl-4">symbols:</span><span class="hl-1"> [</span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;fUSD&quot;</span><span class="hl-1">] });</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">all</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTickers</span><span class="hl-1">({ </span><span class="hl-4">symbols:</span><span class="hl-1"> </span><span class="hl-2">&quot;ALL&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-tickers-history"
+                ><code>getTickersHistory</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">history</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTickersHistory</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbols:</span><span class="hl-1"> [</span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-trades"
+                ><code>getTrades</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">trades</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getTrades</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">sort:</span><span class="hl-1"> -</span><span class="hl-7">1</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-8">// [{ type: &quot;trading_trade&quot;, id, mts, amount, price }, ...]</span><br/><span class="hl-8">// or for funding: [{ type: &quot;funding_trade&quot;, id, mts, amount, rate, period }, ...]</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-book"
+                ><code>getBook</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">book</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getBook</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">precision:</span><span class="hl-1"> </span><span class="hl-2">&quot;P0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">len:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-8">// Aggregated trading: { type: &quot;book&quot;, price, count, amount }</span><br/><span class="hl-8">// Raw trading (R0):   { type: &quot;raw_book&quot;, order_id, price, amount }</span><br/><span class="hl-8">// Aggregated funding: { type: &quot;funding_book&quot;, rate, period, count, amount }</span><br/><span class="hl-8">// Raw funding (R0):   { type: &quot;raw_funding_book&quot;, offer_id, period, rate, amount }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-stats"
+                ><code>getStats</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">last</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getStats</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;pos.size&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">size:</span><span class="hl-1"> </span><span class="hl-2">&quot;1m&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">side:</span><span class="hl-1"> </span><span class="hl-2">&quot;long&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">section:</span><span class="hl-1"> </span><span class="hl-2">&quot;last&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">hist</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getStats</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;funding.size&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">size:</span><span class="hl-1"> </span><span class="hl-2">&quot;1m&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;fUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">section:</span><span class="hl-1"> </span><span class="hl-2">&quot;hist&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-candles"
+                ><code>getCandles</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">last</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getCandles</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">timeframe:</span><span class="hl-1"> </span><span class="hl-2">&quot;1D&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">section:</span><span class="hl-1"> </span><span class="hl-2">&quot;last&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">hist</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getCandles</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">timeframe:</span><span class="hl-1"> </span><span class="hl-2">&quot;1m&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;fUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">section:</span><span class="hl-1"> </span><span class="hl-2">&quot;hist&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">aggr:</span><span class="hl-1"> </span><span class="hl-7">30</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">period_start:</span><span class="hl-1"> </span><span class="hl-2">&quot;2&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">period_end:</span><span class="hl-1"> </span><span class="hl-2">&quot;30&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-conf"
+                ><code>getConfigs</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">configs</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getConfigs</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">configs:</span><span class="hl-1"> [</span><span class="hl-2">&quot;pub:list:currency&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;pub:list:pair:exchange&quot;</span><span class="hl-1">],</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-derivatives-status"
+                ><code>getDerivativesStatus</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">status</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getDerivativesStatus</span><span class="hl-1">({ </span><span class="hl-4">keys:</span><span class="hl-1"> [</span><span class="hl-2">&quot;tBTCF0:USTF0&quot;</span><span class="hl-1">] });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-derivatives-status-history"
+                ><code>getDerivativesStatusHistory</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">history</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getDerivativesStatusHistory</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCF0:USTF0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-liquidations"
+                ><code>getLiquidations</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">liquidations</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getLiquidations</span><span class="hl-1">({ </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">50</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/rest-public-rankings"
+                ><code>getLeaderboards</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">board</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getLeaderboards</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;plu&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">timeframe:</span><span class="hl-1"> </span><span class="hl-2">&quot;3h&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1">,</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-funding-stats"
+                ><code>getFundingStats</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">stats</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getFundingStats</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;fUSD&quot;</span><span class="hl-1">, </span><span class="hl-4">limit:</span><span class="hl-1"> </span><span class="hl-7">100</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/virtual-asset-service-providers"
+                ><code>getVASPs</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">vasps</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getVASPs</span><span class="hl-1">(); </span><span class="hl-8">// [{ id, name }, ...]</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-calc-market-average-price"
+                ><code>getMarketAveragePrice</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">avg</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getMarketAveragePrice</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">amount:</span><span class="hl-1"> </span><span class="hl-2">&quot;1.0&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">});</span><br/><span class="hl-8">// { rate_avg, amount }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.bitfinex.com/reference/rest-public-foreign-exchange-rate"
+                ><code>getForeignExchangeRate</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">fx</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getForeignExchangeRate</span><span class="hl-1">({ </span><span class="hl-4">ccy1:</span><span class="hl-1"> </span><span class="hl-2">&quot;BTC&quot;</span><span class="hl-1">, </span><span class="hl-4">ccy2:</span><span class="hl-1"> </span><span class="hl-2">&quot;USD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// { current_rate }</span>
+</code><button type="button">Copy</button></pre>
+
+          <h4 id="error-envelope" class="tsd-anchor-link">
+            Error envelope<a
+              href="#error-envelope"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h4>
+          <p>
+            When a v2 endpoint replies with
+            <code>[&quot;error&quot;, CODE, MESSAGE]</code> (the documented
+            <a
+              href="https://docs.bitfinex.com/docs/rest-general#maintenance-error"
+              >maintenance error</a
+            >
+            <code>[&quot;error&quot;, 20060, &quot;maintenance&quot;]</code> is
+            one example), <code>PublicClientV2</code> detects the envelope in
+            both <code>get</code> and <code>post</code> and rejects with a
+            <code>BitfinexError</code> so decoders never run on the malformed
+            body.
+          </p>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">BitfinexError</span><span class="hl-1">, </span><span class="hl-4">PublicClientV2</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">client</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">PublicClientV2</span><span class="hl-1">();</span><br/><span class="hl-3">try</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">client</span><span class="hl-1">.</span><span class="hl-0">getBook</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-1">} </span><span class="hl-3">catch</span><span class="hl-1"> (</span><span class="hl-4">error</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-3">if</span><span class="hl-1"> (</span><span class="hl-4">error</span><span class="hl-1"> </span><span class="hl-5">instanceof</span><span class="hl-1"> </span><span class="hl-9">BitfinexError</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-8">// error.code   — number (e.g. 20060 for maintenance)</span><br/><span class="hl-1">    </span><span class="hl-8">// error.message — `Bitfinex error &lt;code&gt;: &lt;text&gt;`</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">}</span>
 </code><button type="button">Copy</button></pre>
 
           <h3 id="authenticatedclient" class="tsd-anchor-link">
@@ -1172,6 +1403,20 @@
                       <a href="#publicclient"
                         ><span>Public<wbr />Client</span></a
                       >
+                    </li>
+                    <li>
+                      <a href="#publicclientv2"
+                        ><span>Public<wbr />Client<wbr />V2</span></a
+                      >
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a href="#error-envelope"
+                            ><span>Error envelope</span></a
+                          >
+                        </li>
+                      </ul>
                     </li>
                     <li>
                       <a href="#authenticatedclient"
