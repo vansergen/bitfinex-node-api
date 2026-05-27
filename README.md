@@ -1,6 +1,6 @@
 # Bitfinex Node.js API [![CI Status](https://github.com/vansergen/bitfinex-node-api/workflows/CI/badge.svg?branch=main)](https://github.com/vansergen/bitfinex-node-api/actions/workflows/ci.yml?query=branch%3Amain) [![npm version](https://badge.fury.io/js/bitfinex-node-api.svg)](https://badge.fury.io/js/bitfinex-node-api) [![Coverage Status](https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main)](https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main) [![Known Vulnerabilities](https://snyk.io/test/github/vansergen/bitfinex-node-api/badge.svg)](https://snyk.io/test/github/vansergen/bitfinex-node-api) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) ![NPM license](https://img.shields.io/npm/l/bitfinex-node-api) ![node version](https://img.shields.io/node/v/bitfinex-node-api) ![npm downloads](https://img.shields.io/npm/dt/bitfinex-node-api) ![GitHub top language](https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api)
 
-Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint.
+Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint — and the [v2 public REST](https://docs.bitfinex.com/reference) endpoints.
 
 ## Installation
 
@@ -81,6 +81,210 @@ const symbols = await client.getSymbols();
 
 ```typescript
 const details = await client.getSymbolDetails();
+```
+
+### PublicClientV2
+
+Client for the [Bitfinex v2 public REST](https://docs.bitfinex.com/reference)
+endpoints (`https://api-pub.bitfinex.com/v2/`). Positional arrays are decoded
+into typed objects with named fields. Trading and funding pairs share the same
+endpoints; the decoded payload is discriminated by a `type` field. Trading
+symbols start with `t` (e.g. `tBTCUSD`); funding currencies start with `f`
+(e.g. `fUSD`).
+
+```typescript
+import { PublicClientV2 } from "bitfinex-node-api";
+
+const client = new PublicClientV2();
+```
+
+- [`getPlatformStatus`](https://docs.bitfinex.com/reference/rest-public-platform-status)
+
+```typescript
+const { status } = await client.getPlatformStatus(); // 0 = maintenance, 1 = operative
+```
+
+- [`getTicker`](https://docs.bitfinex.com/reference/rest-public-ticker)
+
+```typescript
+const ticker = await client.getTicker({ symbol: "tBTCUSD" });
+// { type: "trading_ticker", symbol, bid, bid_size, ask, ask_size,
+//   daily_change, daily_change_relative, last_price, volume, high, low }
+const funding = await client.getTicker({ symbol: "fUSD" });
+// { type: "funding_ticker", symbol, frr, bid, bid_period, bid_size,
+//   ask, ask_period, ask_size, daily_change, daily_change_relative,
+//   last_price, volume, high, low, frr_amount_available }
+```
+
+- [`getTickers`](https://docs.bitfinex.com/reference/rest-public-tickers)
+
+```typescript
+const tickers = await client.getTickers({ symbols: ["tBTCUSD", "fUSD"] });
+const all = await client.getTickers({ symbols: "ALL" });
+```
+
+- [`getTickersHistory`](https://docs.bitfinex.com/reference/rest-public-tickers-history)
+
+```typescript
+const history = await client.getTickersHistory({
+  symbols: ["tBTCUSD"],
+  limit: 100,
+});
+```
+
+- [`getTrades`](https://docs.bitfinex.com/reference/rest-public-trades)
+
+```typescript
+const trades = await client.getTrades({
+  symbol: "tBTCUSD",
+  limit: 100,
+  sort: -1,
+});
+// [{ type: "trading_trade", id, mts, amount, price }, ...]
+// or for funding: [{ type: "funding_trade", id, mts, amount, rate, period }, ...]
+```
+
+- [`getBook`](https://docs.bitfinex.com/reference/rest-public-book)
+
+```typescript
+const book = await client.getBook({
+  symbol: "tBTCUSD",
+  precision: "P0",
+  len: 25,
+});
+// Aggregated trading: { type: "book", price, count, amount }
+// Raw trading (R0):   { type: "raw_book", order_id, price, amount }
+// Aggregated funding: { type: "funding_book", rate, period, count, amount }
+// Raw funding (R0):   { type: "raw_funding_book", offer_id, period, rate, amount }
+```
+
+- [`getStats`](https://docs.bitfinex.com/reference/rest-public-stats)
+
+```typescript
+const last = await client.getStats({
+  key: "pos.size",
+  size: "1m",
+  symbol: "tBTCUSD",
+  side: "long",
+  section: "last",
+});
+const hist = await client.getStats({
+  key: "funding.size",
+  size: "1m",
+  symbol: "fUSD",
+  section: "hist",
+  limit: 100,
+});
+```
+
+- [`getCandles`](https://docs.bitfinex.com/reference/rest-public-candles)
+
+```typescript
+const last = await client.getCandles({
+  timeframe: "1D",
+  symbol: "tBTCUSD",
+  section: "last",
+});
+const hist = await client.getCandles({
+  timeframe: "1m",
+  symbol: "fUSD",
+  section: "hist",
+  aggr: 30,
+  period_start: "2",
+  period_end: "30",
+  limit: 100,
+});
+```
+
+- [`getConfigs`](https://docs.bitfinex.com/reference/rest-public-conf)
+
+```typescript
+const configs = await client.getConfigs({
+  configs: ["pub:list:currency", "pub:list:pair:exchange"],
+});
+```
+
+- [`getDerivativesStatus`](https://docs.bitfinex.com/reference/rest-public-derivatives-status)
+
+```typescript
+const status = await client.getDerivativesStatus({ keys: ["tBTCF0:USTF0"] });
+```
+
+- [`getDerivativesStatusHistory`](https://docs.bitfinex.com/reference/rest-public-derivatives-status-history)
+
+```typescript
+const history = await client.getDerivativesStatusHistory({
+  key: "tBTCF0:USTF0",
+  limit: 100,
+});
+```
+
+- [`getLiquidations`](https://docs.bitfinex.com/reference/rest-public-liquidations)
+
+```typescript
+const liquidations = await client.getLiquidations({ limit: 50 });
+```
+
+- [`getLeaderboards`](https://docs.bitfinex.com/reference/rest-public-rankings)
+
+```typescript
+const board = await client.getLeaderboards({
+  key: "plu",
+  timeframe: "3h",
+  symbol: "tBTCUSD",
+  limit: 25,
+});
+```
+
+- [`getFundingStats`](https://docs.bitfinex.com/reference/rest-public-funding-stats)
+
+```typescript
+const stats = await client.getFundingStats({ symbol: "fUSD", limit: 100 });
+```
+
+- [`getVASPs`](https://docs.bitfinex.com/reference/virtual-asset-service-providers)
+
+```typescript
+const vasps = await client.getVASPs(); // [{ id, name }, ...]
+```
+
+- [`getMarketAveragePrice`](https://docs.bitfinex.com/reference/rest-public-calc-market-average-price)
+
+```typescript
+const avg = await client.getMarketAveragePrice({
+  symbol: "tBTCUSD",
+  amount: "1.0",
+});
+// { rate_avg, amount }
+```
+
+- [`getForeignExchangeRate`](https://docs.bitfinex.com/reference/rest-public-foreign-exchange-rate)
+
+```typescript
+const fx = await client.getForeignExchangeRate({ ccy1: "BTC", ccy2: "USD" });
+// { current_rate }
+```
+
+#### Error envelope
+
+When a v2 endpoint replies with `["error", CODE, MESSAGE]` (the documented
+[maintenance error](https://docs.bitfinex.com/docs/rest-general#maintenance-error)
+`["error", 20060, "maintenance"]` is one example), `PublicClientV2` detects
+the envelope in both `get` and `post` and rejects with a `BitfinexError` so
+decoders never run on the malformed body.
+
+```typescript
+import { BitfinexError, PublicClientV2 } from "bitfinex-node-api";
+
+const client = new PublicClientV2();
+try {
+  await client.getBook({ symbol: "tBTCUSD" });
+} catch (error) {
+  if (error instanceof BitfinexError) {
+    // error.code   — number (e.g. 20060 for maintenance)
+    // error.message — `Bitfinex error <code>: <text>`
+  }
+}
 ```
 
 ### AuthenticatedClient
