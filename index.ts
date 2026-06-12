@@ -5,3 +5,4 @@ export * from "./src/auth-v2.js";
 export * from "./src/signature.js";
 export * from "./src/signature-v2.js";
 export * from "./src/ws.js";
+export * from "./src/ws-v2.js";
