@@ -1,6 +1,6 @@
 # Bitfinex Node.js API [![CI Status](https://github.com/vansergen/bitfinex-node-api/workflows/CI/badge.svg?branch=main)](https://github.com/vansergen/bitfinex-node-api/actions/workflows/ci.yml?query=branch%3Amain) [![npm version](https://badge.fury.io/js/bitfinex-node-api.svg)](https://badge.fury.io/js/bitfinex-node-api) [![Coverage Status](https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main)](https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main) [![Known Vulnerabilities](https://snyk.io/test/github/vansergen/bitfinex-node-api/badge.svg)](https://snyk.io/test/github/vansergen/bitfinex-node-api) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) ![NPM license](https://img.shields.io/npm/l/bitfinex-node-api) ![node version](https://img.shields.io/node/v/bitfinex-node-api) ![npm downloads](https://img.shields.io/npm/dt/bitfinex-node-api) ![GitHub top language](https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api)
 
-Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint — and the [v2 public REST](https://docs.bitfinex.com/reference) endpoints.
+Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint — and the [v2 public REST](https://docs.bitfinex.com/reference) + [v2 authenticated REST](https://docs.bitfinex.com/docs/rest-auth) endpoints.
 
 ## Installation
 
@@ -579,6 +579,258 @@ const funding = await client.closeFunding({ swap_id: 11576737 });
 const response = await client.closePosition({ position_id: 943715 });
 ```
 
+### AuthenticatedClientV2
+
+Client for the [Bitfinex v2 authenticated REST](https://docs.bitfinex.com/docs/rest-auth)
+endpoints. The default base URL is `https://api.bitfinex.com/v2/` — distinct
+from the public `https://api-pub.bitfinex.com/v2/` host that `PublicClientV2`
+uses; override via the `url` option if needed. The class extends
+`PublicClientV2`, so all v2 public methods are available on the same
+instance, but they will hit whichever host the auth client was configured
+with (so by default the public methods on an `AuthenticatedClientV2` instance
+go to `api.bitfinex.com`, which serves them with stricter rate limits than
+`api-pub.bitfinex.com`). For high-volume public data, prefer a dedicated
+`PublicClientV2` instance. Each request is signed with HMAC-SHA384 over
+`/api/v2/{path}{nonce}{body}` and sent with the `bfx-apikey`, `bfx-nonce`,
+`bfx-signature` headers. Responses use the same `BitfinexError` envelope
+handling as `PublicClientV2`, and write endpoints return a typed
+`INotificationV2<T>` envelope.
+
+```typescript
+import { AuthenticatedClientV2 } from "bitfinex-node-api";
+
+const client = new AuthenticatedClientV2({
+  key: "BitfinexAPIKey",
+  secret: "BitfinexAPISecret",
+});
+```
+
+The default nonce generator (`createMonotonicNonce()`) is anchored to
+`Date.now() * 1000` (microsecond resolution) and bumps `+1` whenever a second
+call lands inside the same millisecond, so concurrent `Promise.all` and fast
+sequential usage stay strictly increasing as Bitfinex requires. You can still
+provide a custom generator via the `nonce` constructor option or the
+`client.nonce = ...` setter.
+
+#### Wallets
+
+- [`getWallets`](https://docs.bitfinex.com/reference/rest-auth-wallets)
+
+```typescript
+const wallets = await client.getWallets();
+```
+
+#### Orders
+
+- [`getActiveOrders`](https://docs.bitfinex.com/reference/rest-auth-retrieve-orders)
+  / [by symbol](https://docs.bitfinex.com/reference/rest-auth-retrieve-orders-by-symbol)
+
+```typescript
+const all = await client.getActiveOrders();
+const btc = await client.getActiveOrders({ symbol: "tBTCUSD", id: [1] });
+```
+
+- [`submitOrder`](https://docs.bitfinex.com/reference/rest-auth-submit-order)
+
+```typescript
+const result = await client.submitOrder({
+  type: "EXCHANGE LIMIT",
+  symbol: "tBTCUSD",
+  amount: "0.01",
+  price: "50000",
+});
+```
+
+- [`updateOrder`](https://docs.bitfinex.com/reference/rest-auth-update-order)
+
+```typescript
+await client.updateOrder({ id: 1, price: "51000" });
+```
+
+- [`cancelOrder`](https://docs.bitfinex.com/reference/rest-auth-cancel-order)
+
+```typescript
+await client.cancelOrder({ id: 1 });
+```
+
+- [`cancelOrdersMultiple`](https://docs.bitfinex.com/reference/rest-auth-cancel-orders-multiple)
+
+```typescript
+await client.cancelOrdersMultiple({ all: 1 });
+```
+
+- [`orderMulti`](https://docs.bitfinex.com/reference/rest-auth-order-multi)
+
+```typescript
+await client.orderMulti({
+  ops: [
+    [
+      "on",
+      { type: "LIMIT", symbol: "tBTCUSD", amount: "0.01", price: "50000" },
+    ],
+    ["oc", { id: 1 }],
+  ],
+});
+```
+
+- [`getOrdersHistory`](https://docs.bitfinex.com/reference/rest-auth-orders-history)
+  / [by symbol](https://docs.bitfinex.com/reference/rest-auth-orders-history-by-symbol)
+
+```typescript
+await client.getOrdersHistory({ symbol: "tBTCUSD", limit: 25 });
+```
+
+- [`getOrderTrades`](https://docs.bitfinex.com/reference/rest-auth-order-trades)
+
+```typescript
+await client.getOrderTrades({ symbol: "tETHUSD", id: 33963608932 });
+```
+
+- [`getTradesHistory`](https://docs.bitfinex.com/reference/rest-auth-trades)
+  / [by symbol](https://docs.bitfinex.com/reference/rest-auth-trades-by-symbol)
+
+```typescript
+await client.getTradesHistory({ limit: 50, sort: -1 });
+```
+
+- [`getOtcOrdersHistory`](https://docs.bitfinex.com/reference/otc-orders-history)
+
+```typescript
+await client.getOtcOrdersHistory({ symbol: "tBTCUSD" });
+```
+
+- [`getLedgers`](https://docs.bitfinex.com/reference/rest-auth-ledgers)
+
+```typescript
+await client.getLedgers({ currency: "USD", limit: 100 });
+```
+
+#### Positions
+
+- [`getMarginInfo`](https://docs.bitfinex.com/reference/rest-auth-info-margin)
+
+```typescript
+await client.getMarginInfo({ key: "base" });
+await client.getMarginInfo({ key: "tBTCUSD" });
+```
+
+- [`getPositions`](https://docs.bitfinex.com/reference/rest-auth-positions)
+
+```typescript
+await client.getPositions();
+```
+
+- [`claimPosition`](https://docs.bitfinex.com/reference/rest-auth-position-claim)
+- [`increasePosition`](https://docs.bitfinex.com/reference/rest-auth-position-increase)
+- [`getIncreasePositionInfo`](https://docs.bitfinex.com/reference/rest-auth-increase-position-info)
+- [`getPositionsHistory`](https://docs.bitfinex.com/reference/rest-auth-positions-hist)
+- [`getPositionsSnapshot`](https://docs.bitfinex.com/reference/rest-auth-positions-snap)
+- [`getPositionsAudit`](https://docs.bitfinex.com/reference/rest-auth-positions-audit)
+- [`updatePositionFundingType`](https://docs.bitfinex.com/reference/update-position-funding-type)
+- [`derivPositionCollateralSet`](https://docs.bitfinex.com/reference/rest-auth-deriv-pos-collateral-set)
+- [`derivPositionCollateralLimits`](https://docs.bitfinex.com/reference/rest-auth-calc-deriv-collateral-limits)
+
+```typescript
+await client.claimPosition({ id: 142031891 });
+await client.increasePosition({ symbol: "tBTCUSD", amount: "0.1" });
+await client.getIncreasePositionInfo({ symbol: "tBTCUSD" });
+await client.derivPositionCollateralSet({
+  symbol: "tBTCF0:USTF0",
+  collateral: 100,
+});
+await client.derivPositionCollateralLimits({ symbol: "tBTCF0:USTF0" });
+```
+
+#### Margin Funding
+
+- [`getFundingOffers`](https://docs.bitfinex.com/reference/rest-auth-funding-offers)
+- [`submitFundingOffer`](https://docs.bitfinex.com/reference/rest-auth-submit-funding-offer)
+- [`cancelFundingOffer`](https://docs.bitfinex.com/reference/rest-auth-cancel-funding-offer)
+- [`cancelAllFundingOffers`](https://docs.bitfinex.com/reference/rest-auth-cancel-all-funding-offers)
+- [`fundingClose`](https://docs.bitfinex.com/reference/rest-auth-funding-close)
+- [`fundingAutoRenew`](https://docs.bitfinex.com/reference/rest-auth-funding-auto-renew)
+- [`keepFunding`](https://docs.bitfinex.com/reference/rest-auth-keep-funding)
+- [`getFundingOffersHistory`](https://docs.bitfinex.com/reference/rest-auth-funding-offers-hist)
+- [`getFundingLoans`](https://docs.bitfinex.com/reference/rest-auth-funding-loans)
+- [`getFundingLoansHistory`](https://docs.bitfinex.com/reference/rest-auth-funding-loans-hist)
+- [`getFundingCredits`](https://docs.bitfinex.com/reference/rest-auth-funding-credits)
+- [`getFundingCreditsHistory`](https://docs.bitfinex.com/reference/rest-auth-funding-credits-hist)
+- [`getFundingTradesHistory`](https://docs.bitfinex.com/reference/rest-auth-funding-trades-hist)
+- [`getFundingInfo`](https://docs.bitfinex.com/reference/rest-auth-info-funding)
+
+```typescript
+await client.submitFundingOffer({
+  type: "LIMIT",
+  symbol: "fUSD",
+  amount: "50",
+  rate: "0.001",
+  period: 2,
+});
+await client.cancelAllFundingOffers({ currency: "USD" });
+await client.getFundingLoans({ symbol: "fUSD" });
+await client.getFundingInfo({ key: "fUST" });
+```
+
+#### Account actions
+
+- [`getUserInfo`](https://docs.bitfinex.com/reference/rest-auth-info-user)
+- [`getSummary`](https://docs.bitfinex.com/reference/rest-auth-summary)
+- [`getLoginsHistory`](https://docs.bitfinex.com/reference/rest-auth-logins-hist)
+- [`getKeyPermissions`](https://docs.bitfinex.com/reference/key-permissions)
+- [`generateToken`](https://docs.bitfinex.com/reference/generate-token)
+- [`getAuditHistory`](https://docs.bitfinex.com/reference/rest-auth-audit-hist)
+- [`transfer`](https://docs.bitfinex.com/reference/rest-auth-transfer)
+- [`getDepositAddress`](https://docs.bitfinex.com/reference/rest-auth-deposit-address)
+- [`getDepositAddressAll`](https://docs.bitfinex.com/reference/deposit-address-all)
+- [`generateDepositInvoice`](https://docs.bitfinex.com/reference/rest-auth-deposit-invoice)
+- [`lnxInvoicePayments`](https://docs.bitfinex.com/reference/lnx-invoice-payments)
+- [`withdraw`](https://docs.bitfinex.com/reference/rest-auth-withdraw)
+- [`getMovements`](https://docs.bitfinex.com/reference/rest-auth-movements)
+- [`getMovementInfo`](https://docs.bitfinex.com/reference/movement-info)
+- [`getAlerts`](https://docs.bitfinex.com/reference/rest-auth-alerts)
+- [`setAlert`](https://docs.bitfinex.com/reference/rest-auth-alert-set)
+- [`deleteAlert`](https://docs.bitfinex.com/reference/rest-auth-alert-del)
+- [`getCalcOrderAvailable`](https://docs.bitfinex.com/reference/rest-auth-calc-order-avail)
+- [`getUserSettings`](https://docs.bitfinex.com/reference/rest-auth-settings)
+- [`setUserSettings`](https://docs.bitfinex.com/reference/rest-auth-settings-set)
+- [`deleteUserSettings`](https://docs.bitfinex.com/reference/rest-auth-settings-del)
+
+```typescript
+await client.transfer({
+  from: "exchange",
+  to: "margin",
+  currency: "UST",
+  amount: "100",
+});
+await client.getDepositAddress({ wallet: "exchange", method: "bitcoin" });
+await client.withdraw({
+  wallet: "exchange",
+  method: "ethereum",
+  amount: "0.1",
+  address: "0xabc...",
+});
+await client.setAlert({ type: "price", symbol: "tETHUSD", price: "185" });
+await client.deleteAlert({ symbol: "tBTCUSD", price: 600 });
+await client.getUserSettings({ keys: ["bit"] });
+await client.setUserSettings({ settings: [["bit", "finex"]] });
+```
+
+#### Thalex Derivatives
+
+- [`thalexDeposit`](https://docs.bitfinex.com/reference/thalex-deposit-request)
+- [`thalexWithdrawal`](https://docs.bitfinex.com/reference/thalex-withdrawal-request)
+- [`thalexFreeTransferCount`](https://docs.bitfinex.com/reference/thalex-free-transfer-count)
+
+```typescript
+await client.thalexDeposit({
+  provider: "thalex",
+  amount: "1000",
+  ccy: "USE",
+  tfaToken: { method: "u2f" },
+});
+await client.thalexFreeTransferCount({ provider: "thalex" });
+```
+
 ### WebSocketClient
 
 The [v1 WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint
@@ -804,6 +1056,8 @@ const sub = await ws.subscribeTicker({ signal: controller.signal });
 
 ### Signature
 
+v1 signature (base64 payload + HMAC-SHA384, headers `X-BFX-*`):
+
 ```typescript
 import { signature } from "bitfinex-node-api";
 
@@ -811,6 +1065,23 @@ const headers = signature({
   key: "BitfinexAPIKey",
   secret: "BitfinexAPISecret",
   payload: Buffer.from(JSON.stringify({ request, nonce })).toString("base64"),
+});
+```
+
+v2 signature (HMAC-SHA384 over `/api/v2/{path}{nonce}{body}`, headers
+`bfx-apikey`/`bfx-nonce`/`bfx-signature`):
+
+```typescript
+import { signatureV2 } from "bitfinex-node-api";
+
+const body = JSON.stringify({});
+const nonce = `${Date.now() * 1000}`;
+const headers = signatureV2({
+  key: "BitfinexAPIKey",
+  secret: "BitfinexAPISecret",
+  path: "auth/r/wallets",
+  nonce,
+  body,
 });
 ```
 
