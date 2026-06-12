@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.3.1](https://github.com/vansergen/bitfinex-node-api/compare/v4.3.0...v4.3.1) (2026-06-12)
+
+### Dependencies
+
+- bump rpc-request from 9.0.0 to 10.0.0 ([c0d9a44](https://github.com/vansergen/bitfinex-node-api/commit/c0d9a4404494c2d5c405f839ee541869958a1342))
+
 ## [4.3.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.2.0...v4.3.0) (2026-06-12)
 
 ### Features
