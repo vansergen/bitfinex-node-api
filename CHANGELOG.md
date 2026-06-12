@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.3.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.2.0...v4.3.0) (2026-06-12)
+
+### Features
+
+- add WebSocketClientV2 ([2109513](https://github.com/vansergen/bitfinex-node-api/commit/21095136bb587f7a23a4f3c6fde6c6e713eef493))
+
 ## [4.2.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.1.0...v4.2.0) (2026-06-12)
 
 ### Features

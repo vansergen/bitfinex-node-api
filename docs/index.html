@@ -160,6 +160,8 @@
             <a href="https://docs.bitfinex.com/docs/rest-auth"
               >v2 authenticated REST</a
             >
+            +
+            <a href="https://docs.bitfinex.com/docs/ws-general">v2 WebSocket</a>
             endpoints.
           </p>
           <h2 id="installation" class="tsd-anchor-link">
@@ -1768,6 +1770,180 @@
           <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">controller</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">AbortController</span><span class="hl-1">();</span><br/><span class="hl-0">setTimeout</span><span class="hl-1">(() </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">controller</span><span class="hl-1">.</span><span class="hl-0">abort</span><span class="hl-1">();</span><br/><span class="hl-1">}, </span><span class="hl-7">1000</span><span class="hl-1">);</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">sub</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTicker</span><span class="hl-1">({ </span><span class="hl-4">signal:</span><span class="hl-1"> </span><span class="hl-4">controller</span><span class="hl-1">.</span><span class="hl-4">signal</span><span class="hl-1"> });</span>
 </code><button type="button">Copy</button></pre>
 
+          <h3 id="websocketclientv2" class="tsd-anchor-link">
+            WebSocketClientV2<a
+              href="#websocketclientv2"
+              aria-label="Permalink"
+              class="tsd-anchor-icon"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="assets/icons.svg#icon-anchor"></use></svg
+            ></a>
+          </h3>
+          <p>
+            Client for the
+            <a href="https://docs.bitfinex.com/docs/ws-general"
+              >Bitfinex v2 WebSocket</a
+            >
+            API. The default URL is
+            <code>wss://api-pub.bitfinex.com/ws/2</code> (public); when
+            <code>key</code> and <code>secret</code> are supplied it defaults to
+            the authenticated host <code>wss://api.bitfinex.com/ws/2</code>.
+            Override either via the <code>ws_url</code> option. Raw positional
+            array frames are parsed into typed objects discriminated by a
+            <code>type</code> field (and <code>channel_id</code>). v2
+            subscriptions use <code>symbol</code> (e.g. <code>tBTCUSD</code>,
+            <code>fUSD</code>), unlike the v1 client's <code>pair</code>.
+          </p>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">WebSocketClientV2</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">ws</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">WebSocketClientV2</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPIKey&quot;</span><span class="hl-1">, </span><span class="hl-8">// optional, only required for `auth`</span><br/><span class="hl-1">  </span><span class="hl-4">secret:</span><span class="hl-1"> </span><span class="hl-2">&quot;BitfinexAPISecret&quot;</span><span class="hl-1">, </span><span class="hl-8">// optional, only required for `auth`</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">on</span><span class="hl-1">(</span><span class="hl-2">&quot;message&quot;</span><span class="hl-1">, (</span><span class="hl-4">message</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">message</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">connect</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>connect</code> / <code>disconnect</code></li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">connect</span><span class="hl-1">();</span><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">disconnect</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <code>ping</code> —
+              <a href="https://docs.bitfinex.com/docs/ws-general#pingpong"
+                >docs</a
+              >. The client tags each ping with an auto-incrementing
+              <code>cid</code> and resolves with the matching <code>pong</code>.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">pong</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">ping</span><span class="hl-1">(); </span><span class="hl-8">// { event: &quot;pong&quot;, ts, cid }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <code>conf</code> — change connection settings via
+              <a href="https://docs.bitfinex.com/docs/flag-values"
+                >bitwise flags</a
+              >. The exported <code>ConfFlags</code> enumerates
+              <code>TIMESTAMP</code>, <code>SEQ_ALL</code>,
+              <code>OB_CHECKSUM</code>, <code>BULK_UPDATES</code>.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">ConfFlags</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;bitfinex-node-api&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">conf</span><span class="hl-1">({ </span><span class="hl-4">flags:</span><span class="hl-1"> </span><span class="hl-4">ConfFlags</span><span class="hl-1">.</span><span class="hl-6">OB_CHECKSUM</span><span class="hl-1"> }); </span><span class="hl-8">// 131072</span><br/><span class="hl-8">// Checksum frames then arrive as { channel_id, type: &quot;checksum&quot;, checksum }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/ws-public-ticker"
+                ><code>subscribeTicker</code></a
+              >
+              — trading symbols emit <code>ticker</code>, funding currencies
+              emit <code>funding_ticker</code>.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTicker</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// { channel_id, type: &quot;ticker&quot;, symbol, bid, bid_size, ask, ask_size,</span><br/><span class="hl-8">//   daily_change, daily_change_relative, last_price, volume, high, low }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/ws-public-trades"
+                ><code>subscribeTrades</code></a
+              >
+              — one <code>trades_snapshot</code> then
+              <code>trade_executed</code>/<code>trade_updated</code>
+              (<code>te</code>/<code>tu</code>). Funding currencies emit
+              <code>funding_*</code> variants. The v2 trade layout is
+              <code>[ID, MTS, AMOUNT, PRICE]</code>.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">subscription</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeTrades</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/ws-public-books"
+                ><code>subscribeBook</code></a
+              >
+              /
+              <a href="https://docs.bitfinex.com/reference/ws-public-raw-books"
+                ><code>subscribeRawBook</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">book</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeBook</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">, </span><span class="hl-4">prec:</span><span class="hl-1"> </span><span class="hl-2">&quot;P0&quot;</span><span class="hl-1">, </span><span class="hl-4">len:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1"> });</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">raw</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeRawBook</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1">, </span><span class="hl-4">len:</span><span class="hl-1"> </span><span class="hl-7">25</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/ws-public-candles"
+                ><code>subscribeCandles</code></a
+              >
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">candles</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeCandles</span><span class="hl-1">({ </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;trade:1m:tBTCUSD&quot;</span><span class="hl-1"> });</span><br/><span class="hl-8">// { channel_id, type: &quot;candles_snapshot&quot; | &quot;candle_update&quot;, key, ... }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/reference/ws-public-status"
+                ><code>subscribeStatus</code></a
+              >
+              — <code>deriv:SYMBOL</code> emits <code>derivatives_status</code>,
+              <code>liq:global</code> emits <code>liquidation_feed</code>.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">deriv</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeStatus</span><span class="hl-1">({ </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;deriv:tBTCF0:USTF0&quot;</span><span class="hl-1"> });</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">liq</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">subscribeStatus</span><span class="hl-1">({ </span><span class="hl-4">key:</span><span class="hl-1"> </span><span class="hl-2">&quot;liq:global&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>unsubscribe</code></li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">unsubscribe</span><span class="hl-1">({ </span><span class="hl-4">chanId:</span><span class="hl-1"> </span><span class="hl-4">subscription</span><span class="hl-1">.</span><span class="hl-4">chanId</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li>
+              <a href="https://docs.bitfinex.com/docs/ws-auth"
+                ><code>auth</code></a
+              >
+              — authenticate to receive account events on channel id
+              <code>0</code>. <code>dms: 4</code> enables the Dead-Man-Switch
+              (cancel all orders on disconnect); <code>filter</code> narrows the
+              delivered events.
+            </li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">response</span><span class="hl-1"> = </span><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">auth</span><span class="hl-1">({ </span><span class="hl-4">dms:</span><span class="hl-1"> </span><span class="hl-7">4</span><span class="hl-1">, </span><span class="hl-4">filter:</span><span class="hl-1"> [</span><span class="hl-2">&quot;trading&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;wallet&quot;</span><span class="hl-1">] });</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>
+            Once authenticated, account frames are decoded into typed messages:
+          </p>
+          <pre><code class="typescript"><span class="hl-8">// { channel_id: 0, type: &quot;wallet_snapshot&quot;, wallets: [...] }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;wallet_update&quot;, wallet_type, currency, balance, ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;position_snapshot&quot; | &quot;position_new&quot; | &quot;position_update&quot; | &quot;position_close&quot;, ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;order_snapshot&quot; | &quot;order_new&quot; | &quot;order_update&quot; | &quot;order_cancel&quot;, ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;balance_update&quot;, aum, aum_net }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;funding_offer_snapshot&quot; | &quot;funding_offer_new&quot; | ..., ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;funding_credit_snapshot&quot; | ..., ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;funding_loan_snapshot&quot; | ..., ... }</span><br/><span class="hl-8">// { channel_id: 0, type: &quot;notification&quot;, mts, notification_type, status, text, ... }</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>
+            Account frames whose payload is not decoded (e.g.
+            <code>te</code>/<code>tu</code> account trades,
+            <code>miu</code> margin info, <code>fiu</code> funding info,
+            historical snapshots) come through as a generic envelope with the
+            <a href="https://docs.bitfinex.com/docs/abbreviations-glossary"
+              >v2 mnemonic</a
+            >:
+          </p>
+          <pre><code class="typescript"><span class="hl-8">// { channel_id: 0, type: &quot;auth_envelope&quot;, mnemonic: &quot;miu&quot;, payload: [...] }</span>
+</code><button type="button">Copy</button></pre>
+
+          <ul>
+            <li><code>unauth</code> / <code>send</code></li>
+          </ul>
+          <pre><code class="typescript"><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">unauth</span><span class="hl-1">();</span><br/><span class="hl-3">await</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">send</span><span class="hl-1">({ </span><span class="hl-4">event:</span><span class="hl-1"> </span><span class="hl-2">&quot;ping&quot;</span><span class="hl-1">, </span><span class="hl-4">cid:</span><span class="hl-1"> </span><span class="hl-7">1234</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+          <p>
+            Every method accepts an <code>AbortSignal</code>, and async
+            iterators are available for all public channels
+            (<code>tickers</code>, <code>trades</code>, <code>books</code>,
+            <code>rawBooks</code>, <code>candles</code>, <code>status</code>):
+          </p>
+          <pre><code class="typescript"><span class="hl-3">for</span><span class="hl-1"> </span><span class="hl-3">await</span><span class="hl-1"> (</span><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">update</span><span class="hl-1"> </span><span class="hl-5">of</span><span class="hl-1"> </span><span class="hl-4">ws</span><span class="hl-1">.</span><span class="hl-0">tickers</span><span class="hl-1">({ </span><span class="hl-4">symbol:</span><span class="hl-1"> </span><span class="hl-2">&quot;tBTCUSD&quot;</span><span class="hl-1"> })) {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">update</span><span class="hl-1">);</span><br/><span class="hl-1">}</span>
+</code><button type="button">Copy</button></pre>
+
           <h3 id="signature" class="tsd-anchor-link">
             Signature<a
               href="#signature"
@@ -2037,6 +2213,11 @@
                           >
                         </li>
                       </ul>
+                    </li>
+                    <li>
+                      <a href="#websocketclientv2"
+                        ><span>Web<wbr />Socket<wbr />Client<wbr />V2</span></a
+                      >
                     </li>
                     <li>
                       <a href="#signature"><span>Signature</span></a>

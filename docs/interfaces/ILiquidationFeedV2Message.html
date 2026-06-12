@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>ISignal | bitfinex-node-api</title>
+    <title>ILiquidationFeedV2Message | bitfinex-node-api</title>
     <meta name="description" content="Documentation for bitfinex-node-api" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/style.css" />
@@ -84,143 +84,55 @@
       <div class="col-content">
         <div class="tsd-page-title">
           <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-            <li><a href="" aria-current="page">ISignal</a></li>
+            <li>
+              <a href="" aria-current="page">ILiquidationFeedV2Message</a>
+            </li>
           </ul>
-          <h1>Interface ISignal</h1>
+          <h1>Interface ILiquidationFeedV2Message</h1>
         </div>
         <div class="tsd-signature">
           <span class="tsd-signature-keyword">interface</span>
-          <span class="tsd-kind-interface">ISignal</span>
+          <span class="tsd-kind-interface">ILiquidationFeedV2Message</span>
           <span class="tsd-signature-symbol">{</span><br />    <a
             class="tsd-kind-property"
-            href="#signal"
-            >signal</a
-          ><span class="tsd-signature-symbol">?:</span>
-          <span class="tsd-signature-type">AbortSignal</span>
-          <span class="tsd-signature-symbol">|</span>
-          <span class="tsd-signature-type">null</span
+            href="#channel_id"
+            >channel_id</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">number</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#key"
+            >key</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">string</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#liquidations"
+            >liquidations</a
+          ><span class="tsd-signature-symbol">:</span>
+          <a
+            href="ILiquidationV2.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >ILiquidationV2</a
+          ><span class="tsd-signature-symbol">[]</span
+          ><span class="tsd-signature-symbol">;</span><br />    <a
+            class="tsd-kind-property"
+            href="#type"
+            >type</a
+          ><span class="tsd-signature-symbol">:</span>
+          <span class="tsd-signature-type">&quot;liquidation_feed&quot;</span
           ><span class="tsd-signature-symbol">;</span><br /><span
             class="tsd-signature-symbol"
             >}</span
           >
         </div>
-        <section class="tsd-panel tsd-hierarchy" data-refl="2043">
-          <h4>
-            Hierarchy (<a href="../hierarchy.html#ISignal">View Summary</a>)
-          </h4>
-          <ul class="tsd-hierarchy">
-            <li class="tsd-hierarchy-item">
-              <span class="tsd-hierarchy-target">ISignal</span>
-              <ul class="tsd-hierarchy">
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeTickerOptions.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeTickerOptions</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeTradesOptions.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeTradesOptions</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeBookOptions.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeBookOptions</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeRawBookOptions.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeRawBookOptions</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="IUnsubscribeOptions.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >IUnsubscribeOptions</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeTickerV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeTickerV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeTradesV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeTradesV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeBookV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeBookV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeRawBookV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeRawBookV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeCandlesV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeCandlesV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="ISubscribeStatusV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >ISubscribeStatusV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="IUnsubscribeV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >IUnsubscribeV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="IConfV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >IConfV2Options</a
-                  >
-                </li>
-                <li class="tsd-hierarchy-item">
-                  <a
-                    href="IAuthV2Options.html"
-                    class="tsd-signature-type tsd-kind-interface"
-                    >IAuthV2Options</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </section>
         <aside class="tsd-sources">
           <ul>
             <li>
               Defined in
               <a
-                href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws.ts#L21"
-                >src/ws.ts:21</a
+                href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws-v2.ts#L355"
+                >src/ws-v2.ts:355</a
               >
             </li>
           </ul>
@@ -244,14 +156,41 @@
                 <section class="tsd-index-section">
                   <h3 class="tsd-index-heading">Properties</h3>
                   <div class="tsd-index-list">
-                    <a href="#signal" class="tsd-index-link"
+                    <a href="#channel_id" class="tsd-index-link"
                       ><svg
                         class="tsd-kind-icon"
                         viewBox="0 0 24 24"
                         aria-label="Property"
                       >
                         <use href="../assets/icons.svg#icon-1024"></use></svg
-                      ><span>signal?</span></a
+                      ><span>channel_<wbr />id</span></a
+                    >
+                    <a href="#key" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>key</span></a
+                    >
+                    <a href="#liquidations" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>liquidations</span></a
+                    >
+                    <a href="#type" class="tsd-index-link"
+                      ><svg
+                        class="tsd-kind-icon"
+                        viewBox="0 0 24 24"
+                        aria-label="Property"
+                      >
+                        <use href="../assets/icons.svg#icon-1024"></use></svg
+                      ><span>type</span></a
                     >
                   </div>
                 </section>
@@ -274,10 +213,10 @@
           </summary>
           <section>
             <section class="tsd-panel tsd-member">
-              <h3 class="tsd-anchor-link" id="signal">
-                <code class="tsd-tag">Optional</code><span>signal</span
+              <h3 class="tsd-anchor-link" id="channel_id">
+                <span>channel_<wbr />id</span
                 ><a
-                  href="#signal"
+                  href="#channel_id"
                   aria-label="Permalink"
                   class="tsd-anchor-icon"
                   ><svg viewBox="0 0 24 24" aria-hidden="true">
@@ -285,19 +224,101 @@
                 ></a>
               </h3>
               <div class="tsd-signature">
-                <span class="tsd-kind-property">signal</span
-                ><span class="tsd-signature-symbol">?:</span>
-                <span class="tsd-signature-type">AbortSignal</span>
-                <span class="tsd-signature-symbol">|</span>
-                <span class="tsd-signature-type">null</span>
+                <span class="tsd-kind-property">channel_id</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">number</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws.ts#L22"
-                      >src/ws.ts:22</a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws-v2.ts#L356"
+                      >src/ws-v2.ts:356</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="key">
+                <span>key</span
+                ><a href="#key" aria-label="Permalink" class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">key</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws-v2.ts#L358"
+                      >src/ws-v2.ts:358</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="liquidations">
+                <span>liquidations</span
+                ><a
+                  href="#liquidations"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">liquidations</span
+                ><span class="tsd-signature-symbol">:</span>
+                <a
+                  href="ILiquidationV2.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >ILiquidationV2</a
+                ><span class="tsd-signature-symbol">[]</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws-v2.ts#L359"
+                      >src/ws-v2.ts:359</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section class="tsd-panel tsd-member">
+              <h3 class="tsd-anchor-link" id="type">
+                <span>type</span
+                ><a href="#type" aria-label="Permalink" class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </h3>
+              <div class="tsd-signature">
+                <span class="tsd-kind-property">type</span
+                ><span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type"
+                  >&quot;liquidation_feed&quot;</span
+                >
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/vansergen/bitfinex-node-api/blob/main/src/ws-v2.ts#L357"
+                      >src/ws-v2.ts:357</a
                     >
                   </li>
                 </ul>
@@ -466,14 +487,38 @@
                   >Properties
                 </summary>
                 <div>
-                  <a href="#signal"
+                  <a href="#channel_id"
                     ><svg
                       class="tsd-kind-icon"
                       viewBox="0 0 24 24"
                       aria-label="Property"
                     >
                       <use href="../assets/icons.svg#icon-1024"></use></svg
-                    ><span>signal</span></a
+                    ><span>channel_<wbr />id</span></a
+                  ><a href="#key"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>key</span></a
+                  ><a href="#liquidations"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>liquidations</span></a
+                  ><a href="#type"
+                    ><svg
+                      class="tsd-kind-icon"
+                      viewBox="0 0 24 24"
+                      aria-label="Property"
+                    >
+                      <use href="../assets/icons.svg#icon-1024"></use></svg
+                    ><span>type</span></a
                   >
                 </div>
               </details>
