@@ -1,6 +1,6 @@
 # Bitfinex Node.js API [![CI Status](https://github.com/vansergen/bitfinex-node-api/workflows/CI/badge.svg?branch=main)](https://github.com/vansergen/bitfinex-node-api/actions/workflows/ci.yml?query=branch%3Amain) [![npm version](https://badge.fury.io/js/bitfinex-node-api.svg)](https://badge.fury.io/js/bitfinex-node-api) [![Coverage Status](https://coveralls.io/repos/github/vansergen/bitfinex-node-api/badge.svg?branch=main)](https://coveralls.io/github/vansergen/bitfinex-node-api?branch=main) [![Known Vulnerabilities](https://snyk.io/test/github/vansergen/bitfinex-node-api/badge.svg)](https://snyk.io/test/github/vansergen/bitfinex-node-api) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) ![NPM license](https://img.shields.io/npm/l/bitfinex-node-api) ![node version](https://img.shields.io/node/v/bitfinex-node-api) ![npm downloads](https://img.shields.io/npm/dt/bitfinex-node-api) ![GitHub top language](https://img.shields.io/github/languages/top/vansergen/bitfinex-node-api)
 
-Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint — and the [v2 public REST](https://docs.bitfinex.com/reference) + [v2 authenticated REST](https://docs.bitfinex.com/docs/rest-auth) endpoints.
+Node.js client for the [Bitfinex v1 API](https://docs.bitfinex.com/v1/reference) — public and authenticated REST plus the v1 [WebSocket](https://docs.bitfinex.com/v1/docs/ws-general) endpoint — and the [v2 public REST](https://docs.bitfinex.com/reference) + [v2 authenticated REST](https://docs.bitfinex.com/docs/rest-auth) + [v2 WebSocket](https://docs.bitfinex.com/docs/ws-general) endpoints.
 
 ## Installation
 
@@ -1052,6 +1052,153 @@ setTimeout(() => {
   controller.abort();
 }, 1000);
 const sub = await ws.subscribeTicker({ signal: controller.signal });
+```
+
+### WebSocketClientV2
+
+Client for the [Bitfinex v2 WebSocket](https://docs.bitfinex.com/docs/ws-general)
+API. The default URL is `wss://api-pub.bitfinex.com/ws/2` (public); when `key`
+and `secret` are supplied it defaults to the authenticated host
+`wss://api.bitfinex.com/ws/2`. Override either via the `ws_url` option. Raw
+positional array frames are parsed into typed objects discriminated by a
+`type` field (and `channel_id`). v2 subscriptions use `symbol` (e.g.
+`tBTCUSD`, `fUSD`), unlike the v1 client's `pair`.
+
+```typescript
+import { WebSocketClientV2 } from "bitfinex-node-api";
+
+const ws = new WebSocketClientV2({
+  key: "BitfinexAPIKey", // optional, only required for `auth`
+  secret: "BitfinexAPISecret", // optional, only required for `auth`
+});
+
+ws.on("message", (message) => {
+  console.log(message);
+});
+
+await ws.connect();
+```
+
+- `connect` / `disconnect`
+
+```typescript
+await ws.connect();
+await ws.disconnect();
+```
+
+- `ping` — [docs](https://docs.bitfinex.com/docs/ws-general#pingpong). The
+  client tags each ping with an auto-incrementing `cid` and resolves with the
+  matching `pong`.
+
+```typescript
+const pong = await ws.ping(); // { event: "pong", ts, cid }
+```
+
+- `conf` — change connection settings via
+  [bitwise flags](https://docs.bitfinex.com/docs/flag-values). The exported
+  `ConfFlags` enumerates `TIMESTAMP`, `SEQ_ALL`, `OB_CHECKSUM`, `BULK_UPDATES`.
+
+```typescript
+import { ConfFlags } from "bitfinex-node-api";
+
+await ws.conf({ flags: ConfFlags.OB_CHECKSUM }); // 131072
+// Checksum frames then arrive as { channel_id, type: "checksum", checksum }
+```
+
+- [`subscribeTicker`](https://docs.bitfinex.com/reference/ws-public-ticker) —
+  trading symbols emit `ticker`, funding currencies emit `funding_ticker`.
+
+```typescript
+const subscription = await ws.subscribeTicker({ symbol: "tBTCUSD" });
+// { channel_id, type: "ticker", symbol, bid, bid_size, ask, ask_size,
+//   daily_change, daily_change_relative, last_price, volume, high, low }
+```
+
+- [`subscribeTrades`](https://docs.bitfinex.com/reference/ws-public-trades) —
+  one `trades_snapshot` then `trade_executed`/`trade_updated` (`te`/`tu`).
+  Funding currencies emit `funding_*` variants. The v2 trade layout is
+  `[ID, MTS, AMOUNT, PRICE]`.
+
+```typescript
+const subscription = await ws.subscribeTrades({ symbol: "tBTCUSD" });
+```
+
+- [`subscribeBook`](https://docs.bitfinex.com/reference/ws-public-books) /
+  [`subscribeRawBook`](https://docs.bitfinex.com/reference/ws-public-raw-books)
+
+```typescript
+const book = await ws.subscribeBook({ symbol: "tBTCUSD", prec: "P0", len: 25 });
+const raw = await ws.subscribeRawBook({ symbol: "tBTCUSD", len: 25 });
+```
+
+- [`subscribeCandles`](https://docs.bitfinex.com/reference/ws-public-candles)
+
+```typescript
+const candles = await ws.subscribeCandles({ key: "trade:1m:tBTCUSD" });
+// { channel_id, type: "candles_snapshot" | "candle_update", key, ... }
+```
+
+- [`subscribeStatus`](https://docs.bitfinex.com/reference/ws-public-status) —
+  `deriv:SYMBOL` emits `derivatives_status`, `liq:global` emits
+  `liquidation_feed`.
+
+```typescript
+const deriv = await ws.subscribeStatus({ key: "deriv:tBTCF0:USTF0" });
+const liq = await ws.subscribeStatus({ key: "liq:global" });
+```
+
+- `unsubscribe`
+
+```typescript
+await ws.unsubscribe({ chanId: subscription.chanId });
+```
+
+- [`auth`](https://docs.bitfinex.com/docs/ws-auth) — authenticate to receive
+  account events on channel id `0`. `dms: 4` enables the Dead-Man-Switch
+  (cancel all orders on disconnect); `filter` narrows the delivered events.
+
+```typescript
+const response = await ws.auth({ dms: 4, filter: ["trading", "wallet"] });
+```
+
+Once authenticated, account frames are decoded into typed messages:
+
+```typescript
+// { channel_id: 0, type: "wallet_snapshot", wallets: [...] }
+// { channel_id: 0, type: "wallet_update", wallet_type, currency, balance, ... }
+// { channel_id: 0, type: "position_snapshot" | "position_new" | "position_update" | "position_close", ... }
+// { channel_id: 0, type: "order_snapshot" | "order_new" | "order_update" | "order_cancel", ... }
+// { channel_id: 0, type: "balance_update", aum, aum_net }
+// { channel_id: 0, type: "funding_offer_snapshot" | "funding_offer_new" | ..., ... }
+// { channel_id: 0, type: "funding_credit_snapshot" | ..., ... }
+// { channel_id: 0, type: "funding_loan_snapshot" | ..., ... }
+// { channel_id: 0, type: "notification", mts, notification_type, status, text, ... }
+```
+
+Account frames whose payload is not decoded (e.g. `te`/`tu` account trades,
+`miu` margin info, `fiu` funding info, historical snapshots) come through as a
+generic envelope with the
+[v2 mnemonic](https://docs.bitfinex.com/docs/abbreviations-glossary):
+
+```typescript
+// { channel_id: 0, type: "auth_envelope", mnemonic: "miu", payload: [...] }
+```
+
+- `unauth` / `send`
+
+```typescript
+await ws.unauth();
+await ws.send({ event: "ping", cid: 1234 });
+```
+
+Every method accepts an `AbortSignal`, and async iterators are available for
+all public channels (`tickers`, `trades`, `books`, `rawBooks`, `candles`,
+`status`):
+
+```typescript
+for await (const update of ws.tickers({ symbol: "tBTCUSD" })) {
+  console.log(update);
+}
 ```
 
 ### Signature
