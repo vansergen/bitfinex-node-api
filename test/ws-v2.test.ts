@@ -11,6 +11,7 @@ import {
   type IBookUpdateV2Message,
   type ICandlesSnapshotV2Message,
   type ICandleUpdateV2Message,
+  type IChannelMessageV2,
   type IChecksumMessageV2,
   type IDerivativesStatusV2Message,
   type IFundingBookSnapshotV2Message,
@@ -123,6 +124,105 @@ describe("WebSocketClientV2", () => {
     deepStrictEqual(c.ws, null);
   });
 
+  /* ----------------------------- lifecycle ----------------------------- */
+
+  test("connect is a no-op when already open", async () => {
+    await client.connect();
+    await client.connect();
+    ok(client.ws);
+  });
+
+  test("disconnect resolves when no socket", async () => {
+    const c = new WebSocketClientV2({ ws_url });
+    await c.disconnect();
+  });
+
+  test("disconnect is a no-op when already CLOSED", async () => {
+    await client.connect();
+    await client.disconnect();
+    await client.disconnect();
+  });
+
+  test("send rejects when websocket is not connected", async () => {
+    const c = new WebSocketClientV2({ ws_url });
+    await rejects(c.send({ event: "ping" }), /not connected/u);
+  });
+
+  test("send rejects when websocket is closed", async () => {
+    await client.connect();
+    await client.disconnect();
+    await rejects(client.send({ event: "ping" }), /not open|not connected/u);
+  });
+
+  test("send resolves and delivers the payload when open", async () => {
+    const socketPromise = waitForSocket(server);
+    await client.connect();
+    const socket = await socketPromise;
+    const messagePromise = waitForMessage(socket);
+    await client.send({ event: "ping", cid: 99 });
+    deepStrictEqual(await messagePromise, { event: "ping", cid: 99 });
+  });
+
+  test("send rejects when payload is not JSON-serializable", async () => {
+    await client.connect();
+    await rejects(client.send({ n: 1n }), /BigInt|JSON/u);
+  });
+
+  test("ping rejects when websocket is not connected", async () => {
+    const c = new WebSocketClientV2({ ws_url });
+    await rejects(c.ping(), /not connected/u);
+  });
+
+  test("emits an Error for `event: error` server frames", async () => {
+    const socketPromise = waitForSocket(server);
+    await client.connect();
+    const socket = await socketPromise;
+    const errorPromise = new Promise<Error>((resolve) => {
+      client.once("error", (error) => {
+        resolve(error as Error);
+      });
+    });
+    socket.send(JSON.stringify({ event: "error", msg: "boom", code: 10000 }));
+    const error = await errorPromise;
+    ok(error instanceof Error);
+    deepStrictEqual(error.message, "boom");
+  });
+
+  test("emits an Error on non-JSON frames", async () => {
+    const socketPromise = waitForSocket(server);
+    await client.connect();
+    const socket = await socketPromise;
+    const errorPromise = new Promise<Error>((resolve) => {
+      client.once("error", (error) => {
+        resolve(error as Error);
+      });
+    });
+    socket.send("not-json");
+    const error = await errorPromise;
+    ok(error instanceof Error);
+    ok(error.message.includes("JSON"));
+  });
+
+  test("passes info messages through to listeners", async () => {
+    const socketPromise = waitForSocket(server);
+    await client.connect();
+    const socket = await socketPromise;
+    const infoPromise = new Promise<IMessageV2>((resolve) => {
+      const handler = (message: IMessageV2): void => {
+        if ("event" in message && message.event === "info") {
+          client.off("message", handler);
+          resolve(message);
+        }
+      };
+      client.on("message", handler);
+    });
+    socket.send(
+      JSON.stringify({ event: "info", version: 2, platform: { status: 1 } }),
+    );
+    const info = await infoPromise;
+    deepStrictEqual("event" in info && info.event, "info");
+  });
+
   test("subscribeTicker uses symbol (not pair) and parses funding via currency", async () => {
     const socketPromise = waitForSocket(server);
     await client.connect();
@@ -177,7 +277,7 @@ describe("WebSocketClientV2", () => {
     return socket;
   }
 
-  function nextChannelMessage(chanId: number): Promise<IMessageV2> {
+  function nextChannelMessage(chanId: number): Promise<IChannelMessageV2> {
     return new Promise((resolve) => {
       const handler = (msg: IMessageV2): void => {
         if ("channel_id" in msg && msg.channel_id === chanId) {
@@ -795,6 +895,334 @@ describe("WebSocketClientV2", () => {
     deepStrictEqual(msg.offers[0]?.period, 2);
   });
 
+  test("parses trade_executed (te)", async () => {
+    const socket = await autoSubscribe(17, { symbol: "tBTCUSD" });
+    await client.subscribeTrades({ symbol: "tBTCUSD" });
+
+    const tePromise = nextChannelMessage(17);
+    socket.send(
+      JSON.stringify([17, "te", [401597395, 1574694478808, 0.005, 7245.3]]),
+    );
+    deepStrictEqual(await tePromise, {
+      channel_id: 17,
+      type: "trade_executed",
+      symbol: "tBTCUSD",
+      id: 401597395,
+      mts: 1574694478808,
+      amount: 0.005,
+      price: 7245.3,
+    });
+  });
+
+  test("parses funding trade executed (fte) and updated (ftu)", async () => {
+    const socket = await autoSubscribe(339, {
+      symbol: "fUSD",
+      currency: "USD",
+    });
+    await client.subscribeTrades({ symbol: "fUSD" });
+
+    const ftePromise = nextChannelMessage(339);
+    socket.send(
+      JSON.stringify([339, "fte", [133, 1574694605000, -59.84, 0.00023647, 2]]),
+    );
+    deepStrictEqual(await ftePromise, {
+      channel_id: 339,
+      type: "funding_trade_executed",
+      symbol: "fUSD",
+      id: 133,
+      mts: 1574694605000,
+      amount: -59.84,
+      rate: 0.00023647,
+      period: 2,
+    });
+
+    const ftuPromise = nextChannelMessage(339);
+    socket.send(
+      JSON.stringify([339, "ftu", [134, 1574694605001, -59.84, 0.00023647, 2]]),
+    );
+    deepStrictEqual((await ftuPromise).type, "funding_trade_updated");
+  });
+
+  test("parses funding book update (single entry)", async () => {
+    const socket = await autoSubscribe(431, {
+      symbol: "fUSD",
+      prec: "P0",
+      currency: "USD",
+    });
+    await client.subscribeBook({ symbol: "fUSD" });
+
+    const updPromise = nextChannelMessage(431);
+    socket.send(JSON.stringify([431, [0.00023157, 2, 1, 66.35]]));
+    deepStrictEqual(await updPromise, {
+      channel_id: 431,
+      type: "funding_book_update",
+      symbol: "fUSD",
+      rate: 0.00023157,
+      period: 2,
+      count: 1,
+      amount: 66.35,
+    });
+  });
+
+  test("parses raw book update (single entry, R0)", async () => {
+    const socket = await autoSubscribe(433, { symbol: "tBTCUSD", prec: "R0" });
+    await client.subscribeRawBook({ symbol: "tBTCUSD" });
+
+    const updPromise = nextChannelMessage(433);
+    socket.send(JSON.stringify([433, [34753006045, 0, -1]]));
+    deepStrictEqual(await updPromise, {
+      channel_id: 433,
+      type: "raw_book_update",
+      symbol: "tBTCUSD",
+      order_id: 34753006045,
+      price: 0,
+      amount: -1,
+    });
+  });
+
+  test("parses raw funding book snapshot and update (R0)", async () => {
+    const socket = await autoSubscribe(472, {
+      symbol: "fUSD",
+      prec: "R0",
+      currency: "USD",
+    });
+    await client.subscribeRawBook({ symbol: "fUSD" });
+
+    const snapPromise = nextChannelMessage(472);
+    socket.send(JSON.stringify([472, [[658282397, 30, 0.000233, -530]]]));
+    deepStrictEqual(await snapPromise, {
+      channel_id: 472,
+      type: "raw_funding_book_snapshot",
+      symbol: "fUSD",
+      book: [{ offer_id: 658282397, period: 30, rate: 0.000233, amount: -530 }],
+    });
+
+    const updPromise = nextChannelMessage(472);
+    socket.send(JSON.stringify([472, [658286906, 2, 0, 1]]));
+    deepStrictEqual(await updPromise, {
+      channel_id: 472,
+      type: "raw_funding_book_update",
+      symbol: "fUSD",
+      offer_id: 658286906,
+      period: 2,
+      rate: 0,
+      amount: 1,
+    });
+  });
+
+  /* --------------------------- Auth events ----------------------------- */
+
+  async function pushAuthFrame(frame: unknown): Promise<IChannelMessageV2> {
+    if (!client.ws) {
+      await client.connect();
+    }
+    const promise = nextChannelMessage(0);
+    client.ws?.dispatchEvent(
+      new MessageEvent("message", { data: JSON.stringify(frame) }),
+    );
+    return promise;
+  }
+
+  const positionRow = [
+    "tETHUST",
+    "ACTIVE",
+    0.2,
+    153.71,
+    0,
+    0,
+    null,
+    null,
+    null,
+    null,
+    null,
+    142420429,
+    null,
+    null,
+    null,
+    0,
+    null,
+    0,
+    null,
+    null,
+  ];
+  const orderRow = [
+    34930659963,
+    null,
+    1574955083558,
+    "tETHUSD",
+    1574955083558,
+    1574955083573,
+    0.2,
+    0.2,
+    "EXCHANGE LIMIT",
+    null,
+    null,
+    null,
+    0,
+    "ACTIVE",
+    null,
+    null,
+    120,
+    0,
+    0,
+    0,
+    null,
+    null,
+    null,
+    0,
+    0,
+    null,
+    null,
+    null,
+    "BFX",
+    null,
+    null,
+    null,
+  ];
+  const offerRow = [
+    41238905,
+    "fUST",
+    1573239266000,
+    1573239266000,
+    5000,
+    5000,
+    "LIMIT",
+    null,
+    null,
+    0,
+    "ACTIVE",
+    null,
+    null,
+    null,
+    0.0024,
+    2,
+    0,
+    0,
+    null,
+    0,
+    null,
+  ];
+  const loanRow = [
+    2995368,
+    "fUST",
+    0,
+    1574077517000,
+    1574077517000,
+    100,
+    null,
+    "ACTIVE",
+    "FIXED",
+    null,
+    null,
+    0.0024,
+    2,
+    1574077517000,
+    1574077517000,
+    0,
+    null,
+    null,
+    0,
+    null,
+    0,
+  ];
+  const creditRow = [...loanRow.slice(0, 21), "tBTCUST"];
+
+  test("parses position events (pn/pu/pc)", async () => {
+    for (const [tag, type] of [
+      ["pn", "position_new"],
+      ["pu", "position_update"],
+      ["pc", "position_close"],
+    ] as const) {
+      const msg = await pushAuthFrame([0, tag, positionRow]);
+      deepStrictEqual(msg.type, type);
+      deepStrictEqual((msg as { position_id: number }).position_id, 142420429);
+    }
+  });
+
+  test("parses order events (on/ou/oc)", async () => {
+    for (const [tag, type] of [
+      ["on", "order_new"],
+      ["ou", "order_update"],
+      ["oc", "order_cancel"],
+    ] as const) {
+      const msg = await pushAuthFrame([0, tag, orderRow]);
+      deepStrictEqual(msg.type, type);
+      deepStrictEqual((msg as { id: number }).id, 34930659963);
+    }
+  });
+
+  test("parses funding offer events (fon/fou/foc)", async () => {
+    for (const [tag, type] of [
+      ["fon", "funding_offer_new"],
+      ["fou", "funding_offer_update"],
+      ["foc", "funding_offer_cancel"],
+    ] as const) {
+      const msg = await pushAuthFrame([0, tag, offerRow]);
+      deepStrictEqual(msg.type, type);
+      deepStrictEqual((msg as { rate: number }).rate, 0.0024);
+    }
+  });
+
+  test("parses funding credit snapshot and events (fcs/fcn/fcu/fcc)", async () => {
+    const snap = await pushAuthFrame([0, "fcs", [creditRow]]);
+    deepStrictEqual(snap.type, "funding_credit_snapshot");
+    deepStrictEqual(
+      (snap as { credits: { position_pair: string }[] }).credits[0]
+        ?.position_pair,
+      "tBTCUST",
+    );
+    for (const [tag, type] of [
+      ["fcn", "funding_credit_new"],
+      ["fcu", "funding_credit_update"],
+      ["fcc", "funding_credit_close"],
+    ] as const) {
+      const msg = await pushAuthFrame([0, tag, creditRow]);
+      deepStrictEqual(msg.type, type);
+      deepStrictEqual(
+        (msg as { position_pair: string }).position_pair,
+        "tBTCUST",
+      );
+    }
+  });
+
+  test("parses funding loan snapshot and events (fls/fln/flu/flc)", async () => {
+    const snap = await pushAuthFrame([0, "fls", [loanRow]]);
+    deepStrictEqual(snap.type, "funding_loan_snapshot");
+    for (const [tag, type] of [
+      ["fln", "funding_loan_new"],
+      ["flu", "funding_loan_update"],
+      ["flc", "funding_loan_close"],
+    ] as const) {
+      const msg = await pushAuthFrame([0, tag, loanRow]);
+      deepStrictEqual(msg.type, type);
+      deepStrictEqual((msg as { id: number }).id, 2995368);
+    }
+  });
+
+  test("parses notification (n)", async () => {
+    const msg = await pushAuthFrame([
+      0,
+      "n",
+      [
+        1574955083558,
+        "on-req",
+        null,
+        null,
+        orderRow,
+        null,
+        "SUCCESS",
+        "Submitting order",
+      ],
+    ]);
+    deepStrictEqual(msg.type, "notification");
+    deepStrictEqual(
+      (msg as { notification_type: string }).notification_type,
+      "on-req",
+    );
+    deepStrictEqual((msg as { status: string }).status, "SUCCESS");
+    deepStrictEqual((msg as { text: string }).text, "Submitting order");
+  });
+
   test("wraps unknown auth frames in an envelope", async () => {
     await client.connect();
     const envPromise = nextChannelMessage(0);
@@ -944,24 +1372,116 @@ describe("WebSocketClientV2", () => {
     );
   });
 
-  test("tickers() async iterator yields parsed ticker messages", async () => {
-    const socket = await autoSubscribe(11, { symbol: "tBTCUSD" });
-    const iterator = client.tickers({ symbol: "tBTCUSD" });
+  /**
+   * Drive an async iterator: start it, let the subscribe round-trip settle,
+   * push a synthetic data frame, and return the first yielded value.
+   */
+  async function firstFromIterator<T>(
+    chanId: number,
+    extra: Partial<ISubscribedMessageV2>,
+    makeIterator: () => AsyncGenerator<T, void, undefined>,
+    frame: unknown,
+  ): Promise<T> {
+    const socket = await autoSubscribe(chanId, extra);
+    const iterator = makeIterator();
     const first = iterator.next();
-    // Allow the subscribe round-trip to settle, then push a ticker frame.
     await new Promise((resolve) => {
       setTimeout(resolve, 20);
     });
-    socket.send(
-      JSON.stringify([
-        11,
-        [76892, 5.8, 76926, 7.03, 810, 0.0106, 76874, 1438.8, 76984, 74027],
-      ]),
-    );
+    socket.send(JSON.stringify(frame));
     const { value } = await first;
-    ok(value);
+    await iterator.return();
+    if (typeof value === "undefined") {
+      throw new Error("iterator yielded no value");
+    }
+    return value;
+  }
+
+  test("tickers() async iterator yields parsed ticker messages", async () => {
+    const value = await firstFromIterator(
+      11,
+      { symbol: "tBTCUSD" },
+      () => client.tickers({ symbol: "tBTCUSD" }),
+      [11, [76892, 5.8, 76926, 7.03, 810, 0.0106, 76874, 1438.8, 76984, 74027]],
+    );
     deepStrictEqual(value.type, "ticker");
     deepStrictEqual(value.symbol, "tBTCUSD");
-    await iterator.return();
+  });
+
+  test("trades() async iterator yields snapshot", async () => {
+    const value = await firstFromIterator(
+      17,
+      { symbol: "tBTCUSD" },
+      () => client.trades({ symbol: "tBTCUSD" }),
+      [17, [[401597393, 1574694475039, 0.005, 7244.9]]],
+    );
+    deepStrictEqual(value.type, "trades_snapshot");
+  });
+
+  test("books() async iterator yields snapshot", async () => {
+    const value = await firstFromIterator(
+      170,
+      { symbol: "tBTCUSD", prec: "P0" },
+      () => client.books({ symbol: "tBTCUSD" }),
+      [170, [[7254.7, 3, 3.3]]],
+    );
+    deepStrictEqual(value.type, "book_snapshot");
+  });
+
+  test("rawBooks() async iterator yields snapshot", async () => {
+    const value = await firstFromIterator(
+      433,
+      { symbol: "tBTCUSD", prec: "R0" },
+      () => client.rawBooks({ symbol: "tBTCUSD" }),
+      [433, [[34753002978, 7294.7, 1.5434]]],
+    );
+    deepStrictEqual(value.type, "raw_book_snapshot");
+  });
+
+  test("candles() async iterator yields snapshot", async () => {
+    const value = await firstFromIterator(
+      343,
+      { key: "trade:1m:tBTCUSD" },
+      () => client.candles({ key: "trade:1m:tBTCUSD" }),
+      [343, [[1574698260000, 7379.7, 7383.8, 7388.3, 7379.7, 1.68]]],
+    );
+    deepStrictEqual(value.type, "candles_snapshot");
+  });
+
+  test("status() async iterator yields derivatives status", async () => {
+    const value = await firstFromIterator(
+      335,
+      { key: "deriv:tBTCF0:USTF0" },
+      () => client.status({ key: "deriv:tBTCF0:USTF0" }),
+      [
+        335,
+        [
+          1596124822000,
+          null,
+          0.896,
+          0.771995,
+          null,
+          1396531.67,
+          null,
+          1596153600000,
+          0.0001056,
+          6,
+          null,
+          -0.0138,
+          null,
+          null,
+          0.7664,
+          null,
+          null,
+          246502.09,
+          null,
+          null,
+          null,
+          null,
+          0.3,
+        ],
+      ],
+    );
+    deepStrictEqual(value.type, "derivatives_status");
   });
 });
