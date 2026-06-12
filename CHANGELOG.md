@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.2.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.1.0...v4.2.0) (2026-06-12)
+
+### Features
+
+- add AuthenticatedClientV2 ([35f7e15](https://github.com/vansergen/bitfinex-node-api/commit/35f7e15447f63aae155e3702a6521031fa926476))
+
 ## [4.1.0](https://github.com/vansergen/bitfinex-node-api/compare/v4.0.0...v4.1.0) (2026-05-27)
 
 ### Features
